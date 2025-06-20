@@ -1,6 +1,6 @@
 {
     "pubName": "spartera_api_sdk",
-    "pubVersion": "1.0.61",
+    "pubVersion": "1.0.62",
     "pubDescription": "Official Flutter/Dart SDK for the Spartera API platform",
     "pubAuthor": "Tony D",
     "pubAuthorEmail": "tony@spartera.com",
