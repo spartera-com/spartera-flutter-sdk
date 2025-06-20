@@ -1,0 +1,377 @@
+# spartera_api_sdk.api.AlertsApi
+
+## Load the API package
+```dart
+import 'package:spartera_api_sdk/api.dart';
+```
+
+All URIs are relative to *https://api.spartera.com*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**companiesCompanyIdUsersUserIdAlertsAlertIdDelete**](AlertsApi.md#companiescompanyidusersuseridalertsalertiddelete) | **DELETE** /companies/{company_id}/users/{user_id}/alerts/{alert_id} | Delete single alert by ID
+[**companiesCompanyIdUsersUserIdAlertsAlertIdGet**](AlertsApi.md#companiescompanyidusersuseridalertsalertidget) | **GET** /companies/{company_id}/users/{user_id}/alerts/{alert_id} | Get single alert by ID
+[**companiesCompanyIdUsersUserIdAlertsAlertIdPatch**](AlertsApi.md#companiescompanyidusersuseridalertsalertidpatch) | **PATCH** /companies/{company_id}/users/{user_id}/alerts/{alert_id} | Update an existing alert by ID
+[**companiesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet**](AlertsApi.md#companiescompanyidusersuseridalertsassetassetidallget) | **GET** /companies/{company_id}/users/{user_id}/alerts/asset/{asset_id}/all | Get all alerts for a specific asset (from all users)     This would typically be restricted to asset owners or admins
+[**companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet**](AlertsApi.md#companiescompanyidusersuseridalertsassetassetidget) | **GET** /companies/{company_id}/users/{user_id}/alerts/asset/{asset_id} | Get all alerts for a specific asset by the specified user     Useful for checking if user already has an alert set up for an asset
+[**companiesCompanyIdUsersUserIdAlertsGet**](AlertsApi.md#companiescompanyidusersuseridalertsget) | **GET** /companies/{company_id}/users/{user_id}/alerts | Get a list of all alerts for a specific user
+[**companiesCompanyIdUsersUserIdAlertsPost**](AlertsApi.md#companiescompanyidusersuseridalertspost) | **POST** /companies/{company_id}/users/{user_id}/alerts | POST /companies/{company_id}/users/{user_id}/alerts
+
+
+# **companiesCompanyIdUsersUserIdAlertsAlertIdDelete**
+> Object companiesCompanyIdUsersUserIdAlertsAlertIdDelete(companyId, userId, alertId)
+
+Delete single alert by ID
+
+### Example
+```dart
+import 'package:spartera_api_sdk/api.dart';
+// TODO Configure HTTP Bearer authorization: bearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+
+final api_instance = AlertsApi();
+final companyId = companyId_example; // String | 
+final userId = userId_example; // String | 
+final alertId = alertId_example; // String | 
+
+try {
+    final result = api_instance.companiesCompanyIdUsersUserIdAlertsAlertIdDelete(companyId, userId, alertId);
+    print(result);
+} catch (e) {
+    print('Exception when calling AlertsApi->companiesCompanyIdUsersUserIdAlertsAlertIdDelete: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **companyId** | **String**|  | 
+ **userId** | **String**|  | 
+ **alertId** | **String**|  | 
+
+### Return type
+
+[**Object**](Object.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **companiesCompanyIdUsersUserIdAlertsAlertIdGet**
+> Object companiesCompanyIdUsersUserIdAlertsAlertIdGet(companyId, userId, alertId)
+
+Get single alert by ID
+
+### Example
+```dart
+import 'package:spartera_api_sdk/api.dart';
+// TODO Configure HTTP Bearer authorization: bearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+
+final api_instance = AlertsApi();
+final companyId = companyId_example; // String | 
+final userId = userId_example; // String | 
+final alertId = alertId_example; // String | 
+
+try {
+    final result = api_instance.companiesCompanyIdUsersUserIdAlertsAlertIdGet(companyId, userId, alertId);
+    print(result);
+} catch (e) {
+    print('Exception when calling AlertsApi->companiesCompanyIdUsersUserIdAlertsAlertIdGet: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **companyId** | **String**|  | 
+ **userId** | **String**|  | 
+ **alertId** | **String**|  | 
+
+### Return type
+
+[**Object**](Object.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **companiesCompanyIdUsersUserIdAlertsAlertIdPatch**
+> Object companiesCompanyIdUsersUserIdAlertsAlertIdPatch(companyId, userId, alertId, alert)
+
+Update an existing alert by ID
+
+### Example
+```dart
+import 'package:spartera_api_sdk/api.dart';
+// TODO Configure HTTP Bearer authorization: bearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+
+final api_instance = AlertsApi();
+final companyId = companyId_example; // String | 
+final userId = userId_example; // String | 
+final alertId = alertId_example; // String | 
+final alert = Alert(); // Alert | 
+
+try {
+    final result = api_instance.companiesCompanyIdUsersUserIdAlertsAlertIdPatch(companyId, userId, alertId, alert);
+    print(result);
+} catch (e) {
+    print('Exception when calling AlertsApi->companiesCompanyIdUsersUserIdAlertsAlertIdPatch: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **companyId** | **String**|  | 
+ **userId** | **String**|  | 
+ **alertId** | **String**|  | 
+ **alert** | [**Alert**](Alert.md)|  | 
+
+### Return type
+
+[**Object**](Object.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **companiesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet**
+> Object companiesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet(companyId, userId, assetId)
+
+Get all alerts for a specific asset (from all users)     This would typically be restricted to asset owners or admins
+
+### Example
+```dart
+import 'package:spartera_api_sdk/api.dart';
+// TODO Configure HTTP Bearer authorization: bearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+
+final api_instance = AlertsApi();
+final companyId = companyId_example; // String | 
+final userId = userId_example; // String | 
+final assetId = assetId_example; // String | 
+
+try {
+    final result = api_instance.companiesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet(companyId, userId, assetId);
+    print(result);
+} catch (e) {
+    print('Exception when calling AlertsApi->companiesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **companyId** | **String**|  | 
+ **userId** | **String**|  | 
+ **assetId** | **String**|  | 
+
+### Return type
+
+[**Object**](Object.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet**
+> Object companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet(companyId, userId, assetId)
+
+Get all alerts for a specific asset by the specified user     Useful for checking if user already has an alert set up for an asset
+
+### Example
+```dart
+import 'package:spartera_api_sdk/api.dart';
+// TODO Configure HTTP Bearer authorization: bearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+
+final api_instance = AlertsApi();
+final companyId = companyId_example; // String | 
+final userId = userId_example; // String | 
+final assetId = assetId_example; // String | 
+
+try {
+    final result = api_instance.companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet(companyId, userId, assetId);
+    print(result);
+} catch (e) {
+    print('Exception when calling AlertsApi->companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **companyId** | **String**|  | 
+ **userId** | **String**|  | 
+ **assetId** | **String**|  | 
+
+### Return type
+
+[**Object**](Object.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **companiesCompanyIdUsersUserIdAlertsGet**
+> Object companiesCompanyIdUsersUserIdAlertsGet(companyId, userId)
+
+Get a list of all alerts for a specific user
+
+### Example
+```dart
+import 'package:spartera_api_sdk/api.dart';
+// TODO Configure HTTP Bearer authorization: bearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+
+final api_instance = AlertsApi();
+final companyId = companyId_example; // String | 
+final userId = userId_example; // String | 
+
+try {
+    final result = api_instance.companiesCompanyIdUsersUserIdAlertsGet(companyId, userId);
+    print(result);
+} catch (e) {
+    print('Exception when calling AlertsApi->companiesCompanyIdUsersUserIdAlertsGet: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **companyId** | **String**|  | 
+ **userId** | **String**|  | 
+
+### Return type
+
+[**Object**](Object.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **companiesCompanyIdUsersUserIdAlertsPost**
+> Object companiesCompanyIdUsersUserIdAlertsPost(companyId, userId, alert)
+
+POST /companies/{company_id}/users/{user_id}/alerts
+
+### Example
+```dart
+import 'package:spartera_api_sdk/api.dart';
+// TODO Configure HTTP Bearer authorization: bearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+
+final api_instance = AlertsApi();
+final companyId = companyId_example; // String | 
+final userId = userId_example; // String | 
+final alert = Alert(); // Alert | 
+
+try {
+    final result = api_instance.companiesCompanyIdUsersUserIdAlertsPost(companyId, userId, alert);
+    print(result);
+} catch (e) {
+    print('Exception when calling AlertsApi->companiesCompanyIdUsersUserIdAlertsPost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **companyId** | **String**|  | 
+ **userId** | **String**|  | 
+ **alert** | [**Alert**](Alert.md)|  | 
+
+### Return type
+
+[**Object**](Object.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
