@@ -16,7 +16,7 @@ class UsersApi {
 
   final ApiClient apiClient;
 
-  /// Get a list of all users for a particular company
+  /// Get a list of all users in a company
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -49,7 +49,7 @@ class UsersApi {
     );
   }
 
-  /// Get a list of all users for a particular company
+  /// Get a list of all users in a company
   ///
   /// Parameters:
   ///

@@ -16,20 +16,20 @@ class AssetsApi {
 
   final ApiClient apiClient;
 
-  /// Process assets route that handles both owned and purchased assets.             Minimal route function that passes all logic to crudder.process_asset              Args:                 asset_path: The path after /analyze/ containing asset information                 company_handle: The subdomain from Flask's routing (if available)
+  /// Process (analyze) an asset. Attempt to process an analytic on a backend warehouse/AI model.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [String] companyHandle (required):
-  ///
   /// * [String] assetSlug (required):
-  Future<Response> analyzeCompanyHandleAssetsAssetSlugGetWithHttpInfo(String companyHandle, String assetSlug,) async {
+  ///
+  /// * [String] companyHandle (required):
+  Future<Response> analyzeCompanyHandleAssetsAssetSlugGetWithHttpInfo(String assetSlug, String companyHandle,) async {
     // ignore: prefer_const_declarations
     final path = r'/analyze/{company_handle}/assets/{asset_slug}'
-      .replaceAll('{company_handle}', companyHandle)
-      .replaceAll('{asset_slug}', assetSlug);
+      .replaceAll('{asset_slug}', assetSlug)
+      .replaceAll('{company_handle}', companyHandle);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -52,15 +52,15 @@ class AssetsApi {
     );
   }
 
-  /// Process assets route that handles both owned and purchased assets.             Minimal route function that passes all logic to crudder.process_asset              Args:                 asset_path: The path after /analyze/ containing asset information                 company_handle: The subdomain from Flask's routing (if available)
+  /// Process (analyze) an asset. Attempt to process an analytic on a backend warehouse/AI model.
   ///
   /// Parameters:
   ///
-  /// * [String] companyHandle (required):
-  ///
   /// * [String] assetSlug (required):
-  Future<Object?> analyzeCompanyHandleAssetsAssetSlugGet(String companyHandle, String assetSlug,) async {
-    final response = await analyzeCompanyHandleAssetsAssetSlugGetWithHttpInfo(companyHandle, assetSlug,);
+  ///
+  /// * [String] companyHandle (required):
+  Future<Object?> analyzeCompanyHandleAssetsAssetSlugGet(String assetSlug, String companyHandle,) async {
+    final response = await analyzeCompanyHandleAssetsAssetSlugGetWithHttpInfo(assetSlug, companyHandle,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -248,7 +248,7 @@ class AssetsApi {
     return null;
   }
 
-  /// Get the information schema for a specific asset and save it to the asset's asset_schema field
+  /// Retrieve and save an asset's information schema
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -284,7 +284,7 @@ class AssetsApi {
     );
   }
 
-  /// Get the information schema for a specific asset and save it to the asset's asset_schema field
+  /// Retrieve and save an asset's information schema
   ///
   /// Parameters:
   ///
@@ -413,144 +413,6 @@ class AssetsApi {
   /// * [String] assetId (required):
   Future<Object?> companiesCompanyIdAssetsAssetIdPredictedPriceGet(String companyId, String assetId,) async {
     final response = await companiesCompanyIdAssetsAssetIdPredictedPriceGetWithHttpInfo(companyId, assetId,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
-    
-    }
-    return null;
-  }
-
-  /// Get detailed explanation of how asset recommendations are calculated for debugging purposes.
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] companyId (required):
-  ///
-  /// * [String] assetId (required):
-  Future<Response> companiesCompanyIdAssetsAssetIdRecommendationsExplainGetWithHttpInfo(String companyId, String assetId,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/companies/{company_id}/assets/{asset_id}/recommendations/explain'
-      .replaceAll('{company_id}', companyId)
-      .replaceAll('{asset_id}', assetId);
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Get detailed explanation of how asset recommendations are calculated for debugging purposes.
-  ///
-  /// Parameters:
-  ///
-  /// * [String] companyId (required):
-  ///
-  /// * [String] assetId (required):
-  Future<Object?> companiesCompanyIdAssetsAssetIdRecommendationsExplainGet(String companyId, String assetId,) async {
-    final response = await companiesCompanyIdAssetsAssetIdRecommendationsExplainGetWithHttpInfo(companyId, assetId,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
-    
-    }
-    return null;
-  }
-
-  /// Get asset recommendations for a specific asset using heuristic waterfall matching     Returns list of similar assets based on industry, company, connection, tags, etc.      Query Parameters:     - limit: Number of recommendations to return (default: 12, max: 50)     - min_score: Minimum similarity score threshold (default: 0.1)     - include_details: Include component similarity scores (default: false)
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] companyId (required):
-  ///
-  /// * [String] assetId (required):
-  ///
-  /// * [String] limit:
-  ///
-  /// * [String] minScore:
-  ///
-  /// * [String] includeDetails:
-  Future<Response> companiesCompanyIdAssetsAssetIdRecommendationsGetWithHttpInfo(String companyId, String assetId, { String? limit, String? minScore, String? includeDetails, }) async {
-    // ignore: prefer_const_declarations
-    final path = r'/companies/{company_id}/assets/{asset_id}/recommendations'
-      .replaceAll('{company_id}', companyId)
-      .replaceAll('{asset_id}', assetId);
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    if (limit != null) {
-      queryParams.addAll(_queryParams('', 'limit', limit));
-    }
-    if (minScore != null) {
-      queryParams.addAll(_queryParams('', 'min_score', minScore));
-    }
-    if (includeDetails != null) {
-      queryParams.addAll(_queryParams('', 'include_details', includeDetails));
-    }
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Get asset recommendations for a specific asset using heuristic waterfall matching     Returns list of similar assets based on industry, company, connection, tags, etc.      Query Parameters:     - limit: Number of recommendations to return (default: 12, max: 50)     - min_score: Minimum similarity score threshold (default: 0.1)     - include_details: Include component similarity scores (default: false)
-  ///
-  /// Parameters:
-  ///
-  /// * [String] companyId (required):
-  ///
-  /// * [String] assetId (required):
-  ///
-  /// * [String] limit:
-  ///
-  /// * [String] minScore:
-  ///
-  /// * [String] includeDetails:
-  Future<Object?> companiesCompanyIdAssetsAssetIdRecommendationsGet(String companyId, String assetId, { String? limit, String? minScore, String? includeDetails, }) async {
-    final response = await companiesCompanyIdAssetsAssetIdRecommendationsGetWithHttpInfo(companyId, assetId,  limit: limit, minScore: minScore, includeDetails: includeDetails, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -777,116 +639,6 @@ class AssetsApi {
   /// * [Asset] asset (required):
   Future<Object?> companiesCompanyIdAssetsPost(String companyId, Asset asset,) async {
     final response = await companiesCompanyIdAssetsPostWithHttpInfo(companyId, asset,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
-    
-    }
-    return null;
-  }
-
-  /// Get recommendations for multiple assets in a single request. Useful for pre-loading recommendations.
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] companyId (required):
-  ///
-  /// * [Asset] asset (required):
-  Future<Response> companiesCompanyIdAssetsRecommendationsBulkPostWithHttpInfo(String companyId, Asset asset,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/companies/{company_id}/assets/recommendations/bulk'
-      .replaceAll('{company_id}', companyId);
-
-    // ignore: prefer_final_locals
-    Object? postBody = asset;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Get recommendations for multiple assets in a single request. Useful for pre-loading recommendations.
-  ///
-  /// Parameters:
-  ///
-  /// * [String] companyId (required):
-  ///
-  /// * [Asset] asset (required):
-  Future<Object?> companiesCompanyIdAssetsRecommendationsBulkPost(String companyId, Asset asset,) async {
-    final response = await companiesCompanyIdAssetsRecommendationsBulkPostWithHttpInfo(companyId, asset,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
-    
-    }
-    return null;
-  }
-
-  /// Health check for the recommendations system with sample data and performance metrics.
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] companyId (required):
-  Future<Response> companiesCompanyIdAssetsRecommendationsHealthGetWithHttpInfo(String companyId,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/companies/{company_id}/assets/recommendations/health'
-      .replaceAll('{company_id}', companyId);
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Health check for the recommendations system with sample data and performance metrics.
-  ///
-  /// Parameters:
-  ///
-  /// * [String] companyId (required):
-  Future<Object?> companiesCompanyIdAssetsRecommendationsHealthGet(String companyId,) async {
-    final response = await companiesCompanyIdAssetsRecommendationsHealthGetWithHttpInfo(companyId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

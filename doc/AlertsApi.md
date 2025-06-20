@@ -12,8 +12,8 @@ Method | HTTP request | Description
 [**companiesCompanyIdUsersUserIdAlertsAlertIdDelete**](AlertsApi.md#companiescompanyidusersuseridalertsalertiddelete) | **DELETE** /companies/{company_id}/users/{user_id}/alerts/{alert_id} | Delete single alert by ID
 [**companiesCompanyIdUsersUserIdAlertsAlertIdGet**](AlertsApi.md#companiescompanyidusersuseridalertsalertidget) | **GET** /companies/{company_id}/users/{user_id}/alerts/{alert_id} | Get single alert by ID
 [**companiesCompanyIdUsersUserIdAlertsAlertIdPatch**](AlertsApi.md#companiescompanyidusersuseridalertsalertidpatch) | **PATCH** /companies/{company_id}/users/{user_id}/alerts/{alert_id} | Update an existing alert by ID
-[**companiesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet**](AlertsApi.md#companiescompanyidusersuseridalertsassetassetidallget) | **GET** /companies/{company_id}/users/{user_id}/alerts/asset/{asset_id}/all | Get all alerts for a specific asset (from all users)     This would typically be restricted to asset owners or admins
-[**companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet**](AlertsApi.md#companiescompanyidusersuseridalertsassetassetidget) | **GET** /companies/{company_id}/users/{user_id}/alerts/asset/{asset_id} | Get all alerts for a specific asset by the specified user     Useful for checking if user already has an alert set up for an asset
+[**companiesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet**](AlertsApi.md#companiescompanyidusersuseridalertsassetassetidallget) | **GET** /companies/{company_id}/users/{user_id}/alerts/asset/{asset_id}/all | Get all alerts for a specific asset
+[**companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet**](AlertsApi.md#companiescompanyidusersuseridalertsassetassetidget) | **GET** /companies/{company_id}/users/{user_id}/alerts/asset/{asset_id} | Get all alerts for a specific asset (by user)
 [**companiesCompanyIdUsersUserIdAlertsGet**](AlertsApi.md#companiescompanyidusersuseridalertsget) | **GET** /companies/{company_id}/users/{user_id}/alerts | Get a list of all alerts for a specific user
 [**companiesCompanyIdUsersUserIdAlertsPost**](AlertsApi.md#companiescompanyidusersuseridalertspost) | **POST** /companies/{company_id}/users/{user_id}/alerts | POST /companies/{company_id}/users/{user_id}/alerts
 
@@ -26,12 +26,10 @@ Delete single alert by ID
 ### Example
 ```dart
 import 'package:spartera_api_sdk/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AlertsApi();
 final companyId = companyId_example; // String | 
@@ -60,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -77,12 +75,10 @@ Get single alert by ID
 ### Example
 ```dart
 import 'package:spartera_api_sdk/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AlertsApi();
 final companyId = companyId_example; // String | 
@@ -111,7 +107,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -128,12 +124,10 @@ Update an existing alert by ID
 ### Example
 ```dart
 import 'package:spartera_api_sdk/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AlertsApi();
 final companyId = companyId_example; // String | 
@@ -164,7 +158,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -176,17 +170,15 @@ Name | Type | Description  | Notes
 # **companiesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet**
 > Object companiesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet(companyId, userId, assetId)
 
-Get all alerts for a specific asset (from all users)     This would typically be restricted to asset owners or admins
+Get all alerts for a specific asset
 
 ### Example
 ```dart
 import 'package:spartera_api_sdk/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AlertsApi();
 final companyId = companyId_example; // String | 
@@ -215,7 +207,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -227,17 +219,15 @@ Name | Type | Description  | Notes
 # **companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet**
 > Object companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet(companyId, userId, assetId)
 
-Get all alerts for a specific asset by the specified user     Useful for checking if user already has an alert set up for an asset
+Get all alerts for a specific asset (by user)
 
 ### Example
 ```dart
 import 'package:spartera_api_sdk/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AlertsApi();
 final companyId = companyId_example; // String | 
@@ -266,7 +256,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -283,12 +273,10 @@ Get a list of all alerts for a specific user
 ### Example
 ```dart
 import 'package:spartera_api_sdk/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AlertsApi();
 final companyId = companyId_example; // String | 
@@ -315,7 +303,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -332,12 +320,10 @@ POST /companies/{company_id}/users/{user_id}/alerts
 ### Example
 ```dart
 import 'package:spartera_api_sdk/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AlertsApi();
 final companyId = companyId_example; // String | 
@@ -366,7 +352,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

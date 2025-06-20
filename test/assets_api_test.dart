@@ -17,9 +17,9 @@ void main() {
   // final instance = AssetsApi();
 
   group('tests for AssetsApi', () {
-    // Process assets route that handles both owned and purchased assets.             Minimal route function that passes all logic to crudder.process_asset              Args:                 asset_path: The path after /analyze/ containing asset information                 company_handle: The subdomain from Flask's routing (if available)
+    // Process (analyze) an asset. Attempt to process an analytic on a backend warehouse/AI model.
     //
-    //Future<Object> analyzeCompanyHandleAssetsAssetSlugGet(String companyHandle, String assetSlug) async
+    //Future<Object> analyzeCompanyHandleAssetsAssetSlugGet(String assetSlug, String companyHandle) async
     test('test analyzeCompanyHandleAssetsAssetSlugGet', () async {
       // TODO
     });
@@ -45,7 +45,7 @@ void main() {
       // TODO
     });
 
-    // Get the information schema for a specific asset and save it to the asset's asset_schema field
+    // Retrieve and save an asset's information schema
     //
     //Future<Object> companiesCompanyIdAssetsAssetIdInfoschemaSaveGet(String companyId, String assetId) async
     test('test companiesCompanyIdAssetsAssetIdInfoschemaSaveGet', () async {
@@ -63,20 +63,6 @@ void main() {
     //
     //Future<Object> companiesCompanyIdAssetsAssetIdPredictedPriceGet(String companyId, String assetId) async
     test('test companiesCompanyIdAssetsAssetIdPredictedPriceGet', () async {
-      // TODO
-    });
-
-    // Get detailed explanation of how asset recommendations are calculated for debugging purposes.
-    //
-    //Future<Object> companiesCompanyIdAssetsAssetIdRecommendationsExplainGet(String companyId, String assetId) async
-    test('test companiesCompanyIdAssetsAssetIdRecommendationsExplainGet', () async {
-      // TODO
-    });
-
-    // Get asset recommendations for a specific asset using heuristic waterfall matching     Returns list of similar assets based on industry, company, connection, tags, etc.      Query Parameters:     - limit: Number of recommendations to return (default: 12, max: 50)     - min_score: Minimum similarity score threshold (default: 0.1)     - include_details: Include component similarity scores (default: false)
-    //
-    //Future<Object> companiesCompanyIdAssetsAssetIdRecommendationsGet(String companyId, String assetId, { String limit, String minScore, String includeDetails }) async
-    test('test companiesCompanyIdAssetsAssetIdRecommendationsGet', () async {
       // TODO
     });
 
@@ -105,20 +91,6 @@ void main() {
     //
     //Future<Object> companiesCompanyIdAssetsPost(String companyId, Asset asset) async
     test('test companiesCompanyIdAssetsPost', () async {
-      // TODO
-    });
-
-    // Get recommendations for multiple assets in a single request. Useful for pre-loading recommendations.
-    //
-    //Future<Object> companiesCompanyIdAssetsRecommendationsBulkPost(String companyId, Asset asset) async
-    test('test companiesCompanyIdAssetsRecommendationsBulkPost', () async {
-      // TODO
-    });
-
-    // Health check for the recommendations system with sample data and performance metrics.
-    //
-    //Future<Object> companiesCompanyIdAssetsRecommendationsHealthGet(String companyId) async
-    test('test companiesCompanyIdAssetsRecommendationsHealthGet', () async {
       // TODO
     });
 

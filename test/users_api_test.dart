@@ -17,7 +17,7 @@ void main() {
   // final instance = UsersApi();
 
   group('tests for UsersApi', () {
-    // Get a list of all users for a particular company
+    // Get a list of all users in a company
     //
     //Future<Object> companiesCompanyIdUsersGet(String companyId) async
     test('test companiesCompanyIdUsersGet', () async {

@@ -36,6 +36,7 @@ part 'api/cloud_providers_api.dart';
 part 'api/companies_api.dart';
 part 'api/connections_api.dart';
 part 'api/favorites_api.dart';
+part 'api/storage_engines_api.dart';
 part 'api/users_api.dart';
 
 part 'model/alert.dart';

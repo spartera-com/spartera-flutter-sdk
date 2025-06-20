@@ -209,7 +209,7 @@ class AlertsApi {
     return null;
   }
 
-  /// Get all alerts for a specific asset (from all users)     This would typically be restricted to asset owners or admins
+  /// Get all alerts for a specific asset
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -248,7 +248,7 @@ class AlertsApi {
     );
   }
 
-  /// Get all alerts for a specific asset (from all users)     This would typically be restricted to asset owners or admins
+  /// Get all alerts for a specific asset
   ///
   /// Parameters:
   ///
@@ -272,7 +272,7 @@ class AlertsApi {
     return null;
   }
 
-  /// Get all alerts for a specific asset by the specified user     Useful for checking if user already has an alert set up for an asset
+  /// Get all alerts for a specific asset (by user)
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -311,7 +311,7 @@ class AlertsApi {
     );
   }
 
-  /// Get all alerts for a specific asset by the specified user     Useful for checking if user already has an alert set up for an asset
+  /// Get all alerts for a specific asset (by user)
   ///
   /// Parameters:
   ///

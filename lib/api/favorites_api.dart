@@ -79,7 +79,7 @@ class FavoritesApi {
     return null;
   }
 
-  /// Check if the specified user has favorited a specific asset     Returns the favorite record if it exists, or empty result if not     Useful for UI to show/hide favorite button states
+  /// Check if the specified user has favorited a specific asset
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -118,7 +118,7 @@ class FavoritesApi {
     );
   }
 
-  /// Check if the specified user has favorited a specific asset     Returns the favorite record if it exists, or empty result if not     Useful for UI to show/hide favorite button states
+  /// Check if the specified user has favorited a specific asset
   ///
   /// Parameters:
   ///
@@ -268,7 +268,7 @@ class FavoritesApi {
     return null;
   }
 
-  /// Update an existing favorite by ID     Can update notes, category, priority
+  /// Update an existing favorite by ID
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -309,7 +309,7 @@ class FavoritesApi {
     );
   }
 
-  /// Update an existing favorite by ID     Can update notes, category, priority
+  /// Update an existing favorite by ID
   ///
   /// Parameters:
   ///
@@ -335,7 +335,7 @@ class FavoritesApi {
     return null;
   }
 
-  /// Get a list of all favorites for a specific user     Query params:     - category: filter by category     - sort: sort field (priority, date_created, etc.)     - order: sort direction (asc, desc)
+  /// Get a list of all favorites for a specific user
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -371,7 +371,7 @@ class FavoritesApi {
     );
   }
 
-  /// Get a list of all favorites for a specific user     Query params:     - category: filter by category     - sort: sort field (priority, date_created, etc.)     - order: sort direction (asc, desc)
+  /// Get a list of all favorites for a specific user
   ///
   /// Parameters:
   ///

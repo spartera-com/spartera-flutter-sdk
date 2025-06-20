@@ -24,6 +24,7 @@ doc/InlineObject.md
 doc/InlineObject1.md
 doc/InlineObject2.md
 doc/InlineObject3.md
+doc/StorageEnginesApi.md
 doc/User.md
 doc/UsersApi.md
 git_push.sh
@@ -36,6 +37,7 @@ lib/api/cloud_providers_api.dart
 lib/api/companies_api.dart
 lib/api/connections_api.dart
 lib/api/favorites_api.dart
+lib/api/storage_engines_api.dart
 lib/api/users_api.dart
 lib/api_client.dart
 lib/api_exception.dart
@@ -81,5 +83,6 @@ test/inline_object1_test.dart
 test/inline_object2_test.dart
 test/inline_object3_test.dart
 test/inline_object_test.dart
+test/storage_engines_api_test.dart
 test/user_test.dart
 test/users_api_test.dart

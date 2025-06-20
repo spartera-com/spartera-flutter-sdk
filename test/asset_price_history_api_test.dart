@@ -45,14 +45,14 @@ void main() {
       // TODO
     });
 
-    // Calculate the credit equivalent for a given USD price without saving
+    // POST /companies/{company_id}/assets/{asset_id}/prices/calculate_credits
     //
     //Future<Object> companiesCompanyIdAssetsAssetIdPricesCalculateCreditsPost(String companyId, String assetId) async
     test('test companiesCompanyIdAssetsAssetIdPricesCalculateCreditsPost', () async {
       // TODO
     });
 
-    // Apply a discount to the active price for an asset
+    // POST /companies/{company_id}/assets/{asset_id}/prices/discount
     //
     //Future<Object> companiesCompanyIdAssetsAssetIdPricesDiscountPost(String companyId, String assetId) async
     test('test companiesCompanyIdAssetsAssetIdPricesDiscountPost', () async {

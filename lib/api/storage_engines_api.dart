@@ -11,17 +11,25 @@
 part of openapi.api;
 
 
-class CloudProvidersApi {
-  CloudProvidersApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
+class StorageEnginesApi {
+  StorageEnginesApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
-  /// Get a list of all cloud providers
+  /// Get single storage engine by ID
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> cloudProvidersGetWithHttpInfo() async {
+  ///
+  /// Parameters:
+  ///
+  /// * [String] providerId (required):
+  ///
+  /// * [String] engineId (required):
+  Future<Response> cloudProvidersProviderIdStorageEnginesEngineIdGetWithHttpInfo(String providerId, String engineId,) async {
     // ignore: prefer_const_declarations
-    final path = r'/cloud-providers';
+    final path = r'/cloud-providers/{provider_id}/storage-engines/{engine_id}'
+      .replaceAll('{provider_id}', providerId)
+      .replaceAll('{engine_id}', engineId);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -44,9 +52,15 @@ class CloudProvidersApi {
     );
   }
 
-  /// Get a list of all cloud providers
-  Future<Object?> cloudProvidersGet() async {
-    final response = await cloudProvidersGetWithHttpInfo();
+  /// Get single storage engine by ID
+  ///
+  /// Parameters:
+  ///
+  /// * [String] providerId (required):
+  ///
+  /// * [String] engineId (required):
+  Future<Object?> cloudProvidersProviderIdStorageEnginesEngineIdGet(String providerId, String engineId,) async {
+    final response = await cloudProvidersProviderIdStorageEnginesEngineIdGetWithHttpInfo(providerId, engineId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -60,16 +74,16 @@ class CloudProvidersApi {
     return null;
   }
 
-  /// Get single cloud provider by ID
+  /// Get a list of all storage engines
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [String] providerId (required):
-  Future<Response> cloudProvidersProviderIdGetWithHttpInfo(String providerId,) async {
+  Future<Response> cloudProvidersProviderIdStorageEnginesGetWithHttpInfo(String providerId,) async {
     // ignore: prefer_const_declarations
-    final path = r'/cloud-providers/{provider_id}'
+    final path = r'/cloud-providers/{provider_id}/storage-engines'
       .replaceAll('{provider_id}', providerId);
 
     // ignore: prefer_final_locals
@@ -93,13 +107,13 @@ class CloudProvidersApi {
     );
   }
 
-  /// Get single cloud provider by ID
+  /// Get a list of all storage engines
   ///
   /// Parameters:
   ///
   /// * [String] providerId (required):
-  Future<Object?> cloudProvidersProviderIdGet(String providerId,) async {
-    final response = await cloudProvidersProviderIdGetWithHttpInfo(providerId,);
+  Future<Object?> cloudProvidersProviderIdStorageEnginesGet(String providerId,) async {
+    final response = await cloudProvidersProviderIdStorageEnginesGetWithHttpInfo(providerId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

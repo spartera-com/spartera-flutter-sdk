@@ -45,7 +45,7 @@ void main() {
       // TODO
     });
 
-    // Verify the specified connection to ensure it is functioning correctly
+    // Test the specified connection
     //
     //Future<Object> companiesCompanyIdConnectionsConnectionIdTestGet(String companyId, String connectionId) async
     test('test companiesCompanyIdConnectionsConnectionIdTestGet', () async {

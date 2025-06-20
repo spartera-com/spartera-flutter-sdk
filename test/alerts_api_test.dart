@@ -38,14 +38,14 @@ void main() {
       // TODO
     });
 
-    // Get all alerts for a specific asset (from all users)     This would typically be restricted to asset owners or admins
+    // Get all alerts for a specific asset
     //
     //Future<Object> companiesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet(String companyId, String userId, String assetId) async
     test('test companiesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet', () async {
       // TODO
     });
 
-    // Get all alerts for a specific asset by the specified user     Useful for checking if user already has an alert set up for an asset
+    // Get all alerts for a specific asset (by user)
     //
     //Future<Object> companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet(String companyId, String userId, String assetId) async
     test('test companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet', () async {

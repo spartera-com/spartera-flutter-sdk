@@ -9,45 +9,39 @@ All URIs are relative to *https://api.spartera.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**analyzeCompanyHandleAssetsAssetSlugGet**](AssetsApi.md#analyzecompanyhandleassetsassetslugget) | **GET** /analyze/{company_handle}/assets/{asset_slug} | Process assets route that handles both owned and purchased assets.             Minimal route function that passes all logic to crudder.process_asset              Args:                 asset_path: The path after /analyze/ containing asset information                 company_handle: The subdomain from Flask's routing (if available)
+[**analyzeCompanyHandleAssetsAssetSlugGet**](AssetsApi.md#analyzecompanyhandleassetsassetslugget) | **GET** /analyze/{company_handle}/assets/{asset_slug} | Process (analyze) an asset. Attempt to process an analytic on a backend warehouse/AI model.
 [**companiesCompanyIdAssetsAssetIdDelete**](AssetsApi.md#companiescompanyidassetsassetiddelete) | **DELETE** /companies/{company_id}/assets/{asset_id} | Delete single asset by ID
 [**companiesCompanyIdAssetsAssetIdGet**](AssetsApi.md#companiescompanyidassetsassetidget) | **GET** /companies/{company_id}/assets/{asset_id} | Get single asset by ID
 [**companiesCompanyIdAssetsAssetIdInfoschemaGet**](AssetsApi.md#companiescompanyidassetsassetidinfoschemaget) | **GET** /companies/{company_id}/assets/{asset_id}/infoschema | Get the information schema for a specific asset's table
-[**companiesCompanyIdAssetsAssetIdInfoschemaSaveGet**](AssetsApi.md#companiescompanyidassetsassetidinfoschemasaveget) | **GET** /companies/{company_id}/assets/{asset_id}/infoschema/save | Get the information schema for a specific asset and save it to the asset's asset_schema field
+[**companiesCompanyIdAssetsAssetIdInfoschemaSaveGet**](AssetsApi.md#companiescompanyidassetsassetidinfoschemasaveget) | **GET** /companies/{company_id}/assets/{asset_id}/infoschema/save | Retrieve and save an asset's information schema
 [**companiesCompanyIdAssetsAssetIdPatch**](AssetsApi.md#companiescompanyidassetsassetidpatch) | **PATCH** /companies/{company_id}/assets/{asset_id} | Update an existing asset by ID
 [**companiesCompanyIdAssetsAssetIdPredictedPriceGet**](AssetsApi.md#companiescompanyidassetsassetidpredictedpriceget) | **GET** /companies/{company_id}/assets/{asset_id}/predicted_price | Get AI-predicted pricing for a specific asset
-[**companiesCompanyIdAssetsAssetIdRecommendationsExplainGet**](AssetsApi.md#companiescompanyidassetsassetidrecommendationsexplainget) | **GET** /companies/{company_id}/assets/{asset_id}/recommendations/explain | Get detailed explanation of how asset recommendations are calculated for debugging purposes.
-[**companiesCompanyIdAssetsAssetIdRecommendationsGet**](AssetsApi.md#companiescompanyidassetsassetidrecommendationsget) | **GET** /companies/{company_id}/assets/{asset_id}/recommendations | Get asset recommendations for a specific asset using heuristic waterfall matching     Returns list of similar assets based on industry, company, connection, tags, etc.      Query Parameters:     - limit: Number of recommendations to return (default: 12, max: 50)     - min_score: Minimum similarity score threshold (default: 0.1)     - include_details: Include component similarity scores (default: false)
 [**companiesCompanyIdAssetsAssetIdStatisticsGet**](AssetsApi.md#companiescompanyidassetsassetidstatisticsget) | **GET** /companies/{company_id}/assets/{asset_id}/statistics | Get statistics for a specific asset (public endpoint)
 [**companiesCompanyIdAssetsAssetIdTestGet**](AssetsApi.md#companiescompanyidassetsassetidtestget) | **GET** /companies/{company_id}/assets/{asset_id}/test | Test out an Asset (on a subset of data)
 [**companiesCompanyIdAssetsGet**](AssetsApi.md#companiescompanyidassetsget) | **GET** /companies/{company_id}/assets | Get all assets for a specific company
 [**companiesCompanyIdAssetsPost**](AssetsApi.md#companiescompanyidassetspost) | **POST** /companies/{company_id}/assets | Create a new asset
-[**companiesCompanyIdAssetsRecommendationsBulkPost**](AssetsApi.md#companiescompanyidassetsrecommendationsbulkpost) | **POST** /companies/{company_id}/assets/recommendations/bulk | Get recommendations for multiple assets in a single request. Useful for pre-loading recommendations.
-[**companiesCompanyIdAssetsRecommendationsHealthGet**](AssetsApi.md#companiescompanyidassetsrecommendationshealthget) | **GET** /companies/{company_id}/assets/recommendations/health | Health check for the recommendations system with sample data and performance metrics.
 [**companiesCompanyIdAssetsStatisticsGet**](AssetsApi.md#companiescompanyidassetsstatisticsget) | **GET** /companies/{company_id}/assets/statistics | Get statistics for all assets the user has access to
 
 
 # **analyzeCompanyHandleAssetsAssetSlugGet**
-> Object analyzeCompanyHandleAssetsAssetSlugGet(companyHandle, assetSlug)
+> Object analyzeCompanyHandleAssetsAssetSlugGet(assetSlug, companyHandle)
 
-Process assets route that handles both owned and purchased assets.             Minimal route function that passes all logic to crudder.process_asset              Args:                 asset_path: The path after /analyze/ containing asset information                 company_handle: The subdomain from Flask's routing (if available)
+Process (analyze) an asset. Attempt to process an analytic on a backend warehouse/AI model.
 
 ### Example
 ```dart
 import 'package:spartera_api_sdk/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AssetsApi();
-final companyHandle = companyHandle_example; // String | 
 final assetSlug = assetSlug_example; // String | 
+final companyHandle = companyHandle_example; // String | 
 
 try {
-    final result = api_instance.analyzeCompanyHandleAssetsAssetSlugGet(companyHandle, assetSlug);
+    final result = api_instance.analyzeCompanyHandleAssetsAssetSlugGet(assetSlug, companyHandle);
     print(result);
 } catch (e) {
     print('Exception when calling AssetsApi->analyzeCompanyHandleAssetsAssetSlugGet: $e\n');
@@ -58,8 +52,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **companyHandle** | **String**|  | 
  **assetSlug** | **String**|  | 
+ **companyHandle** | **String**|  | 
 
 ### Return type
 
@@ -67,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -84,12 +78,10 @@ Delete single asset by ID
 ### Example
 ```dart
 import 'package:spartera_api_sdk/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AssetsApi();
 final companyId = companyId_example; // String | 
@@ -116,7 +108,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -133,12 +125,10 @@ Get single asset by ID
 ### Example
 ```dart
 import 'package:spartera_api_sdk/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AssetsApi();
 final companyId = companyId_example; // String | 
@@ -165,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -182,12 +172,10 @@ Get the information schema for a specific asset's table
 ### Example
 ```dart
 import 'package:spartera_api_sdk/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AssetsApi();
 final companyId = companyId_example; // String | 
@@ -214,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -226,17 +214,15 @@ Name | Type | Description  | Notes
 # **companiesCompanyIdAssetsAssetIdInfoschemaSaveGet**
 > Object companiesCompanyIdAssetsAssetIdInfoschemaSaveGet(companyId, assetId)
 
-Get the information schema for a specific asset and save it to the asset's asset_schema field
+Retrieve and save an asset's information schema
 
 ### Example
 ```dart
 import 'package:spartera_api_sdk/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AssetsApi();
 final companyId = companyId_example; // String | 
@@ -263,7 +249,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -280,12 +266,10 @@ Update an existing asset by ID
 ### Example
 ```dart
 import 'package:spartera_api_sdk/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AssetsApi();
 final companyId = companyId_example; // String | 
@@ -314,7 +298,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -331,12 +315,10 @@ Get AI-predicted pricing for a specific asset
 ### Example
 ```dart
 import 'package:spartera_api_sdk/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AssetsApi();
 final companyId = companyId_example; // String | 
@@ -363,111 +345,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **companiesCompanyIdAssetsAssetIdRecommendationsExplainGet**
-> Object companiesCompanyIdAssetsAssetIdRecommendationsExplainGet(companyId, assetId)
-
-Get detailed explanation of how asset recommendations are calculated for debugging purposes.
-
-### Example
-```dart
-import 'package:spartera_api_sdk/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
-
-final api_instance = AssetsApi();
-final companyId = companyId_example; // String | 
-final assetId = assetId_example; // String | 
-
-try {
-    final result = api_instance.companiesCompanyIdAssetsAssetIdRecommendationsExplainGet(companyId, assetId);
-    print(result);
-} catch (e) {
-    print('Exception when calling AssetsApi->companiesCompanyIdAssetsAssetIdRecommendationsExplainGet: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **String**|  | 
- **assetId** | **String**|  | 
-
-### Return type
-
-[**Object**](Object.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **companiesCompanyIdAssetsAssetIdRecommendationsGet**
-> Object companiesCompanyIdAssetsAssetIdRecommendationsGet(companyId, assetId, limit, minScore, includeDetails)
-
-Get asset recommendations for a specific asset using heuristic waterfall matching     Returns list of similar assets based on industry, company, connection, tags, etc.      Query Parameters:     - limit: Number of recommendations to return (default: 12, max: 50)     - min_score: Minimum similarity score threshold (default: 0.1)     - include_details: Include component similarity scores (default: false)
-
-### Example
-```dart
-import 'package:spartera_api_sdk/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
-
-final api_instance = AssetsApi();
-final companyId = companyId_example; // String | 
-final assetId = assetId_example; // String | 
-final limit = limit_example; // String | 
-final minScore = minScore_example; // String | 
-final includeDetails = includeDetails_example; // String | 
-
-try {
-    final result = api_instance.companiesCompanyIdAssetsAssetIdRecommendationsGet(companyId, assetId, limit, minScore, includeDetails);
-    print(result);
-} catch (e) {
-    print('Exception when calling AssetsApi->companiesCompanyIdAssetsAssetIdRecommendationsGet: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **String**|  | 
- **assetId** | **String**|  | 
- **limit** | **String**|  | [optional] 
- **minScore** | **String**|  | [optional] 
- **includeDetails** | **String**|  | [optional] 
-
-### Return type
-
-[**Object**](Object.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -484,12 +362,10 @@ Get statistics for a specific asset (public endpoint)
 ### Example
 ```dart
 import 'package:spartera_api_sdk/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AssetsApi();
 final companyId = companyId_example; // String | 
@@ -516,7 +392,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -533,12 +409,10 @@ Test out an Asset (on a subset of data)
 ### Example
 ```dart
 import 'package:spartera_api_sdk/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AssetsApi();
 final companyId = companyId_example; // String | 
@@ -565,7 +439,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -582,12 +456,10 @@ Get all assets for a specific company
 ### Example
 ```dart
 import 'package:spartera_api_sdk/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AssetsApi();
 final companyId = companyId_example; // String | 
@@ -612,7 +484,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -629,12 +501,10 @@ Create a new asset
 ### Example
 ```dart
 import 'package:spartera_api_sdk/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AssetsApi();
 final companyId = companyId_example; // String | 
@@ -661,107 +531,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **companiesCompanyIdAssetsRecommendationsBulkPost**
-> Object companiesCompanyIdAssetsRecommendationsBulkPost(companyId, asset)
-
-Get recommendations for multiple assets in a single request. Useful for pre-loading recommendations.
-
-### Example
-```dart
-import 'package:spartera_api_sdk/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
-
-final api_instance = AssetsApi();
-final companyId = companyId_example; // String | 
-final asset = Asset(); // Asset | 
-
-try {
-    final result = api_instance.companiesCompanyIdAssetsRecommendationsBulkPost(companyId, asset);
-    print(result);
-} catch (e) {
-    print('Exception when calling AssetsApi->companiesCompanyIdAssetsRecommendationsBulkPost: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **String**|  | 
- **asset** | [**Asset**](Asset.md)|  | 
-
-### Return type
-
-[**Object**](Object.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **companiesCompanyIdAssetsRecommendationsHealthGet**
-> Object companiesCompanyIdAssetsRecommendationsHealthGet(companyId)
-
-Health check for the recommendations system with sample data and performance metrics.
-
-### Example
-```dart
-import 'package:spartera_api_sdk/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
-
-final api_instance = AssetsApi();
-final companyId = companyId_example; // String | 
-
-try {
-    final result = api_instance.companiesCompanyIdAssetsRecommendationsHealthGet(companyId);
-    print(result);
-} catch (e) {
-    print('Exception when calling AssetsApi->companiesCompanyIdAssetsRecommendationsHealthGet: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **String**|  | 
-
-### Return type
-
-[**Object**](Object.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -774,12 +548,10 @@ Get statistics for all assets the user has access to
 ### Example
 ```dart
 import 'package:spartera_api_sdk/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AssetsApi();
 final companyId = companyId_example; // String | 
@@ -804,7 +576,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

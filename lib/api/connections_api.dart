@@ -252,7 +252,7 @@ class ConnectionsApi {
     return null;
   }
 
-  /// Verify the specified connection to ensure it is functioning correctly
+  /// Test the specified connection
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -288,7 +288,7 @@ class ConnectionsApi {
     );
   }
 
-  /// Verify the specified connection to ensure it is functioning correctly
+  /// Test the specified connection
   ///
   /// Parameters:
   ///

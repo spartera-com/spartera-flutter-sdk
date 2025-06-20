@@ -263,7 +263,7 @@ class AssetPriceHistoryApi {
     return null;
   }
 
-  /// Calculate the credit equivalent for a given USD price without saving
+  /// POST /companies/{company_id}/assets/{asset_id}/prices/calculate_credits
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -299,7 +299,7 @@ class AssetPriceHistoryApi {
     );
   }
 
-  /// Calculate the credit equivalent for a given USD price without saving
+  /// POST /companies/{company_id}/assets/{asset_id}/prices/calculate_credits
   ///
   /// Parameters:
   ///
@@ -321,7 +321,7 @@ class AssetPriceHistoryApi {
     return null;
   }
 
-  /// Apply a discount to the active price for an asset
+  /// POST /companies/{company_id}/assets/{asset_id}/prices/discount
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -357,7 +357,7 @@ class AssetPriceHistoryApi {
     );
   }
 
-  /// Apply a discount to the active price for an asset
+  /// POST /companies/{company_id}/assets/{asset_id}/prices/discount
   ///
   /// Parameters:
   ///

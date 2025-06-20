@@ -24,7 +24,7 @@ void main() {
       // TODO
     });
 
-    // Check if the specified user has favorited a specific asset     Returns the favorite record if it exists, or empty result if not     Useful for UI to show/hide favorite button states
+    // Check if the specified user has favorited a specific asset
     //
     //Future<Object> companiesCompanyIdUsersUserIdFavoritesCheckAssetIdGet(String companyId, String userId, String assetId) async
     test('test companiesCompanyIdUsersUserIdFavoritesCheckAssetIdGet', () async {
@@ -45,14 +45,14 @@ void main() {
       // TODO
     });
 
-    // Update an existing favorite by ID     Can update notes, category, priority
+    // Update an existing favorite by ID
     //
     //Future<Object> companiesCompanyIdUsersUserIdFavoritesFavoriteIdPatch(String companyId, String userId, String favoriteId, Favorite favorite) async
     test('test companiesCompanyIdUsersUserIdFavoritesFavoriteIdPatch', () async {
       // TODO
     });
 
-    // Get a list of all favorites for a specific user     Query params:     - category: filter by category     - sort: sort field (priority, date_created, etc.)     - order: sort direction (asc, desc)
+    // Get a list of all favorites for a specific user
     //
     //Future<Object> companiesCompanyIdUsersUserIdFavoritesGet(String companyId, String userId) async
     test('test companiesCompanyIdUsersUserIdFavoritesGet', () async {

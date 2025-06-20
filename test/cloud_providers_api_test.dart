@@ -24,31 +24,10 @@ void main() {
       // TODO
     });
 
-    // Create single cloud provider
-    //
-    //Future<Object> cloudProvidersPost() async
-    test('test cloudProvidersPost', () async {
-      // TODO
-    });
-
-    // Delete single cloud provider by ID
-    //
-    //Future<Object> cloudProvidersProviderIdDelete(String providerId) async
-    test('test cloudProvidersProviderIdDelete', () async {
-      // TODO
-    });
-
     // Get single cloud provider by ID
     //
     //Future<Object> cloudProvidersProviderIdGet(String providerId) async
     test('test cloudProvidersProviderIdGet', () async {
-      // TODO
-    });
-
-    // Update an existing cloud provider by ID
-    //
-    //Future<Object> cloudProvidersProviderIdPatch(String providerId) async
-    test('test cloudProvidersProviderIdPatch', () async {
       // TODO
     });
 
