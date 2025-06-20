@@ -19,84 +19,84 @@ void main() {
   group('tests for AssetsApi', () {
     // Process (analyze) an asset. Attempt to process an analytic on a backend warehouse/AI model.
     //
-    //Future<Object> analyzeCompanyHandleAssetsAssetSlugGet(String assetSlug, String companyHandle) async
+    //Future<CompaniesCompanyIdAssetsAssetIdGet200Response> analyzeCompanyHandleAssetsAssetSlugGet(String companyHandle, String assetSlug) async
     test('test analyzeCompanyHandleAssetsAssetSlugGet', () async {
       // TODO
     });
 
     // Delete single asset by ID
     //
-    //Future<Object> companiesCompanyIdAssetsAssetIdDelete(String companyId, String assetId) async
+    //Future<CompaniesCompanyIdAssetsAssetIdDelete200Response> companiesCompanyIdAssetsAssetIdDelete(String companyId, String assetId) async
     test('test companiesCompanyIdAssetsAssetIdDelete', () async {
       // TODO
     });
 
     // Get single asset by ID
     //
-    //Future<Object> companiesCompanyIdAssetsAssetIdGet(String companyId, String assetId) async
+    //Future<CompaniesCompanyIdAssetsAssetIdGet200Response> companiesCompanyIdAssetsAssetIdGet(String companyId, String assetId) async
     test('test companiesCompanyIdAssetsAssetIdGet', () async {
       // TODO
     });
 
     // Get the information schema for a specific asset's table
     //
-    //Future<Object> companiesCompanyIdAssetsAssetIdInfoschemaGet(String companyId, String assetId) async
+    //Future<CompaniesCompanyIdAssetsGet200Response> companiesCompanyIdAssetsAssetIdInfoschemaGet(String companyId, String assetId) async
     test('test companiesCompanyIdAssetsAssetIdInfoschemaGet', () async {
       // TODO
     });
 
     // Retrieve and save an asset's information schema
     //
-    //Future<Object> companiesCompanyIdAssetsAssetIdInfoschemaSaveGet(String companyId, String assetId) async
+    //Future<CompaniesCompanyIdAssetsGet200Response> companiesCompanyIdAssetsAssetIdInfoschemaSaveGet(String companyId, String assetId) async
     test('test companiesCompanyIdAssetsAssetIdInfoschemaSaveGet', () async {
       // TODO
     });
 
     // Update an existing asset by ID
     //
-    //Future<Object> companiesCompanyIdAssetsAssetIdPatch(String companyId, String assetId, Asset asset) async
+    //Future<CompaniesCompanyIdAssetsAssetIdPatch200Response> companiesCompanyIdAssetsAssetIdPatch(String companyId, String assetId, Asset asset) async
     test('test companiesCompanyIdAssetsAssetIdPatch', () async {
       // TODO
     });
 
     // Get AI-predicted pricing for a specific asset
     //
-    //Future<Object> companiesCompanyIdAssetsAssetIdPredictedPriceGet(String companyId, String assetId) async
+    //Future<CompaniesCompanyIdAssetsGet200Response> companiesCompanyIdAssetsAssetIdPredictedPriceGet(String companyId, String assetId) async
     test('test companiesCompanyIdAssetsAssetIdPredictedPriceGet', () async {
       // TODO
     });
 
     // Get statistics for a specific asset (public endpoint)
     //
-    //Future<Object> companiesCompanyIdAssetsAssetIdStatisticsGet(String companyId, String assetId) async
+    //Future<CompaniesCompanyIdAssetsGet200Response> companiesCompanyIdAssetsAssetIdStatisticsGet(String companyId, String assetId) async
     test('test companiesCompanyIdAssetsAssetIdStatisticsGet', () async {
       // TODO
     });
 
     // Test out an Asset (on a subset of data)
     //
-    //Future<Object> companiesCompanyIdAssetsAssetIdTestGet(String companyId, String assetId) async
+    //Future<CompaniesCompanyIdAssetsGet200Response> companiesCompanyIdAssetsAssetIdTestGet(String companyId, String assetId) async
     test('test companiesCompanyIdAssetsAssetIdTestGet', () async {
       // TODO
     });
 
     // Get all assets for a specific company
     //
-    //Future<Object> companiesCompanyIdAssetsGet(String companyId) async
+    //Future<CompaniesCompanyIdAssetsGet200Response> companiesCompanyIdAssetsGet(String companyId) async
     test('test companiesCompanyIdAssetsGet', () async {
       // TODO
     });
 
     // Create a new asset
     //
-    //Future<Object> companiesCompanyIdAssetsPost(String companyId, Asset asset) async
+    //Future<CompaniesCompanyIdAssetsPost200Response> companiesCompanyIdAssetsPost(String companyId, Asset asset) async
     test('test companiesCompanyIdAssetsPost', () async {
       // TODO
     });
 
     // Get statistics for all assets the user has access to
     //
-    //Future<Object> companiesCompanyIdAssetsStatisticsGet(String companyId) async
+    //Future<CompaniesCompanyIdAssetsGet200Response> companiesCompanyIdAssetsStatisticsGet(String companyId) async
     test('test companiesCompanyIdAssetsStatisticsGet', () async {
       // TODO
     });

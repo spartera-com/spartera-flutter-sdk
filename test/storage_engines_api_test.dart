@@ -19,14 +19,14 @@ void main() {
   group('tests for StorageEnginesApi', () {
     // Get single storage engine by ID
     //
-    //Future<Object> cloudProvidersProviderIdStorageEnginesEngineIdGet(String providerId, String engineId) async
+    //Future<CompaniesCompanyIdApiKeysGet200Response> cloudProvidersProviderIdStorageEnginesEngineIdGet(String providerId, String engineId) async
     test('test cloudProvidersProviderIdStorageEnginesEngineIdGet', () async {
       // TODO
     });
 
     // Get a list of all storage engines
     //
-    //Future<Object> cloudProvidersProviderIdStorageEnginesGet(String providerId) async
+    //Future<CompaniesCompanyIdApiKeysGet200Response> cloudProvidersProviderIdStorageEnginesGet(String providerId) async
     test('test cloudProvidersProviderIdStorageEnginesGet', () async {
       // TODO
     });

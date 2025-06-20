@@ -19,36 +19,43 @@ void main() {
   group('tests for UsersApi', () {
     // Get a list of all users in a company
     //
-    //Future<Object> companiesCompanyIdUsersGet(String companyId) async
+    //Future<CompaniesCompanyIdUsersGet200Response> companiesCompanyIdUsersGet(String companyId) async
     test('test companiesCompanyIdUsersGet', () async {
       // TODO
     });
 
     // Create a new user
     //
-    //Future<Object> companiesCompanyIdUsersPost(String companyId, User user) async
+    //Future<CompaniesCompanyIdUsersPost200Response> companiesCompanyIdUsersPost(String companyId, User user) async
     test('test companiesCompanyIdUsersPost', () async {
       // TODO
     });
 
     // Delete single user by ID
     //
-    //Future<Object> companiesCompanyIdUsersUserIdDelete(String companyId, String userId) async
+    //Future<CompaniesCompanyIdUsersUserIdDelete200Response> companiesCompanyIdUsersUserIdDelete(String companyId, String userId) async
     test('test companiesCompanyIdUsersUserIdDelete', () async {
       // TODO
     });
 
     // Get single user by ID
     //
-    //Future<Object> companiesCompanyIdUsersUserIdGet(String companyId, String userId) async
+    //Future<CompaniesCompanyIdUsersUserIdGet200Response> companiesCompanyIdUsersUserIdGet(String companyId, String userId) async
     test('test companiesCompanyIdUsersUserIdGet', () async {
       // TODO
     });
 
     // Update an existing user by ID
     //
-    //Future<Object> companiesCompanyIdUsersUserIdPatch(String companyId, String userId, User user) async
+    //Future<CompaniesCompanyIdUsersUserIdPatch200Response> companiesCompanyIdUsersUserIdPatch(String companyId, String userId, User user) async
     test('test companiesCompanyIdUsersUserIdPatch', () async {
+      // TODO
+    });
+
+    // Get current authenticated user's profile information.              Returns:                 JSON response with user profile data from database
+    //
+    //Future<MeGet200Response> meGet() async
+    test('test meGet', () async {
       // TODO
     });
 

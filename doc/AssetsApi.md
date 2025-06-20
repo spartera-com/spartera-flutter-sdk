@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 
 # **analyzeCompanyHandleAssetsAssetSlugGet**
-> Object analyzeCompanyHandleAssetsAssetSlugGet(assetSlug, companyHandle)
+> CompaniesCompanyIdAssetsAssetIdGet200Response analyzeCompanyHandleAssetsAssetSlugGet(companyHandle, assetSlug)
 
 Process (analyze) an asset. Attempt to process an analytic on a backend warehouse/AI model.
 
@@ -37,11 +37,11 @@ import 'package:spartera_api_sdk/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AssetsApi();
-final assetSlug = assetSlug_example; // String | 
 final companyHandle = companyHandle_example; // String | 
+final assetSlug = assetSlug_example; // String | 
 
 try {
-    final result = api_instance.analyzeCompanyHandleAssetsAssetSlugGet(assetSlug, companyHandle);
+    final result = api_instance.analyzeCompanyHandleAssetsAssetSlugGet(companyHandle, assetSlug);
     print(result);
 } catch (e) {
     print('Exception when calling AssetsApi->analyzeCompanyHandleAssetsAssetSlugGet: $e\n');
@@ -52,12 +52,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **assetSlug** | **String**|  | 
  **companyHandle** | **String**|  | 
+ **assetSlug** | **String**|  | 
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdAssetsAssetIdGet200Response**](CompaniesCompanyIdAssetsAssetIdGet200Response.md)
 
 ### Authorization
 
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdAssetsAssetIdDelete**
-> Object companiesCompanyIdAssetsAssetIdDelete(companyId, assetId)
+> CompaniesCompanyIdAssetsAssetIdDelete200Response companiesCompanyIdAssetsAssetIdDelete(companyId, assetId)
 
 Delete single asset by ID
 
@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdAssetsAssetIdDelete200Response**](CompaniesCompanyIdAssetsAssetIdDelete200Response.md)
 
 ### Authorization
 
@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdAssetsAssetIdGet**
-> Object companiesCompanyIdAssetsAssetIdGet(companyId, assetId)
+> CompaniesCompanyIdAssetsAssetIdGet200Response companiesCompanyIdAssetsAssetIdGet(companyId, assetId)
 
 Get single asset by ID
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdAssetsAssetIdGet200Response**](CompaniesCompanyIdAssetsAssetIdGet200Response.md)
 
 ### Authorization
 
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdAssetsAssetIdInfoschemaGet**
-> Object companiesCompanyIdAssetsAssetIdInfoschemaGet(companyId, assetId)
+> CompaniesCompanyIdAssetsGet200Response companiesCompanyIdAssetsAssetIdInfoschemaGet(companyId, assetId)
 
 Get the information schema for a specific asset's table
 
@@ -198,7 +198,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdAssetsGet200Response**](CompaniesCompanyIdAssetsGet200Response.md)
 
 ### Authorization
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdAssetsAssetIdInfoschemaSaveGet**
-> Object companiesCompanyIdAssetsAssetIdInfoschemaSaveGet(companyId, assetId)
+> CompaniesCompanyIdAssetsGet200Response companiesCompanyIdAssetsAssetIdInfoschemaSaveGet(companyId, assetId)
 
 Retrieve and save an asset's information schema
 
@@ -245,7 +245,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdAssetsGet200Response**](CompaniesCompanyIdAssetsGet200Response.md)
 
 ### Authorization
 
@@ -259,7 +259,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdAssetsAssetIdPatch**
-> Object companiesCompanyIdAssetsAssetIdPatch(companyId, assetId, asset)
+> CompaniesCompanyIdAssetsAssetIdPatch200Response companiesCompanyIdAssetsAssetIdPatch(companyId, assetId, asset)
 
 Update an existing asset by ID
 
@@ -294,7 +294,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdAssetsAssetIdPatch200Response**](CompaniesCompanyIdAssetsAssetIdPatch200Response.md)
 
 ### Authorization
 
@@ -308,7 +308,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdAssetsAssetIdPredictedPriceGet**
-> Object companiesCompanyIdAssetsAssetIdPredictedPriceGet(companyId, assetId)
+> CompaniesCompanyIdAssetsGet200Response companiesCompanyIdAssetsAssetIdPredictedPriceGet(companyId, assetId)
 
 Get AI-predicted pricing for a specific asset
 
@@ -341,7 +341,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdAssetsGet200Response**](CompaniesCompanyIdAssetsGet200Response.md)
 
 ### Authorization
 
@@ -355,7 +355,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdAssetsAssetIdStatisticsGet**
-> Object companiesCompanyIdAssetsAssetIdStatisticsGet(companyId, assetId)
+> CompaniesCompanyIdAssetsGet200Response companiesCompanyIdAssetsAssetIdStatisticsGet(companyId, assetId)
 
 Get statistics for a specific asset (public endpoint)
 
@@ -388,7 +388,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdAssetsGet200Response**](CompaniesCompanyIdAssetsGet200Response.md)
 
 ### Authorization
 
@@ -402,7 +402,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdAssetsAssetIdTestGet**
-> Object companiesCompanyIdAssetsAssetIdTestGet(companyId, assetId)
+> CompaniesCompanyIdAssetsGet200Response companiesCompanyIdAssetsAssetIdTestGet(companyId, assetId)
 
 Test out an Asset (on a subset of data)
 
@@ -435,7 +435,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdAssetsGet200Response**](CompaniesCompanyIdAssetsGet200Response.md)
 
 ### Authorization
 
@@ -449,7 +449,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdAssetsGet**
-> Object companiesCompanyIdAssetsGet(companyId)
+> CompaniesCompanyIdAssetsGet200Response companiesCompanyIdAssetsGet(companyId)
 
 Get all assets for a specific company
 
@@ -480,7 +480,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdAssetsGet200Response**](CompaniesCompanyIdAssetsGet200Response.md)
 
 ### Authorization
 
@@ -494,7 +494,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdAssetsPost**
-> Object companiesCompanyIdAssetsPost(companyId, asset)
+> CompaniesCompanyIdAssetsPost200Response companiesCompanyIdAssetsPost(companyId, asset)
 
 Create a new asset
 
@@ -527,7 +527,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdAssetsPost200Response**](CompaniesCompanyIdAssetsPost200Response.md)
 
 ### Authorization
 
@@ -541,7 +541,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdAssetsStatisticsGet**
-> Object companiesCompanyIdAssetsStatisticsGet(companyId)
+> CompaniesCompanyIdAssetsGet200Response companiesCompanyIdAssetsStatisticsGet(companyId)
 
 Get statistics for all assets the user has access to
 
@@ -572,7 +572,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdAssetsGet200Response**](CompaniesCompanyIdAssetsGet200Response.md)
 
 ### Authorization
 

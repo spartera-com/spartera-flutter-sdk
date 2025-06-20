@@ -3,7 +3,7 @@
 #
 
 name: 'spartera_api_sdk'
-version: '1.0.68'
+version: '1.0.69'
 description: "Official Flutter/Dart SDK for the Spartera API platform"
 homepage: "https://github.com/spartera-com/spartera-flutter-sdk"
 environment:

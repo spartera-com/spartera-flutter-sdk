@@ -45,7 +45,7 @@ class CloudProvidersApi {
   }
 
   /// Get a list of all cloud providers
-  Future<Object?> cloudProvidersGet() async {
+  Future<CompaniesCompanyIdApiKeysGet200Response?> cloudProvidersGet() async {
     final response = await cloudProvidersGetWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -54,7 +54,7 @@ class CloudProvidersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdApiKeysGet200Response',) as CompaniesCompanyIdApiKeysGet200Response;
     
     }
     return null;
@@ -98,7 +98,7 @@ class CloudProvidersApi {
   /// Parameters:
   ///
   /// * [String] providerId (required):
-  Future<Object?> cloudProvidersProviderIdGet(String providerId,) async {
+  Future<CompaniesCompanyIdApiKeysGet200Response?> cloudProvidersProviderIdGet(String providerId,) async {
     final response = await cloudProvidersProviderIdGetWithHttpInfo(providerId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -107,7 +107,7 @@ class CloudProvidersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdApiKeysGet200Response',) as CompaniesCompanyIdApiKeysGet200Response;
     
     }
     return null;

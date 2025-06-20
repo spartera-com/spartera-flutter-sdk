@@ -19,14 +19,14 @@ void main() {
   group('tests for CloudProvidersApi', () {
     // Get a list of all cloud providers
     //
-    //Future<Object> cloudProvidersGet() async
+    //Future<CompaniesCompanyIdApiKeysGet200Response> cloudProvidersGet() async
     test('test cloudProvidersGet', () async {
       // TODO
     });
 
     // Get single cloud provider by ID
     //
-    //Future<Object> cloudProvidersProviderIdGet(String providerId) async
+    //Future<CompaniesCompanyIdApiKeysGet200Response> cloudProvidersProviderIdGet(String providerId) async
     test('test cloudProvidersProviderIdGet', () async {
       // TODO
     });

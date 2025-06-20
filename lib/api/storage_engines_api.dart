@@ -59,7 +59,7 @@ class StorageEnginesApi {
   /// * [String] providerId (required):
   ///
   /// * [String] engineId (required):
-  Future<Object?> cloudProvidersProviderIdStorageEnginesEngineIdGet(String providerId, String engineId,) async {
+  Future<CompaniesCompanyIdApiKeysGet200Response?> cloudProvidersProviderIdStorageEnginesEngineIdGet(String providerId, String engineId,) async {
     final response = await cloudProvidersProviderIdStorageEnginesEngineIdGetWithHttpInfo(providerId, engineId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -68,7 +68,7 @@ class StorageEnginesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdApiKeysGet200Response',) as CompaniesCompanyIdApiKeysGet200Response;
     
     }
     return null;
@@ -112,7 +112,7 @@ class StorageEnginesApi {
   /// Parameters:
   ///
   /// * [String] providerId (required):
-  Future<Object?> cloudProvidersProviderIdStorageEnginesGet(String providerId,) async {
+  Future<CompaniesCompanyIdApiKeysGet200Response?> cloudProvidersProviderIdStorageEnginesGet(String providerId,) async {
     final response = await cloudProvidersProviderIdStorageEnginesGetWithHttpInfo(providerId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -121,7 +121,7 @@ class StorageEnginesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdApiKeysGet200Response',) as CompaniesCompanyIdApiKeysGet200Response;
     
     }
     return null;

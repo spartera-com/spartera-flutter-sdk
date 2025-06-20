@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **companiesCompanyIdUsersUserIdAlertsAlertIdDelete**
-> Object companiesCompanyIdUsersUserIdAlertsAlertIdDelete(companyId, userId, alertId)
+> CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200Response companiesCompanyIdUsersUserIdAlertsAlertIdDelete(companyId, userId, alertId)
 
 Delete single alert by ID
 
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200Response**](CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200Response.md)
 
 ### Authorization
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdUsersUserIdAlertsAlertIdGet**
-> Object companiesCompanyIdUsersUserIdAlertsAlertIdGet(companyId, userId, alertId)
+> CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response companiesCompanyIdUsersUserIdAlertsAlertIdGet(companyId, userId, alertId)
 
 Get single alert by ID
 
@@ -103,7 +103,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response**](CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response.md)
 
 ### Authorization
 
@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdUsersUserIdAlertsAlertIdPatch**
-> Object companiesCompanyIdUsersUserIdAlertsAlertIdPatch(companyId, userId, alertId, alert)
+> CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response companiesCompanyIdUsersUserIdAlertsAlertIdPatch(companyId, userId, alertId, alert)
 
 Update an existing alert by ID
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response**](CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response.md)
 
 ### Authorization
 
@@ -168,7 +168,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet**
-> Object companiesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet(companyId, userId, assetId)
+> CompaniesCompanyIdUsersUserIdAlertsGet200Response companiesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet(companyId, userId, assetId)
 
 Get all alerts for a specific asset
 
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdUsersUserIdAlertsGet200Response**](CompaniesCompanyIdUsersUserIdAlertsGet200Response.md)
 
 ### Authorization
 
@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet**
-> Object companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet(companyId, userId, assetId)
+> CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet(companyId, userId, assetId)
 
 Get all alerts for a specific asset (by user)
 
@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response**](CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response.md)
 
 ### Authorization
 
@@ -266,7 +266,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdUsersUserIdAlertsGet**
-> Object companiesCompanyIdUsersUserIdAlertsGet(companyId, userId)
+> CompaniesCompanyIdUsersUserIdAlertsGet200Response companiesCompanyIdUsersUserIdAlertsGet(companyId, userId)
 
 Get a list of all alerts for a specific user
 
@@ -299,7 +299,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdUsersUserIdAlertsGet200Response**](CompaniesCompanyIdUsersUserIdAlertsGet200Response.md)
 
 ### Authorization
 
@@ -313,7 +313,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdUsersUserIdAlertsPost**
-> Object companiesCompanyIdUsersUserIdAlertsPost(companyId, userId, alert)
+> CompaniesCompanyIdUsersUserIdAlertsPost200Response companiesCompanyIdUsersUserIdAlertsPost(companyId, userId, alert)
 
 POST /companies/{company_id}/users/{user_id}/alerts
 
@@ -348,7 +348,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdUsersUserIdAlertsPost200Response**](CompaniesCompanyIdUsersUserIdAlertsPost200Response.md)
 
 ### Authorization
 

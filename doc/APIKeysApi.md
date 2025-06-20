@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **companiesCompanyIdApiKeysApiKeyIdGet**
-> Object companiesCompanyIdApiKeysApiKeyIdGet(companyId, apiKeyId)
+> CompaniesCompanyIdApiKeysGet200Response companiesCompanyIdApiKeysApiKeyIdGet(companyId, apiKeyId)
 
 Get single API key by ID
 
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdApiKeysApiKeyIdPatch**
-> Object companiesCompanyIdApiKeysApiKeyIdPatch(companyId, apiKeyId)
+> CompaniesCompanyIdApiKeysGet200Response companiesCompanyIdApiKeysApiKeyIdPatch(companyId, apiKeyId)
 
 Update an existing API key by ID
 
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 
@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdApiKeysGet**
-> Object companiesCompanyIdApiKeysGet(companyId)
+> CompaniesCompanyIdApiKeysGet200Response companiesCompanyIdApiKeysGet(companyId)
 
 Get all API keys
 
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdApiKeysPost**
-> Object companiesCompanyIdApiKeysPost(companyId)
+> CompaniesCompanyIdApiKeysGet200Response companiesCompanyIdApiKeysPost(companyId)
 
 Create single API key
 
@@ -187,7 +187,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdApiKeysTokenDelete**
-> Object companiesCompanyIdApiKeysTokenDelete(companyId, token)
+> CompaniesCompanyIdApiKeysGet200Response companiesCompanyIdApiKeysTokenDelete(companyId, token)
 
 Delete single API key by token
 
@@ -234,7 +234,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 

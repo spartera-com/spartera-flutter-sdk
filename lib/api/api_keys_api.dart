@@ -59,7 +59,7 @@ class APIKeysApi {
   /// * [String] companyId (required):
   ///
   /// * [String] apiKeyId (required):
-  Future<Object?> companiesCompanyIdApiKeysApiKeyIdGet(String companyId, String apiKeyId,) async {
+  Future<CompaniesCompanyIdApiKeysGet200Response?> companiesCompanyIdApiKeysApiKeyIdGet(String companyId, String apiKeyId,) async {
     final response = await companiesCompanyIdApiKeysApiKeyIdGetWithHttpInfo(companyId, apiKeyId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -68,7 +68,7 @@ class APIKeysApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdApiKeysGet200Response',) as CompaniesCompanyIdApiKeysGet200Response;
     
     }
     return null;
@@ -117,7 +117,7 @@ class APIKeysApi {
   /// * [String] companyId (required):
   ///
   /// * [String] apiKeyId (required):
-  Future<Object?> companiesCompanyIdApiKeysApiKeyIdPatch(String companyId, String apiKeyId,) async {
+  Future<CompaniesCompanyIdApiKeysGet200Response?> companiesCompanyIdApiKeysApiKeyIdPatch(String companyId, String apiKeyId,) async {
     final response = await companiesCompanyIdApiKeysApiKeyIdPatchWithHttpInfo(companyId, apiKeyId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -126,7 +126,7 @@ class APIKeysApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdApiKeysGet200Response',) as CompaniesCompanyIdApiKeysGet200Response;
     
     }
     return null;
@@ -170,7 +170,7 @@ class APIKeysApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
-  Future<Object?> companiesCompanyIdApiKeysGet(String companyId,) async {
+  Future<CompaniesCompanyIdApiKeysGet200Response?> companiesCompanyIdApiKeysGet(String companyId,) async {
     final response = await companiesCompanyIdApiKeysGetWithHttpInfo(companyId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -179,7 +179,7 @@ class APIKeysApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdApiKeysGet200Response',) as CompaniesCompanyIdApiKeysGet200Response;
     
     }
     return null;
@@ -223,7 +223,7 @@ class APIKeysApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
-  Future<Object?> companiesCompanyIdApiKeysPost(String companyId,) async {
+  Future<CompaniesCompanyIdApiKeysGet200Response?> companiesCompanyIdApiKeysPost(String companyId,) async {
     final response = await companiesCompanyIdApiKeysPostWithHttpInfo(companyId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -232,7 +232,7 @@ class APIKeysApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdApiKeysGet200Response',) as CompaniesCompanyIdApiKeysGet200Response;
     
     }
     return null;
@@ -281,7 +281,7 @@ class APIKeysApi {
   /// * [String] companyId (required):
   ///
   /// * [String] token (required):
-  Future<Object?> companiesCompanyIdApiKeysTokenDelete(String companyId, String token,) async {
+  Future<CompaniesCompanyIdApiKeysGet200Response?> companiesCompanyIdApiKeysTokenDelete(String companyId, String token,) async {
     final response = await companiesCompanyIdApiKeysTokenDeleteWithHttpInfo(companyId, token,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -290,7 +290,7 @@ class APIKeysApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdApiKeysGet200Response',) as CompaniesCompanyIdApiKeysGet200Response;
     
     }
     return null;

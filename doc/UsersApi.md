@@ -14,10 +14,11 @@ Method | HTTP request | Description
 [**companiesCompanyIdUsersUserIdDelete**](UsersApi.md#companiescompanyidusersuseriddelete) | **DELETE** /companies/{company_id}/users/{user_id} | Delete single user by ID
 [**companiesCompanyIdUsersUserIdGet**](UsersApi.md#companiescompanyidusersuseridget) | **GET** /companies/{company_id}/users/{user_id} | Get single user by ID
 [**companiesCompanyIdUsersUserIdPatch**](UsersApi.md#companiescompanyidusersuseridpatch) | **PATCH** /companies/{company_id}/users/{user_id} | Update an existing user by ID
+[**meGet**](UsersApi.md#meget) | **GET** /me | Get current authenticated user's profile information.              Returns:                 JSON response with user profile data from database
 
 
 # **companiesCompanyIdUsersGet**
-> Object companiesCompanyIdUsersGet(companyId)
+> CompaniesCompanyIdUsersGet200Response companiesCompanyIdUsersGet(companyId)
 
 Get a list of all users in a company
 
@@ -48,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdUsersGet200Response**](CompaniesCompanyIdUsersGet200Response.md)
 
 ### Authorization
 
@@ -62,7 +63,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdUsersPost**
-> Object companiesCompanyIdUsersPost(companyId, user)
+> CompaniesCompanyIdUsersPost200Response companiesCompanyIdUsersPost(companyId, user)
 
 Create a new user
 
@@ -95,7 +96,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdUsersPost200Response**](CompaniesCompanyIdUsersPost200Response.md)
 
 ### Authorization
 
@@ -109,7 +110,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdUsersUserIdDelete**
-> Object companiesCompanyIdUsersUserIdDelete(companyId, userId)
+> CompaniesCompanyIdUsersUserIdDelete200Response companiesCompanyIdUsersUserIdDelete(companyId, userId)
 
 Delete single user by ID
 
@@ -142,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdUsersUserIdDelete200Response**](CompaniesCompanyIdUsersUserIdDelete200Response.md)
 
 ### Authorization
 
@@ -156,7 +157,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdUsersUserIdGet**
-> Object companiesCompanyIdUsersUserIdGet(companyId, userId)
+> CompaniesCompanyIdUsersUserIdGet200Response companiesCompanyIdUsersUserIdGet(companyId, userId)
 
 Get single user by ID
 
@@ -189,7 +190,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdUsersUserIdGet200Response**](CompaniesCompanyIdUsersUserIdGet200Response.md)
 
 ### Authorization
 
@@ -203,7 +204,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdUsersUserIdPatch**
-> Object companiesCompanyIdUsersUserIdPatch(companyId, userId, user)
+> CompaniesCompanyIdUsersUserIdPatch200Response companiesCompanyIdUsersUserIdPatch(companyId, userId, user)
 
 Update an existing user by ID
 
@@ -238,7 +239,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdUsersUserIdPatch200Response**](CompaniesCompanyIdUsersUserIdPatch200Response.md)
 
 ### Authorization
 
@@ -247,6 +248,47 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **meGet**
+> MeGet200Response meGet()
+
+Get current authenticated user's profile information.              Returns:                 JSON response with user profile data from database
+
+### Example
+```dart
+import 'package:spartera_api_sdk/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api_instance = UsersApi();
+
+try {
+    final result = api_instance.meGet();
+    print(result);
+} catch (e) {
+    print('Exception when calling UsersApi->meGet: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**MeGet200Response**](MeGet200Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

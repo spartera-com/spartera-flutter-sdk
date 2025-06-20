@@ -59,7 +59,7 @@ class ConnectionsApi {
   /// * [String] companyId (required):
   ///
   /// * [String] connectionId (required):
-  Future<Object?> companiesCompanyIdConnectionsConnectionIdDelete(String companyId, String connectionId,) async {
+  Future<CompaniesCompanyIdConnectionsConnectionIdDelete200Response?> companiesCompanyIdConnectionsConnectionIdDelete(String companyId, String connectionId,) async {
     final response = await companiesCompanyIdConnectionsConnectionIdDeleteWithHttpInfo(companyId, connectionId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -68,7 +68,7 @@ class ConnectionsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdConnectionsConnectionIdDelete200Response',) as CompaniesCompanyIdConnectionsConnectionIdDelete200Response;
     
     }
     return null;
@@ -117,7 +117,7 @@ class ConnectionsApi {
   /// * [String] companyId (required):
   ///
   /// * [String] connectionId (required):
-  Future<Object?> companiesCompanyIdConnectionsConnectionIdGet(String companyId, String connectionId,) async {
+  Future<CompaniesCompanyIdConnectionsConnectionIdGet200Response?> companiesCompanyIdConnectionsConnectionIdGet(String companyId, String connectionId,) async {
     final response = await companiesCompanyIdConnectionsConnectionIdGetWithHttpInfo(companyId, connectionId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -126,7 +126,7 @@ class ConnectionsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdConnectionsConnectionIdGet200Response',) as CompaniesCompanyIdConnectionsConnectionIdGet200Response;
     
     }
     return null;
@@ -175,7 +175,7 @@ class ConnectionsApi {
   /// * [String] companyId (required):
   ///
   /// * [String] connectionId (required):
-  Future<Object?> companiesCompanyIdConnectionsConnectionIdInfoschemaGet(String companyId, String connectionId,) async {
+  Future<CompaniesCompanyIdConnectionsGet200Response?> companiesCompanyIdConnectionsConnectionIdInfoschemaGet(String companyId, String connectionId,) async {
     final response = await companiesCompanyIdConnectionsConnectionIdInfoschemaGetWithHttpInfo(companyId, connectionId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -184,7 +184,7 @@ class ConnectionsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdConnectionsGet200Response',) as CompaniesCompanyIdConnectionsGet200Response;
     
     }
     return null;
@@ -237,7 +237,7 @@ class ConnectionsApi {
   /// * [String] connectionId (required):
   ///
   /// * [Connection] connection (required):
-  Future<Object?> companiesCompanyIdConnectionsConnectionIdPatch(String companyId, String connectionId, Connection connection,) async {
+  Future<CompaniesCompanyIdConnectionsConnectionIdPatch200Response?> companiesCompanyIdConnectionsConnectionIdPatch(String companyId, String connectionId, Connection connection,) async {
     final response = await companiesCompanyIdConnectionsConnectionIdPatchWithHttpInfo(companyId, connectionId, connection,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -246,7 +246,7 @@ class ConnectionsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdConnectionsConnectionIdPatch200Response',) as CompaniesCompanyIdConnectionsConnectionIdPatch200Response;
     
     }
     return null;
@@ -295,7 +295,7 @@ class ConnectionsApi {
   /// * [String] companyId (required):
   ///
   /// * [String] connectionId (required):
-  Future<Object?> companiesCompanyIdConnectionsConnectionIdTestGet(String companyId, String connectionId,) async {
+  Future<CompaniesCompanyIdConnectionsGet200Response?> companiesCompanyIdConnectionsConnectionIdTestGet(String companyId, String connectionId,) async {
     final response = await companiesCompanyIdConnectionsConnectionIdTestGetWithHttpInfo(companyId, connectionId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -304,7 +304,7 @@ class ConnectionsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdConnectionsGet200Response',) as CompaniesCompanyIdConnectionsGet200Response;
     
     }
     return null;
@@ -348,7 +348,7 @@ class ConnectionsApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
-  Future<Object?> companiesCompanyIdConnectionsGet(String companyId,) async {
+  Future<CompaniesCompanyIdConnectionsGet200Response?> companiesCompanyIdConnectionsGet(String companyId,) async {
     final response = await companiesCompanyIdConnectionsGetWithHttpInfo(companyId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -357,7 +357,7 @@ class ConnectionsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdConnectionsGet200Response',) as CompaniesCompanyIdConnectionsGet200Response;
     
     }
     return null;
@@ -405,7 +405,7 @@ class ConnectionsApi {
   /// * [String] companyId (required):
   ///
   /// * [Connection] connection (required):
-  Future<Object?> companiesCompanyIdConnectionsPost(String companyId, Connection connection,) async {
+  Future<CompaniesCompanyIdConnectionsPost200Response?> companiesCompanyIdConnectionsPost(String companyId, Connection connection,) async {
     final response = await companiesCompanyIdConnectionsPostWithHttpInfo(companyId, connection,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -414,7 +414,7 @@ class ConnectionsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdConnectionsPost200Response',) as CompaniesCompanyIdConnectionsPost200Response;
     
     }
     return null;

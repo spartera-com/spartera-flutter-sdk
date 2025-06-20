@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **cloudProvidersGet**
-> Object cloudProvidersGet()
+> CompaniesCompanyIdApiKeysGet200Response cloudProvidersGet()
 
 Get a list of all cloud providers
 
@@ -41,7 +41,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 
@@ -55,7 +55,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloudProvidersProviderIdGet**
-> Object cloudProvidersProviderIdGet(providerId)
+> CompaniesCompanyIdApiKeysGet200Response cloudProvidersProviderIdGet(providerId)
 
 Get single cloud provider by ID
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 

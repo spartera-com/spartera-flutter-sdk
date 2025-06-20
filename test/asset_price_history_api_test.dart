@@ -19,56 +19,56 @@ void main() {
   group('tests for AssetPriceHistoryApi', () {
     // Get the currently active price for an asset
     //
-    //Future<Object> companiesCompanyIdAssetsAssetIdPricesActiveGet(String companyId, String assetId) async
+    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdAssetsAssetIdPricesActiveGet(String companyId, String assetId) async
     test('test companiesCompanyIdAssetsAssetIdPricesActiveGet', () async {
       // TODO
     });
 
     // Delete single price history record by ID
     //
-    //Future<Object> companiesCompanyIdAssetsAssetIdPricesAphIdDelete(String companyId, String assetId, String aphId) async
+    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdAssetsAssetIdPricesAphIdDelete(String companyId, String assetId, String aphId) async
     test('test companiesCompanyIdAssetsAssetIdPricesAphIdDelete', () async {
       // TODO
     });
 
     // Get single price history record by ID
     //
-    //Future<Object> companiesCompanyIdAssetsAssetIdPricesAphIdGet(String companyId, String assetId, String aphId) async
+    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdAssetsAssetIdPricesAphIdGet(String companyId, String assetId, String aphId) async
     test('test companiesCompanyIdAssetsAssetIdPricesAphIdGet', () async {
       // TODO
     });
 
     // Update an existing price history record by ID
     //
-    //Future<Object> companiesCompanyIdAssetsAssetIdPricesAphIdPatch(String companyId, String assetId, String aphId) async
+    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdAssetsAssetIdPricesAphIdPatch(String companyId, String assetId, String aphId) async
     test('test companiesCompanyIdAssetsAssetIdPricesAphIdPatch', () async {
       // TODO
     });
 
     // POST /companies/{company_id}/assets/{asset_id}/prices/calculate_credits
     //
-    //Future<Object> companiesCompanyIdAssetsAssetIdPricesCalculateCreditsPost(String companyId, String assetId) async
+    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdAssetsAssetIdPricesCalculateCreditsPost(String companyId, String assetId) async
     test('test companiesCompanyIdAssetsAssetIdPricesCalculateCreditsPost', () async {
       // TODO
     });
 
     // POST /companies/{company_id}/assets/{asset_id}/prices/discount
     //
-    //Future<Object> companiesCompanyIdAssetsAssetIdPricesDiscountPost(String companyId, String assetId) async
+    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdAssetsAssetIdPricesDiscountPost(String companyId, String assetId) async
     test('test companiesCompanyIdAssetsAssetIdPricesDiscountPost', () async {
       // TODO
     });
 
     // Get all price history records for a specific asset
     //
-    //Future<Object> companiesCompanyIdAssetsAssetIdPricesGet(String companyId, String assetId) async
+    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdAssetsAssetIdPricesGet(String companyId, String assetId) async
     test('test companiesCompanyIdAssetsAssetIdPricesGet', () async {
       // TODO
     });
 
     // Create a new price history record for an asset
     //
-    //Future<Object> companiesCompanyIdAssetsAssetIdPricesPost(String companyId, String assetId) async
+    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdAssetsAssetIdPricesPost(String companyId, String assetId) async
     test('test companiesCompanyIdAssetsAssetIdPricesPost', () async {
       // TODO
     });

@@ -19,35 +19,35 @@ void main() {
   group('tests for APIKeysApi', () {
     // Get single API key by ID
     //
-    //Future<Object> companiesCompanyIdApiKeysApiKeyIdGet(String companyId, String apiKeyId) async
+    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdApiKeysApiKeyIdGet(String companyId, String apiKeyId) async
     test('test companiesCompanyIdApiKeysApiKeyIdGet', () async {
       // TODO
     });
 
     // Update an existing API key by ID
     //
-    //Future<Object> companiesCompanyIdApiKeysApiKeyIdPatch(String companyId, String apiKeyId) async
+    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdApiKeysApiKeyIdPatch(String companyId, String apiKeyId) async
     test('test companiesCompanyIdApiKeysApiKeyIdPatch', () async {
       // TODO
     });
 
     // Get all API keys
     //
-    //Future<Object> companiesCompanyIdApiKeysGet(String companyId) async
+    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdApiKeysGet(String companyId) async
     test('test companiesCompanyIdApiKeysGet', () async {
       // TODO
     });
 
     // Create single API key
     //
-    //Future<Object> companiesCompanyIdApiKeysPost(String companyId) async
+    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdApiKeysPost(String companyId) async
     test('test companiesCompanyIdApiKeysPost', () async {
       // TODO
     });
 
     // Delete single API key by token
     //
-    //Future<Object> companiesCompanyIdApiKeysTokenDelete(String companyId, String token) async
+    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdApiKeysTokenDelete(String companyId, String token) async
     test('test companiesCompanyIdApiKeysTokenDelete', () async {
       // TODO
     });
