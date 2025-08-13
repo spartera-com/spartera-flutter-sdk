@@ -20,7 +20,7 @@ class CompaniesCompanyIdAssetsGet200Response {
   /// Response status message
   String message;
 
-  List<Asset> data;
+  List<Assets> data;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CompaniesCompanyIdAssetsGet200Response &&
@@ -63,7 +63,7 @@ class CompaniesCompanyIdAssetsGet200Response {
 
       return CompaniesCompanyIdAssetsGet200Response(
         message: mapValueOfType<String>(json, r'message')!,
-        data: Asset.listFromJson(json[r'data']),
+        data: Assets.listFromJson(json[r'data']),
       );
     }
     return null;

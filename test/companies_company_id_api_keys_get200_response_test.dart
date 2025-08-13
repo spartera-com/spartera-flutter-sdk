@@ -22,8 +22,7 @@ void main() {
       // TODO
     });
 
-    // Response data
-    // Object data
+    // List<ApiKeys> data (default value: const [])
     test('to test the property `data`', () async {
       // TODO
     });

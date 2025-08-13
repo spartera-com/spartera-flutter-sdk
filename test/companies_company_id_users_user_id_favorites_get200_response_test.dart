@@ -22,7 +22,7 @@ void main() {
       // TODO
     });
 
-    // List<Favorite> data (default value: const [])
+    // List<Favorites> data (default value: const [])
     test('to test the property `data`', () async {
       // TODO
     });

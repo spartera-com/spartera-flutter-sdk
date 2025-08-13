@@ -19,14 +19,14 @@ void main() {
   group('tests for FavoritesApi', () {
     // Get all favorites for the specified user in a specific category
     //
-    //Future<CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response> companiesCompanyIdUsersUserIdFavoritesCategoryCategoryGet(String companyId, String userId, String category) async
+    //Future<CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response> companiesCompanyIdUsersUserIdFavoritesCategoryCategoryGet(String companyId, String userId, String category) async
     test('test companiesCompanyIdUsersUserIdFavoritesCategoryCategoryGet', () async {
       // TODO
     });
 
     // Check if the specified user has favorited a specific asset
     //
-    //Future<CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response> companiesCompanyIdUsersUserIdFavoritesCheckAssetIdGet(String companyId, String userId, String assetId) async
+    //Future<CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response> companiesCompanyIdUsersUserIdFavoritesCheckAssetIdGet(String companyId, String userId, String assetId) async
     test('test companiesCompanyIdUsersUserIdFavoritesCheckAssetIdGet', () async {
       // TODO
     });
@@ -40,14 +40,14 @@ void main() {
 
     // Get single favorite by ID
     //
-    //Future<CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response> companiesCompanyIdUsersUserIdFavoritesFavoriteIdGet(String companyId, String userId, String favoriteId) async
+    //Future<CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response> companiesCompanyIdUsersUserIdFavoritesFavoriteIdGet(String companyId, String userId, String favoriteId) async
     test('test companiesCompanyIdUsersUserIdFavoritesFavoriteIdGet', () async {
       // TODO
     });
 
     // Update an existing favorite by ID
     //
-    //Future<CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch200Response> companiesCompanyIdUsersUserIdFavoritesFavoriteIdPatch(String companyId, String userId, String favoriteId, Favorite favorite) async
+    //Future<CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch200Response> companiesCompanyIdUsersUserIdFavoritesFavoriteIdPatch(String companyId, String userId, String favoriteId, FavoritesUpdate favoritesUpdate) async
     test('test companiesCompanyIdUsersUserIdFavoritesFavoriteIdPatch', () async {
       // TODO
     });
@@ -61,7 +61,7 @@ void main() {
 
     // POST /companies/{company_id}/users/{user_id}/favorites
     //
-    //Future<CompaniesCompanyIdUsersUserIdFavoritesPost200Response> companiesCompanyIdUsersUserIdFavoritesPost(String companyId, String userId, Favorite favorite) async
+    //Future<CompaniesCompanyIdUsersUserIdFavoritesPost200Response> companiesCompanyIdUsersUserIdFavoritesPost(String companyId, String userId, FavoritesInput favoritesInput) async
     test('test companiesCompanyIdUsersUserIdFavoritesPost', () async {
       // TODO
     });

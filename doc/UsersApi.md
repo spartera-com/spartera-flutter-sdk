@@ -14,7 +14,7 @@ Method | HTTP request | Description
 [**companiesCompanyIdUsersUserIdDelete**](UsersApi.md#companiescompanyidusersuseriddelete) | **DELETE** /companies/{company_id}/users/{user_id} | Delete single user by ID
 [**companiesCompanyIdUsersUserIdGet**](UsersApi.md#companiescompanyidusersuseridget) | **GET** /companies/{company_id}/users/{user_id} | Get single user by ID
 [**companiesCompanyIdUsersUserIdPatch**](UsersApi.md#companiescompanyidusersuseridpatch) | **PATCH** /companies/{company_id}/users/{user_id} | Update an existing user by ID
-[**meGet**](UsersApi.md#meget) | **GET** /me | Get current authenticated user's profile information.              Returns:                 JSON response with user profile data from database
+[**meGet**](UsersApi.md#meget) | **GET** /me | Get current authenticated user's profile.
 
 
 # **companiesCompanyIdUsersGet**
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdUsersPost**
-> CompaniesCompanyIdUsersPost200Response companiesCompanyIdUsersPost(companyId, user)
+> CompaniesCompanyIdUsersPost200Response companiesCompanyIdUsersPost(companyId, usersInput)
 
 Create a new user
 
@@ -77,10 +77,10 @@ import 'package:spartera_api_sdk/api.dart';
 
 final api_instance = UsersApi();
 final companyId = companyId_example; // String | 
-final user = User(); // User | 
+final usersInput = UsersInput(); // UsersInput | 
 
 try {
-    final result = api_instance.companiesCompanyIdUsersPost(companyId, user);
+    final result = api_instance.companiesCompanyIdUsersPost(companyId, usersInput);
     print(result);
 } catch (e) {
     print('Exception when calling UsersApi->companiesCompanyIdUsersPost: $e\n');
@@ -92,7 +92,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **companyId** | **String**|  | 
- **user** | [**User**](User.md)|  | 
+ **usersInput** | [**UsersInput**](UsersInput.md)|  | 
 
 ### Return type
 
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdUsersUserIdPatch**
-> CompaniesCompanyIdUsersUserIdPatch200Response companiesCompanyIdUsersUserIdPatch(companyId, userId, user)
+> CompaniesCompanyIdUsersUserIdPatch200Response companiesCompanyIdUsersUserIdPatch(companyId, userId, usersUpdate)
 
 Update an existing user by ID
 
@@ -219,10 +219,10 @@ import 'package:spartera_api_sdk/api.dart';
 final api_instance = UsersApi();
 final companyId = companyId_example; // String | 
 final userId = userId_example; // String | 
-final user = User(); // User | 
+final usersUpdate = UsersUpdate(); // UsersUpdate | 
 
 try {
-    final result = api_instance.companiesCompanyIdUsersUserIdPatch(companyId, userId, user);
+    final result = api_instance.companiesCompanyIdUsersUserIdPatch(companyId, userId, usersUpdate);
     print(result);
 } catch (e) {
     print('Exception when calling UsersApi->companiesCompanyIdUsersUserIdPatch: $e\n');
@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **companyId** | **String**|  | 
  **userId** | **String**|  | 
- **user** | [**User**](User.md)|  | 
+ **usersUpdate** | [**UsersUpdate**](UsersUpdate.md)|  | 
 
 ### Return type
 
@@ -253,9 +253,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **meGet**
-> MeGet200Response meGet()
+> CompaniesCompanyIdUsersGet200Response meGet()
 
-Get current authenticated user's profile information.              Returns:                 JSON response with user profile data from database
+Get current authenticated user's profile.
 
 ### Example
 ```dart
@@ -280,7 +280,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**MeGet200Response**](MeGet200Response.md)
+[**CompaniesCompanyIdUsersGet200Response**](CompaniesCompanyIdUsersGet200Response.md)
 
 ### Authorization
 

@@ -64,7 +64,7 @@ class FavoritesApi {
   /// * [String] userId (required):
   ///
   /// * [String] category (required):
-  Future<CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response?> companiesCompanyIdUsersUserIdFavoritesCategoryCategoryGet(String companyId, String userId, String category,) async {
+  Future<CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response?> companiesCompanyIdUsersUserIdFavoritesCategoryCategoryGet(String companyId, String userId, String category,) async {
     final response = await companiesCompanyIdUsersUserIdFavoritesCategoryCategoryGetWithHttpInfo(companyId, userId, category,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -73,7 +73,7 @@ class FavoritesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response',) as CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response',) as CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response;
     
     }
     return null;
@@ -127,7 +127,7 @@ class FavoritesApi {
   /// * [String] userId (required):
   ///
   /// * [String] assetId (required):
-  Future<CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response?> companiesCompanyIdUsersUserIdFavoritesCheckAssetIdGet(String companyId, String userId, String assetId,) async {
+  Future<CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response?> companiesCompanyIdUsersUserIdFavoritesCheckAssetIdGet(String companyId, String userId, String assetId,) async {
     final response = await companiesCompanyIdUsersUserIdFavoritesCheckAssetIdGetWithHttpInfo(companyId, userId, assetId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -136,7 +136,7 @@ class FavoritesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response',) as CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response',) as CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response;
     
     }
     return null;
@@ -253,7 +253,7 @@ class FavoritesApi {
   /// * [String] userId (required):
   ///
   /// * [String] favoriteId (required):
-  Future<CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response?> companiesCompanyIdUsersUserIdFavoritesFavoriteIdGet(String companyId, String userId, String favoriteId,) async {
+  Future<CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response?> companiesCompanyIdUsersUserIdFavoritesFavoriteIdGet(String companyId, String userId, String favoriteId,) async {
     final response = await companiesCompanyIdUsersUserIdFavoritesFavoriteIdGetWithHttpInfo(companyId, userId, favoriteId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -262,7 +262,7 @@ class FavoritesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response',) as CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response',) as CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response;
     
     }
     return null;
@@ -280,8 +280,8 @@ class FavoritesApi {
   ///
   /// * [String] favoriteId (required):
   ///
-  /// * [Favorite] favorite (required):
-  Future<Response> companiesCompanyIdUsersUserIdFavoritesFavoriteIdPatchWithHttpInfo(String companyId, String userId, String favoriteId, Favorite favorite,) async {
+  /// * [FavoritesUpdate] favoritesUpdate (required):
+  Future<Response> companiesCompanyIdUsersUserIdFavoritesFavoriteIdPatchWithHttpInfo(String companyId, String userId, String favoriteId, FavoritesUpdate favoritesUpdate,) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/users/{user_id}/favorites/{favorite_id}'
       .replaceAll('{company_id}', companyId)
@@ -289,7 +289,7 @@ class FavoritesApi {
       .replaceAll('{favorite_id}', favoriteId);
 
     // ignore: prefer_final_locals
-    Object? postBody = favorite;
+    Object? postBody = favoritesUpdate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -319,9 +319,9 @@ class FavoritesApi {
   ///
   /// * [String] favoriteId (required):
   ///
-  /// * [Favorite] favorite (required):
-  Future<CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch200Response?> companiesCompanyIdUsersUserIdFavoritesFavoriteIdPatch(String companyId, String userId, String favoriteId, Favorite favorite,) async {
-    final response = await companiesCompanyIdUsersUserIdFavoritesFavoriteIdPatchWithHttpInfo(companyId, userId, favoriteId, favorite,);
+  /// * [FavoritesUpdate] favoritesUpdate (required):
+  Future<CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch200Response?> companiesCompanyIdUsersUserIdFavoritesFavoriteIdPatch(String companyId, String userId, String favoriteId, FavoritesUpdate favoritesUpdate,) async {
+    final response = await companiesCompanyIdUsersUserIdFavoritesFavoriteIdPatchWithHttpInfo(companyId, userId, favoriteId, favoritesUpdate,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -403,15 +403,15 @@ class FavoritesApi {
   ///
   /// * [String] userId (required):
   ///
-  /// * [Favorite] favorite (required):
-  Future<Response> companiesCompanyIdUsersUserIdFavoritesPostWithHttpInfo(String companyId, String userId, Favorite favorite,) async {
+  /// * [FavoritesInput] favoritesInput (required):
+  Future<Response> companiesCompanyIdUsersUserIdFavoritesPostWithHttpInfo(String companyId, String userId, FavoritesInput favoritesInput,) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/users/{user_id}/favorites'
       .replaceAll('{company_id}', companyId)
       .replaceAll('{user_id}', userId);
 
     // ignore: prefer_final_locals
-    Object? postBody = favorite;
+    Object? postBody = favoritesInput;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -439,9 +439,9 @@ class FavoritesApi {
   ///
   /// * [String] userId (required):
   ///
-  /// * [Favorite] favorite (required):
-  Future<CompaniesCompanyIdUsersUserIdFavoritesPost200Response?> companiesCompanyIdUsersUserIdFavoritesPost(String companyId, String userId, Favorite favorite,) async {
-    final response = await companiesCompanyIdUsersUserIdFavoritesPostWithHttpInfo(companyId, userId, favorite,);
+  /// * [FavoritesInput] favoritesInput (required):
+  Future<CompaniesCompanyIdUsersUserIdFavoritesPost200Response?> companiesCompanyIdUsersUserIdFavoritesPost(String companyId, String userId, FavoritesInput favoritesInput,) async {
+    final response = await companiesCompanyIdUsersUserIdFavoritesPostWithHttpInfo(companyId, userId, favoritesInput,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

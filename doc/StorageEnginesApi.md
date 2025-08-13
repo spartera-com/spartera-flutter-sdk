@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **cloudProvidersProviderIdStorageEnginesEngineIdGet**
-> CompaniesCompanyIdApiKeysGet200Response cloudProvidersProviderIdStorageEnginesEngineIdGet(providerId, engineId)
+> CloudProvidersProviderIdStorageEnginesGet200Response cloudProvidersProviderIdStorageEnginesEngineIdGet(providerId, engineId)
 
 Get single storage engine by ID
 
@@ -47,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
+[**CloudProvidersProviderIdStorageEnginesGet200Response**](CloudProvidersProviderIdStorageEnginesGet200Response.md)
 
 ### Authorization
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **cloudProvidersProviderIdStorageEnginesGet**
-> CompaniesCompanyIdApiKeysGet200Response cloudProvidersProviderIdStorageEnginesGet(providerId)
+> CloudProvidersProviderIdStorageEnginesGet200Response cloudProvidersProviderIdStorageEnginesGet(providerId)
 
 Get a list of all storage engines
 
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
+[**CloudProvidersProviderIdStorageEnginesGet200Response**](CloudProvidersProviderIdStorageEnginesGet200Response.md)
 
 ### Authorization
 

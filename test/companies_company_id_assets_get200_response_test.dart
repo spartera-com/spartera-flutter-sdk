@@ -22,7 +22,7 @@ void main() {
       // TODO
     });
 
-    // List<Asset> data (default value: const [])
+    // List<Assets> data (default value: const [])
     test('to test the property `data`', () async {
       // TODO
     });

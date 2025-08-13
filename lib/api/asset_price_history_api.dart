@@ -59,7 +59,7 @@ class AssetPriceHistoryApi {
   /// * [String] companyId (required):
   ///
   /// * [String] assetId (required):
-  Future<CompaniesCompanyIdApiKeysGet200Response?> companiesCompanyIdAssetsAssetIdPricesActiveGet(String companyId, String assetId,) async {
+  Future<CompaniesCompanyIdAssetsAssetIdPricesGet200Response?> companiesCompanyIdAssetsAssetIdPricesActiveGet(String companyId, String assetId,) async {
     final response = await companiesCompanyIdAssetsAssetIdPricesActiveGetWithHttpInfo(companyId, assetId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -68,7 +68,7 @@ class AssetPriceHistoryApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdApiKeysGet200Response',) as CompaniesCompanyIdApiKeysGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdAssetsAssetIdPricesGet200Response',) as CompaniesCompanyIdAssetsAssetIdPricesGet200Response;
     
     }
     return null;
@@ -122,7 +122,7 @@ class AssetPriceHistoryApi {
   /// * [String] assetId (required):
   ///
   /// * [String] aphId (required):
-  Future<CompaniesCompanyIdApiKeysGet200Response?> companiesCompanyIdAssetsAssetIdPricesAphIdDelete(String companyId, String assetId, String aphId,) async {
+  Future<CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete200Response?> companiesCompanyIdAssetsAssetIdPricesAphIdDelete(String companyId, String assetId, String aphId,) async {
     final response = await companiesCompanyIdAssetsAssetIdPricesAphIdDeleteWithHttpInfo(companyId, assetId, aphId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -131,7 +131,7 @@ class AssetPriceHistoryApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdApiKeysGet200Response',) as CompaniesCompanyIdApiKeysGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete200Response',) as CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete200Response;
     
     }
     return null;
@@ -185,7 +185,7 @@ class AssetPriceHistoryApi {
   /// * [String] assetId (required):
   ///
   /// * [String] aphId (required):
-  Future<CompaniesCompanyIdApiKeysGet200Response?> companiesCompanyIdAssetsAssetIdPricesAphIdGet(String companyId, String assetId, String aphId,) async {
+  Future<CompaniesCompanyIdAssetsAssetIdPricesAphIdGet200Response?> companiesCompanyIdAssetsAssetIdPricesAphIdGet(String companyId, String assetId, String aphId,) async {
     final response = await companiesCompanyIdAssetsAssetIdPricesAphIdGetWithHttpInfo(companyId, assetId, aphId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -194,7 +194,7 @@ class AssetPriceHistoryApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdApiKeysGet200Response',) as CompaniesCompanyIdApiKeysGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdAssetsAssetIdPricesAphIdGet200Response',) as CompaniesCompanyIdAssetsAssetIdPricesAphIdGet200Response;
     
     }
     return null;
@@ -211,7 +211,9 @@ class AssetPriceHistoryApi {
   /// * [String] assetId (required):
   ///
   /// * [String] aphId (required):
-  Future<Response> companiesCompanyIdAssetsAssetIdPricesAphIdPatchWithHttpInfo(String companyId, String assetId, String aphId,) async {
+  ///
+  /// * [AssetPriceHistoryUpdate] assetPriceHistoryUpdate (required):
+  Future<Response> companiesCompanyIdAssetsAssetIdPricesAphIdPatchWithHttpInfo(String companyId, String assetId, String aphId, AssetPriceHistoryUpdate assetPriceHistoryUpdate,) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/assets/{asset_id}/prices/{aph_id}'
       .replaceAll('{company_id}', companyId)
@@ -219,13 +221,13 @@ class AssetPriceHistoryApi {
       .replaceAll('{aph_id}', aphId);
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = assetPriceHistoryUpdate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
@@ -248,8 +250,10 @@ class AssetPriceHistoryApi {
   /// * [String] assetId (required):
   ///
   /// * [String] aphId (required):
-  Future<CompaniesCompanyIdApiKeysGet200Response?> companiesCompanyIdAssetsAssetIdPricesAphIdPatch(String companyId, String assetId, String aphId,) async {
-    final response = await companiesCompanyIdAssetsAssetIdPricesAphIdPatchWithHttpInfo(companyId, assetId, aphId,);
+  ///
+  /// * [AssetPriceHistoryUpdate] assetPriceHistoryUpdate (required):
+  Future<CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch200Response?> companiesCompanyIdAssetsAssetIdPricesAphIdPatch(String companyId, String assetId, String aphId, AssetPriceHistoryUpdate assetPriceHistoryUpdate,) async {
+    final response = await companiesCompanyIdAssetsAssetIdPricesAphIdPatchWithHttpInfo(companyId, assetId, aphId, assetPriceHistoryUpdate,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -257,13 +261,13 @@ class AssetPriceHistoryApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdApiKeysGet200Response',) as CompaniesCompanyIdApiKeysGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch200Response',) as CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch200Response;
     
     }
     return null;
   }
 
-  /// POST /companies/{company_id}/assets/{asset_id}/prices/calculate_credits
+  /// Calculate the credit equivalent for a given USD price without saving
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -272,20 +276,22 @@ class AssetPriceHistoryApi {
   /// * [String] companyId (required):
   ///
   /// * [String] assetId (required):
-  Future<Response> companiesCompanyIdAssetsAssetIdPricesCalculateCreditsPostWithHttpInfo(String companyId, String assetId,) async {
+  ///
+  /// * [AssetPriceHistoryInput] assetPriceHistoryInput (required):
+  Future<Response> companiesCompanyIdAssetsAssetIdPricesCalculateCreditsPostWithHttpInfo(String companyId, String assetId, AssetPriceHistoryInput assetPriceHistoryInput,) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/assets/{asset_id}/prices/calculate_credits'
       .replaceAll('{company_id}', companyId)
       .replaceAll('{asset_id}', assetId);
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = assetPriceHistoryInput;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
@@ -299,15 +305,17 @@ class AssetPriceHistoryApi {
     );
   }
 
-  /// POST /companies/{company_id}/assets/{asset_id}/prices/calculate_credits
+  /// Calculate the credit equivalent for a given USD price without saving
   ///
   /// Parameters:
   ///
   /// * [String] companyId (required):
   ///
   /// * [String] assetId (required):
-  Future<CompaniesCompanyIdApiKeysGet200Response?> companiesCompanyIdAssetsAssetIdPricesCalculateCreditsPost(String companyId, String assetId,) async {
-    final response = await companiesCompanyIdAssetsAssetIdPricesCalculateCreditsPostWithHttpInfo(companyId, assetId,);
+  ///
+  /// * [AssetPriceHistoryInput] assetPriceHistoryInput (required):
+  Future<CompaniesCompanyIdAssetsAssetIdPricesPost200Response?> companiesCompanyIdAssetsAssetIdPricesCalculateCreditsPost(String companyId, String assetId, AssetPriceHistoryInput assetPriceHistoryInput,) async {
+    final response = await companiesCompanyIdAssetsAssetIdPricesCalculateCreditsPostWithHttpInfo(companyId, assetId, assetPriceHistoryInput,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -315,7 +323,7 @@ class AssetPriceHistoryApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdApiKeysGet200Response',) as CompaniesCompanyIdApiKeysGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdAssetsAssetIdPricesPost200Response',) as CompaniesCompanyIdAssetsAssetIdPricesPost200Response;
     
     }
     return null;
@@ -330,20 +338,22 @@ class AssetPriceHistoryApi {
   /// * [String] companyId (required):
   ///
   /// * [String] assetId (required):
-  Future<Response> companiesCompanyIdAssetsAssetIdPricesDiscountPostWithHttpInfo(String companyId, String assetId,) async {
+  ///
+  /// * [AssetPriceHistoryInput] assetPriceHistoryInput (required):
+  Future<Response> companiesCompanyIdAssetsAssetIdPricesDiscountPostWithHttpInfo(String companyId, String assetId, AssetPriceHistoryInput assetPriceHistoryInput,) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/assets/{asset_id}/prices/discount'
       .replaceAll('{company_id}', companyId)
       .replaceAll('{asset_id}', assetId);
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = assetPriceHistoryInput;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
@@ -364,8 +374,10 @@ class AssetPriceHistoryApi {
   /// * [String] companyId (required):
   ///
   /// * [String] assetId (required):
-  Future<CompaniesCompanyIdApiKeysGet200Response?> companiesCompanyIdAssetsAssetIdPricesDiscountPost(String companyId, String assetId,) async {
-    final response = await companiesCompanyIdAssetsAssetIdPricesDiscountPostWithHttpInfo(companyId, assetId,);
+  ///
+  /// * [AssetPriceHistoryInput] assetPriceHistoryInput (required):
+  Future<CompaniesCompanyIdAssetsAssetIdPricesPost200Response?> companiesCompanyIdAssetsAssetIdPricesDiscountPost(String companyId, String assetId, AssetPriceHistoryInput assetPriceHistoryInput,) async {
+    final response = await companiesCompanyIdAssetsAssetIdPricesDiscountPostWithHttpInfo(companyId, assetId, assetPriceHistoryInput,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -373,7 +385,7 @@ class AssetPriceHistoryApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdApiKeysGet200Response',) as CompaniesCompanyIdApiKeysGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdAssetsAssetIdPricesPost200Response',) as CompaniesCompanyIdAssetsAssetIdPricesPost200Response;
     
     }
     return null;
@@ -422,7 +434,7 @@ class AssetPriceHistoryApi {
   /// * [String] companyId (required):
   ///
   /// * [String] assetId (required):
-  Future<CompaniesCompanyIdApiKeysGet200Response?> companiesCompanyIdAssetsAssetIdPricesGet(String companyId, String assetId,) async {
+  Future<CompaniesCompanyIdAssetsAssetIdPricesGet200Response?> companiesCompanyIdAssetsAssetIdPricesGet(String companyId, String assetId,) async {
     final response = await companiesCompanyIdAssetsAssetIdPricesGetWithHttpInfo(companyId, assetId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -431,7 +443,7 @@ class AssetPriceHistoryApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdApiKeysGet200Response',) as CompaniesCompanyIdApiKeysGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdAssetsAssetIdPricesGet200Response',) as CompaniesCompanyIdAssetsAssetIdPricesGet200Response;
     
     }
     return null;
@@ -446,20 +458,22 @@ class AssetPriceHistoryApi {
   /// * [String] companyId (required):
   ///
   /// * [String] assetId (required):
-  Future<Response> companiesCompanyIdAssetsAssetIdPricesPostWithHttpInfo(String companyId, String assetId,) async {
+  ///
+  /// * [AssetPriceHistoryInput] assetPriceHistoryInput (required):
+  Future<Response> companiesCompanyIdAssetsAssetIdPricesPostWithHttpInfo(String companyId, String assetId, AssetPriceHistoryInput assetPriceHistoryInput,) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/assets/{asset_id}/prices'
       .replaceAll('{company_id}', companyId)
       .replaceAll('{asset_id}', assetId);
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = assetPriceHistoryInput;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
@@ -480,8 +494,10 @@ class AssetPriceHistoryApi {
   /// * [String] companyId (required):
   ///
   /// * [String] assetId (required):
-  Future<CompaniesCompanyIdApiKeysGet200Response?> companiesCompanyIdAssetsAssetIdPricesPost(String companyId, String assetId,) async {
-    final response = await companiesCompanyIdAssetsAssetIdPricesPostWithHttpInfo(companyId, assetId,);
+  ///
+  /// * [AssetPriceHistoryInput] assetPriceHistoryInput (required):
+  Future<CompaniesCompanyIdAssetsAssetIdPricesPost200Response?> companiesCompanyIdAssetsAssetIdPricesPost(String companyId, String assetId, AssetPriceHistoryInput assetPriceHistoryInput,) async {
+    final response = await companiesCompanyIdAssetsAssetIdPricesPostWithHttpInfo(companyId, assetId, assetPriceHistoryInput,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -489,7 +505,7 @@ class AssetPriceHistoryApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdApiKeysGet200Response',) as CompaniesCompanyIdApiKeysGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdAssetsAssetIdPricesPost200Response',) as CompaniesCompanyIdAssetsAssetIdPricesPost200Response;
     
     }
     return null;

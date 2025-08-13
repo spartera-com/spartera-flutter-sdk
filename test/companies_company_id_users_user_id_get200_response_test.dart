@@ -22,7 +22,7 @@ void main() {
       // TODO
     });
 
-    // User data
+    // Users data
     test('to test the property `data`', () async {
       // TODO
     });

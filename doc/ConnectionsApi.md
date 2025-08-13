@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdConnectionsConnectionIdPatch**
-> CompaniesCompanyIdConnectionsConnectionIdPatch200Response companiesCompanyIdConnectionsConnectionIdPatch(companyId, connectionId, connection)
+> CompaniesCompanyIdConnectionsConnectionIdPatch200Response companiesCompanyIdConnectionsConnectionIdPatch(companyId, connectionId, connectionsUpdate)
 
 Update an existing connection by ID
 
@@ -175,10 +175,10 @@ import 'package:spartera_api_sdk/api.dart';
 final api_instance = ConnectionsApi();
 final companyId = companyId_example; // String | 
 final connectionId = connectionId_example; // String | 
-final connection = Connection(); // Connection | 
+final connectionsUpdate = ConnectionsUpdate(); // ConnectionsUpdate | 
 
 try {
-    final result = api_instance.companiesCompanyIdConnectionsConnectionIdPatch(companyId, connectionId, connection);
+    final result = api_instance.companiesCompanyIdConnectionsConnectionIdPatch(companyId, connectionId, connectionsUpdate);
     print(result);
 } catch (e) {
     print('Exception when calling ConnectionsApi->companiesCompanyIdConnectionsConnectionIdPatch: $e\n');
@@ -191,7 +191,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **companyId** | **String**|  | 
  **connectionId** | **String**|  | 
- **connection** | [**Connection**](Connection.md)|  | 
+ **connectionsUpdate** | [**ConnectionsUpdate**](ConnectionsUpdate.md)|  | 
 
 ### Return type
 
@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdConnectionsPost**
-> CompaniesCompanyIdConnectionsPost200Response companiesCompanyIdConnectionsPost(companyId, connection)
+> CompaniesCompanyIdConnectionsPost200Response companiesCompanyIdConnectionsPost(companyId, connectionsInput)
 
 Create a new connection by ID
 
@@ -315,10 +315,10 @@ import 'package:spartera_api_sdk/api.dart';
 
 final api_instance = ConnectionsApi();
 final companyId = companyId_example; // String | 
-final connection = Connection(); // Connection | 
+final connectionsInput = ConnectionsInput(); // ConnectionsInput | 
 
 try {
-    final result = api_instance.companiesCompanyIdConnectionsPost(companyId, connection);
+    final result = api_instance.companiesCompanyIdConnectionsPost(companyId, connectionsInput);
     print(result);
 } catch (e) {
     print('Exception when calling ConnectionsApi->companiesCompanyIdConnectionsPost: $e\n');
@@ -330,7 +330,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **companyId** | **String**|  | 
- **connection** | [**Connection**](Connection.md)|  | 
+ **connectionsInput** | [**ConnectionsInput**](ConnectionsInput.md)|  | 
 
 ### Return type
 

@@ -1,4 +1,4 @@
-# spartera_api_sdk.model.Assetpricehistory
+# spartera_api_sdk.model.AssetPriceHistory
 
 ## Load the model package
 ```dart
@@ -8,17 +8,12 @@ import 'package:spartera_api_sdk/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**dateCreated** | [**DateTime**](DateTime.md) |  | [optional] 
+**lastUpdated** | [**DateTime**](DateTime.md) |  | [optional] 
 **aphId** | **String** |  | [optional] 
 **assetId** | **String** |  | 
 **priceUsd** | **double** |  | [optional] 
-**priceCredits** | **String** |  | [optional] 
-**discountPercentage** | **double** |  | [optional] 
-**saleStartDate** | **String** |  | [optional] 
-**saleEndDate** | **String** |  | [optional] 
-**dateEnded** | **String** |  | [optional] 
-**dateCreated** | **String** |  | [optional] [readonly] 
-**lastUpdated** | **String** |  | [optional] [readonly] 
-**active** | **String** |  | 
+**dateEnded** | [**DateTime**](DateTime.md) | When did the price end (Datetime) | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

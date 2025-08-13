@@ -200,15 +200,15 @@ class ConnectionsApi {
   ///
   /// * [String] connectionId (required):
   ///
-  /// * [Connection] connection (required):
-  Future<Response> companiesCompanyIdConnectionsConnectionIdPatchWithHttpInfo(String companyId, String connectionId, Connection connection,) async {
+  /// * [ConnectionsUpdate] connectionsUpdate (required):
+  Future<Response> companiesCompanyIdConnectionsConnectionIdPatchWithHttpInfo(String companyId, String connectionId, ConnectionsUpdate connectionsUpdate,) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/connections/{connection_id}'
       .replaceAll('{company_id}', companyId)
       .replaceAll('{connection_id}', connectionId);
 
     // ignore: prefer_final_locals
-    Object? postBody = connection;
+    Object? postBody = connectionsUpdate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -236,9 +236,9 @@ class ConnectionsApi {
   ///
   /// * [String] connectionId (required):
   ///
-  /// * [Connection] connection (required):
-  Future<CompaniesCompanyIdConnectionsConnectionIdPatch200Response?> companiesCompanyIdConnectionsConnectionIdPatch(String companyId, String connectionId, Connection connection,) async {
-    final response = await companiesCompanyIdConnectionsConnectionIdPatchWithHttpInfo(companyId, connectionId, connection,);
+  /// * [ConnectionsUpdate] connectionsUpdate (required):
+  Future<CompaniesCompanyIdConnectionsConnectionIdPatch200Response?> companiesCompanyIdConnectionsConnectionIdPatch(String companyId, String connectionId, ConnectionsUpdate connectionsUpdate,) async {
+    final response = await companiesCompanyIdConnectionsConnectionIdPatchWithHttpInfo(companyId, connectionId, connectionsUpdate,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -371,14 +371,14 @@ class ConnectionsApi {
   ///
   /// * [String] companyId (required):
   ///
-  /// * [Connection] connection (required):
-  Future<Response> companiesCompanyIdConnectionsPostWithHttpInfo(String companyId, Connection connection,) async {
+  /// * [ConnectionsInput] connectionsInput (required):
+  Future<Response> companiesCompanyIdConnectionsPostWithHttpInfo(String companyId, ConnectionsInput connectionsInput,) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/connections'
       .replaceAll('{company_id}', companyId);
 
     // ignore: prefer_final_locals
-    Object? postBody = connection;
+    Object? postBody = connectionsInput;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -404,9 +404,9 @@ class ConnectionsApi {
   ///
   /// * [String] companyId (required):
   ///
-  /// * [Connection] connection (required):
-  Future<CompaniesCompanyIdConnectionsPost200Response?> companiesCompanyIdConnectionsPost(String companyId, Connection connection,) async {
-    final response = await companiesCompanyIdConnectionsPostWithHttpInfo(companyId, connection,);
+  /// * [ConnectionsInput] connectionsInput (required):
+  Future<CompaniesCompanyIdConnectionsPost200Response?> companiesCompanyIdConnectionsPost(String companyId, ConnectionsInput connectionsInput,) async {
+    final response = await companiesCompanyIdConnectionsPostWithHttpInfo(companyId, connectionsInput,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

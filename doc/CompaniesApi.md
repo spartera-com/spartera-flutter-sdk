@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 
 # **companiesCompanyIdAnalyticsAssetsGet**
-> CompaniesCompanyIdApiKeysGet200Response companiesCompanyIdAnalyticsAssetsGet(companyId)
+> CompaniesCompanyIdAnalyticsAssetsGet200Response companiesCompanyIdAnalyticsAssetsGet(companyId)
 
 Get asset performance analytics     Query params: start_date, end_date, limit, sort_by, include
 
@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
+[**CompaniesCompanyIdAnalyticsAssetsGet200Response**](CompaniesCompanyIdAnalyticsAssetsGet200Response.md)
 
 ### Authorization
 
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdAnalyticsCustomersGet**
-> CompaniesCompanyIdApiKeysGet200Response companiesCompanyIdAnalyticsCustomersGet(companyId)
+> CompaniesCompanyIdAnalyticsAssetsGet200Response companiesCompanyIdAnalyticsCustomersGet(companyId)
 
 Get customer analytics including growth and segmentation     Query params: start_date, end_date, group_by, segment_by
 
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
+[**CompaniesCompanyIdAnalyticsAssetsGet200Response**](CompaniesCompanyIdAnalyticsAssetsGet200Response.md)
 
 ### Authorization
 
@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdAnalyticsDashboardGet**
-> CompaniesCompanyIdApiKeysGet200Response companiesCompanyIdAnalyticsDashboardGet(companyId)
+> CompaniesCompanyIdAnalyticsAssetsGet200Response companiesCompanyIdAnalyticsDashboardGet(companyId)
 
 Get comprehensive dashboard analytics for seller dashboard     Includes all metrics needed for dashboard charts in one call     Query params: start_date, end_date, period (day/week/month/quarter)
 
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
+[**CompaniesCompanyIdAnalyticsAssetsGet200Response**](CompaniesCompanyIdAnalyticsAssetsGet200Response.md)
 
 ### Authorization
 
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdAnalyticsSalesGet**
-> CompaniesCompanyIdApiKeysGet200Response companiesCompanyIdAnalyticsSalesGet(companyId)
+> CompaniesCompanyIdAnalyticsAssetsGet200Response companiesCompanyIdAnalyticsSalesGet(companyId)
 
 Get sales over time analytics     Query params: start_date, end_date, group_by (day/week/month/quarter), metrics
 
@@ -187,7 +187,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
+[**CompaniesCompanyIdAnalyticsAssetsGet200Response**](CompaniesCompanyIdAnalyticsAssetsGet200Response.md)
 
 ### Authorization
 
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdGet**
-> CompaniesCompanyIdApiKeysGet200Response companiesCompanyIdGet(companyId)
+> CompaniesCompanyIdGet200Response companiesCompanyIdGet(companyId)
 
 Get details of the requestor's own company
 
@@ -232,7 +232,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
+[**CompaniesCompanyIdGet200Response**](CompaniesCompanyIdGet200Response.md)
 
 ### Authorization
 
@@ -246,7 +246,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdObjectsGet**
-> CompaniesCompanyIdApiKeysGet200Response companiesCompanyIdObjectsGet(companyId)
+> CompaniesCompanyIdAnalyticsAssetsGet200Response companiesCompanyIdObjectsGet(companyId)
 
 Get all objects (connections, assets) of a single company
 
@@ -277,7 +277,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
+[**CompaniesCompanyIdAnalyticsAssetsGet200Response**](CompaniesCompanyIdAnalyticsAssetsGet200Response.md)
 
 ### Authorization
 
@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdPatch**
-> CompaniesCompanyIdApiKeysGet200Response companiesCompanyIdPatch(companyId)
+> CompaniesCompanyIdPatch200Response companiesCompanyIdPatch(companyId, companiesUpdate)
 
 Update an existing company by ID
 
@@ -305,9 +305,10 @@ import 'package:spartera_api_sdk/api.dart';
 
 final api_instance = CompaniesApi();
 final companyId = companyId_example; // String | 
+final companiesUpdate = CompaniesUpdate(); // CompaniesUpdate | 
 
 try {
-    final result = api_instance.companiesCompanyIdPatch(companyId);
+    final result = api_instance.companiesCompanyIdPatch(companyId, companiesUpdate);
     print(result);
 } catch (e) {
     print('Exception when calling CompaniesApi->companiesCompanyIdPatch: $e\n');
@@ -319,10 +320,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **companyId** | **String**|  | 
+ **companiesUpdate** | [**CompaniesUpdate**](CompaniesUpdate.md)|  | 
 
 ### Return type
 
-[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
+[**CompaniesCompanyIdPatch200Response**](CompaniesCompanyIdPatch200Response.md)
 
 ### Authorization
 
@@ -330,13 +332,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdRequestsPlanGet**
-> CompaniesCompanyIdApiKeysGet200Response companiesCompanyIdRequestsPlanGet(companyId)
+> CompaniesCompanyIdAnalyticsAssetsGet200Response companiesCompanyIdRequestsPlanGet(companyId)
 
 Get the total number of requests allocated in the company's current subscription plan.
 
@@ -367,7 +369,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
+[**CompaniesCompanyIdAnalyticsAssetsGet200Response**](CompaniesCompanyIdAnalyticsAssetsGet200Response.md)
 
 ### Authorization
 
@@ -381,7 +383,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdRequestsUsageGet**
-> CompaniesCompanyIdApiKeysGet200Response companiesCompanyIdRequestsUsageGet(companyId)
+> CompaniesCompanyIdAnalyticsAssetsGet200Response companiesCompanyIdRequestsUsageGet(companyId)
 
 Get company request usage data for a specific month. Returns JSON metrics by default or CSV logs when download parameter is included.
 
@@ -412,7 +414,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
+[**CompaniesCompanyIdAnalyticsAssetsGet200Response**](CompaniesCompanyIdAnalyticsAssetsGet200Response.md)
 
 ### Authorization
 

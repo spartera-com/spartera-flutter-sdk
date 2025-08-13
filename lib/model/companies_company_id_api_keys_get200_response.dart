@@ -14,31 +14,24 @@ class CompaniesCompanyIdApiKeysGet200Response {
   /// Returns a new [CompaniesCompanyIdApiKeysGet200Response] instance.
   CompaniesCompanyIdApiKeysGet200Response({
     required this.message,
-    this.data,
+    this.data = const [],
   });
 
   /// Response status message
   String message;
 
-  /// Response data
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  Object? data;
+  List<ApiKeys> data;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CompaniesCompanyIdApiKeysGet200Response &&
     other.message == message &&
-    other.data == data;
+    _deepEquality.equals(other.data, data);
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (message.hashCode) +
-    (data == null ? 0 : data!.hashCode);
+    (data.hashCode);
 
   @override
   String toString() => 'CompaniesCompanyIdApiKeysGet200Response[message=$message, data=$data]';
@@ -46,11 +39,7 @@ class CompaniesCompanyIdApiKeysGet200Response {
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'message'] = this.message;
-    if (this.data != null) {
       json[r'data'] = this.data;
-    } else {
-      json[r'data'] = null;
-    }
     return json;
   }
 
@@ -74,7 +63,7 @@ class CompaniesCompanyIdApiKeysGet200Response {
 
       return CompaniesCompanyIdApiKeysGet200Response(
         message: mapValueOfType<String>(json, r'message')!,
-        data: mapValueOfType<Object>(json, r'data'),
+        data: ApiKeys.listFromJson(json[r'data']),
       );
     }
     return null;
@@ -123,6 +112,7 @@ class CompaniesCompanyIdApiKeysGet200Response {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'message',
+    'data',
   };
 }
 

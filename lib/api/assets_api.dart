@@ -16,20 +16,20 @@ class AssetsApi {
 
   final ApiClient apiClient;
 
-  /// Process (analyze) an asset. Attempt to process an analytic on a backend warehouse/AI model.
+  /// Process (analyze) an asset.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [String] companyHandle (required):
-  ///
   /// * [String] assetSlug (required):
-  Future<Response> analyzeCompanyHandleAssetsAssetSlugGetWithHttpInfo(String companyHandle, String assetSlug,) async {
+  ///
+  /// * [String] companyHandle (required):
+  Future<Response> analyzeCompanyHandleAssetsAssetSlugGetWithHttpInfo(String assetSlug, String companyHandle,) async {
     // ignore: prefer_const_declarations
     final path = r'/analyze/{company_handle}/assets/{asset_slug}'
-      .replaceAll('{company_handle}', companyHandle)
-      .replaceAll('{asset_slug}', assetSlug);
+      .replaceAll('{asset_slug}', assetSlug)
+      .replaceAll('{company_handle}', companyHandle);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -52,15 +52,15 @@ class AssetsApi {
     );
   }
 
-  /// Process (analyze) an asset. Attempt to process an analytic on a backend warehouse/AI model.
+  /// Process (analyze) an asset.
   ///
   /// Parameters:
   ///
-  /// * [String] companyHandle (required):
-  ///
   /// * [String] assetSlug (required):
-  Future<CompaniesCompanyIdAssetsAssetIdGet200Response?> analyzeCompanyHandleAssetsAssetSlugGet(String companyHandle, String assetSlug,) async {
-    final response = await analyzeCompanyHandleAssetsAssetSlugGetWithHttpInfo(companyHandle, assetSlug,);
+  ///
+  /// * [String] companyHandle (required):
+  Future<AnalyzeCompanyHandleAssetsAssetSlugGet200Response?> analyzeCompanyHandleAssetsAssetSlugGet(String assetSlug, String companyHandle,) async {
+    final response = await analyzeCompanyHandleAssetsAssetSlugGetWithHttpInfo(assetSlug, companyHandle,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -68,7 +68,7 @@ class AssetsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdAssetsAssetIdGet200Response',) as CompaniesCompanyIdAssetsAssetIdGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AnalyzeCompanyHandleAssetsAssetSlugGet200Response',) as AnalyzeCompanyHandleAssetsAssetSlugGet200Response;
     
     }
     return null;
@@ -175,7 +175,7 @@ class AssetsApi {
   /// * [String] companyId (required):
   ///
   /// * [String] assetId (required):
-  Future<CompaniesCompanyIdAssetsAssetIdGet200Response?> companiesCompanyIdAssetsAssetIdGet(String companyId, String assetId,) async {
+  Future<AnalyzeCompanyHandleAssetsAssetSlugGet200Response?> companiesCompanyIdAssetsAssetIdGet(String companyId, String assetId,) async {
     final response = await companiesCompanyIdAssetsAssetIdGetWithHttpInfo(companyId, assetId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -184,7 +184,7 @@ class AssetsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdAssetsAssetIdGet200Response',) as CompaniesCompanyIdAssetsAssetIdGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AnalyzeCompanyHandleAssetsAssetSlugGet200Response',) as AnalyzeCompanyHandleAssetsAssetSlugGet200Response;
     
     }
     return null;
@@ -316,15 +316,15 @@ class AssetsApi {
   ///
   /// * [String] assetId (required):
   ///
-  /// * [Asset] asset (required):
-  Future<Response> companiesCompanyIdAssetsAssetIdPatchWithHttpInfo(String companyId, String assetId, Asset asset,) async {
+  /// * [AssetsUpdate] assetsUpdate (required):
+  Future<Response> companiesCompanyIdAssetsAssetIdPatchWithHttpInfo(String companyId, String assetId, AssetsUpdate assetsUpdate,) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/assets/{asset_id}'
       .replaceAll('{company_id}', companyId)
       .replaceAll('{asset_id}', assetId);
 
     // ignore: prefer_final_locals
-    Object? postBody = asset;
+    Object? postBody = assetsUpdate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -352,9 +352,9 @@ class AssetsApi {
   ///
   /// * [String] assetId (required):
   ///
-  /// * [Asset] asset (required):
-  Future<CompaniesCompanyIdAssetsAssetIdPatch200Response?> companiesCompanyIdAssetsAssetIdPatch(String companyId, String assetId, Asset asset,) async {
-    final response = await companiesCompanyIdAssetsAssetIdPatchWithHttpInfo(companyId, assetId, asset,);
+  /// * [AssetsUpdate] assetsUpdate (required):
+  Future<CompaniesCompanyIdAssetsAssetIdPatch200Response?> companiesCompanyIdAssetsAssetIdPatch(String companyId, String assetId, AssetsUpdate assetsUpdate,) async {
+    final response = await companiesCompanyIdAssetsAssetIdPatchWithHttpInfo(companyId, assetId, assetsUpdate,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -603,14 +603,14 @@ class AssetsApi {
   ///
   /// * [String] companyId (required):
   ///
-  /// * [Asset] asset (required):
-  Future<Response> companiesCompanyIdAssetsPostWithHttpInfo(String companyId, Asset asset,) async {
+  /// * [AssetsInput] assetsInput (required):
+  Future<Response> companiesCompanyIdAssetsPostWithHttpInfo(String companyId, AssetsInput assetsInput,) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/assets'
       .replaceAll('{company_id}', companyId);
 
     // ignore: prefer_final_locals
-    Object? postBody = asset;
+    Object? postBody = assetsInput;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -636,9 +636,9 @@ class AssetsApi {
   ///
   /// * [String] companyId (required):
   ///
-  /// * [Asset] asset (required):
-  Future<CompaniesCompanyIdAssetsPost200Response?> companiesCompanyIdAssetsPost(String companyId, Asset asset,) async {
-    final response = await companiesCompanyIdAssetsPostWithHttpInfo(companyId, asset,);
+  /// * [AssetsInput] assetsInput (required):
+  Future<CompaniesCompanyIdAssetsPost200Response?> companiesCompanyIdAssetsPost(String companyId, AssetsInput assetsInput,) async {
+    final response = await companiesCompanyIdAssetsPostWithHttpInfo(companyId, assetsInput,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

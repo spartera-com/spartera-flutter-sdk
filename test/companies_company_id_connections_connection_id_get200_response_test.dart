@@ -22,7 +22,7 @@ void main() {
       // TODO
     });
 
-    // Connection data
+    // Connections data
     test('to test the property `data`', () async {
       // TODO
     });

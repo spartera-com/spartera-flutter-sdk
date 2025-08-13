@@ -40,7 +40,7 @@ void main() {
 
     // Update an existing connection by ID
     //
-    //Future<CompaniesCompanyIdConnectionsConnectionIdPatch200Response> companiesCompanyIdConnectionsConnectionIdPatch(String companyId, String connectionId, Connection connection) async
+    //Future<CompaniesCompanyIdConnectionsConnectionIdPatch200Response> companiesCompanyIdConnectionsConnectionIdPatch(String companyId, String connectionId, ConnectionsUpdate connectionsUpdate) async
     test('test companiesCompanyIdConnectionsConnectionIdPatch', () async {
       // TODO
     });
@@ -61,7 +61,7 @@ void main() {
 
     // Create a new connection by ID
     //
-    //Future<CompaniesCompanyIdConnectionsPost200Response> companiesCompanyIdConnectionsPost(String companyId, Connection connection) async
+    //Future<CompaniesCompanyIdConnectionsPost200Response> companiesCompanyIdConnectionsPost(String companyId, ConnectionsInput connectionsInput) async
     test('test companiesCompanyIdConnectionsPost', () async {
       // TODO
     });

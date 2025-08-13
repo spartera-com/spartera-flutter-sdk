@@ -17,38 +17,52 @@ void main() {
   // final instance = APIKeysApi();
 
   group('tests for APIKeysApi', () {
-    // Get single API key by ID
+    // Delete (deactivate) single API key by api_key_id.     Uses the api_key_id returned during creation for clean identification.     Fixed to use correct primary key lookup.
     //
-    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdApiKeysApiKeyIdGet(String companyId, String apiKeyId) async
+    //Future<CompaniesCompanyIdApiKeysApiKeyIdDelete200Response> companiesCompanyIdApiKeysApiKeyIdDelete(String companyId, String apiKeyId) async
+    test('test companiesCompanyIdApiKeysApiKeyIdDelete', () async {
+      // TODO
+    });
+
+    // Get single API key by ID.     Returns masked API key for security (sk_****1234).
+    //
+    //Future<CompaniesCompanyIdApiKeysApiKeyIdGet200Response> companiesCompanyIdApiKeysApiKeyIdGet(String companyId, String apiKeyId) async
     test('test companiesCompanyIdApiKeysApiKeyIdGet', () async {
       // TODO
     });
 
-    // Update an existing API key by ID
+    // Update an existing API key by ID.     Can update metadata like name, expiration, rate limits, etc.     Cannot update the actual key value (for security).
     //
-    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdApiKeysApiKeyIdPatch(String companyId, String apiKeyId) async
+    //Future<CompaniesCompanyIdApiKeysApiKeyIdPatch200Response> companiesCompanyIdApiKeysApiKeyIdPatch(String companyId, String apiKeyId, ApiKeysUpdate apiKeysUpdate) async
     test('test companiesCompanyIdApiKeysApiKeyIdPatch', () async {
       // TODO
     });
 
-    // Get all API keys
+    // Explicitly revoke an API key with reason tracking.     This is different from delete as it includes revocation metadata.
+    //
+    //Future<CompaniesCompanyIdApiKeysPost200Response> companiesCompanyIdApiKeysApiKeyIdRevokePost(String companyId, String apiKeyId, ApiKeysInput apiKeysInput) async
+    test('test companiesCompanyIdApiKeysApiKeyIdRevokePost', () async {
+      // TODO
+    });
+
+    // Get usage statistics for a specific API key.     Returns usage count, last used date, failed attempts, etc.
+    //
+    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdApiKeysApiKeyIdStatsGet(String companyId, String apiKeyId) async
+    test('test companiesCompanyIdApiKeysApiKeyIdStatsGet', () async {
+      // TODO
+    });
+
+    // Get all API keys for a company.     Returns masked API keys for security (sk_****1234).
     //
     //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdApiKeysGet(String companyId) async
     test('test companiesCompanyIdApiKeysGet', () async {
       // TODO
     });
 
-    // Create single API key
+    // Create single API key.     Returns the actual sk_ key (only time it's exposed) and api_key_id for future operations.
     //
-    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdApiKeysPost(String companyId) async
+    //Future<CompaniesCompanyIdApiKeysPost200Response> companiesCompanyIdApiKeysPost(String companyId, ApiKeysInput apiKeysInput) async
     test('test companiesCompanyIdApiKeysPost', () async {
-      // TODO
-    });
-
-    // Delete single API key by token
-    //
-    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdApiKeysTokenDelete(String companyId, String token) async
-    test('test companiesCompanyIdApiKeysTokenDelete', () async {
       // TODO
     });
 

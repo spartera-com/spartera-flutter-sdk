@@ -22,7 +22,7 @@ void main() {
       // TODO
     });
 
-    // List<Connection> data (default value: const [])
+    // List<Connections> data (default value: const [])
     test('to test the property `data`', () async {
       // TODO
     });

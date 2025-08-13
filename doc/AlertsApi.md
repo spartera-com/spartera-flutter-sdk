@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdUsersUserIdAlertsAlertIdGet**
-> CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response companiesCompanyIdUsersUserIdAlertsAlertIdGet(companyId, userId, alertId)
+> CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response companiesCompanyIdUsersUserIdAlertsAlertIdGet(companyId, userId, alertId)
 
 Get single alert by ID
 
@@ -103,7 +103,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response**](CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response.md)
+[**CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response**](CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response.md)
 
 ### Authorization
 
@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdUsersUserIdAlertsAlertIdPatch**
-> CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response companiesCompanyIdUsersUserIdAlertsAlertIdPatch(companyId, userId, alertId, alert)
+> CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response companiesCompanyIdUsersUserIdAlertsAlertIdPatch(companyId, userId, alertId, alertsUpdate)
 
 Update an existing alert by ID
 
@@ -133,10 +133,10 @@ final api_instance = AlertsApi();
 final companyId = companyId_example; // String | 
 final userId = userId_example; // String | 
 final alertId = alertId_example; // String | 
-final alert = Alert(); // Alert | 
+final alertsUpdate = AlertsUpdate(); // AlertsUpdate | 
 
 try {
-    final result = api_instance.companiesCompanyIdUsersUserIdAlertsAlertIdPatch(companyId, userId, alertId, alert);
+    final result = api_instance.companiesCompanyIdUsersUserIdAlertsAlertIdPatch(companyId, userId, alertId, alertsUpdate);
     print(result);
 } catch (e) {
     print('Exception when calling AlertsApi->companiesCompanyIdUsersUserIdAlertsAlertIdPatch: $e\n');
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
  **companyId** | **String**|  | 
  **userId** | **String**|  | 
  **alertId** | **String**|  | 
- **alert** | [**Alert**](Alert.md)|  | 
+ **alertsUpdate** | [**AlertsUpdate**](AlertsUpdate.md)|  | 
 
 ### Return type
 
@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet**
-> CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet(companyId, userId, assetId)
+> CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet(companyId, userId, assetId)
 
 Get all alerts for a specific asset (by user)
 
@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response**](CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response.md)
+[**CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response**](CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response.md)
 
 ### Authorization
 
@@ -313,7 +313,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdUsersUserIdAlertsPost**
-> CompaniesCompanyIdUsersUserIdAlertsPost200Response companiesCompanyIdUsersUserIdAlertsPost(companyId, userId, alert)
+> CompaniesCompanyIdUsersUserIdAlertsPost200Response companiesCompanyIdUsersUserIdAlertsPost(companyId, userId, alertsInput)
 
 POST /companies/{company_id}/users/{user_id}/alerts
 
@@ -328,10 +328,10 @@ import 'package:spartera_api_sdk/api.dart';
 final api_instance = AlertsApi();
 final companyId = companyId_example; // String | 
 final userId = userId_example; // String | 
-final alert = Alert(); // Alert | 
+final alertsInput = AlertsInput(); // AlertsInput | 
 
 try {
-    final result = api_instance.companiesCompanyIdUsersUserIdAlertsPost(companyId, userId, alert);
+    final result = api_instance.companiesCompanyIdUsersUserIdAlertsPost(companyId, userId, alertsInput);
     print(result);
 } catch (e) {
     print('Exception when calling AlertsApi->companiesCompanyIdUsersUserIdAlertsPost: $e\n');
@@ -344,7 +344,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **companyId** | **String**|  | 
  **userId** | **String**|  | 
- **alert** | [**Alert**](Alert.md)|  | 
+ **alertsInput** | [**AlertsInput**](AlertsInput.md)|  | 
 
 ### Return type
 

@@ -77,14 +77,14 @@ class UsersApi {
   ///
   /// * [String] companyId (required):
   ///
-  /// * [User] user (required):
-  Future<Response> companiesCompanyIdUsersPostWithHttpInfo(String companyId, User user,) async {
+  /// * [UsersInput] usersInput (required):
+  Future<Response> companiesCompanyIdUsersPostWithHttpInfo(String companyId, UsersInput usersInput,) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/users'
       .replaceAll('{company_id}', companyId);
 
     // ignore: prefer_final_locals
-    Object? postBody = user;
+    Object? postBody = usersInput;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -110,9 +110,9 @@ class UsersApi {
   ///
   /// * [String] companyId (required):
   ///
-  /// * [User] user (required):
-  Future<CompaniesCompanyIdUsersPost200Response?> companiesCompanyIdUsersPost(String companyId, User user,) async {
-    final response = await companiesCompanyIdUsersPostWithHttpInfo(companyId, user,);
+  /// * [UsersInput] usersInput (required):
+  Future<CompaniesCompanyIdUsersPost200Response?> companiesCompanyIdUsersPost(String companyId, UsersInput usersInput,) async {
+    final response = await companiesCompanyIdUsersPostWithHttpInfo(companyId, usersInput,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -252,15 +252,15 @@ class UsersApi {
   ///
   /// * [String] userId (required):
   ///
-  /// * [User] user (required):
-  Future<Response> companiesCompanyIdUsersUserIdPatchWithHttpInfo(String companyId, String userId, User user,) async {
+  /// * [UsersUpdate] usersUpdate (required):
+  Future<Response> companiesCompanyIdUsersUserIdPatchWithHttpInfo(String companyId, String userId, UsersUpdate usersUpdate,) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/users/{user_id}'
       .replaceAll('{company_id}', companyId)
       .replaceAll('{user_id}', userId);
 
     // ignore: prefer_final_locals
-    Object? postBody = user;
+    Object? postBody = usersUpdate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -288,9 +288,9 @@ class UsersApi {
   ///
   /// * [String] userId (required):
   ///
-  /// * [User] user (required):
-  Future<CompaniesCompanyIdUsersUserIdPatch200Response?> companiesCompanyIdUsersUserIdPatch(String companyId, String userId, User user,) async {
-    final response = await companiesCompanyIdUsersUserIdPatchWithHttpInfo(companyId, userId, user,);
+  /// * [UsersUpdate] usersUpdate (required):
+  Future<CompaniesCompanyIdUsersUserIdPatch200Response?> companiesCompanyIdUsersUserIdPatch(String companyId, String userId, UsersUpdate usersUpdate,) async {
+    final response = await companiesCompanyIdUsersUserIdPatchWithHttpInfo(companyId, userId, usersUpdate,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -304,7 +304,7 @@ class UsersApi {
     return null;
   }
 
-  /// Get current authenticated user's profile information.              Returns:                 JSON response with user profile data from database
+  /// Get current authenticated user's profile.
   ///
   /// Note: This method returns the HTTP [Response].
   Future<Response> meGetWithHttpInfo() async {
@@ -332,8 +332,8 @@ class UsersApi {
     );
   }
 
-  /// Get current authenticated user's profile information.              Returns:                 JSON response with user profile data from database
-  Future<MeGet200Response?> meGet() async {
+  /// Get current authenticated user's profile.
+  Future<CompaniesCompanyIdUsersGet200Response?> meGet() async {
     final response = await meGetWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -342,7 +342,7 @@ class UsersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MeGet200Response',) as MeGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdUsersGet200Response',) as CompaniesCompanyIdUsersGet200Response;
     
     }
     return null;

@@ -26,14 +26,14 @@ void main() {
 
     // Get single alert by ID
     //
-    //Future<CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response> companiesCompanyIdUsersUserIdAlertsAlertIdGet(String companyId, String userId, String alertId) async
+    //Future<CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response> companiesCompanyIdUsersUserIdAlertsAlertIdGet(String companyId, String userId, String alertId) async
     test('test companiesCompanyIdUsersUserIdAlertsAlertIdGet', () async {
       // TODO
     });
 
     // Update an existing alert by ID
     //
-    //Future<CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response> companiesCompanyIdUsersUserIdAlertsAlertIdPatch(String companyId, String userId, String alertId, Alert alert) async
+    //Future<CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response> companiesCompanyIdUsersUserIdAlertsAlertIdPatch(String companyId, String userId, String alertId, AlertsUpdate alertsUpdate) async
     test('test companiesCompanyIdUsersUserIdAlertsAlertIdPatch', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
 
     // Get all alerts for a specific asset (by user)
     //
-    //Future<CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response> companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet(String companyId, String userId, String assetId) async
+    //Future<CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response> companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet(String companyId, String userId, String assetId) async
     test('test companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet', () async {
       // TODO
     });
@@ -61,7 +61,7 @@ void main() {
 
     // POST /companies/{company_id}/users/{user_id}/alerts
     //
-    //Future<CompaniesCompanyIdUsersUserIdAlertsPost200Response> companiesCompanyIdUsersUserIdAlertsPost(String companyId, String userId, Alert alert) async
+    //Future<CompaniesCompanyIdUsersUserIdAlertsPost200Response> companiesCompanyIdUsersUserIdAlertsPost(String companyId, String userId, AlertsInput alertsInput) async
     test('test companiesCompanyIdUsersUserIdAlertsPost', () async {
       // TODO
     });

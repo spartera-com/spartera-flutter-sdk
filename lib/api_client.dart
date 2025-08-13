@@ -182,28 +182,88 @@ class ApiClient {
           return valueString == 'true' || valueString == '1';
         case 'DateTime':
           return value is DateTime ? value : DateTime.tryParse(value);
-        case 'Alert':
-          return Alert.fromJson(value);
-        case 'Apikey':
-          return Apikey.fromJson(value);
-        case 'Asset':
-          return Asset.fromJson(value);
-        case 'Assetpricehistory':
-          return Assetpricehistory.fromJson(value);
-        case 'Cloudprovider':
-          return Cloudprovider.fromJson(value);
+        case 'Alerts':
+          return Alerts.fromJson(value);
+        case 'AlertsInput':
+          return AlertsInput.fromJson(value);
+        case 'AlertsUpdate':
+          return AlertsUpdate.fromJson(value);
+        case 'AnalyzeCompanyHandleAssetsAssetSlugGet200Response':
+          return AnalyzeCompanyHandleAssetsAssetSlugGet200Response.fromJson(value);
+        case 'ApiKeys':
+          return ApiKeys.fromJson(value);
+        case 'ApiKeysInput':
+          return ApiKeysInput.fromJson(value);
+        case 'ApiKeysUpdate':
+          return ApiKeysUpdate.fromJson(value);
+        case 'AssetPriceHistory':
+          return AssetPriceHistory.fromJson(value);
+        case 'AssetPriceHistoryInput':
+          return AssetPriceHistoryInput.fromJson(value);
+        case 'AssetPriceHistoryUpdate':
+          return AssetPriceHistoryUpdate.fromJson(value);
+        case 'Assets':
+          return Assets.fromJson(value);
+        case 'AssetsInput':
+          return AssetsInput.fromJson(value);
+        case 'AssetsUpdate':
+          return AssetsUpdate.fromJson(value);
+        case 'CloudProviders':
+          return CloudProviders.fromJson(value);
+        case 'CloudProvidersGet200Response':
+          return CloudProvidersGet200Response.fromJson(value);
+        case 'CloudProvidersInput':
+          return CloudProvidersInput.fromJson(value);
+        case 'CloudProvidersProviderIdGet200Response':
+          return CloudProvidersProviderIdGet200Response.fromJson(value);
+        case 'CloudProvidersProviderIdStorageEnginesGet200Response':
+          return CloudProvidersProviderIdStorageEnginesGet200Response.fromJson(value);
+        case 'CloudProvidersUpdate':
+          return CloudProvidersUpdate.fromJson(value);
+        case 'Companies':
+          return Companies.fromJson(value);
+        case 'CompaniesCompanyIdAnalyticsAssetsGet200Response':
+          return CompaniesCompanyIdAnalyticsAssetsGet200Response.fromJson(value);
+        case 'CompaniesCompanyIdApiKeysApiKeyIdDelete200Response':
+          return CompaniesCompanyIdApiKeysApiKeyIdDelete200Response.fromJson(value);
+        case 'CompaniesCompanyIdApiKeysApiKeyIdDelete200ResponseData':
+          return CompaniesCompanyIdApiKeysApiKeyIdDelete200ResponseData.fromJson(value);
+        case 'CompaniesCompanyIdApiKeysApiKeyIdGet200Response':
+          return CompaniesCompanyIdApiKeysApiKeyIdGet200Response.fromJson(value);
+        case 'CompaniesCompanyIdApiKeysApiKeyIdPatch200Response':
+          return CompaniesCompanyIdApiKeysApiKeyIdPatch200Response.fromJson(value);
+        case 'CompaniesCompanyIdApiKeysApiKeyIdPatch200ResponseData':
+          return CompaniesCompanyIdApiKeysApiKeyIdPatch200ResponseData.fromJson(value);
         case 'CompaniesCompanyIdApiKeysGet200Response':
           return CompaniesCompanyIdApiKeysGet200Response.fromJson(value);
+        case 'CompaniesCompanyIdApiKeysPost200Response':
+          return CompaniesCompanyIdApiKeysPost200Response.fromJson(value);
+        case 'CompaniesCompanyIdApiKeysPost200ResponseData':
+          return CompaniesCompanyIdApiKeysPost200ResponseData.fromJson(value);
         case 'CompaniesCompanyIdAssetsAssetIdDelete200Response':
           return CompaniesCompanyIdAssetsAssetIdDelete200Response.fromJson(value);
         case 'CompaniesCompanyIdAssetsAssetIdDelete200ResponseData':
           return CompaniesCompanyIdAssetsAssetIdDelete200ResponseData.fromJson(value);
-        case 'CompaniesCompanyIdAssetsAssetIdGet200Response':
-          return CompaniesCompanyIdAssetsAssetIdGet200Response.fromJson(value);
         case 'CompaniesCompanyIdAssetsAssetIdPatch200Response':
           return CompaniesCompanyIdAssetsAssetIdPatch200Response.fromJson(value);
         case 'CompaniesCompanyIdAssetsAssetIdPatch200ResponseData':
           return CompaniesCompanyIdAssetsAssetIdPatch200ResponseData.fromJson(value);
+        case 'CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete200Response':
+          return CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete200Response.fromJson(value);
+        case 'CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete200ResponseData':
+          return CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete200ResponseData.fromJson(value);
+        case 'CompaniesCompanyIdAssetsAssetIdPricesAphIdGet200Response':
+          return CompaniesCompanyIdAssetsAssetIdPricesAphIdGet200Response.fromJson(value);
+        case 'CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch200Response':
+          return CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch200Response.fromJson(value);
+        case 'CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch200ResponseData':
+          return CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch200ResponseData.fromJson(value);
+        case 'CompaniesCompanyIdAssetsAssetIdPricesGet200Response':
+          return CompaniesCompanyIdAssetsAssetIdPricesGet200Response.fromJson(value);
+        case 'CompaniesCompanyIdAssetsAssetIdPricesPost200Response':
+          return CompaniesCompanyIdAssetsAssetIdPricesPost200Response.fromJson(value);
+        case 'CompaniesCompanyIdAssetsAssetIdPricesPost200ResponseData':
+          return CompaniesCompanyIdAssetsAssetIdPricesPost200ResponseData.fromJson(value);
         case 'CompaniesCompanyIdAssetsGet200Response':
           return CompaniesCompanyIdAssetsGet200Response.fromJson(value);
         case 'CompaniesCompanyIdAssetsPost200Response':
@@ -226,6 +286,12 @@ class ApiClient {
           return CompaniesCompanyIdConnectionsPost200Response.fromJson(value);
         case 'CompaniesCompanyIdConnectionsPost200ResponseData':
           return CompaniesCompanyIdConnectionsPost200ResponseData.fromJson(value);
+        case 'CompaniesCompanyIdGet200Response':
+          return CompaniesCompanyIdGet200Response.fromJson(value);
+        case 'CompaniesCompanyIdPatch200Response':
+          return CompaniesCompanyIdPatch200Response.fromJson(value);
+        case 'CompaniesCompanyIdPatch200ResponseData':
+          return CompaniesCompanyIdPatch200ResponseData.fromJson(value);
         case 'CompaniesCompanyIdUsersGet200Response':
           return CompaniesCompanyIdUsersGet200Response.fromJson(value);
         case 'CompaniesCompanyIdUsersPost200Response':
@@ -236,12 +302,12 @@ class ApiClient {
           return CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200Response.fromJson(value);
         case 'CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200ResponseData':
           return CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200ResponseData.fromJson(value);
-        case 'CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response':
-          return CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response.fromJson(value);
         case 'CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response':
           return CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response.fromJson(value);
         case 'CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200ResponseData':
           return CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200ResponseData.fromJson(value);
+        case 'CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response':
+          return CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response.fromJson(value);
         case 'CompaniesCompanyIdUsersUserIdAlertsGet200Response':
           return CompaniesCompanyIdUsersUserIdAlertsGet200Response.fromJson(value);
         case 'CompaniesCompanyIdUsersUserIdAlertsPost200Response':
@@ -252,12 +318,12 @@ class ApiClient {
           return CompaniesCompanyIdUsersUserIdDelete200Response.fromJson(value);
         case 'CompaniesCompanyIdUsersUserIdDelete200ResponseData':
           return CompaniesCompanyIdUsersUserIdDelete200ResponseData.fromJson(value);
+        case 'CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response':
+          return CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response.fromJson(value);
         case 'CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete200Response':
           return CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete200Response.fromJson(value);
         case 'CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete200ResponseData':
           return CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete200ResponseData.fromJson(value);
-        case 'CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response':
-          return CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response.fromJson(value);
         case 'CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch200Response':
           return CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch200Response.fromJson(value);
         case 'CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch200ResponseData':
@@ -274,14 +340,24 @@ class ApiClient {
           return CompaniesCompanyIdUsersUserIdPatch200Response.fromJson(value);
         case 'CompaniesCompanyIdUsersUserIdPatch200ResponseData':
           return CompaniesCompanyIdUsersUserIdPatch200ResponseData.fromJson(value);
-        case 'Company':
-          return Company.fromJson(value);
-        case 'Connection':
-          return Connection.fromJson(value);
+        case 'CompaniesInput':
+          return CompaniesInput.fromJson(value);
+        case 'CompaniesUpdate':
+          return CompaniesUpdate.fromJson(value);
+        case 'Connections':
+          return Connections.fromJson(value);
+        case 'ConnectionsInput':
+          return ConnectionsInput.fromJson(value);
+        case 'ConnectionsUpdate':
+          return ConnectionsUpdate.fromJson(value);
         case 'Error':
           return Error.fromJson(value);
-        case 'Favorite':
-          return Favorite.fromJson(value);
+        case 'Favorites':
+          return Favorites.fromJson(value);
+        case 'FavoritesInput':
+          return FavoritesInput.fromJson(value);
+        case 'FavoritesUpdate':
+          return FavoritesUpdate.fromJson(value);
         case 'InlineObject':
           return InlineObject.fromJson(value);
         case 'InlineObject1':
@@ -290,16 +366,22 @@ class ApiClient {
           return InlineObject2.fromJson(value);
         case 'InlineObject3':
           return InlineObject3.fromJson(value);
-        case 'MeGet200Response':
-          return MeGet200Response.fromJson(value);
-        case 'MeGet200ResponseApiKeyInfo':
-          return MeGet200ResponseApiKeyInfo.fromJson(value);
-        case 'MeGet200ResponseProfile':
-          return MeGet200ResponseProfile.fromJson(value);
-        case 'MeGet200ResponseTokenMetadata':
-          return MeGet200ResponseTokenMetadata.fromJson(value);
-        case 'User':
-          return User.fromJson(value);
+        case 'JobFunctions':
+          return JobFunctions.fromJson(value);
+        case 'JobFunctionsFunctionIdGet200Response':
+          return JobFunctionsFunctionIdGet200Response.fromJson(value);
+        case 'JobFunctionsGet200Response':
+          return JobFunctionsGet200Response.fromJson(value);
+        case 'JobFunctionsInput':
+          return JobFunctionsInput.fromJson(value);
+        case 'JobFunctionsUpdate':
+          return JobFunctionsUpdate.fromJson(value);
+        case 'Users':
+          return Users.fromJson(value);
+        case 'UsersInput':
+          return UsersInput.fromJson(value);
+        case 'UsersUpdate':
+          return UsersUpdate.fromJson(value);
         default:
           dynamic match;
           if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {

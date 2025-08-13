@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **companiesCompanyIdUsersUserIdFavoritesCategoryCategoryGet**
-> CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response companiesCompanyIdUsersUserIdFavoritesCategoryCategoryGet(companyId, userId, category)
+> CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response companiesCompanyIdUsersUserIdFavoritesCategoryCategoryGet(companyId, userId, category)
 
 Get all favorites for the specified user in a specific category
 
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response**](CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response.md)
+[**CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response**](CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response.md)
 
 ### Authorization
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdUsersUserIdFavoritesCheckAssetIdGet**
-> CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response companiesCompanyIdUsersUserIdFavoritesCheckAssetIdGet(companyId, userId, assetId)
+> CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response companiesCompanyIdUsersUserIdFavoritesCheckAssetIdGet(companyId, userId, assetId)
 
 Check if the specified user has favorited a specific asset
 
@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response**](CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response.md)
+[**CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response**](CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response.md)
 
 ### Authorization
 
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdUsersUserIdFavoritesFavoriteIdGet**
-> CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response companiesCompanyIdUsersUserIdFavoritesFavoriteIdGet(companyId, userId, favoriteId)
+> CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response companiesCompanyIdUsersUserIdFavoritesFavoriteIdGet(companyId, userId, favoriteId)
 
 Get single favorite by ID
 
@@ -202,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response**](CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response.md)
+[**CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response**](CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response.md)
 
 ### Authorization
 
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdUsersUserIdFavoritesFavoriteIdPatch**
-> CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch200Response companiesCompanyIdUsersUserIdFavoritesFavoriteIdPatch(companyId, userId, favoriteId, favorite)
+> CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch200Response companiesCompanyIdUsersUserIdFavoritesFavoriteIdPatch(companyId, userId, favoriteId, favoritesUpdate)
 
 Update an existing favorite by ID
 
@@ -232,10 +232,10 @@ final api_instance = FavoritesApi();
 final companyId = companyId_example; // String | 
 final userId = userId_example; // String | 
 final favoriteId = favoriteId_example; // String | 
-final favorite = Favorite(); // Favorite | 
+final favoritesUpdate = FavoritesUpdate(); // FavoritesUpdate | 
 
 try {
-    final result = api_instance.companiesCompanyIdUsersUserIdFavoritesFavoriteIdPatch(companyId, userId, favoriteId, favorite);
+    final result = api_instance.companiesCompanyIdUsersUserIdFavoritesFavoriteIdPatch(companyId, userId, favoriteId, favoritesUpdate);
     print(result);
 } catch (e) {
     print('Exception when calling FavoritesApi->companiesCompanyIdUsersUserIdFavoritesFavoriteIdPatch: $e\n');
@@ -249,7 +249,7 @@ Name | Type | Description  | Notes
  **companyId** | **String**|  | 
  **userId** | **String**|  | 
  **favoriteId** | **String**|  | 
- **favorite** | [**Favorite**](Favorite.md)|  | 
+ **favoritesUpdate** | [**FavoritesUpdate**](FavoritesUpdate.md)|  | 
 
 ### Return type
 
@@ -314,7 +314,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdUsersUserIdFavoritesPost**
-> CompaniesCompanyIdUsersUserIdFavoritesPost200Response companiesCompanyIdUsersUserIdFavoritesPost(companyId, userId, favorite)
+> CompaniesCompanyIdUsersUserIdFavoritesPost200Response companiesCompanyIdUsersUserIdFavoritesPost(companyId, userId, favoritesInput)
 
 POST /companies/{company_id}/users/{user_id}/favorites
 
@@ -329,10 +329,10 @@ import 'package:spartera_api_sdk/api.dart';
 final api_instance = FavoritesApi();
 final companyId = companyId_example; // String | 
 final userId = userId_example; // String | 
-final favorite = Favorite(); // Favorite | 
+final favoritesInput = FavoritesInput(); // FavoritesInput | 
 
 try {
-    final result = api_instance.companiesCompanyIdUsersUserIdFavoritesPost(companyId, userId, favorite);
+    final result = api_instance.companiesCompanyIdUsersUserIdFavoritesPost(companyId, userId, favoritesInput);
     print(result);
 } catch (e) {
     print('Exception when calling FavoritesApi->companiesCompanyIdUsersUserIdFavoritesPost: $e\n');
@@ -345,7 +345,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **companyId** | **String**|  | 
  **userId** | **String**|  | 
- **favorite** | [**Favorite**](Favorite.md)|  | 
+ **favoritesInput** | [**FavoritesInput**](FavoritesInput.md)|  | 
 
 ### Return type
 

@@ -9,7 +9,7 @@ All URIs are relative to *https://api.spartera.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**analyzeCompanyHandleAssetsAssetSlugGet**](AssetsApi.md#analyzecompanyhandleassetsassetslugget) | **GET** /analyze/{company_handle}/assets/{asset_slug} | Process (analyze) an asset. Attempt to process an analytic on a backend warehouse/AI model.
+[**analyzeCompanyHandleAssetsAssetSlugGet**](AssetsApi.md#analyzecompanyhandleassetsassetslugget) | **GET** /analyze/{company_handle}/assets/{asset_slug} | Process (analyze) an asset.
 [**companiesCompanyIdAssetsAssetIdDelete**](AssetsApi.md#companiescompanyidassetsassetiddelete) | **DELETE** /companies/{company_id}/assets/{asset_id} | Delete single asset by ID
 [**companiesCompanyIdAssetsAssetIdGet**](AssetsApi.md#companiescompanyidassetsassetidget) | **GET** /companies/{company_id}/assets/{asset_id} | Get single asset by ID
 [**companiesCompanyIdAssetsAssetIdInfoschemaGet**](AssetsApi.md#companiescompanyidassetsassetidinfoschemaget) | **GET** /companies/{company_id}/assets/{asset_id}/infoschema | Get the information schema for a specific asset's table
@@ -24,9 +24,9 @@ Method | HTTP request | Description
 
 
 # **analyzeCompanyHandleAssetsAssetSlugGet**
-> CompaniesCompanyIdAssetsAssetIdGet200Response analyzeCompanyHandleAssetsAssetSlugGet(companyHandle, assetSlug)
+> AnalyzeCompanyHandleAssetsAssetSlugGet200Response analyzeCompanyHandleAssetsAssetSlugGet(assetSlug, companyHandle)
 
-Process (analyze) an asset. Attempt to process an analytic on a backend warehouse/AI model.
+Process (analyze) an asset.
 
 ### Example
 ```dart
@@ -37,11 +37,11 @@ import 'package:spartera_api_sdk/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AssetsApi();
-final companyHandle = companyHandle_example; // String | 
 final assetSlug = assetSlug_example; // String | 
+final companyHandle = companyHandle_example; // String | 
 
 try {
-    final result = api_instance.analyzeCompanyHandleAssetsAssetSlugGet(companyHandle, assetSlug);
+    final result = api_instance.analyzeCompanyHandleAssetsAssetSlugGet(assetSlug, companyHandle);
     print(result);
 } catch (e) {
     print('Exception when calling AssetsApi->analyzeCompanyHandleAssetsAssetSlugGet: $e\n');
@@ -52,12 +52,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **companyHandle** | **String**|  | 
  **assetSlug** | **String**|  | 
+ **companyHandle** | **String**|  | 
 
 ### Return type
 
-[**CompaniesCompanyIdAssetsAssetIdGet200Response**](CompaniesCompanyIdAssetsAssetIdGet200Response.md)
+[**AnalyzeCompanyHandleAssetsAssetSlugGet200Response**](AnalyzeCompanyHandleAssetsAssetSlugGet200Response.md)
 
 ### Authorization
 
@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdAssetsAssetIdGet**
-> CompaniesCompanyIdAssetsAssetIdGet200Response companiesCompanyIdAssetsAssetIdGet(companyId, assetId)
+> AnalyzeCompanyHandleAssetsAssetSlugGet200Response companiesCompanyIdAssetsAssetIdGet(companyId, assetId)
 
 Get single asset by ID
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdAssetsAssetIdGet200Response**](CompaniesCompanyIdAssetsAssetIdGet200Response.md)
+[**AnalyzeCompanyHandleAssetsAssetSlugGet200Response**](AnalyzeCompanyHandleAssetsAssetSlugGet200Response.md)
 
 ### Authorization
 
@@ -259,7 +259,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdAssetsAssetIdPatch**
-> CompaniesCompanyIdAssetsAssetIdPatch200Response companiesCompanyIdAssetsAssetIdPatch(companyId, assetId, asset)
+> CompaniesCompanyIdAssetsAssetIdPatch200Response companiesCompanyIdAssetsAssetIdPatch(companyId, assetId, assetsUpdate)
 
 Update an existing asset by ID
 
@@ -274,10 +274,10 @@ import 'package:spartera_api_sdk/api.dart';
 final api_instance = AssetsApi();
 final companyId = companyId_example; // String | 
 final assetId = assetId_example; // String | 
-final asset = Asset(); // Asset | 
+final assetsUpdate = AssetsUpdate(); // AssetsUpdate | 
 
 try {
-    final result = api_instance.companiesCompanyIdAssetsAssetIdPatch(companyId, assetId, asset);
+    final result = api_instance.companiesCompanyIdAssetsAssetIdPatch(companyId, assetId, assetsUpdate);
     print(result);
 } catch (e) {
     print('Exception when calling AssetsApi->companiesCompanyIdAssetsAssetIdPatch: $e\n');
@@ -290,7 +290,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **companyId** | **String**|  | 
  **assetId** | **String**|  | 
- **asset** | [**Asset**](Asset.md)|  | 
+ **assetsUpdate** | [**AssetsUpdate**](AssetsUpdate.md)|  | 
 
 ### Return type
 
@@ -494,7 +494,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdAssetsPost**
-> CompaniesCompanyIdAssetsPost200Response companiesCompanyIdAssetsPost(companyId, asset)
+> CompaniesCompanyIdAssetsPost200Response companiesCompanyIdAssetsPost(companyId, assetsInput)
 
 Create a new asset
 
@@ -508,10 +508,10 @@ import 'package:spartera_api_sdk/api.dart';
 
 final api_instance = AssetsApi();
 final companyId = companyId_example; // String | 
-final asset = Asset(); // Asset | 
+final assetsInput = AssetsInput(); // AssetsInput | 
 
 try {
-    final result = api_instance.companiesCompanyIdAssetsPost(companyId, asset);
+    final result = api_instance.companiesCompanyIdAssetsPost(companyId, assetsInput);
     print(result);
 } catch (e) {
     print('Exception when calling AssetsApi->companiesCompanyIdAssetsPost: $e\n');
@@ -523,7 +523,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **companyId** | **String**|  | 
- **asset** | [**Asset**](Asset.md)|  | 
+ **assetsInput** | [**AssetsInput**](AssetsInput.md)|  | 
 
 ### Return type
 

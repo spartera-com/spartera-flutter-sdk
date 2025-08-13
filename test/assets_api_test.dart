@@ -17,9 +17,9 @@ void main() {
   // final instance = AssetsApi();
 
   group('tests for AssetsApi', () {
-    // Process (analyze) an asset. Attempt to process an analytic on a backend warehouse/AI model.
+    // Process (analyze) an asset.
     //
-    //Future<CompaniesCompanyIdAssetsAssetIdGet200Response> analyzeCompanyHandleAssetsAssetSlugGet(String companyHandle, String assetSlug) async
+    //Future<AnalyzeCompanyHandleAssetsAssetSlugGet200Response> analyzeCompanyHandleAssetsAssetSlugGet(String assetSlug, String companyHandle) async
     test('test analyzeCompanyHandleAssetsAssetSlugGet', () async {
       // TODO
     });
@@ -33,7 +33,7 @@ void main() {
 
     // Get single asset by ID
     //
-    //Future<CompaniesCompanyIdAssetsAssetIdGet200Response> companiesCompanyIdAssetsAssetIdGet(String companyId, String assetId) async
+    //Future<AnalyzeCompanyHandleAssetsAssetSlugGet200Response> companiesCompanyIdAssetsAssetIdGet(String companyId, String assetId) async
     test('test companiesCompanyIdAssetsAssetIdGet', () async {
       // TODO
     });
@@ -54,7 +54,7 @@ void main() {
 
     // Update an existing asset by ID
     //
-    //Future<CompaniesCompanyIdAssetsAssetIdPatch200Response> companiesCompanyIdAssetsAssetIdPatch(String companyId, String assetId, Asset asset) async
+    //Future<CompaniesCompanyIdAssetsAssetIdPatch200Response> companiesCompanyIdAssetsAssetIdPatch(String companyId, String assetId, AssetsUpdate assetsUpdate) async
     test('test companiesCompanyIdAssetsAssetIdPatch', () async {
       // TODO
     });
@@ -89,7 +89,7 @@ void main() {
 
     // Create a new asset
     //
-    //Future<CompaniesCompanyIdAssetsPost200Response> companiesCompanyIdAssetsPost(String companyId, Asset asset) async
+    //Future<CompaniesCompanyIdAssetsPost200Response> companiesCompanyIdAssetsPost(String companyId, AssetsInput assetsInput) async
     test('test companiesCompanyIdAssetsPost', () async {
       // TODO
     });

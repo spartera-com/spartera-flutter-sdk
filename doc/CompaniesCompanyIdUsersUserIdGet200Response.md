@@ -9,7 +9,7 @@ import 'package:spartera_api_sdk/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **message** | **String** | Response status message | 
-**data** | [**User**](User.md) |  | 
+**data** | [**Users**](Users.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

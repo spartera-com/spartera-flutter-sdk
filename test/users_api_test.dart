@@ -26,7 +26,7 @@ void main() {
 
     // Create a new user
     //
-    //Future<CompaniesCompanyIdUsersPost200Response> companiesCompanyIdUsersPost(String companyId, User user) async
+    //Future<CompaniesCompanyIdUsersPost200Response> companiesCompanyIdUsersPost(String companyId, UsersInput usersInput) async
     test('test companiesCompanyIdUsersPost', () async {
       // TODO
     });
@@ -47,14 +47,14 @@ void main() {
 
     // Update an existing user by ID
     //
-    //Future<CompaniesCompanyIdUsersUserIdPatch200Response> companiesCompanyIdUsersUserIdPatch(String companyId, String userId, User user) async
+    //Future<CompaniesCompanyIdUsersUserIdPatch200Response> companiesCompanyIdUsersUserIdPatch(String companyId, String userId, UsersUpdate usersUpdate) async
     test('test companiesCompanyIdUsersUserIdPatch', () async {
       // TODO
     });
 
-    // Get current authenticated user's profile information.              Returns:                 JSON response with user profile data from database
+    // Get current authenticated user's profile.
     //
-    //Future<MeGet200Response> meGet() async
+    //Future<CompaniesCompanyIdUsersGet200Response> meGet() async
     test('test meGet', () async {
       // TODO
     });

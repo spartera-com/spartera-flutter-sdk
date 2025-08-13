@@ -22,7 +22,7 @@ void main() {
       // TODO
     });
 
-    // List<Alert> data (default value: const [])
+    // List<Alerts> data (default value: const [])
     test('to test the property `data`', () async {
       // TODO
     });

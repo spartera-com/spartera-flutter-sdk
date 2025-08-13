@@ -13,14 +13,14 @@ Method | HTTP request | Description
 [**companiesCompanyIdAssetsAssetIdPricesAphIdDelete**](AssetPriceHistoryApi.md#companiescompanyidassetsassetidpricesaphiddelete) | **DELETE** /companies/{company_id}/assets/{asset_id}/prices/{aph_id} | Delete single price history record by ID
 [**companiesCompanyIdAssetsAssetIdPricesAphIdGet**](AssetPriceHistoryApi.md#companiescompanyidassetsassetidpricesaphidget) | **GET** /companies/{company_id}/assets/{asset_id}/prices/{aph_id} | Get single price history record by ID
 [**companiesCompanyIdAssetsAssetIdPricesAphIdPatch**](AssetPriceHistoryApi.md#companiescompanyidassetsassetidpricesaphidpatch) | **PATCH** /companies/{company_id}/assets/{asset_id}/prices/{aph_id} | Update an existing price history record by ID
-[**companiesCompanyIdAssetsAssetIdPricesCalculateCreditsPost**](AssetPriceHistoryApi.md#companiescompanyidassetsassetidpricescalculatecreditspost) | **POST** /companies/{company_id}/assets/{asset_id}/prices/calculate_credits | POST /companies/{company_id}/assets/{asset_id}/prices/calculate_credits
+[**companiesCompanyIdAssetsAssetIdPricesCalculateCreditsPost**](AssetPriceHistoryApi.md#companiescompanyidassetsassetidpricescalculatecreditspost) | **POST** /companies/{company_id}/assets/{asset_id}/prices/calculate_credits | Calculate the credit equivalent for a given USD price without saving
 [**companiesCompanyIdAssetsAssetIdPricesDiscountPost**](AssetPriceHistoryApi.md#companiescompanyidassetsassetidpricesdiscountpost) | **POST** /companies/{company_id}/assets/{asset_id}/prices/discount | POST /companies/{company_id}/assets/{asset_id}/prices/discount
 [**companiesCompanyIdAssetsAssetIdPricesGet**](AssetPriceHistoryApi.md#companiescompanyidassetsassetidpricesget) | **GET** /companies/{company_id}/assets/{asset_id}/prices | Get all price history records for a specific asset
 [**companiesCompanyIdAssetsAssetIdPricesPost**](AssetPriceHistoryApi.md#companiescompanyidassetsassetidpricespost) | **POST** /companies/{company_id}/assets/{asset_id}/prices | Create a new price history record for an asset
 
 
 # **companiesCompanyIdAssetsAssetIdPricesActiveGet**
-> CompaniesCompanyIdApiKeysGet200Response companiesCompanyIdAssetsAssetIdPricesActiveGet(companyId, assetId)
+> CompaniesCompanyIdAssetsAssetIdPricesGet200Response companiesCompanyIdAssetsAssetIdPricesActiveGet(companyId, assetId)
 
 Get the currently active price for an asset
 
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
+[**CompaniesCompanyIdAssetsAssetIdPricesGet200Response**](CompaniesCompanyIdAssetsAssetIdPricesGet200Response.md)
 
 ### Authorization
 
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdAssetsAssetIdPricesAphIdDelete**
-> CompaniesCompanyIdApiKeysGet200Response companiesCompanyIdAssetsAssetIdPricesAphIdDelete(companyId, assetId, aphId)
+> CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete200Response companiesCompanyIdAssetsAssetIdPricesAphIdDelete(companyId, assetId, aphId)
 
 Delete single price history record by ID
 
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
+[**CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete200Response**](CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete200Response.md)
 
 ### Authorization
 
@@ -116,7 +116,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdAssetsAssetIdPricesAphIdGet**
-> CompaniesCompanyIdApiKeysGet200Response companiesCompanyIdAssetsAssetIdPricesAphIdGet(companyId, assetId, aphId)
+> CompaniesCompanyIdAssetsAssetIdPricesAphIdGet200Response companiesCompanyIdAssetsAssetIdPricesAphIdGet(companyId, assetId, aphId)
 
 Get single price history record by ID
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
+[**CompaniesCompanyIdAssetsAssetIdPricesAphIdGet200Response**](CompaniesCompanyIdAssetsAssetIdPricesAphIdGet200Response.md)
 
 ### Authorization
 
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdAssetsAssetIdPricesAphIdPatch**
-> CompaniesCompanyIdApiKeysGet200Response companiesCompanyIdAssetsAssetIdPricesAphIdPatch(companyId, assetId, aphId)
+> CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch200Response companiesCompanyIdAssetsAssetIdPricesAphIdPatch(companyId, assetId, aphId, assetPriceHistoryUpdate)
 
 Update an existing price history record by ID
 
@@ -181,9 +181,10 @@ final api_instance = AssetPriceHistoryApi();
 final companyId = companyId_example; // String | 
 final assetId = assetId_example; // String | 
 final aphId = aphId_example; // String | 
+final assetPriceHistoryUpdate = AssetPriceHistoryUpdate(); // AssetPriceHistoryUpdate | 
 
 try {
-    final result = api_instance.companiesCompanyIdAssetsAssetIdPricesAphIdPatch(companyId, assetId, aphId);
+    final result = api_instance.companiesCompanyIdAssetsAssetIdPricesAphIdPatch(companyId, assetId, aphId, assetPriceHistoryUpdate);
     print(result);
 } catch (e) {
     print('Exception when calling AssetPriceHistoryApi->companiesCompanyIdAssetsAssetIdPricesAphIdPatch: $e\n');
@@ -197,10 +198,11 @@ Name | Type | Description  | Notes
  **companyId** | **String**|  | 
  **assetId** | **String**|  | 
  **aphId** | **String**|  | 
+ **assetPriceHistoryUpdate** | [**AssetPriceHistoryUpdate**](AssetPriceHistoryUpdate.md)|  | 
 
 ### Return type
 
-[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
+[**CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch200Response**](CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch200Response.md)
 
 ### Authorization
 
@@ -208,15 +210,15 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdAssetsAssetIdPricesCalculateCreditsPost**
-> CompaniesCompanyIdApiKeysGet200Response companiesCompanyIdAssetsAssetIdPricesCalculateCreditsPost(companyId, assetId)
+> CompaniesCompanyIdAssetsAssetIdPricesPost200Response companiesCompanyIdAssetsAssetIdPricesCalculateCreditsPost(companyId, assetId, assetPriceHistoryInput)
 
-POST /companies/{company_id}/assets/{asset_id}/prices/calculate_credits
+Calculate the credit equivalent for a given USD price without saving
 
 ### Example
 ```dart
@@ -229,9 +231,10 @@ import 'package:spartera_api_sdk/api.dart';
 final api_instance = AssetPriceHistoryApi();
 final companyId = companyId_example; // String | 
 final assetId = assetId_example; // String | 
+final assetPriceHistoryInput = AssetPriceHistoryInput(); // AssetPriceHistoryInput | 
 
 try {
-    final result = api_instance.companiesCompanyIdAssetsAssetIdPricesCalculateCreditsPost(companyId, assetId);
+    final result = api_instance.companiesCompanyIdAssetsAssetIdPricesCalculateCreditsPost(companyId, assetId, assetPriceHistoryInput);
     print(result);
 } catch (e) {
     print('Exception when calling AssetPriceHistoryApi->companiesCompanyIdAssetsAssetIdPricesCalculateCreditsPost: $e\n');
@@ -244,10 +247,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **companyId** | **String**|  | 
  **assetId** | **String**|  | 
+ **assetPriceHistoryInput** | [**AssetPriceHistoryInput**](AssetPriceHistoryInput.md)|  | 
 
 ### Return type
 
-[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
+[**CompaniesCompanyIdAssetsAssetIdPricesPost200Response**](CompaniesCompanyIdAssetsAssetIdPricesPost200Response.md)
 
 ### Authorization
 
@@ -255,13 +259,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdAssetsAssetIdPricesDiscountPost**
-> CompaniesCompanyIdApiKeysGet200Response companiesCompanyIdAssetsAssetIdPricesDiscountPost(companyId, assetId)
+> CompaniesCompanyIdAssetsAssetIdPricesPost200Response companiesCompanyIdAssetsAssetIdPricesDiscountPost(companyId, assetId, assetPriceHistoryInput)
 
 POST /companies/{company_id}/assets/{asset_id}/prices/discount
 
@@ -276,9 +280,10 @@ import 'package:spartera_api_sdk/api.dart';
 final api_instance = AssetPriceHistoryApi();
 final companyId = companyId_example; // String | 
 final assetId = assetId_example; // String | 
+final assetPriceHistoryInput = AssetPriceHistoryInput(); // AssetPriceHistoryInput | 
 
 try {
-    final result = api_instance.companiesCompanyIdAssetsAssetIdPricesDiscountPost(companyId, assetId);
+    final result = api_instance.companiesCompanyIdAssetsAssetIdPricesDiscountPost(companyId, assetId, assetPriceHistoryInput);
     print(result);
 } catch (e) {
     print('Exception when calling AssetPriceHistoryApi->companiesCompanyIdAssetsAssetIdPricesDiscountPost: $e\n');
@@ -291,10 +296,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **companyId** | **String**|  | 
  **assetId** | **String**|  | 
+ **assetPriceHistoryInput** | [**AssetPriceHistoryInput**](AssetPriceHistoryInput.md)|  | 
 
 ### Return type
 
-[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
+[**CompaniesCompanyIdAssetsAssetIdPricesPost200Response**](CompaniesCompanyIdAssetsAssetIdPricesPost200Response.md)
 
 ### Authorization
 
@@ -302,13 +308,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdAssetsAssetIdPricesGet**
-> CompaniesCompanyIdApiKeysGet200Response companiesCompanyIdAssetsAssetIdPricesGet(companyId, assetId)
+> CompaniesCompanyIdAssetsAssetIdPricesGet200Response companiesCompanyIdAssetsAssetIdPricesGet(companyId, assetId)
 
 Get all price history records for a specific asset
 
@@ -341,7 +347,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
+[**CompaniesCompanyIdAssetsAssetIdPricesGet200Response**](CompaniesCompanyIdAssetsAssetIdPricesGet200Response.md)
 
 ### Authorization
 
@@ -355,7 +361,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **companiesCompanyIdAssetsAssetIdPricesPost**
-> CompaniesCompanyIdApiKeysGet200Response companiesCompanyIdAssetsAssetIdPricesPost(companyId, assetId)
+> CompaniesCompanyIdAssetsAssetIdPricesPost200Response companiesCompanyIdAssetsAssetIdPricesPost(companyId, assetId, assetPriceHistoryInput)
 
 Create a new price history record for an asset
 
@@ -370,9 +376,10 @@ import 'package:spartera_api_sdk/api.dart';
 final api_instance = AssetPriceHistoryApi();
 final companyId = companyId_example; // String | 
 final assetId = assetId_example; // String | 
+final assetPriceHistoryInput = AssetPriceHistoryInput(); // AssetPriceHistoryInput | 
 
 try {
-    final result = api_instance.companiesCompanyIdAssetsAssetIdPricesPost(companyId, assetId);
+    final result = api_instance.companiesCompanyIdAssetsAssetIdPricesPost(companyId, assetId, assetPriceHistoryInput);
     print(result);
 } catch (e) {
     print('Exception when calling AssetPriceHistoryApi->companiesCompanyIdAssetsAssetIdPricesPost: $e\n');
@@ -385,10 +392,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **companyId** | **String**|  | 
  **assetId** | **String**|  | 
+ **assetPriceHistoryInput** | [**AssetPriceHistoryInput**](AssetPriceHistoryInput.md)|  | 
 
 ### Return type
 
-[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
+[**CompaniesCompanyIdAssetsAssetIdPricesPost200Response**](CompaniesCompanyIdAssetsAssetIdPricesPost200Response.md)
 
 ### Authorization
 
@@ -396,7 +404,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

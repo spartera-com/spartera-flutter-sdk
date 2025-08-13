@@ -19,56 +19,56 @@ void main() {
   group('tests for AssetPriceHistoryApi', () {
     // Get the currently active price for an asset
     //
-    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdAssetsAssetIdPricesActiveGet(String companyId, String assetId) async
+    //Future<CompaniesCompanyIdAssetsAssetIdPricesGet200Response> companiesCompanyIdAssetsAssetIdPricesActiveGet(String companyId, String assetId) async
     test('test companiesCompanyIdAssetsAssetIdPricesActiveGet', () async {
       // TODO
     });
 
     // Delete single price history record by ID
     //
-    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdAssetsAssetIdPricesAphIdDelete(String companyId, String assetId, String aphId) async
+    //Future<CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete200Response> companiesCompanyIdAssetsAssetIdPricesAphIdDelete(String companyId, String assetId, String aphId) async
     test('test companiesCompanyIdAssetsAssetIdPricesAphIdDelete', () async {
       // TODO
     });
 
     // Get single price history record by ID
     //
-    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdAssetsAssetIdPricesAphIdGet(String companyId, String assetId, String aphId) async
+    //Future<CompaniesCompanyIdAssetsAssetIdPricesAphIdGet200Response> companiesCompanyIdAssetsAssetIdPricesAphIdGet(String companyId, String assetId, String aphId) async
     test('test companiesCompanyIdAssetsAssetIdPricesAphIdGet', () async {
       // TODO
     });
 
     // Update an existing price history record by ID
     //
-    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdAssetsAssetIdPricesAphIdPatch(String companyId, String assetId, String aphId) async
+    //Future<CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch200Response> companiesCompanyIdAssetsAssetIdPricesAphIdPatch(String companyId, String assetId, String aphId, AssetPriceHistoryUpdate assetPriceHistoryUpdate) async
     test('test companiesCompanyIdAssetsAssetIdPricesAphIdPatch', () async {
       // TODO
     });
 
-    // POST /companies/{company_id}/assets/{asset_id}/prices/calculate_credits
+    // Calculate the credit equivalent for a given USD price without saving
     //
-    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdAssetsAssetIdPricesCalculateCreditsPost(String companyId, String assetId) async
+    //Future<CompaniesCompanyIdAssetsAssetIdPricesPost200Response> companiesCompanyIdAssetsAssetIdPricesCalculateCreditsPost(String companyId, String assetId, AssetPriceHistoryInput assetPriceHistoryInput) async
     test('test companiesCompanyIdAssetsAssetIdPricesCalculateCreditsPost', () async {
       // TODO
     });
 
     // POST /companies/{company_id}/assets/{asset_id}/prices/discount
     //
-    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdAssetsAssetIdPricesDiscountPost(String companyId, String assetId) async
+    //Future<CompaniesCompanyIdAssetsAssetIdPricesPost200Response> companiesCompanyIdAssetsAssetIdPricesDiscountPost(String companyId, String assetId, AssetPriceHistoryInput assetPriceHistoryInput) async
     test('test companiesCompanyIdAssetsAssetIdPricesDiscountPost', () async {
       // TODO
     });
 
     // Get all price history records for a specific asset
     //
-    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdAssetsAssetIdPricesGet(String companyId, String assetId) async
+    //Future<CompaniesCompanyIdAssetsAssetIdPricesGet200Response> companiesCompanyIdAssetsAssetIdPricesGet(String companyId, String assetId) async
     test('test companiesCompanyIdAssetsAssetIdPricesGet', () async {
       // TODO
     });
 
     // Create a new price history record for an asset
     //
-    //Future<CompaniesCompanyIdApiKeysGet200Response> companiesCompanyIdAssetsAssetIdPricesPost(String companyId, String assetId) async
+    //Future<CompaniesCompanyIdAssetsAssetIdPricesPost200Response> companiesCompanyIdAssetsAssetIdPricesPost(String companyId, String assetId, AssetPriceHistoryInput assetPriceHistoryInput) async
     test('test companiesCompanyIdAssetsAssetIdPricesPost', () async {
       // TODO
     });
