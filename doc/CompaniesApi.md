@@ -1,8 +1,8 @@
-# openapi.api.CompaniesApi
+# spartera_api_sdk.api.CompaniesApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 ```
 
 All URIs are relative to *https://api.spartera.com*
@@ -28,7 +28,7 @@ Get details of the requestor's own company
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -73,7 +73,7 @@ Get the total number of requests allocated in the company's current subscription
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -128,7 +128,7 @@ Get asset performance analytics.     Query params: start_date, end_date, limit, 
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -183,7 +183,7 @@ Get customer analytics including growth and segmentation.     Query params: star
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -238,7 +238,7 @@ Get comprehensive dashboard analytics for seller dashboard.     Query params: st
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -293,7 +293,7 @@ Get summary metrics (counts only). No date params needed — returns all-time to
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -348,7 +348,7 @@ Get sales over time analytics.     Query params: start_date, end_date, group_by 
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -403,7 +403,7 @@ Get all objects (connections, assets) of a single company
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -458,7 +458,7 @@ Get company request usage data for a specific month.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -513,7 +513,7 @@ Update an existing company by ID
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed

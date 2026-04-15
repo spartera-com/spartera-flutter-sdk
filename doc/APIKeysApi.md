@@ -1,8 +1,8 @@
-# openapi.api.APIKeysApi
+# spartera_api_sdk.api.APIKeysApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 ```
 
 All URIs are relative to *https://api.spartera.com*
@@ -25,7 +25,7 @@ Create single API key.     Returns the actual sk_ key (only time it's exposed) a
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -82,7 +82,7 @@ Explicitly revoke an API key with reason tracking.     This is different from de
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -131,7 +131,7 @@ Delete (deactivate) single API key by api_key_id.     Uses the api_key_id return
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -178,7 +178,7 @@ Get single API key by ID.     Returns masked API key for security (sk_****1234).
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -225,7 +225,7 @@ Get usage statistics for a specific API key.     Returns usage count, last used 
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -272,7 +272,7 @@ Get all API keys for a company.     Returns masked API keys for security (sk_***
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -327,7 +327,7 @@ Update an existing API key by ID.     Can update metadata like name, expiration,
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed

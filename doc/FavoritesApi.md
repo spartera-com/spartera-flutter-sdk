@@ -1,8 +1,8 @@
-# openapi.api.FavoritesApi
+# spartera_api_sdk.api.FavoritesApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 ```
 
 All URIs are relative to *https://api.spartera.com*
@@ -26,7 +26,7 @@ POST /companies/{company_id}/users/{user_id}/favorites
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -75,7 +75,7 @@ Delete single favorite by ID (unfavorite an asset)
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -124,7 +124,7 @@ Get a list of all favorites for a specific user
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -171,7 +171,7 @@ Get single favorite by ID
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -220,7 +220,7 @@ Get all favorites for the specified user in a specific category
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -269,7 +269,7 @@ Check if the specified user has favorited a specific asset
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -318,7 +318,7 @@ Get all favorites for the specified user that don't have a category
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -365,7 +365,7 @@ Update an existing favorite by ID
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed

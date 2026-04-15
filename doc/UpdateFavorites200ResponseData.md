@@ -1,8 +1,8 @@
-# openapi.model.UpdateFavorites200ResponseData
+# spartera_api_sdk.model.UpdateFavorites200ResponseData
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 ```
 
 ## Properties

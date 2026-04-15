@@ -1,8 +1,8 @@
-# openapi.api.AlertsApi
+# spartera_api_sdk.api.AlertsApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 ```
 
 All URIs are relative to *https://api.spartera.com*
@@ -25,7 +25,7 @@ POST /companies/{company_id}/users/{user_id}/alerts
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -74,7 +74,7 @@ Delete single alert by ID
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -123,7 +123,7 @@ Get a list of all alerts for a specific user
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -170,7 +170,7 @@ Get all alerts for a specific asset
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -219,7 +219,7 @@ Get single alert by ID
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -268,7 +268,7 @@ Get all alerts for a specific asset (by user)
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -317,7 +317,7 @@ Update an existing alert by ID
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed

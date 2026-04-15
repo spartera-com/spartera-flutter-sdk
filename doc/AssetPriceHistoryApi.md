@@ -1,8 +1,8 @@
-# openapi.api.AssetPriceHistoryApi
+# spartera_api_sdk.api.AssetPriceHistoryApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 ```
 
 All URIs are relative to *https://api.spartera.com*
@@ -26,7 +26,7 @@ Create a new price history record for an asset
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -75,7 +75,7 @@ Calculate the credit equivalent for a given USD price without saving
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -124,7 +124,7 @@ POST /companies/{company_id}/assets/{asset_id}/prices/discount
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -173,7 +173,7 @@ Delete single price history record by ID
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -222,7 +222,7 @@ Get all price history records for a specific asset
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -269,7 +269,7 @@ Get single price history record by ID
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -318,7 +318,7 @@ Get the currently active price for an asset
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -365,7 +365,7 @@ Update an existing price history record by ID
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed

@@ -1,8 +1,8 @@
-# openapi.model.PostPublicationsUpdate
+# spartera_api_sdk.model.PostPublicationsUpdate
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:spartera_api_sdk/api.dart';
 ```
 
 ## Properties
