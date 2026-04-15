@@ -26,8 +26,11 @@ class Companies {
     this.acceptedEula,
     this.stripeAccountId,
     this.stripeAccountStatus,
+    this.vendorSharePercent,
+    this.partnershipType,
   });
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -36,6 +39,7 @@ class Companies {
   ///
   DateTime? dateCreated;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -44,6 +48,7 @@ class Companies {
   ///
   DateTime? lastUpdated;
 
+  /// Unique identifier.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -52,6 +57,7 @@ class Companies {
   ///
   String? companyId;
 
+  /// References industries.industry_id — Available industry categories for asset classification. Based on US NAISC codes.. See GET /industries for valid values. Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -60,6 +66,7 @@ class Companies {
   ///
   int? industryId;
 
+  /// References countries.country_id — List of countries of the world. See GET /countries for valid values. Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -68,6 +75,7 @@ class Companies {
   ///
   int? countryId;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -76,6 +84,7 @@ class Companies {
   ///
   String? companyName;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -84,13 +93,16 @@ class Companies {
   ///
   String? companyDescription;
 
+  /// Required. Must be unique.
   String companyHandle;
 
+  /// Required. Must be unique.
   String companyDomain;
 
   /// Current balance of credits for this company (buyer)
   int creditsBalance;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -117,6 +129,18 @@ class Companies {
   ///
   String? stripeAccountStatus;
 
+  /// Negotiated vendor revenue share (e.g. 0.85 = 85%). NULL = system default 80%.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? vendorSharePercent;
+
+  /// Partnership type: SELF_MANAGED, CUSTODIAN, or null
+  CompaniesPartnershipTypeEnum? partnershipType;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is Companies &&
     other.dateCreated == dateCreated &&
@@ -131,7 +155,9 @@ class Companies {
     other.creditsBalance == creditsBalance &&
     other.acceptedEula == acceptedEula &&
     other.stripeAccountId == stripeAccountId &&
-    other.stripeAccountStatus == stripeAccountStatus;
+    other.stripeAccountStatus == stripeAccountStatus &&
+    other.vendorSharePercent == vendorSharePercent &&
+    other.partnershipType == partnershipType;
 
   @override
   int get hashCode =>
@@ -148,10 +174,12 @@ class Companies {
     (creditsBalance.hashCode) +
     (acceptedEula == null ? 0 : acceptedEula!.hashCode) +
     (stripeAccountId == null ? 0 : stripeAccountId!.hashCode) +
-    (stripeAccountStatus == null ? 0 : stripeAccountStatus!.hashCode);
+    (stripeAccountStatus == null ? 0 : stripeAccountStatus!.hashCode) +
+    (vendorSharePercent == null ? 0 : vendorSharePercent!.hashCode) +
+    (partnershipType == null ? 0 : partnershipType!.hashCode);
 
   @override
-  String toString() => 'Companies[dateCreated=$dateCreated, lastUpdated=$lastUpdated, companyId=$companyId, industryId=$industryId, countryId=$countryId, companyName=$companyName, companyDescription=$companyDescription, companyHandle=$companyHandle, companyDomain=$companyDomain, creditsBalance=$creditsBalance, acceptedEula=$acceptedEula, stripeAccountId=$stripeAccountId, stripeAccountStatus=$stripeAccountStatus]';
+  String toString() => 'Companies[dateCreated=$dateCreated, lastUpdated=$lastUpdated, companyId=$companyId, industryId=$industryId, countryId=$countryId, companyName=$companyName, companyDescription=$companyDescription, companyHandle=$companyHandle, companyDomain=$companyDomain, creditsBalance=$creditsBalance, acceptedEula=$acceptedEula, stripeAccountId=$stripeAccountId, stripeAccountStatus=$stripeAccountStatus, vendorSharePercent=$vendorSharePercent, partnershipType=$partnershipType]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -208,6 +236,16 @@ class Companies {
     } else {
       json[r'stripe_account_status'] = null;
     }
+    if (this.vendorSharePercent != null) {
+      json[r'vendor_share_percent'] = this.vendorSharePercent;
+    } else {
+      json[r'vendor_share_percent'] = null;
+    }
+    if (this.partnershipType != null) {
+      json[r'partnership_type'] = this.partnershipType;
+    } else {
+      json[r'partnership_type'] = null;
+    }
     return json;
   }
 
@@ -222,10 +260,12 @@ class Companies {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Companies[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Companies[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'company_handle'), 'Required key "Companies[company_handle]" is missing from JSON.');
+        assert(json[r'company_handle'] != null, 'Required key "Companies[company_handle]" has a null value in JSON.');
+        assert(json.containsKey(r'company_domain'), 'Required key "Companies[company_domain]" is missing from JSON.');
+        assert(json[r'company_domain'] != null, 'Required key "Companies[company_domain]" has a null value in JSON.');
+        assert(json.containsKey(r'credits_balance'), 'Required key "Companies[credits_balance]" is missing from JSON.');
+        assert(json[r'credits_balance'] != null, 'Required key "Companies[credits_balance]" has a null value in JSON.');
         return true;
       }());
 
@@ -243,6 +283,8 @@ class Companies {
         acceptedEula: mapValueOfType<bool>(json, r'accepted_eula'),
         stripeAccountId: mapValueOfType<String>(json, r'stripe_account_id'),
         stripeAccountStatus: mapValueOfType<String>(json, r'stripe_account_status'),
+        vendorSharePercent: mapValueOfType<double>(json, r'vendor_share_percent'),
+        partnershipType: CompaniesPartnershipTypeEnum.fromJson(json[r'partnership_type']),
       );
     }
     return null;
@@ -295,4 +337,78 @@ class Companies {
     'credits_balance',
   };
 }
+
+/// Partnership type: SELF_MANAGED, CUSTODIAN, or null
+class CompaniesPartnershipTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const CompaniesPartnershipTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const SELF_MANAGED = CompaniesPartnershipTypeEnum._(r'SELF_MANAGED');
+  static const CUSTODIAN = CompaniesPartnershipTypeEnum._(r'CUSTODIAN');
+
+  /// List of all possible values in this [enum][CompaniesPartnershipTypeEnum].
+  static const values = <CompaniesPartnershipTypeEnum>[
+    SELF_MANAGED,
+    CUSTODIAN,
+  ];
+
+  static CompaniesPartnershipTypeEnum? fromJson(dynamic value) => CompaniesPartnershipTypeEnumTypeTransformer().decode(value);
+
+  static List<CompaniesPartnershipTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CompaniesPartnershipTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = CompaniesPartnershipTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [CompaniesPartnershipTypeEnum] to String,
+/// and [decode] dynamic data back to [CompaniesPartnershipTypeEnum].
+class CompaniesPartnershipTypeEnumTypeTransformer {
+  factory CompaniesPartnershipTypeEnumTypeTransformer() => _instance ??= const CompaniesPartnershipTypeEnumTypeTransformer._();
+
+  const CompaniesPartnershipTypeEnumTypeTransformer._();
+
+  String encode(CompaniesPartnershipTypeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a CompaniesPartnershipTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  CompaniesPartnershipTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'SELF_MANAGED': return CompaniesPartnershipTypeEnum.SELF_MANAGED;
+        case r'CUSTODIAN': return CompaniesPartnershipTypeEnum.CUSTODIAN;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [CompaniesPartnershipTypeEnumTypeTransformer] instance.
+  static CompaniesPartnershipTypeEnumTypeTransformer? _instance;
+}
+
 

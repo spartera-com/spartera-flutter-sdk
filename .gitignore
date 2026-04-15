@@ -1,31 +1,19 @@
-# Files and directories created by pub
+# See https://dart.dev/guides/libraries/private-files
+
 .dart_tool/
 .packages
 build/
+
+# Except for application packages
 pubspec.lock
 
-# Conventional directory for build outputs
-build/
-
-# Directory created by dartdoc
 doc/api/
 
-# IDE
-.vscode/
+# IntelliJ
+*.iml
+*.ipr
+*.iws
 .idea/
-*.swp
-*.swo
 
-# OS
+# Mac
 .DS_Store
-Thumbs.db
-
-# Environment variables
-.env
-.env.local
-
-# Coverage
-coverage/
-
-# Test related
-test/.test_coverage.dart

@@ -16,6 +16,10 @@ class ApiKeysUpdate {
     this.userId,
     this.companyId,
     this.roleId,
+    this.keyType,
+    this.isSystemGenerated,
+    this.mcpDeploymentId,
+    this.endpointId,
     this.name,
     this.expirationDateUtc,
   });
@@ -47,6 +51,42 @@ class ApiKeysUpdate {
   ///
   int? roleId;
 
+  /// Type of API key (analytics, mcp, or endpoint)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? keyType;
+
+  /// True if key was auto-generated for MCP deployment
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? isSystemGenerated;
+
+  /// MCP deployment this key is tied to (NULL for analytics/endpoint keys)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? mcpDeploymentId;
+
+  /// Endpoint this key is tied to (NULL for analytics/mcp keys)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? endpointId;
+
   /// Human-readable name for this API key
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -70,6 +110,10 @@ class ApiKeysUpdate {
     other.userId == userId &&
     other.companyId == companyId &&
     other.roleId == roleId &&
+    other.keyType == keyType &&
+    other.isSystemGenerated == isSystemGenerated &&
+    other.mcpDeploymentId == mcpDeploymentId &&
+    other.endpointId == endpointId &&
     other.name == name &&
     other.expirationDateUtc == expirationDateUtc;
 
@@ -79,11 +123,15 @@ class ApiKeysUpdate {
     (userId == null ? 0 : userId!.hashCode) +
     (companyId == null ? 0 : companyId!.hashCode) +
     (roleId == null ? 0 : roleId!.hashCode) +
+    (keyType == null ? 0 : keyType!.hashCode) +
+    (isSystemGenerated == null ? 0 : isSystemGenerated!.hashCode) +
+    (mcpDeploymentId == null ? 0 : mcpDeploymentId!.hashCode) +
+    (endpointId == null ? 0 : endpointId!.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (expirationDateUtc == null ? 0 : expirationDateUtc!.hashCode);
 
   @override
-  String toString() => 'ApiKeysUpdate[userId=$userId, companyId=$companyId, roleId=$roleId, name=$name, expirationDateUtc=$expirationDateUtc]';
+  String toString() => 'ApiKeysUpdate[userId=$userId, companyId=$companyId, roleId=$roleId, keyType=$keyType, isSystemGenerated=$isSystemGenerated, mcpDeploymentId=$mcpDeploymentId, endpointId=$endpointId, name=$name, expirationDateUtc=$expirationDateUtc]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -101,6 +149,26 @@ class ApiKeysUpdate {
       json[r'role_id'] = this.roleId;
     } else {
       json[r'role_id'] = null;
+    }
+    if (this.keyType != null) {
+      json[r'key_type'] = this.keyType;
+    } else {
+      json[r'key_type'] = null;
+    }
+    if (this.isSystemGenerated != null) {
+      json[r'is_system_generated'] = this.isSystemGenerated;
+    } else {
+      json[r'is_system_generated'] = null;
+    }
+    if (this.mcpDeploymentId != null) {
+      json[r'mcp_deployment_id'] = this.mcpDeploymentId;
+    } else {
+      json[r'mcp_deployment_id'] = null;
+    }
+    if (this.endpointId != null) {
+      json[r'endpoint_id'] = this.endpointId;
+    } else {
+      json[r'endpoint_id'] = null;
     }
     if (this.name != null) {
       json[r'name'] = this.name;
@@ -126,10 +194,6 @@ class ApiKeysUpdate {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ApiKeysUpdate[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ApiKeysUpdate[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
@@ -137,6 +201,10 @@ class ApiKeysUpdate {
         userId: mapValueOfType<String>(json, r'user_id'),
         companyId: mapValueOfType<String>(json, r'company_id'),
         roleId: mapValueOfType<int>(json, r'role_id'),
+        keyType: mapValueOfType<String>(json, r'key_type'),
+        isSystemGenerated: mapValueOfType<bool>(json, r'is_system_generated'),
+        mcpDeploymentId: mapValueOfType<String>(json, r'mcp_deployment_id'),
+        endpointId: mapValueOfType<String>(json, r'endpoint_id'),
         name: mapValueOfType<String>(json, r'name'),
         expirationDateUtc: mapDateTime(json, r'expiration_date_utc', r''),
       );

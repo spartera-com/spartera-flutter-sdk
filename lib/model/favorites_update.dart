@@ -21,6 +21,7 @@ class FavoritesUpdate {
     this.priority,
   });
 
+  /// References assets.asset_id — A published analytics asset — a calculation or visualization built on a data connection. See GET /assets for valid values. Required.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -29,6 +30,7 @@ class FavoritesUpdate {
   ///
   String? assetId;
 
+  /// References users.user_id — An individual user account within a company. See GET /users for valid values. Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -37,6 +39,7 @@ class FavoritesUpdate {
   ///
   String? userId;
 
+  /// References companies.company_id — A Spartera seller or buyer company account. See GET /companies for valid values. Required.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -140,10 +143,6 @@ class FavoritesUpdate {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "FavoritesUpdate[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "FavoritesUpdate[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 

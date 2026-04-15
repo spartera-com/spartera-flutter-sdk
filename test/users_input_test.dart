@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:spartera_api_sdk/api.dart';
+import 'package:openapi/api.dart';
 import 'package:test/test.dart';
 
 // tests for UsersInput
@@ -16,29 +16,45 @@ void main() {
   // final instance = UsersInput();
 
   group('test UsersInput', () {
+    // References companies.company_id — A Spartera seller or buyer company account. See GET /companies for valid values. Required.
     // String companyId
     test('to test the property `companyId`', () async {
       // TODO
     });
 
+    // User's role for RBAC - single source of truth
+    // int roleId
+    test('to test the property `roleId`', () async {
+      // TODO
+    });
+
+    // User's job function/title
     // int functionId
     test('to test the property `functionId`', () async {
       // TODO
     });
 
-    // Enum type: StatusCodes
+    // Required. One of: ACTIVE, PENDING, INACTIVE, BANNED.
     // String status
     test('to test the property `status`', () async {
       // TODO
     });
 
+    // Optional. Must be unique.
     // String emailAddress
     test('to test the property `emailAddress`', () async {
       // TODO
     });
 
+    // Optional.
     // String timezone
     test('to test the property `timezone`', () async {
+      // TODO
+    });
+
+    // Whether user has opted out of marketing communications. Default false = opted in per ToS.
+    // bool marketingOptOut
+    test('to test the property `marketingOptOut`', () async {
       // TODO
     });
 

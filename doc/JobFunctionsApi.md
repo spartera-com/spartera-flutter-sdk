@@ -1,39 +1,39 @@
-# spartera_api_sdk.api.JobFunctionsApi
+# openapi.api.JobFunctionsApi
 
 ## Load the API package
 ```dart
-import 'package:spartera_api_sdk/api.dart';
+import 'package:openapi/api.dart';
 ```
 
 All URIs are relative to *https://api.spartera.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**jobFunctionsFunctionIdGet**](JobFunctionsApi.md#jobfunctionsfunctionidget) | **GET** /job-functions/{function_id} | Get single job function by ID
-[**jobFunctionsGet**](JobFunctionsApi.md#jobfunctionsget) | **GET** /job-functions | Get a list of all job functions
+[**getJobFunctionsById**](JobFunctionsApi.md#getjobfunctionsbyid) | **GET** /job-functions/{function_id} | Get single job function by ID
+[**listJobFunctions**](JobFunctionsApi.md#listjobfunctions) | **GET** /job-functions | Get a list of all job functions
 
 
-# **jobFunctionsFunctionIdGet**
-> JobFunctionsFunctionIdGet200Response jobFunctionsFunctionIdGet(functionId)
+# **getJobFunctionsById**
+> GetJobFunctionsById200Response getJobFunctionsById(functionId)
 
 Get single job function by ID
 
 ### Example
 ```dart
-import 'package:spartera_api_sdk/api.dart';
+import 'package:openapi/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = JobFunctionsApi();
-final functionId = functionId_example; // String | 
+final functionId = functionId_example; // String | Unique identifier for the Function
 
 try {
-    final result = api_instance.jobFunctionsFunctionIdGet(functionId);
+    final result = api_instance.getJobFunctionsById(functionId);
     print(result);
 } catch (e) {
-    print('Exception when calling JobFunctionsApi->jobFunctionsFunctionIdGet: $e\n');
+    print('Exception when calling JobFunctionsApi->getJobFunctionsById: $e\n');
 }
 ```
 
@@ -41,11 +41,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **functionId** | **String**|  | 
+ **functionId** | **String**| Unique identifier for the Function | 
 
 ### Return type
 
-[**JobFunctionsFunctionIdGet200Response**](JobFunctionsFunctionIdGet200Response.md)
+[**GetJobFunctionsById200Response**](GetJobFunctionsById200Response.md)
 
 ### Authorization
 
@@ -58,35 +58,47 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **jobFunctionsGet**
-> JobFunctionsGet200Response jobFunctionsGet()
+# **listJobFunctions**
+> ListJobFunctions200Response listJobFunctions(page, limit, sortBy, sortOrder, search)
 
 Get a list of all job functions
 
 ### Example
 ```dart
-import 'package:spartera_api_sdk/api.dart';
+import 'package:openapi/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = JobFunctionsApi();
+final page = 56; // int | Page number for pagination
+final limit = 56; // int | Number of items per page
+final sortBy = sortBy_example; // String | Field to sort by
+final sortOrder = sortOrder_example; // String | Sort order (ascending or descending)
+final search = search_example; // String | Search term to filter results
 
 try {
-    final result = api_instance.jobFunctionsGet();
+    final result = api_instance.listJobFunctions(page, limit, sortBy, sortOrder, search);
     print(result);
 } catch (e) {
-    print('Exception when calling JobFunctionsApi->jobFunctionsGet: $e\n');
+    print('Exception when calling JobFunctionsApi->listJobFunctions: $e\n');
 }
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| Page number for pagination | [optional] [default to 1]
+ **limit** | **int**| Number of items per page | [optional] [default to 20]
+ **sortBy** | **String**| Field to sort by | [optional] 
+ **sortOrder** | **String**| Sort order (ascending or descending) | [optional] [default to 'desc']
+ **search** | **String**| Search term to filter results | [optional] 
 
 ### Return type
 
-[**JobFunctionsGet200Response**](JobFunctionsGet200Response.md)
+[**ListJobFunctions200Response**](ListJobFunctions200Response.md)
 
 ### Authorization
 

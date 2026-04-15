@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:spartera_api_sdk/api.dart';
+import 'package:openapi/api.dart';
 import 'package:test/test.dart';
 
 
@@ -17,52 +17,52 @@ void main() {
   // final instance = ConnectionsApi();
 
   group('tests for ConnectionsApi', () {
+    // Create a new connection by ID
+    //
+    //Future<CreateConnections200Response> createConnections(String companyId, ConnectionsInput connectionsInput, { int page, int limit, String sortBy, String sortOrder, String search }) async
+    test('test createConnections', () async {
+      // TODO
+    });
+
     // Delete single connection by ID
     //
-    //Future<CompaniesCompanyIdConnectionsConnectionIdDelete200Response> companiesCompanyIdConnectionsConnectionIdDelete(String companyId, String connectionId) async
-    test('test companiesCompanyIdConnectionsConnectionIdDelete', () async {
+    //Future<DeleteConnections200Response> deleteConnections(String companyId, String connectionId) async
+    test('test deleteConnections', () async {
       // TODO
     });
 
     // Get single connection by ID
     //
-    //Future<CompaniesCompanyIdConnectionsConnectionIdGet200Response> companiesCompanyIdConnectionsConnectionIdGet(String companyId, String connectionId) async
-    test('test companiesCompanyIdConnectionsConnectionIdGet', () async {
-      // TODO
-    });
-
-    // Retrieve the information schema for the specified connection
-    //
-    //Future<CompaniesCompanyIdConnectionsGet200Response> companiesCompanyIdConnectionsConnectionIdInfoschemaGet(String companyId, String connectionId) async
-    test('test companiesCompanyIdConnectionsConnectionIdInfoschemaGet', () async {
-      // TODO
-    });
-
-    // Update an existing connection by ID
-    //
-    //Future<CompaniesCompanyIdConnectionsConnectionIdPatch200Response> companiesCompanyIdConnectionsConnectionIdPatch(String companyId, String connectionId, ConnectionsUpdate connectionsUpdate) async
-    test('test companiesCompanyIdConnectionsConnectionIdPatch', () async {
+    //Future<GetConnectionsById200Response> getConnectionsById(String companyId, String connectionId) async
+    test('test getConnectionsById', () async {
       // TODO
     });
 
     // Test the specified connection
     //
-    //Future<CompaniesCompanyIdConnectionsGet200Response> companiesCompanyIdConnectionsConnectionIdTestGet(String companyId, String connectionId) async
-    test('test companiesCompanyIdConnectionsConnectionIdTestGet', () async {
+    //Future<GetConnectionsById200Response> getConnectionsById2(String companyId, String connectionId) async
+    test('test getConnectionsById2', () async {
+      // TODO
+    });
+
+    // Retrieve the information schema for the specified connection
+    //
+    //Future<GetConnectionsById200Response> getConnectionsByIdInfoschema(String companyId, String connectionId) async
+    test('test getConnectionsByIdInfoschema', () async {
       // TODO
     });
 
     // Get all connections for a specific company
     //
-    //Future<CompaniesCompanyIdConnectionsGet200Response> companiesCompanyIdConnectionsGet(String companyId) async
-    test('test companiesCompanyIdConnectionsGet', () async {
+    //Future<ListConnections200Response> listConnections(String companyId, { int page, int limit, String sortBy, String sortOrder, String search }) async
+    test('test listConnections', () async {
       // TODO
     });
 
-    // Create a new connection by ID
+    // Update an existing connection by ID
     //
-    //Future<CompaniesCompanyIdConnectionsPost200Response> companiesCompanyIdConnectionsPost(String companyId, ConnectionsInput connectionsInput) async
-    test('test companiesCompanyIdConnectionsPost', () async {
+    //Future<UpdateConnections200Response> updateConnections(String companyId, String connectionId, ConnectionsUpdate connectionsUpdate) async
+    test('test updateConnections', () async {
       // TODO
     });
 

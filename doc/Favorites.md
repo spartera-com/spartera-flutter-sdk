@@ -1,19 +1,19 @@
-# spartera_api_sdk.model.Favorites
+# openapi.model.Favorites
 
 ## Load the model package
 ```dart
-import 'package:spartera_api_sdk/api.dart';
+import 'package:openapi/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dateCreated** | [**DateTime**](DateTime.md) |  | [optional] 
-**lastUpdated** | [**DateTime**](DateTime.md) |  | [optional] 
-**favoriteId** | **int** |  | [optional] 
-**assetId** | **String** |  | 
-**userId** | **String** |  | [optional] 
-**companyId** | **String** |  | 
+**dateCreated** | [**DateTime**](DateTime.md) | Optional. | [optional] 
+**lastUpdated** | [**DateTime**](DateTime.md) | Optional. | [optional] 
+**favoriteId** | **int** | Auto-generated unique identifier. | [optional] 
+**assetId** | **String** | References assets.asset_id — A published analytics asset — a calculation or visualization built on a data connection. See GET /assets for valid values. Required. | 
+**userId** | **String** | References users.user_id — An individual user account within a company. See GET /users for valid values. Optional. | [optional] 
+**companyId** | **String** | References companies.company_id — A Spartera seller or buyer company account. See GET /companies for valid values. Required. | 
 **notes** | **String** | Optional user notes about this favorite | [optional] 
 **category** | **String** | Optional category for organizing favorites (e.g., 'Work', 'Research') | [optional] 
 **priority** | **int** | User-defined priority for sorting (higher = more important) | 

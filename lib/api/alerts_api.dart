@@ -16,6 +16,72 @@ class AlertsApi {
 
   final ApiClient apiClient;
 
+  /// POST /companies/{company_id}/users/{user_id}/alerts
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] companyId (required):
+  ///   Unique identifier for the Company
+  ///
+  /// * [String] userId (required):
+  ///   Unique identifier for the User
+  ///
+  /// * [AlertsInput] alertsInput (required):
+  Future<Response> createAlertsWithHttpInfo(String companyId, String userId, AlertsInput alertsInput,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/companies/{company_id}/users/{user_id}/alerts'
+      .replaceAll('{company_id}', companyId)
+      .replaceAll('{user_id}', userId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = alertsInput;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// POST /companies/{company_id}/users/{user_id}/alerts
+  ///
+  /// Parameters:
+  ///
+  /// * [String] companyId (required):
+  ///   Unique identifier for the Company
+  ///
+  /// * [String] userId (required):
+  ///   Unique identifier for the User
+  ///
+  /// * [AlertsInput] alertsInput (required):
+  Future<CreateAlerts200Response?> createAlerts(String companyId, String userId, AlertsInput alertsInput,) async {
+    final response = await createAlertsWithHttpInfo(companyId, userId, alertsInput,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CreateAlerts200Response',) as CreateAlerts200Response;
+    
+    }
+    return null;
+  }
+
   /// Delete single alert by ID
   ///
   /// Note: This method returns the HTTP [Response].
@@ -23,11 +89,14 @@ class AlertsApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] userId (required):
+  ///   Unique identifier for the User
   ///
   /// * [String] alertId (required):
-  Future<Response> companiesCompanyIdUsersUserIdAlertsAlertIdDeleteWithHttpInfo(String companyId, String userId, String alertId,) async {
+  ///   Unique identifier for the Alert
+  Future<Response> deleteAlertsWithHttpInfo(String companyId, String userId, String alertId,) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/users/{user_id}/alerts/{alert_id}'
       .replaceAll('{company_id}', companyId)
@@ -60,12 +129,15 @@ class AlertsApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] userId (required):
+  ///   Unique identifier for the User
   ///
   /// * [String] alertId (required):
-  Future<CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200Response?> companiesCompanyIdUsersUserIdAlertsAlertIdDelete(String companyId, String userId, String alertId,) async {
-    final response = await companiesCompanyIdUsersUserIdAlertsAlertIdDeleteWithHttpInfo(companyId, userId, alertId,);
+  ///   Unique identifier for the Alert
+  Future<DeleteAlerts200Response?> deleteAlerts(String companyId, String userId, String alertId,) async {
+    final response = await deleteAlertsWithHttpInfo(companyId, userId, alertId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -73,29 +145,28 @@ class AlertsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200Response',) as CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DeleteAlerts200Response',) as DeleteAlerts200Response;
     
     }
     return null;
   }
 
-  /// Get single alert by ID
+  /// Get a list of all alerts for a specific user
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] userId (required):
-  ///
-  /// * [String] alertId (required):
-  Future<Response> companiesCompanyIdUsersUserIdAlertsAlertIdGetWithHttpInfo(String companyId, String userId, String alertId,) async {
+  ///   Unique identifier for the User
+  Future<Response> getAlertsByIdWithHttpInfo(String companyId, String userId,) async {
     // ignore: prefer_const_declarations
-    final path = r'/companies/{company_id}/users/{user_id}/alerts/{alert_id}'
+    final path = r'/companies/{company_id}/users/{user_id}/alerts'
       .replaceAll('{company_id}', companyId)
-      .replaceAll('{user_id}', userId)
-      .replaceAll('{alert_id}', alertId);
+      .replaceAll('{user_id}', userId);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -118,17 +189,17 @@ class AlertsApi {
     );
   }
 
-  /// Get single alert by ID
+  /// Get a list of all alerts for a specific user
   ///
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] userId (required):
-  ///
-  /// * [String] alertId (required):
-  Future<CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response?> companiesCompanyIdUsersUserIdAlertsAlertIdGet(String companyId, String userId, String alertId,) async {
-    final response = await companiesCompanyIdUsersUserIdAlertsAlertIdGetWithHttpInfo(companyId, userId, alertId,);
+  ///   Unique identifier for the User
+  Future<GetAlertsById200Response?> getAlertsById(String companyId, String userId,) async {
+    final response = await getAlertsByIdWithHttpInfo(companyId, userId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -136,74 +207,7 @@ class AlertsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response',) as CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response;
-    
-    }
-    return null;
-  }
-
-  /// Update an existing alert by ID
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] companyId (required):
-  ///
-  /// * [String] userId (required):
-  ///
-  /// * [String] alertId (required):
-  ///
-  /// * [AlertsUpdate] alertsUpdate (required):
-  Future<Response> companiesCompanyIdUsersUserIdAlertsAlertIdPatchWithHttpInfo(String companyId, String userId, String alertId, AlertsUpdate alertsUpdate,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/companies/{company_id}/users/{user_id}/alerts/{alert_id}'
-      .replaceAll('{company_id}', companyId)
-      .replaceAll('{user_id}', userId)
-      .replaceAll('{alert_id}', alertId);
-
-    // ignore: prefer_final_locals
-    Object? postBody = alertsUpdate;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'PATCH',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Update an existing alert by ID
-  ///
-  /// Parameters:
-  ///
-  /// * [String] companyId (required):
-  ///
-  /// * [String] userId (required):
-  ///
-  /// * [String] alertId (required):
-  ///
-  /// * [AlertsUpdate] alertsUpdate (required):
-  Future<CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response?> companiesCompanyIdUsersUserIdAlertsAlertIdPatch(String companyId, String userId, String alertId, AlertsUpdate alertsUpdate,) async {
-    final response = await companiesCompanyIdUsersUserIdAlertsAlertIdPatchWithHttpInfo(companyId, userId, alertId, alertsUpdate,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response',) as CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GetAlertsById200Response',) as GetAlertsById200Response;
     
     }
     return null;
@@ -216,11 +220,14 @@ class AlertsApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] userId (required):
+  ///   Unique identifier for the User
   ///
   /// * [String] assetId (required):
-  Future<Response> companiesCompanyIdUsersUserIdAlertsAssetAssetIdAllGetWithHttpInfo(String companyId, String userId, String assetId,) async {
+  ///   Unique identifier for the Asset
+  Future<Response> getAlertsByIdAssetAllWithHttpInfo(String companyId, String userId, String assetId,) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/users/{user_id}/alerts/asset/{asset_id}/all'
       .replaceAll('{company_id}', companyId)
@@ -253,12 +260,15 @@ class AlertsApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] userId (required):
+  ///   Unique identifier for the User
   ///
   /// * [String] assetId (required):
-  Future<CompaniesCompanyIdUsersUserIdAlertsGet200Response?> companiesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet(String companyId, String userId, String assetId,) async {
-    final response = await companiesCompanyIdUsersUserIdAlertsAssetAssetIdAllGetWithHttpInfo(companyId, userId, assetId,);
+  ///   Unique identifier for the Asset
+  Future<GetAlertsById200Response?> getAlertsByIdAssetAll(String companyId, String userId, String assetId,) async {
+    final response = await getAlertsByIdAssetAllWithHttpInfo(companyId, userId, assetId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -266,7 +276,76 @@ class AlertsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdUsersUserIdAlertsGet200Response',) as CompaniesCompanyIdUsersUserIdAlertsGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GetAlertsById200Response',) as GetAlertsById200Response;
+    
+    }
+    return null;
+  }
+
+  /// Get single alert by ID
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] companyId (required):
+  ///   Unique identifier for the Company
+  ///
+  /// * [String] userId (required):
+  ///   Unique identifier for the User
+  ///
+  /// * [String] alertId (required):
+  ///   Unique identifier for the Alert
+  Future<Response> getAlertsByIdUsersWithHttpInfo(String companyId, String userId, String alertId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/companies/{company_id}/users/{user_id}/alerts/{alert_id}'
+      .replaceAll('{company_id}', companyId)
+      .replaceAll('{user_id}', userId)
+      .replaceAll('{alert_id}', alertId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Get single alert by ID
+  ///
+  /// Parameters:
+  ///
+  /// * [String] companyId (required):
+  ///   Unique identifier for the Company
+  ///
+  /// * [String] userId (required):
+  ///   Unique identifier for the User
+  ///
+  /// * [String] alertId (required):
+  ///   Unique identifier for the Alert
+  Future<GetAlertsById200Response?> getAlertsByIdUsers(String companyId, String userId, String alertId,) async {
+    final response = await getAlertsByIdUsersWithHttpInfo(companyId, userId, alertId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GetAlertsById200Response',) as GetAlertsById200Response;
     
     }
     return null;
@@ -279,11 +358,14 @@ class AlertsApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] userId (required):
+  ///   Unique identifier for the User
   ///
   /// * [String] assetId (required):
-  Future<Response> companiesCompanyIdUsersUserIdAlertsAssetAssetIdGetWithHttpInfo(String companyId, String userId, String assetId,) async {
+  ///   Unique identifier for the Asset
+  Future<Response> getAlertsByIdUsersAssetWithHttpInfo(String companyId, String userId, String assetId,) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/users/{user_id}/alerts/asset/{asset_id}'
       .replaceAll('{company_id}', companyId)
@@ -316,12 +398,15 @@ class AlertsApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] userId (required):
+  ///   Unique identifier for the User
   ///
   /// * [String] assetId (required):
-  Future<CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response?> companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet(String companyId, String userId, String assetId,) async {
-    final response = await companiesCompanyIdUsersUserIdAlertsAssetAssetIdGetWithHttpInfo(companyId, userId, assetId,);
+  ///   Unique identifier for the Asset
+  Future<GetAlertsById200Response?> getAlertsByIdUsersAsset(String companyId, String userId, String assetId,) async {
+    final response = await getAlertsByIdUsersAssetWithHttpInfo(companyId, userId, assetId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -329,89 +414,37 @@ class AlertsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response',) as CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GetAlertsById200Response',) as GetAlertsById200Response;
     
     }
     return null;
   }
 
-  /// Get a list of all alerts for a specific user
+  /// Update an existing alert by ID
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] userId (required):
-  Future<Response> companiesCompanyIdUsersUserIdAlertsGetWithHttpInfo(String companyId, String userId,) async {
+  ///   Unique identifier for the User
+  ///
+  /// * [String] alertId (required):
+  ///   Unique identifier for the Alert
+  ///
+  /// * [AlertsUpdate] alertsUpdate (required):
+  Future<Response> updateAlertsWithHttpInfo(String companyId, String userId, String alertId, AlertsUpdate alertsUpdate,) async {
     // ignore: prefer_const_declarations
-    final path = r'/companies/{company_id}/users/{user_id}/alerts'
+    final path = r'/companies/{company_id}/users/{user_id}/alerts/{alert_id}'
       .replaceAll('{company_id}', companyId)
-      .replaceAll('{user_id}', userId);
+      .replaceAll('{user_id}', userId)
+      .replaceAll('{alert_id}', alertId);
 
     // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Get a list of all alerts for a specific user
-  ///
-  /// Parameters:
-  ///
-  /// * [String] companyId (required):
-  ///
-  /// * [String] userId (required):
-  Future<CompaniesCompanyIdUsersUserIdAlertsGet200Response?> companiesCompanyIdUsersUserIdAlertsGet(String companyId, String userId,) async {
-    final response = await companiesCompanyIdUsersUserIdAlertsGetWithHttpInfo(companyId, userId,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdUsersUserIdAlertsGet200Response',) as CompaniesCompanyIdUsersUserIdAlertsGet200Response;
-    
-    }
-    return null;
-  }
-
-  /// POST /companies/{company_id}/users/{user_id}/alerts
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] companyId (required):
-  ///
-  /// * [String] userId (required):
-  ///
-  /// * [AlertsInput] alertsInput (required):
-  Future<Response> companiesCompanyIdUsersUserIdAlertsPostWithHttpInfo(String companyId, String userId, AlertsInput alertsInput,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/companies/{company_id}/users/{user_id}/alerts'
-      .replaceAll('{company_id}', companyId)
-      .replaceAll('{user_id}', userId);
-
-    // ignore: prefer_final_locals
-    Object? postBody = alertsInput;
+    Object? postBody = alertsUpdate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -422,7 +455,7 @@ class AlertsApi {
 
     return apiClient.invokeAPI(
       path,
-      'POST',
+      'PATCH',
       queryParams,
       postBody,
       headerParams,
@@ -431,17 +464,22 @@ class AlertsApi {
     );
   }
 
-  /// POST /companies/{company_id}/users/{user_id}/alerts
+  /// Update an existing alert by ID
   ///
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] userId (required):
+  ///   Unique identifier for the User
   ///
-  /// * [AlertsInput] alertsInput (required):
-  Future<CompaniesCompanyIdUsersUserIdAlertsPost200Response?> companiesCompanyIdUsersUserIdAlertsPost(String companyId, String userId, AlertsInput alertsInput,) async {
-    final response = await companiesCompanyIdUsersUserIdAlertsPostWithHttpInfo(companyId, userId, alertsInput,);
+  /// * [String] alertId (required):
+  ///   Unique identifier for the Alert
+  ///
+  /// * [AlertsUpdate] alertsUpdate (required):
+  Future<UpdateAlerts200Response?> updateAlerts(String companyId, String userId, String alertId, AlertsUpdate alertsUpdate,) async {
+    final response = await updateAlertsWithHttpInfo(companyId, userId, alertId, alertsUpdate,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -449,7 +487,7 @@ class AlertsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdUsersUserIdAlertsPost200Response',) as CompaniesCompanyIdUsersUserIdAlertsPost200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UpdateAlerts200Response',) as UpdateAlerts200Response;
     
     }
     return null;

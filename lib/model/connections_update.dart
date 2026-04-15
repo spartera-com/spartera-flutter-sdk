@@ -23,6 +23,7 @@ class ConnectionsUpdate {
     this.verifiedUsageAbility,
   });
 
+  /// References users.user_id — An individual user account within a company. See GET /users for valid values. Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -31,6 +32,7 @@ class ConnectionsUpdate {
   ///
   String? userId;
 
+  /// References storage_engines.engine_id — Fact table of all the different storage engines we support. See GET /storage_engines for valid values. Required.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -39,6 +41,7 @@ class ConnectionsUpdate {
   ///
   int? engineId;
 
+  /// References companies.company_id — A Spartera seller or buyer company account. See GET /companies for valid values. Required.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -47,9 +50,10 @@ class ConnectionsUpdate {
   ///
   String? companyId;
 
-  /// Enum type: CredentialType
+  /// Optional. One of: SERVICE_ACCOUNT, USERNAME_PASSWORD, API_KEY, SERVICE_IDENTITY, ACCESS_KEY, … (8 total).
   ConnectionsUpdateCredentialTypeEnum? credentialType;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -58,6 +62,7 @@ class ConnectionsUpdate {
   ///
   String? name;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -66,6 +71,7 @@ class ConnectionsUpdate {
   ///
   String? description;
 
+  /// Domain of the external API provider (e.g., 'api.weather.com')
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -74,6 +80,7 @@ class ConnectionsUpdate {
   ///
   String? providerDomain;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -164,10 +171,6 @@ class ConnectionsUpdate {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ConnectionsUpdate[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ConnectionsUpdate[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
@@ -230,7 +233,7 @@ class ConnectionsUpdate {
   };
 }
 
-/// Enum type: CredentialType
+/// Optional. One of: SERVICE_ACCOUNT, USERNAME_PASSWORD, API_KEY, SERVICE_IDENTITY, ACCESS_KEY, … (8 total).
 class ConnectionsUpdateCredentialTypeEnum {
   /// Instantiate a new enum with the provided [value].
   const ConnectionsUpdateCredentialTypeEnum._(this.value);

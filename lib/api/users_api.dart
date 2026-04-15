@@ -16,59 +16,6 @@ class UsersApi {
 
   final ApiClient apiClient;
 
-  /// Get a list of all users in a company
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] companyId (required):
-  Future<Response> companiesCompanyIdUsersGetWithHttpInfo(String companyId,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/companies/{company_id}/users'
-      .replaceAll('{company_id}', companyId);
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Get a list of all users in a company
-  ///
-  /// Parameters:
-  ///
-  /// * [String] companyId (required):
-  Future<CompaniesCompanyIdUsersGet200Response?> companiesCompanyIdUsersGet(String companyId,) async {
-    final response = await companiesCompanyIdUsersGetWithHttpInfo(companyId,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdUsersGet200Response',) as CompaniesCompanyIdUsersGet200Response;
-    
-    }
-    return null;
-  }
-
   /// Create a new user
   ///
   /// Note: This method returns the HTTP [Response].
@@ -76,9 +23,25 @@ class UsersApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [UsersInput] usersInput (required):
-  Future<Response> companiesCompanyIdUsersPostWithHttpInfo(String companyId, UsersInput usersInput,) async {
+  ///
+  /// * [int] page:
+  ///   Page number for pagination
+  ///
+  /// * [int] limit:
+  ///   Number of items per page
+  ///
+  /// * [String] sortBy:
+  ///   Field to sort by
+  ///
+  /// * [String] sortOrder:
+  ///   Sort order (ascending or descending)
+  ///
+  /// * [String] search:
+  ///   Search term to filter results
+  Future<Response> createUsersWithHttpInfo(String companyId, UsersInput usersInput, { int? page, int? limit, String? sortBy, String? sortOrder, String? search, }) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/users'
       .replaceAll('{company_id}', companyId);
@@ -89,6 +52,22 @@ class UsersApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
+
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+    if (sortBy != null) {
+      queryParams.addAll(_queryParams('', 'sort_by', sortBy));
+    }
+    if (sortOrder != null) {
+      queryParams.addAll(_queryParams('', 'sort_order', sortOrder));
+    }
+    if (search != null) {
+      queryParams.addAll(_queryParams('', 'search', search));
+    }
 
     const contentTypes = <String>['application/json'];
 
@@ -109,10 +88,26 @@ class UsersApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [UsersInput] usersInput (required):
-  Future<CompaniesCompanyIdUsersPost200Response?> companiesCompanyIdUsersPost(String companyId, UsersInput usersInput,) async {
-    final response = await companiesCompanyIdUsersPostWithHttpInfo(companyId, usersInput,);
+  ///
+  /// * [int] page:
+  ///   Page number for pagination
+  ///
+  /// * [int] limit:
+  ///   Number of items per page
+  ///
+  /// * [String] sortBy:
+  ///   Field to sort by
+  ///
+  /// * [String] sortOrder:
+  ///   Sort order (ascending or descending)
+  ///
+  /// * [String] search:
+  ///   Search term to filter results
+  Future<CreateUsers200Response?> createUsers(String companyId, UsersInput usersInput, { int? page, int? limit, String? sortBy, String? sortOrder, String? search, }) async {
+    final response = await createUsersWithHttpInfo(companyId, usersInput,  page: page, limit: limit, sortBy: sortBy, sortOrder: sortOrder, search: search, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -120,7 +115,217 @@ class UsersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdUsersPost200Response',) as CompaniesCompanyIdUsersPost200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CreateUsers200Response',) as CreateUsers200Response;
+    
+    }
+    return null;
+  }
+
+  /// POST /companies/{company_id}/users/google-oauth
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] companyId (required):
+  ///   Unique identifier for the Company
+  ///
+  /// * [UsersInput] usersInput (required):
+  ///
+  /// * [int] page:
+  ///   Page number for pagination
+  ///
+  /// * [int] limit:
+  ///   Number of items per page
+  ///
+  /// * [String] sortBy:
+  ///   Field to sort by
+  ///
+  /// * [String] sortOrder:
+  ///   Sort order (ascending or descending)
+  ///
+  /// * [String] search:
+  ///   Search term to filter results
+  Future<Response> createUsersGoogleOauthWithHttpInfo(String companyId, UsersInput usersInput, { int? page, int? limit, String? sortBy, String? sortOrder, String? search, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/companies/{company_id}/users/google-oauth'
+      .replaceAll('{company_id}', companyId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = usersInput;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+    if (sortBy != null) {
+      queryParams.addAll(_queryParams('', 'sort_by', sortBy));
+    }
+    if (sortOrder != null) {
+      queryParams.addAll(_queryParams('', 'sort_order', sortOrder));
+    }
+    if (search != null) {
+      queryParams.addAll(_queryParams('', 'search', search));
+    }
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// POST /companies/{company_id}/users/google-oauth
+  ///
+  /// Parameters:
+  ///
+  /// * [String] companyId (required):
+  ///   Unique identifier for the Company
+  ///
+  /// * [UsersInput] usersInput (required):
+  ///
+  /// * [int] page:
+  ///   Page number for pagination
+  ///
+  /// * [int] limit:
+  ///   Number of items per page
+  ///
+  /// * [String] sortBy:
+  ///   Field to sort by
+  ///
+  /// * [String] sortOrder:
+  ///   Sort order (ascending or descending)
+  ///
+  /// * [String] search:
+  ///   Search term to filter results
+  Future<CreateUsers200Response?> createUsersGoogleOauth(String companyId, UsersInput usersInput, { int? page, int? limit, String? sortBy, String? sortOrder, String? search, }) async {
+    final response = await createUsersGoogleOauthWithHttpInfo(companyId, usersInput,  page: page, limit: limit, sortBy: sortBy, sortOrder: sortOrder, search: search, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CreateUsers200Response',) as CreateUsers200Response;
+    
+    }
+    return null;
+  }
+
+  /// Logout current user by revoking their sessions
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] companyId (required):
+  ///   Unique identifier for the Company
+  ///
+  /// * [UsersInput] usersInput (required):
+  ///
+  /// * [int] page:
+  ///   Page number for pagination
+  ///
+  /// * [int] limit:
+  ///   Number of items per page
+  ///
+  /// * [String] sortBy:
+  ///   Field to sort by
+  ///
+  /// * [String] sortOrder:
+  ///   Sort order (ascending or descending)
+  ///
+  /// * [String] search:
+  ///   Search term to filter results
+  Future<Response> createUsersLogoutWithHttpInfo(String companyId, UsersInput usersInput, { int? page, int? limit, String? sortBy, String? sortOrder, String? search, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/companies/{company_id}/users/logout'
+      .replaceAll('{company_id}', companyId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = usersInput;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+    if (sortBy != null) {
+      queryParams.addAll(_queryParams('', 'sort_by', sortBy));
+    }
+    if (sortOrder != null) {
+      queryParams.addAll(_queryParams('', 'sort_order', sortOrder));
+    }
+    if (search != null) {
+      queryParams.addAll(_queryParams('', 'search', search));
+    }
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Logout current user by revoking their sessions
+  ///
+  /// Parameters:
+  ///
+  /// * [String] companyId (required):
+  ///   Unique identifier for the Company
+  ///
+  /// * [UsersInput] usersInput (required):
+  ///
+  /// * [int] page:
+  ///   Page number for pagination
+  ///
+  /// * [int] limit:
+  ///   Number of items per page
+  ///
+  /// * [String] sortBy:
+  ///   Field to sort by
+  ///
+  /// * [String] sortOrder:
+  ///   Sort order (ascending or descending)
+  ///
+  /// * [String] search:
+  ///   Search term to filter results
+  Future<CreateUsers200Response?> createUsersLogout(String companyId, UsersInput usersInput, { int? page, int? limit, String? sortBy, String? sortOrder, String? search, }) async {
+    final response = await createUsersLogoutWithHttpInfo(companyId, usersInput,  page: page, limit: limit, sortBy: sortBy, sortOrder: sortOrder, search: search, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CreateUsers200Response',) as CreateUsers200Response;
     
     }
     return null;
@@ -133,9 +338,11 @@ class UsersApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] userId (required):
-  Future<Response> companiesCompanyIdUsersUserIdDeleteWithHttpInfo(String companyId, String userId,) async {
+  ///   Unique identifier for the User
+  Future<Response> deleteUsersWithHttpInfo(String companyId, String userId,) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/users/{user_id}'
       .replaceAll('{company_id}', companyId)
@@ -167,10 +374,12 @@ class UsersApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] userId (required):
-  Future<CompaniesCompanyIdUsersUserIdDelete200Response?> companiesCompanyIdUsersUserIdDelete(String companyId, String userId,) async {
-    final response = await companiesCompanyIdUsersUserIdDeleteWithHttpInfo(companyId, userId,);
+  ///   Unique identifier for the User
+  Future<DeleteUsers200Response?> deleteUsers(String companyId, String userId,) async {
+    final response = await deleteUsersWithHttpInfo(companyId, userId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -178,7 +387,7 @@ class UsersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdUsersUserIdDelete200Response',) as CompaniesCompanyIdUsersUserIdDelete200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DeleteUsers200Response',) as DeleteUsers200Response;
     
     }
     return null;
@@ -191,9 +400,11 @@ class UsersApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] userId (required):
-  Future<Response> companiesCompanyIdUsersUserIdGetWithHttpInfo(String companyId, String userId,) async {
+  ///   Unique identifier for the User
+  Future<Response> getUsersByIdWithHttpInfo(String companyId, String userId,) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/users/{user_id}'
       .replaceAll('{company_id}', companyId)
@@ -225,10 +436,12 @@ class UsersApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] userId (required):
-  Future<CompaniesCompanyIdUsersUserIdGet200Response?> companiesCompanyIdUsersUserIdGet(String companyId, String userId,) async {
-    final response = await companiesCompanyIdUsersUserIdGetWithHttpInfo(companyId, userId,);
+  ///   Unique identifier for the User
+  Future<GetUsersById200Response?> getUsersById(String companyId, String userId,) async {
+    final response = await getUsersByIdWithHttpInfo(companyId, userId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -236,7 +449,202 @@ class UsersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdUsersUserIdGet200Response',) as CompaniesCompanyIdUsersUserIdGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GetUsersById200Response',) as GetUsersById200Response;
+    
+    }
+    return null;
+  }
+
+  /// Get a list of all users in a company
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] companyId (required):
+  ///   Unique identifier for the Company
+  ///
+  /// * [int] page:
+  ///   Page number for pagination
+  ///
+  /// * [int] limit:
+  ///   Number of items per page
+  ///
+  /// * [String] sortBy:
+  ///   Field to sort by
+  ///
+  /// * [String] sortOrder:
+  ///   Sort order (ascending or descending)
+  ///
+  /// * [String] search:
+  ///   Search term to filter results
+  Future<Response> listUsersWithHttpInfo(String companyId, { int? page, int? limit, String? sortBy, String? sortOrder, String? search, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/companies/{company_id}/users'
+      .replaceAll('{company_id}', companyId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+    if (sortBy != null) {
+      queryParams.addAll(_queryParams('', 'sort_by', sortBy));
+    }
+    if (sortOrder != null) {
+      queryParams.addAll(_queryParams('', 'sort_order', sortOrder));
+    }
+    if (search != null) {
+      queryParams.addAll(_queryParams('', 'search', search));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Get a list of all users in a company
+  ///
+  /// Parameters:
+  ///
+  /// * [String] companyId (required):
+  ///   Unique identifier for the Company
+  ///
+  /// * [int] page:
+  ///   Page number for pagination
+  ///
+  /// * [int] limit:
+  ///   Number of items per page
+  ///
+  /// * [String] sortBy:
+  ///   Field to sort by
+  ///
+  /// * [String] sortOrder:
+  ///   Sort order (ascending or descending)
+  ///
+  /// * [String] search:
+  ///   Search term to filter results
+  Future<ListUsers200Response?> listUsers(String companyId, { int? page, int? limit, String? sortBy, String? sortOrder, String? search, }) async {
+    final response = await listUsersWithHttpInfo(companyId,  page: page, limit: limit, sortBy: sortBy, sortOrder: sortOrder, search: search, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ListUsers200Response',) as ListUsers200Response;
+    
+    }
+    return null;
+  }
+
+  /// Get current authenticated user's profile.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] page:
+  ///   Page number for pagination
+  ///
+  /// * [int] limit:
+  ///   Number of items per page
+  ///
+  /// * [String] sortBy:
+  ///   Field to sort by
+  ///
+  /// * [String] sortOrder:
+  ///   Sort order (ascending or descending)
+  ///
+  /// * [String] search:
+  ///   Search term to filter results
+  Future<Response> listUsersMeWithHttpInfo({ int? page, int? limit, String? sortBy, String? sortOrder, String? search, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/me';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+    if (sortBy != null) {
+      queryParams.addAll(_queryParams('', 'sort_by', sortBy));
+    }
+    if (sortOrder != null) {
+      queryParams.addAll(_queryParams('', 'sort_order', sortOrder));
+    }
+    if (search != null) {
+      queryParams.addAll(_queryParams('', 'search', search));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Get current authenticated user's profile.
+  ///
+  /// Parameters:
+  ///
+  /// * [int] page:
+  ///   Page number for pagination
+  ///
+  /// * [int] limit:
+  ///   Number of items per page
+  ///
+  /// * [String] sortBy:
+  ///   Field to sort by
+  ///
+  /// * [String] sortOrder:
+  ///   Sort order (ascending or descending)
+  ///
+  /// * [String] search:
+  ///   Search term to filter results
+  Future<ListUsers200Response?> listUsersMe({ int? page, int? limit, String? sortBy, String? sortOrder, String? search, }) async {
+    final response = await listUsersMeWithHttpInfo( page: page, limit: limit, sortBy: sortBy, sortOrder: sortOrder, search: search, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ListUsers200Response',) as ListUsers200Response;
     
     }
     return null;
@@ -249,11 +657,13 @@ class UsersApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] userId (required):
+  ///   Unique identifier for the User
   ///
   /// * [UsersUpdate] usersUpdate (required):
-  Future<Response> companiesCompanyIdUsersUserIdPatchWithHttpInfo(String companyId, String userId, UsersUpdate usersUpdate,) async {
+  Future<Response> updateUsersWithHttpInfo(String companyId, String userId, UsersUpdate usersUpdate,) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/users/{user_id}'
       .replaceAll('{company_id}', companyId)
@@ -285,12 +695,14 @@ class UsersApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] userId (required):
+  ///   Unique identifier for the User
   ///
   /// * [UsersUpdate] usersUpdate (required):
-  Future<CompaniesCompanyIdUsersUserIdPatch200Response?> companiesCompanyIdUsersUserIdPatch(String companyId, String userId, UsersUpdate usersUpdate,) async {
-    final response = await companiesCompanyIdUsersUserIdPatchWithHttpInfo(companyId, userId, usersUpdate,);
+  Future<UpdateUsers200Response?> updateUsers(String companyId, String userId, UsersUpdate usersUpdate,) async {
+    final response = await updateUsersWithHttpInfo(companyId, userId, usersUpdate,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -298,51 +710,7 @@ class UsersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdUsersUserIdPatch200Response',) as CompaniesCompanyIdUsersUserIdPatch200Response;
-    
-    }
-    return null;
-  }
-
-  /// Get current authenticated user's profile.
-  ///
-  /// Note: This method returns the HTTP [Response].
-  Future<Response> meGetWithHttpInfo() async {
-    // ignore: prefer_const_declarations
-    final path = r'/me';
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Get current authenticated user's profile.
-  Future<CompaniesCompanyIdUsersGet200Response?> meGet() async {
-    final response = await meGetWithHttpInfo();
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdUsersGet200Response',) as CompaniesCompanyIdUsersGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UpdateUsers200Response',) as UpdateUsers200Response;
     
     }
     return null;

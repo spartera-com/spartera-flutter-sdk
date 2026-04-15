@@ -16,11 +16,13 @@ class AssetPriceHistory {
     this.dateCreated,
     this.lastUpdated,
     this.aphId,
-    required this.assetId,
+    this.assetId,
+    this.endpointId,
     this.priceUsd,
     this.dateEnded,
   });
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -29,6 +31,7 @@ class AssetPriceHistory {
   ///
   DateTime? dateCreated;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -37,6 +40,7 @@ class AssetPriceHistory {
   ///
   DateTime? lastUpdated;
 
+  /// Unique identifier.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -45,8 +49,25 @@ class AssetPriceHistory {
   ///
   String? aphId;
 
-  String assetId;
+  /// FK to assets. NULL when this record belongs to an endpoint.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? assetId;
 
+  /// FK to endpoints. NULL when this record belongs to an asset.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? endpointId;
+
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -55,7 +76,7 @@ class AssetPriceHistory {
   ///
   double? priceUsd;
 
-  /// When did the price end (Datetime)
+  /// SCD Type 2 — when this price record was superseded
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -70,6 +91,7 @@ class AssetPriceHistory {
     other.lastUpdated == lastUpdated &&
     other.aphId == aphId &&
     other.assetId == assetId &&
+    other.endpointId == endpointId &&
     other.priceUsd == priceUsd &&
     other.dateEnded == dateEnded;
 
@@ -79,12 +101,13 @@ class AssetPriceHistory {
     (dateCreated == null ? 0 : dateCreated!.hashCode) +
     (lastUpdated == null ? 0 : lastUpdated!.hashCode) +
     (aphId == null ? 0 : aphId!.hashCode) +
-    (assetId.hashCode) +
+    (assetId == null ? 0 : assetId!.hashCode) +
+    (endpointId == null ? 0 : endpointId!.hashCode) +
     (priceUsd == null ? 0 : priceUsd!.hashCode) +
     (dateEnded == null ? 0 : dateEnded!.hashCode);
 
   @override
-  String toString() => 'AssetPriceHistory[dateCreated=$dateCreated, lastUpdated=$lastUpdated, aphId=$aphId, assetId=$assetId, priceUsd=$priceUsd, dateEnded=$dateEnded]';
+  String toString() => 'AssetPriceHistory[dateCreated=$dateCreated, lastUpdated=$lastUpdated, aphId=$aphId, assetId=$assetId, endpointId=$endpointId, priceUsd=$priceUsd, dateEnded=$dateEnded]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -103,7 +126,16 @@ class AssetPriceHistory {
     } else {
       json[r'aph_id'] = null;
     }
+    if (this.assetId != null) {
       json[r'asset_id'] = this.assetId;
+    } else {
+      json[r'asset_id'] = null;
+    }
+    if (this.endpointId != null) {
+      json[r'endpoint_id'] = this.endpointId;
+    } else {
+      json[r'endpoint_id'] = null;
+    }
     if (this.priceUsd != null) {
       json[r'price_usd'] = this.priceUsd;
     } else {
@@ -128,10 +160,6 @@ class AssetPriceHistory {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AssetPriceHistory[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AssetPriceHistory[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
@@ -139,7 +167,8 @@ class AssetPriceHistory {
         dateCreated: mapDateTime(json, r'date_created', r''),
         lastUpdated: mapDateTime(json, r'last_updated', r''),
         aphId: mapValueOfType<String>(json, r'aph_id'),
-        assetId: mapValueOfType<String>(json, r'asset_id')!,
+        assetId: mapValueOfType<String>(json, r'asset_id'),
+        endpointId: mapValueOfType<String>(json, r'endpoint_id'),
         priceUsd: mapValueOfType<double>(json, r'price_usd'),
         dateEnded: mapDateTime(json, r'date_ended', r''),
       );
@@ -189,7 +218,6 @@ class AssetPriceHistory {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'asset_id',
   };
 }
 

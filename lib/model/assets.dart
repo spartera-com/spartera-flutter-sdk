@@ -23,21 +23,27 @@ class Assets {
     this.snippetId,
     this.industryId,
     this.aiJobId,
+    this.aucId,
+    this.functionId,
     this.approvalStatus,
     this.approvedByUserId,
     this.approvedAt,
     required this.name,
     this.slug,
     this.description,
+    this.detailedDescription,
     required this.source_,
     this.assetType,
     this.assetSchema,
     this.visibility,
     this.tags,
+    this.shortCode,
+    this.restrictedDomains,
     this.sqlLogic,
     this.sourceSchemaName,
     this.sourceTableName,
     required this.sellInMarketplace,
+    required this.requireCustomization,
     this.vizChartLibrary,
     this.vizChartType,
     this.vizDepVarColName,
@@ -48,6 +54,12 @@ class Assets {
     this.vizSortDirection,
     this.vizDataLimit,
     this.vizColorScheme,
+    this.vizShowLegend,
+    this.vizShowGrid,
+    this.vizShowTrendline,
+    this.vizLineSmoothing,
+    this.vizBarStacked,
+    this.vizFilterDirection,
     required this.allowParams,
     required this.acceptTerms,
     this.cached,
@@ -59,8 +71,12 @@ class Assets {
     this.geographicCoverageDetails,
     this.dataSourceRefreshFrequency,
     this.dataSourceLastRefreshed,
+    this.rateLimitNumber,
+    this.rateLimitPeriod,
+    this.rateLimitGranularity,
   });
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -69,6 +85,7 @@ class Assets {
   ///
   DateTime? dateCreated;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -77,6 +94,7 @@ class Assets {
   ///
   DateTime? lastUpdated;
 
+  /// Unique identifier.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -85,6 +103,7 @@ class Assets {
   ///
   String? assetId;
 
+  /// References users.user_id — An individual user account within a company. See GET /users for valid values. Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -93,8 +112,10 @@ class Assets {
   ///
   String? userId;
 
+  /// References companies.company_id — A Spartera seller or buyer company account. See GET /companies for valid values. Required.
   String companyId;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -103,6 +124,7 @@ class Assets {
   ///
   String? connectionId;
 
+  /// References connections.connection_id — Secure connections from Spartera to your databases and data warehouses. See GET /connections for valid values. Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -111,6 +133,7 @@ class Assets {
   ///
   String? llmConnectionId;
 
+  /// References snippets.snippet_id — Predefined code snippets to accelerate insight creation. See GET /snippets for valid values. Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -119,6 +142,7 @@ class Assets {
   ///
   int? snippetId;
 
+  /// References industries.industry_id — Available industry categories for asset classification. Based on US NAISC codes.. See GET /industries for valid values. Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -136,14 +160,26 @@ class Assets {
   ///
   String? aiJobId;
 
-  /// Approval status for AI-generated assets
+  /// Primary use case for this asset, from clustering analysis
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? approvalStatus;
+  int? aucId;
+
+  /// Optional identifier for routing to specific functions/models at seller endpoint. For GET: appended to URL path. For POST: included in JSON body.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? functionId;
+
+  /// Approval status for AI-generated assets
+  AssetsApprovalStatusEnum? approvalStatus;
 
   /// User who approved this asset for marketplace
   ///
@@ -163,8 +199,10 @@ class Assets {
   ///
   DateTime? approvedAt;
 
+  /// Required.
   String name;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -173,6 +211,7 @@ class Assets {
   ///
   String? slug;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -181,10 +220,19 @@ class Assets {
   ///
   String? description;
 
-  /// Enum type: Source
+  /// Long-form HTML description for product pages and SEO
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? detailedDescription;
+
+  /// Required. One of: MANUAL, AUTOMATIC.
   AssetsSource_Enum source_;
 
-  /// Enum type: AssetType
+  /// Optional. One of: CALCULATION, VISUALIZATION, DATA.
   AssetsAssetTypeEnum? assetType;
 
   /// Stores database table schema data including columns, types, and metadata
@@ -196,9 +244,10 @@ class Assets {
   ///
   Object? assetSchema;
 
-  /// Enum type: Visibility
+  /// Optional. One of: PRIVATE, SHARED.
   AssetsVisibilityEnum? visibility;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -207,6 +256,25 @@ class Assets {
   ///
   String? tags;
 
+  /// Short code for tera.ac URL shortener (e.g., 'f78zq1')
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? shortCode;
+
+  /// Semicolon or comma-separated list of domains restricted from accessing this asset
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? restrictedDomains;
+
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -215,6 +283,7 @@ class Assets {
   ///
   String? sqlLogic;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -223,6 +292,7 @@ class Assets {
   ///
   String? sourceSchemaName;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -231,14 +301,19 @@ class Assets {
   ///
   String? sourceTableName;
 
+  /// Required.
   bool sellInMarketplace;
 
-  /// Enum type: PlottingLibrary
+  /// Whether this asset requires customization before use
+  bool requireCustomization;
+
+  /// Optional. One of: PLOTLY, MATPLOTLIB, SEABORN.
   AssetsVizChartLibraryEnum? vizChartLibrary;
 
-  /// Enum type: ChartType
+  /// Optional. One of: LINE, BAR, PIE, DOUGHNUT, POLAR, … (8 total).
   AssetsVizChartTypeEnum? vizChartType;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -247,6 +322,7 @@ class Assets {
   ///
   String? vizDepVarColName;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -255,6 +331,7 @@ class Assets {
   ///
   String? vizIndepVarColName;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -263,6 +340,7 @@ class Assets {
   ///
   String? vizSizeColName;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -271,12 +349,13 @@ class Assets {
   ///
   String? vizColorColName;
 
-  /// Enum type: AggregationType
+  /// Optional. One of: No Aggregation, Sum, Average, Count, Minimum, … (6 total).
   AssetsVizDataAggregationEnum? vizDataAggregation;
 
-  /// Enum type: SortDirection
+  /// Optional. One of: No Sorting, Ascending, Descending.
   AssetsVizSortDirectionEnum? vizSortDirection;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -285,13 +364,64 @@ class Assets {
   ///
   int? vizDataLimit;
 
-  /// Enum type: ColorScheme
+  /// Optional. One of: Default, Sequential, Diverging, Categorical, Monochrome, … (8 total).
   AssetsVizColorSchemeEnum? vizColorScheme;
 
+  /// Show/hide chart legend
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? vizShowLegend;
+
+  /// Show/hide grid lines
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? vizShowGrid;
+
+  /// Show trendline for scatter/line charts
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? vizShowTrendline;
+
+  /// Enable smoothing for line charts
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? vizLineSmoothing;
+
+  /// Stack bars instead of grouping
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? vizBarStacked;
+
+  /// Whether data_limit shows TOP or BOTTOM N
+  AssetsVizFilterDirectionEnum? vizFilterDirection;
+
+  /// Required.
   bool allowParams;
 
+  /// Required.
   bool acceptTerms;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -300,6 +430,7 @@ class Assets {
   ///
   bool? cached;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -308,6 +439,7 @@ class Assets {
   ///
   String? schedule;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -334,7 +466,7 @@ class Assets {
   ///
   DateTime? dataTimePeriodEnd;
 
-  /// Type of geographic coverage (Enum type: GeographicCoverage)
+  /// Type of geographic coverage
   AssetsGeographicCoverageTypeEnum? geographicCoverageType;
 
   /// Specific regions/countries covered (e.g., 'United States, Canada, Mexico')
@@ -346,7 +478,7 @@ class Assets {
   ///
   String? geographicCoverageDetails;
 
-  /// How often the source data is refreshed (Enum type: DataRefreshFrequency)
+  /// How often the source data is refreshed
   AssetsDataSourceRefreshFrequencyEnum? dataSourceRefreshFrequency;
 
   /// When the source data was last refreshed
@@ -357,6 +489,21 @@ class Assets {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? dataSourceLastRefreshed;
+
+  /// Number of requests allowed per period (e.g., 100)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? rateLimitNumber;
+
+  /// Time period for rate limiting (second, minute, hour, day)
+  AssetsRateLimitPeriodEnum? rateLimitPeriod;
+
+  /// Granularity level for rate limiting (USER, COMPANY, IP)
+  AssetsRateLimitGranularityEnum? rateLimitGranularity;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Assets &&
@@ -370,21 +517,27 @@ class Assets {
     other.snippetId == snippetId &&
     other.industryId == industryId &&
     other.aiJobId == aiJobId &&
+    other.aucId == aucId &&
+    other.functionId == functionId &&
     other.approvalStatus == approvalStatus &&
     other.approvedByUserId == approvedByUserId &&
     other.approvedAt == approvedAt &&
     other.name == name &&
     other.slug == slug &&
     other.description == description &&
+    other.detailedDescription == detailedDescription &&
     other.source_ == source_ &&
     other.assetType == assetType &&
     other.assetSchema == assetSchema &&
     other.visibility == visibility &&
     other.tags == tags &&
+    other.shortCode == shortCode &&
+    other.restrictedDomains == restrictedDomains &&
     other.sqlLogic == sqlLogic &&
     other.sourceSchemaName == sourceSchemaName &&
     other.sourceTableName == sourceTableName &&
     other.sellInMarketplace == sellInMarketplace &&
+    other.requireCustomization == requireCustomization &&
     other.vizChartLibrary == vizChartLibrary &&
     other.vizChartType == vizChartType &&
     other.vizDepVarColName == vizDepVarColName &&
@@ -395,6 +548,12 @@ class Assets {
     other.vizSortDirection == vizSortDirection &&
     other.vizDataLimit == vizDataLimit &&
     other.vizColorScheme == vizColorScheme &&
+    other.vizShowLegend == vizShowLegend &&
+    other.vizShowGrid == vizShowGrid &&
+    other.vizShowTrendline == vizShowTrendline &&
+    other.vizLineSmoothing == vizLineSmoothing &&
+    other.vizBarStacked == vizBarStacked &&
+    other.vizFilterDirection == vizFilterDirection &&
     other.allowParams == allowParams &&
     other.acceptTerms == acceptTerms &&
     other.cached == cached &&
@@ -405,7 +564,10 @@ class Assets {
     other.geographicCoverageType == geographicCoverageType &&
     other.geographicCoverageDetails == geographicCoverageDetails &&
     other.dataSourceRefreshFrequency == dataSourceRefreshFrequency &&
-    other.dataSourceLastRefreshed == dataSourceLastRefreshed;
+    other.dataSourceLastRefreshed == dataSourceLastRefreshed &&
+    other.rateLimitNumber == rateLimitNumber &&
+    other.rateLimitPeriod == rateLimitPeriod &&
+    other.rateLimitGranularity == rateLimitGranularity;
 
   @override
   int get hashCode =>
@@ -420,21 +582,27 @@ class Assets {
     (snippetId == null ? 0 : snippetId!.hashCode) +
     (industryId == null ? 0 : industryId!.hashCode) +
     (aiJobId == null ? 0 : aiJobId!.hashCode) +
+    (aucId == null ? 0 : aucId!.hashCode) +
+    (functionId == null ? 0 : functionId!.hashCode) +
     (approvalStatus == null ? 0 : approvalStatus!.hashCode) +
     (approvedByUserId == null ? 0 : approvedByUserId!.hashCode) +
     (approvedAt == null ? 0 : approvedAt!.hashCode) +
     (name.hashCode) +
     (slug == null ? 0 : slug!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
+    (detailedDescription == null ? 0 : detailedDescription!.hashCode) +
     (source_.hashCode) +
     (assetType == null ? 0 : assetType!.hashCode) +
     (assetSchema == null ? 0 : assetSchema!.hashCode) +
     (visibility == null ? 0 : visibility!.hashCode) +
     (tags == null ? 0 : tags!.hashCode) +
+    (shortCode == null ? 0 : shortCode!.hashCode) +
+    (restrictedDomains == null ? 0 : restrictedDomains!.hashCode) +
     (sqlLogic == null ? 0 : sqlLogic!.hashCode) +
     (sourceSchemaName == null ? 0 : sourceSchemaName!.hashCode) +
     (sourceTableName == null ? 0 : sourceTableName!.hashCode) +
     (sellInMarketplace.hashCode) +
+    (requireCustomization.hashCode) +
     (vizChartLibrary == null ? 0 : vizChartLibrary!.hashCode) +
     (vizChartType == null ? 0 : vizChartType!.hashCode) +
     (vizDepVarColName == null ? 0 : vizDepVarColName!.hashCode) +
@@ -445,6 +613,12 @@ class Assets {
     (vizSortDirection == null ? 0 : vizSortDirection!.hashCode) +
     (vizDataLimit == null ? 0 : vizDataLimit!.hashCode) +
     (vizColorScheme == null ? 0 : vizColorScheme!.hashCode) +
+    (vizShowLegend == null ? 0 : vizShowLegend!.hashCode) +
+    (vizShowGrid == null ? 0 : vizShowGrid!.hashCode) +
+    (vizShowTrendline == null ? 0 : vizShowTrendline!.hashCode) +
+    (vizLineSmoothing == null ? 0 : vizLineSmoothing!.hashCode) +
+    (vizBarStacked == null ? 0 : vizBarStacked!.hashCode) +
+    (vizFilterDirection == null ? 0 : vizFilterDirection!.hashCode) +
     (allowParams.hashCode) +
     (acceptTerms.hashCode) +
     (cached == null ? 0 : cached!.hashCode) +
@@ -455,10 +629,13 @@ class Assets {
     (geographicCoverageType == null ? 0 : geographicCoverageType!.hashCode) +
     (geographicCoverageDetails == null ? 0 : geographicCoverageDetails!.hashCode) +
     (dataSourceRefreshFrequency == null ? 0 : dataSourceRefreshFrequency!.hashCode) +
-    (dataSourceLastRefreshed == null ? 0 : dataSourceLastRefreshed!.hashCode);
+    (dataSourceLastRefreshed == null ? 0 : dataSourceLastRefreshed!.hashCode) +
+    (rateLimitNumber == null ? 0 : rateLimitNumber!.hashCode) +
+    (rateLimitPeriod == null ? 0 : rateLimitPeriod!.hashCode) +
+    (rateLimitGranularity == null ? 0 : rateLimitGranularity!.hashCode);
 
   @override
-  String toString() => 'Assets[dateCreated=$dateCreated, lastUpdated=$lastUpdated, assetId=$assetId, userId=$userId, companyId=$companyId, connectionId=$connectionId, llmConnectionId=$llmConnectionId, snippetId=$snippetId, industryId=$industryId, aiJobId=$aiJobId, approvalStatus=$approvalStatus, approvedByUserId=$approvedByUserId, approvedAt=$approvedAt, name=$name, slug=$slug, description=$description, source_=$source_, assetType=$assetType, assetSchema=$assetSchema, visibility=$visibility, tags=$tags, sqlLogic=$sqlLogic, sourceSchemaName=$sourceSchemaName, sourceTableName=$sourceTableName, sellInMarketplace=$sellInMarketplace, vizChartLibrary=$vizChartLibrary, vizChartType=$vizChartType, vizDepVarColName=$vizDepVarColName, vizIndepVarColName=$vizIndepVarColName, vizSizeColName=$vizSizeColName, vizColorColName=$vizColorColName, vizDataAggregation=$vizDataAggregation, vizSortDirection=$vizSortDirection, vizDataLimit=$vizDataLimit, vizColorScheme=$vizColorScheme, allowParams=$allowParams, acceptTerms=$acceptTerms, cached=$cached, schedule=$schedule, nextRun=$nextRun, dataTimePeriodStart=$dataTimePeriodStart, dataTimePeriodEnd=$dataTimePeriodEnd, geographicCoverageType=$geographicCoverageType, geographicCoverageDetails=$geographicCoverageDetails, dataSourceRefreshFrequency=$dataSourceRefreshFrequency, dataSourceLastRefreshed=$dataSourceLastRefreshed]';
+  String toString() => 'Assets[dateCreated=$dateCreated, lastUpdated=$lastUpdated, assetId=$assetId, userId=$userId, companyId=$companyId, connectionId=$connectionId, llmConnectionId=$llmConnectionId, snippetId=$snippetId, industryId=$industryId, aiJobId=$aiJobId, aucId=$aucId, functionId=$functionId, approvalStatus=$approvalStatus, approvedByUserId=$approvedByUserId, approvedAt=$approvedAt, name=$name, slug=$slug, description=$description, detailedDescription=$detailedDescription, source_=$source_, assetType=$assetType, assetSchema=$assetSchema, visibility=$visibility, tags=$tags, shortCode=$shortCode, restrictedDomains=$restrictedDomains, sqlLogic=$sqlLogic, sourceSchemaName=$sourceSchemaName, sourceTableName=$sourceTableName, sellInMarketplace=$sellInMarketplace, requireCustomization=$requireCustomization, vizChartLibrary=$vizChartLibrary, vizChartType=$vizChartType, vizDepVarColName=$vizDepVarColName, vizIndepVarColName=$vizIndepVarColName, vizSizeColName=$vizSizeColName, vizColorColName=$vizColorColName, vizDataAggregation=$vizDataAggregation, vizSortDirection=$vizSortDirection, vizDataLimit=$vizDataLimit, vizColorScheme=$vizColorScheme, vizShowLegend=$vizShowLegend, vizShowGrid=$vizShowGrid, vizShowTrendline=$vizShowTrendline, vizLineSmoothing=$vizLineSmoothing, vizBarStacked=$vizBarStacked, vizFilterDirection=$vizFilterDirection, allowParams=$allowParams, acceptTerms=$acceptTerms, cached=$cached, schedule=$schedule, nextRun=$nextRun, dataTimePeriodStart=$dataTimePeriodStart, dataTimePeriodEnd=$dataTimePeriodEnd, geographicCoverageType=$geographicCoverageType, geographicCoverageDetails=$geographicCoverageDetails, dataSourceRefreshFrequency=$dataSourceRefreshFrequency, dataSourceLastRefreshed=$dataSourceLastRefreshed, rateLimitNumber=$rateLimitNumber, rateLimitPeriod=$rateLimitPeriod, rateLimitGranularity=$rateLimitGranularity]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -508,6 +685,16 @@ class Assets {
     } else {
       json[r'ai_job_id'] = null;
     }
+    if (this.aucId != null) {
+      json[r'auc_id'] = this.aucId;
+    } else {
+      json[r'auc_id'] = null;
+    }
+    if (this.functionId != null) {
+      json[r'function_id'] = this.functionId;
+    } else {
+      json[r'function_id'] = null;
+    }
     if (this.approvalStatus != null) {
       json[r'approval_status'] = this.approvalStatus;
     } else {
@@ -534,6 +721,11 @@ class Assets {
     } else {
       json[r'description'] = null;
     }
+    if (this.detailedDescription != null) {
+      json[r'detailed_description'] = this.detailedDescription;
+    } else {
+      json[r'detailed_description'] = null;
+    }
       json[r'source'] = this.source_;
     if (this.assetType != null) {
       json[r'asset_type'] = this.assetType;
@@ -555,6 +747,16 @@ class Assets {
     } else {
       json[r'tags'] = null;
     }
+    if (this.shortCode != null) {
+      json[r'short_code'] = this.shortCode;
+    } else {
+      json[r'short_code'] = null;
+    }
+    if (this.restrictedDomains != null) {
+      json[r'restricted_domains'] = this.restrictedDomains;
+    } else {
+      json[r'restricted_domains'] = null;
+    }
     if (this.sqlLogic != null) {
       json[r'sql_logic'] = this.sqlLogic;
     } else {
@@ -571,6 +773,7 @@ class Assets {
       json[r'source_table_name'] = null;
     }
       json[r'sell_in_marketplace'] = this.sellInMarketplace;
+      json[r'require_customization'] = this.requireCustomization;
     if (this.vizChartLibrary != null) {
       json[r'viz_chart_library'] = this.vizChartLibrary;
     } else {
@@ -621,6 +824,36 @@ class Assets {
     } else {
       json[r'viz_color_scheme'] = null;
     }
+    if (this.vizShowLegend != null) {
+      json[r'viz_show_legend'] = this.vizShowLegend;
+    } else {
+      json[r'viz_show_legend'] = null;
+    }
+    if (this.vizShowGrid != null) {
+      json[r'viz_show_grid'] = this.vizShowGrid;
+    } else {
+      json[r'viz_show_grid'] = null;
+    }
+    if (this.vizShowTrendline != null) {
+      json[r'viz_show_trendline'] = this.vizShowTrendline;
+    } else {
+      json[r'viz_show_trendline'] = null;
+    }
+    if (this.vizLineSmoothing != null) {
+      json[r'viz_line_smoothing'] = this.vizLineSmoothing;
+    } else {
+      json[r'viz_line_smoothing'] = null;
+    }
+    if (this.vizBarStacked != null) {
+      json[r'viz_bar_stacked'] = this.vizBarStacked;
+    } else {
+      json[r'viz_bar_stacked'] = null;
+    }
+    if (this.vizFilterDirection != null) {
+      json[r'viz_filter_direction'] = this.vizFilterDirection;
+    } else {
+      json[r'viz_filter_direction'] = null;
+    }
       json[r'allow_params'] = this.allowParams;
       json[r'accept_terms'] = this.acceptTerms;
     if (this.cached != null) {
@@ -668,6 +901,21 @@ class Assets {
     } else {
       json[r'data_source_last_refreshed'] = null;
     }
+    if (this.rateLimitNumber != null) {
+      json[r'rate_limit_number'] = this.rateLimitNumber;
+    } else {
+      json[r'rate_limit_number'] = null;
+    }
+    if (this.rateLimitPeriod != null) {
+      json[r'rate_limit_period'] = this.rateLimitPeriod;
+    } else {
+      json[r'rate_limit_period'] = null;
+    }
+    if (this.rateLimitGranularity != null) {
+      json[r'rate_limit_granularity'] = this.rateLimitGranularity;
+    } else {
+      json[r'rate_limit_granularity'] = null;
+    }
     return json;
   }
 
@@ -682,10 +930,20 @@ class Assets {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Assets[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Assets[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'company_id'), 'Required key "Assets[company_id]" is missing from JSON.');
+        assert(json[r'company_id'] != null, 'Required key "Assets[company_id]" has a null value in JSON.');
+        assert(json.containsKey(r'name'), 'Required key "Assets[name]" is missing from JSON.');
+        assert(json[r'name'] != null, 'Required key "Assets[name]" has a null value in JSON.');
+        assert(json.containsKey(r'source'), 'Required key "Assets[source]" is missing from JSON.');
+        assert(json[r'source'] != null, 'Required key "Assets[source]" has a null value in JSON.');
+        assert(json.containsKey(r'sell_in_marketplace'), 'Required key "Assets[sell_in_marketplace]" is missing from JSON.');
+        assert(json[r'sell_in_marketplace'] != null, 'Required key "Assets[sell_in_marketplace]" has a null value in JSON.');
+        assert(json.containsKey(r'require_customization'), 'Required key "Assets[require_customization]" is missing from JSON.');
+        assert(json[r'require_customization'] != null, 'Required key "Assets[require_customization]" has a null value in JSON.');
+        assert(json.containsKey(r'allow_params'), 'Required key "Assets[allow_params]" is missing from JSON.');
+        assert(json[r'allow_params'] != null, 'Required key "Assets[allow_params]" has a null value in JSON.');
+        assert(json.containsKey(r'accept_terms'), 'Required key "Assets[accept_terms]" is missing from JSON.');
+        assert(json[r'accept_terms'] != null, 'Required key "Assets[accept_terms]" has a null value in JSON.');
         return true;
       }());
 
@@ -700,21 +958,27 @@ class Assets {
         snippetId: mapValueOfType<int>(json, r'snippet_id'),
         industryId: mapValueOfType<int>(json, r'industry_id'),
         aiJobId: mapValueOfType<String>(json, r'ai_job_id'),
-        approvalStatus: mapValueOfType<String>(json, r'approval_status'),
+        aucId: mapValueOfType<int>(json, r'auc_id'),
+        functionId: mapValueOfType<String>(json, r'function_id'),
+        approvalStatus: AssetsApprovalStatusEnum.fromJson(json[r'approval_status']),
         approvedByUserId: mapValueOfType<String>(json, r'approved_by_user_id'),
         approvedAt: mapDateTime(json, r'approved_at', r''),
         name: mapValueOfType<String>(json, r'name')!,
         slug: mapValueOfType<String>(json, r'slug'),
         description: mapValueOfType<String>(json, r'description'),
+        detailedDescription: mapValueOfType<String>(json, r'detailed_description'),
         source_: AssetsSource_Enum.fromJson(json[r'source'])!,
         assetType: AssetsAssetTypeEnum.fromJson(json[r'asset_type']),
         assetSchema: mapValueOfType<Object>(json, r'asset_schema'),
         visibility: AssetsVisibilityEnum.fromJson(json[r'visibility']),
         tags: mapValueOfType<String>(json, r'tags'),
+        shortCode: mapValueOfType<String>(json, r'short_code'),
+        restrictedDomains: mapValueOfType<String>(json, r'restricted_domains'),
         sqlLogic: mapValueOfType<String>(json, r'sql_logic'),
         sourceSchemaName: mapValueOfType<String>(json, r'source_schema_name'),
         sourceTableName: mapValueOfType<String>(json, r'source_table_name'),
         sellInMarketplace: mapValueOfType<bool>(json, r'sell_in_marketplace')!,
+        requireCustomization: mapValueOfType<bool>(json, r'require_customization')!,
         vizChartLibrary: AssetsVizChartLibraryEnum.fromJson(json[r'viz_chart_library']),
         vizChartType: AssetsVizChartTypeEnum.fromJson(json[r'viz_chart_type']),
         vizDepVarColName: mapValueOfType<String>(json, r'viz_dep_var_col_name'),
@@ -725,6 +989,12 @@ class Assets {
         vizSortDirection: AssetsVizSortDirectionEnum.fromJson(json[r'viz_sort_direction']),
         vizDataLimit: mapValueOfType<int>(json, r'viz_data_limit'),
         vizColorScheme: AssetsVizColorSchemeEnum.fromJson(json[r'viz_color_scheme']),
+        vizShowLegend: mapValueOfType<bool>(json, r'viz_show_legend'),
+        vizShowGrid: mapValueOfType<bool>(json, r'viz_show_grid'),
+        vizShowTrendline: mapValueOfType<bool>(json, r'viz_show_trendline'),
+        vizLineSmoothing: mapValueOfType<bool>(json, r'viz_line_smoothing'),
+        vizBarStacked: mapValueOfType<bool>(json, r'viz_bar_stacked'),
+        vizFilterDirection: AssetsVizFilterDirectionEnum.fromJson(json[r'viz_filter_direction']),
         allowParams: mapValueOfType<bool>(json, r'allow_params')!,
         acceptTerms: mapValueOfType<bool>(json, r'accept_terms')!,
         cached: mapValueOfType<bool>(json, r'cached'),
@@ -736,6 +1006,9 @@ class Assets {
         geographicCoverageDetails: mapValueOfType<String>(json, r'geographic_coverage_details'),
         dataSourceRefreshFrequency: AssetsDataSourceRefreshFrequencyEnum.fromJson(json[r'data_source_refresh_frequency']),
         dataSourceLastRefreshed: mapDateTime(json, r'data_source_last_refreshed', r''),
+        rateLimitNumber: mapValueOfType<int>(json, r'rate_limit_number'),
+        rateLimitPeriod: AssetsRateLimitPeriodEnum.fromJson(json[r'rate_limit_period']),
+        rateLimitGranularity: AssetsRateLimitGranularityEnum.fromJson(json[r'rate_limit_granularity']),
       );
     }
     return null;
@@ -787,12 +1060,93 @@ class Assets {
     'name',
     'source',
     'sell_in_marketplace',
+    'require_customization',
     'allow_params',
     'accept_terms',
   };
 }
 
-/// Enum type: Source
+/// Approval status for AI-generated assets
+class AssetsApprovalStatusEnum {
+  /// Instantiate a new enum with the provided [value].
+  const AssetsApprovalStatusEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const PENDING = AssetsApprovalStatusEnum._(r'PENDING');
+  static const APPROVED = AssetsApprovalStatusEnum._(r'APPROVED');
+  static const REJECTED = AssetsApprovalStatusEnum._(r'REJECTED');
+  static const NEEDS_REVISION = AssetsApprovalStatusEnum._(r'NEEDS_REVISION');
+
+  /// List of all possible values in this [enum][AssetsApprovalStatusEnum].
+  static const values = <AssetsApprovalStatusEnum>[
+    PENDING,
+    APPROVED,
+    REJECTED,
+    NEEDS_REVISION,
+  ];
+
+  static AssetsApprovalStatusEnum? fromJson(dynamic value) => AssetsApprovalStatusEnumTypeTransformer().decode(value);
+
+  static List<AssetsApprovalStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <AssetsApprovalStatusEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = AssetsApprovalStatusEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [AssetsApprovalStatusEnum] to String,
+/// and [decode] dynamic data back to [AssetsApprovalStatusEnum].
+class AssetsApprovalStatusEnumTypeTransformer {
+  factory AssetsApprovalStatusEnumTypeTransformer() => _instance ??= const AssetsApprovalStatusEnumTypeTransformer._();
+
+  const AssetsApprovalStatusEnumTypeTransformer._();
+
+  String encode(AssetsApprovalStatusEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a AssetsApprovalStatusEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  AssetsApprovalStatusEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'PENDING': return AssetsApprovalStatusEnum.PENDING;
+        case r'APPROVED': return AssetsApprovalStatusEnum.APPROVED;
+        case r'REJECTED': return AssetsApprovalStatusEnum.REJECTED;
+        case r'NEEDS_REVISION': return AssetsApprovalStatusEnum.NEEDS_REVISION;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [AssetsApprovalStatusEnumTypeTransformer] instance.
+  static AssetsApprovalStatusEnumTypeTransformer? _instance;
+}
+
+
+/// Required. One of: MANUAL, AUTOMATIC.
 class AssetsSource_Enum {
   /// Instantiate a new enum with the provided [value].
   const AssetsSource_Enum._(this.value);
@@ -866,7 +1220,7 @@ class AssetsSource_EnumTypeTransformer {
 }
 
 
-/// Enum type: AssetType
+/// Optional. One of: CALCULATION, VISUALIZATION, DATA.
 class AssetsAssetTypeEnum {
   /// Instantiate a new enum with the provided [value].
   const AssetsAssetTypeEnum._(this.value);
@@ -943,7 +1297,7 @@ class AssetsAssetTypeEnumTypeTransformer {
 }
 
 
-/// Enum type: Visibility
+/// Optional. One of: PRIVATE, SHARED.
 class AssetsVisibilityEnum {
   /// Instantiate a new enum with the provided [value].
   const AssetsVisibilityEnum._(this.value);
@@ -1017,7 +1371,7 @@ class AssetsVisibilityEnumTypeTransformer {
 }
 
 
-/// Enum type: PlottingLibrary
+/// Optional. One of: PLOTLY, MATPLOTLIB, SEABORN.
 class AssetsVizChartLibraryEnum {
   /// Instantiate a new enum with the provided [value].
   const AssetsVizChartLibraryEnum._(this.value);
@@ -1094,7 +1448,7 @@ class AssetsVizChartLibraryEnumTypeTransformer {
 }
 
 
-/// Enum type: ChartType
+/// Optional. One of: LINE, BAR, PIE, DOUGHNUT, POLAR, … (8 total).
 class AssetsVizChartTypeEnum {
   /// Instantiate a new enum with the provided [value].
   const AssetsVizChartTypeEnum._(this.value);
@@ -1109,27 +1463,23 @@ class AssetsVizChartTypeEnum {
 
   static const LINE = AssetsVizChartTypeEnum._(r'LINE');
   static const BAR = AssetsVizChartTypeEnum._(r'BAR');
-  static const HORIZONTALBAR = AssetsVizChartTypeEnum._(r'HORIZONTALBAR');
   static const PIE = AssetsVizChartTypeEnum._(r'PIE');
   static const DOUGHNUT = AssetsVizChartTypeEnum._(r'DOUGHNUT');
   static const POLAR = AssetsVizChartTypeEnum._(r'POLAR');
   static const RADAR = AssetsVizChartTypeEnum._(r'RADAR');
   static const BUBBLE = AssetsVizChartTypeEnum._(r'BUBBLE');
   static const SCATTER = AssetsVizChartTypeEnum._(r'SCATTER');
-  static const NA = AssetsVizChartTypeEnum._(r'NA');
 
   /// List of all possible values in this [enum][AssetsVizChartTypeEnum].
   static const values = <AssetsVizChartTypeEnum>[
     LINE,
     BAR,
-    HORIZONTALBAR,
     PIE,
     DOUGHNUT,
     POLAR,
     RADAR,
     BUBBLE,
     SCATTER,
-    NA,
   ];
 
   static AssetsVizChartTypeEnum? fromJson(dynamic value) => AssetsVizChartTypeEnumTypeTransformer().decode(value);
@@ -1170,14 +1520,12 @@ class AssetsVizChartTypeEnumTypeTransformer {
       switch (data) {
         case r'LINE': return AssetsVizChartTypeEnum.LINE;
         case r'BAR': return AssetsVizChartTypeEnum.BAR;
-        case r'HORIZONTALBAR': return AssetsVizChartTypeEnum.HORIZONTALBAR;
         case r'PIE': return AssetsVizChartTypeEnum.PIE;
         case r'DOUGHNUT': return AssetsVizChartTypeEnum.DOUGHNUT;
         case r'POLAR': return AssetsVizChartTypeEnum.POLAR;
         case r'RADAR': return AssetsVizChartTypeEnum.RADAR;
         case r'BUBBLE': return AssetsVizChartTypeEnum.BUBBLE;
         case r'SCATTER': return AssetsVizChartTypeEnum.SCATTER;
-        case r'NA': return AssetsVizChartTypeEnum.NA;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -1192,7 +1540,7 @@ class AssetsVizChartTypeEnumTypeTransformer {
 }
 
 
-/// Enum type: AggregationType
+/// Optional. One of: No Aggregation, Sum, Average, Count, Minimum, … (6 total).
 class AssetsVizDataAggregationEnum {
   /// Instantiate a new enum with the provided [value].
   const AssetsVizDataAggregationEnum._(this.value);
@@ -1278,7 +1626,7 @@ class AssetsVizDataAggregationEnumTypeTransformer {
 }
 
 
-/// Enum type: SortDirection
+/// Optional. One of: No Sorting, Ascending, Descending.
 class AssetsVizSortDirectionEnum {
   /// Instantiate a new enum with the provided [value].
   const AssetsVizSortDirectionEnum._(this.value);
@@ -1355,7 +1703,7 @@ class AssetsVizSortDirectionEnumTypeTransformer {
 }
 
 
-/// Enum type: ColorScheme
+/// Optional. One of: Default, Sequential, Diverging, Categorical, Monochrome, … (8 total).
 class AssetsVizColorSchemeEnum {
   /// Instantiate a new enum with the provided [value].
   const AssetsVizColorSchemeEnum._(this.value);
@@ -1447,7 +1795,81 @@ class AssetsVizColorSchemeEnumTypeTransformer {
 }
 
 
-/// Type of geographic coverage (Enum type: GeographicCoverage)
+/// Whether data_limit shows TOP or BOTTOM N
+class AssetsVizFilterDirectionEnum {
+  /// Instantiate a new enum with the provided [value].
+  const AssetsVizFilterDirectionEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const TOP = AssetsVizFilterDirectionEnum._(r'TOP');
+  static const BOTTOM = AssetsVizFilterDirectionEnum._(r'BOTTOM');
+
+  /// List of all possible values in this [enum][AssetsVizFilterDirectionEnum].
+  static const values = <AssetsVizFilterDirectionEnum>[
+    TOP,
+    BOTTOM,
+  ];
+
+  static AssetsVizFilterDirectionEnum? fromJson(dynamic value) => AssetsVizFilterDirectionEnumTypeTransformer().decode(value);
+
+  static List<AssetsVizFilterDirectionEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <AssetsVizFilterDirectionEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = AssetsVizFilterDirectionEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [AssetsVizFilterDirectionEnum] to String,
+/// and [decode] dynamic data back to [AssetsVizFilterDirectionEnum].
+class AssetsVizFilterDirectionEnumTypeTransformer {
+  factory AssetsVizFilterDirectionEnumTypeTransformer() => _instance ??= const AssetsVizFilterDirectionEnumTypeTransformer._();
+
+  const AssetsVizFilterDirectionEnumTypeTransformer._();
+
+  String encode(AssetsVizFilterDirectionEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a AssetsVizFilterDirectionEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  AssetsVizFilterDirectionEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'TOP': return AssetsVizFilterDirectionEnum.TOP;
+        case r'BOTTOM': return AssetsVizFilterDirectionEnum.BOTTOM;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [AssetsVizFilterDirectionEnumTypeTransformer] instance.
+  static AssetsVizFilterDirectionEnumTypeTransformer? _instance;
+}
+
+
+/// Type of geographic coverage
 class AssetsGeographicCoverageTypeEnum {
   /// Instantiate a new enum with the provided [value].
   const AssetsGeographicCoverageTypeEnum._(this.value);
@@ -1539,7 +1961,7 @@ class AssetsGeographicCoverageTypeEnumTypeTransformer {
 }
 
 
-/// How often the source data is refreshed (Enum type: DataRefreshFrequency)
+/// How often the source data is refreshed
 class AssetsDataSourceRefreshFrequencyEnum {
   /// Instantiate a new enum with the provided [value].
   const AssetsDataSourceRefreshFrequencyEnum._(this.value);
@@ -1634,6 +2056,166 @@ class AssetsDataSourceRefreshFrequencyEnumTypeTransformer {
 
   /// Singleton [AssetsDataSourceRefreshFrequencyEnumTypeTransformer] instance.
   static AssetsDataSourceRefreshFrequencyEnumTypeTransformer? _instance;
+}
+
+
+/// Time period for rate limiting (second, minute, hour, day)
+class AssetsRateLimitPeriodEnum {
+  /// Instantiate a new enum with the provided [value].
+  const AssetsRateLimitPeriodEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const SECOND = AssetsRateLimitPeriodEnum._(r'SECOND');
+  static const MINUTE = AssetsRateLimitPeriodEnum._(r'MINUTE');
+  static const HOUR = AssetsRateLimitPeriodEnum._(r'HOUR');
+  static const DAY = AssetsRateLimitPeriodEnum._(r'DAY');
+
+  /// List of all possible values in this [enum][AssetsRateLimitPeriodEnum].
+  static const values = <AssetsRateLimitPeriodEnum>[
+    SECOND,
+    MINUTE,
+    HOUR,
+    DAY,
+  ];
+
+  static AssetsRateLimitPeriodEnum? fromJson(dynamic value) => AssetsRateLimitPeriodEnumTypeTransformer().decode(value);
+
+  static List<AssetsRateLimitPeriodEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <AssetsRateLimitPeriodEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = AssetsRateLimitPeriodEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [AssetsRateLimitPeriodEnum] to String,
+/// and [decode] dynamic data back to [AssetsRateLimitPeriodEnum].
+class AssetsRateLimitPeriodEnumTypeTransformer {
+  factory AssetsRateLimitPeriodEnumTypeTransformer() => _instance ??= const AssetsRateLimitPeriodEnumTypeTransformer._();
+
+  const AssetsRateLimitPeriodEnumTypeTransformer._();
+
+  String encode(AssetsRateLimitPeriodEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a AssetsRateLimitPeriodEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  AssetsRateLimitPeriodEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'SECOND': return AssetsRateLimitPeriodEnum.SECOND;
+        case r'MINUTE': return AssetsRateLimitPeriodEnum.MINUTE;
+        case r'HOUR': return AssetsRateLimitPeriodEnum.HOUR;
+        case r'DAY': return AssetsRateLimitPeriodEnum.DAY;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [AssetsRateLimitPeriodEnumTypeTransformer] instance.
+  static AssetsRateLimitPeriodEnumTypeTransformer? _instance;
+}
+
+
+/// Granularity level for rate limiting (USER, COMPANY, IP)
+class AssetsRateLimitGranularityEnum {
+  /// Instantiate a new enum with the provided [value].
+  const AssetsRateLimitGranularityEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const USER = AssetsRateLimitGranularityEnum._(r'USER');
+  static const COMPANY = AssetsRateLimitGranularityEnum._(r'COMPANY');
+  static const IP = AssetsRateLimitGranularityEnum._(r'IP');
+  static const GLOBAL = AssetsRateLimitGranularityEnum._(r'GLOBAL');
+
+  /// List of all possible values in this [enum][AssetsRateLimitGranularityEnum].
+  static const values = <AssetsRateLimitGranularityEnum>[
+    USER,
+    COMPANY,
+    IP,
+    GLOBAL,
+  ];
+
+  static AssetsRateLimitGranularityEnum? fromJson(dynamic value) => AssetsRateLimitGranularityEnumTypeTransformer().decode(value);
+
+  static List<AssetsRateLimitGranularityEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <AssetsRateLimitGranularityEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = AssetsRateLimitGranularityEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [AssetsRateLimitGranularityEnum] to String,
+/// and [decode] dynamic data back to [AssetsRateLimitGranularityEnum].
+class AssetsRateLimitGranularityEnumTypeTransformer {
+  factory AssetsRateLimitGranularityEnumTypeTransformer() => _instance ??= const AssetsRateLimitGranularityEnumTypeTransformer._();
+
+  const AssetsRateLimitGranularityEnumTypeTransformer._();
+
+  String encode(AssetsRateLimitGranularityEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a AssetsRateLimitGranularityEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  AssetsRateLimitGranularityEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'USER': return AssetsRateLimitGranularityEnum.USER;
+        case r'COMPANY': return AssetsRateLimitGranularityEnum.COMPANY;
+        case r'IP': return AssetsRateLimitGranularityEnum.IP;
+        case r'GLOBAL': return AssetsRateLimitGranularityEnum.GLOBAL;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [AssetsRateLimitGranularityEnumTypeTransformer] instance.
+  static AssetsRateLimitGranularityEnumTypeTransformer? _instance;
 }
 
 

@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:spartera_api_sdk/api.dart';
+import 'package:openapi/api.dart';
 import 'package:test/test.dart';
 
 // tests for JobFunctionsInput
@@ -16,6 +16,7 @@ void main() {
   // final instance = JobFunctionsInput();
 
   group('test JobFunctionsInput', () {
+    // Required. Must be unique.
     // String name
     test('to test the property `name`', () async {
       // TODO

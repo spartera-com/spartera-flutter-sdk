@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:spartera_api_sdk/api.dart';
+import 'package:openapi/api.dart';
 import 'package:test/test.dart';
 
 
@@ -17,59 +17,59 @@ void main() {
   // final instance = AssetPriceHistoryApi();
 
   group('tests for AssetPriceHistoryApi', () {
-    // Get the currently active price for an asset
+    // Create a new price history record for an asset
     //
-    //Future<CompaniesCompanyIdAssetsAssetIdPricesGet200Response> companiesCompanyIdAssetsAssetIdPricesActiveGet(String companyId, String assetId) async
-    test('test companiesCompanyIdAssetsAssetIdPricesActiveGet', () async {
-      // TODO
-    });
-
-    // Delete single price history record by ID
-    //
-    //Future<CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete200Response> companiesCompanyIdAssetsAssetIdPricesAphIdDelete(String companyId, String assetId, String aphId) async
-    test('test companiesCompanyIdAssetsAssetIdPricesAphIdDelete', () async {
-      // TODO
-    });
-
-    // Get single price history record by ID
-    //
-    //Future<CompaniesCompanyIdAssetsAssetIdPricesAphIdGet200Response> companiesCompanyIdAssetsAssetIdPricesAphIdGet(String companyId, String assetId, String aphId) async
-    test('test companiesCompanyIdAssetsAssetIdPricesAphIdGet', () async {
-      // TODO
-    });
-
-    // Update an existing price history record by ID
-    //
-    //Future<CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch200Response> companiesCompanyIdAssetsAssetIdPricesAphIdPatch(String companyId, String assetId, String aphId, AssetPriceHistoryUpdate assetPriceHistoryUpdate) async
-    test('test companiesCompanyIdAssetsAssetIdPricesAphIdPatch', () async {
+    //Future<CreateAssetPriceHistory200Response> createAssetPriceHistory(String companyId, String assetId, AssetPriceHistoryInput assetPriceHistoryInput) async
+    test('test createAssetPriceHistory', () async {
       // TODO
     });
 
     // Calculate the credit equivalent for a given USD price without saving
     //
-    //Future<CompaniesCompanyIdAssetsAssetIdPricesPost200Response> companiesCompanyIdAssetsAssetIdPricesCalculateCreditsPost(String companyId, String assetId, AssetPriceHistoryInput assetPriceHistoryInput) async
-    test('test companiesCompanyIdAssetsAssetIdPricesCalculateCreditsPost', () async {
+    //Future<CreateAssetPriceHistory200Response> createAssetPriceHistoryPricesCalculateCredits(String companyId, String assetId, AssetPriceHistoryInput assetPriceHistoryInput) async
+    test('test createAssetPriceHistoryPricesCalculateCredits', () async {
       // TODO
     });
 
     // POST /companies/{company_id}/assets/{asset_id}/prices/discount
     //
-    //Future<CompaniesCompanyIdAssetsAssetIdPricesPost200Response> companiesCompanyIdAssetsAssetIdPricesDiscountPost(String companyId, String assetId, AssetPriceHistoryInput assetPriceHistoryInput) async
-    test('test companiesCompanyIdAssetsAssetIdPricesDiscountPost', () async {
+    //Future<CreateAssetPriceHistory200Response> createAssetPriceHistoryPricesDiscount(String companyId, String assetId, AssetPriceHistoryInput assetPriceHistoryInput) async
+    test('test createAssetPriceHistoryPricesDiscount', () async {
+      // TODO
+    });
+
+    // Delete single price history record by ID
+    //
+    //Future<DeleteAssetPriceHistory200Response> deleteAssetPriceHistory(String companyId, String assetId, String aphId) async
+    test('test deleteAssetPriceHistory', () async {
       // TODO
     });
 
     // Get all price history records for a specific asset
     //
-    //Future<CompaniesCompanyIdAssetsAssetIdPricesGet200Response> companiesCompanyIdAssetsAssetIdPricesGet(String companyId, String assetId) async
-    test('test companiesCompanyIdAssetsAssetIdPricesGet', () async {
+    //Future<GetAssetPriceHistoryById200Response> getAssetPriceHistoryById(String companyId, String assetId) async
+    test('test getAssetPriceHistoryById', () async {
       // TODO
     });
 
-    // Create a new price history record for an asset
+    // Get single price history record by ID
     //
-    //Future<CompaniesCompanyIdAssetsAssetIdPricesPost200Response> companiesCompanyIdAssetsAssetIdPricesPost(String companyId, String assetId, AssetPriceHistoryInput assetPriceHistoryInput) async
-    test('test companiesCompanyIdAssetsAssetIdPricesPost', () async {
+    //Future<GetAssetPriceHistoryById200Response> getAssetPriceHistoryByIdAssetsPrices(String companyId, String assetId, String aphId) async
+    test('test getAssetPriceHistoryByIdAssetsPrices', () async {
+      // TODO
+    });
+
+    // Get the currently active price for an asset
+    //
+    //Future<GetAssetPriceHistoryById200Response> getAssetPriceHistoryByIdPricesActive(String companyId, String assetId) async
+    test('test getAssetPriceHistoryByIdPricesActive', () async {
+      // TODO
+    });
+
+    // Update an existing price history record by ID
+    //
+    //Future<UpdateAssetPriceHistory200Response> updateAssetPriceHistory(String companyId, String assetId, String aphId, AssetPriceHistoryUpdate assetPriceHistoryUpdate) async
+    test('test updateAssetPriceHistory', () async {
       // TODO
     });
 

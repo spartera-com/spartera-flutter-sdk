@@ -16,152 +16,65 @@ class APIKeysApi {
 
   final ApiClient apiClient;
 
-  /// Delete (deactivate) single API key by api_key_id.     Uses the api_key_id returned during creation for clean identification.     Fixed to use correct primary key lookup.
+  /// Create single API key.     Returns the actual sk_ key (only time it's exposed) and api_key_id for future operations.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
-  /// * [String] apiKeyId (required):
-  Future<Response> companiesCompanyIdApiKeysApiKeyIdDeleteWithHttpInfo(String companyId, String apiKeyId,) async {
+  /// * [ApiKeysInput] apiKeysInput (required):
+  ///
+  /// * [int] page:
+  ///   Page number for pagination
+  ///
+  /// * [int] limit:
+  ///   Number of items per page
+  ///
+  /// * [String] sortBy:
+  ///   Field to sort by
+  ///
+  /// * [String] sortOrder:
+  ///   Sort order (ascending or descending)
+  ///
+  /// * [String] search:
+  ///   Search term to filter results
+  Future<Response> createApiKeysWithHttpInfo(String companyId, ApiKeysInput apiKeysInput, { int? page, int? limit, String? sortBy, String? sortOrder, String? search, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/companies/{company_id}/api-keys/{api_key_id}'
-      .replaceAll('{company_id}', companyId)
-      .replaceAll('{api_key_id}', apiKeyId);
+    final path = r'/companies/{company_id}/api-keys'
+      .replaceAll('{company_id}', companyId);
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = apiKeysInput;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'DELETE',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Delete (deactivate) single API key by api_key_id.     Uses the api_key_id returned during creation for clean identification.     Fixed to use correct primary key lookup.
-  ///
-  /// Parameters:
-  ///
-  /// * [String] companyId (required):
-  ///
-  /// * [String] apiKeyId (required):
-  Future<CompaniesCompanyIdApiKeysApiKeyIdDelete200Response?> companiesCompanyIdApiKeysApiKeyIdDelete(String companyId, String apiKeyId,) async {
-    final response = await companiesCompanyIdApiKeysApiKeyIdDeleteWithHttpInfo(companyId, apiKeyId,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
     }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdApiKeysApiKeyIdDelete200Response',) as CompaniesCompanyIdApiKeysApiKeyIdDelete200Response;
-    
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
     }
-    return null;
-  }
-
-  /// Get single API key by ID.     Returns masked API key for security (sk_****1234).
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] companyId (required):
-  ///
-  /// * [String] apiKeyId (required):
-  Future<Response> companiesCompanyIdApiKeysApiKeyIdGetWithHttpInfo(String companyId, String apiKeyId,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/companies/{company_id}/api-keys/{api_key_id}'
-      .replaceAll('{company_id}', companyId)
-      .replaceAll('{api_key_id}', apiKeyId);
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Get single API key by ID.     Returns masked API key for security (sk_****1234).
-  ///
-  /// Parameters:
-  ///
-  /// * [String] companyId (required):
-  ///
-  /// * [String] apiKeyId (required):
-  Future<CompaniesCompanyIdApiKeysApiKeyIdGet200Response?> companiesCompanyIdApiKeysApiKeyIdGet(String companyId, String apiKeyId,) async {
-    final response = await companiesCompanyIdApiKeysApiKeyIdGetWithHttpInfo(companyId, apiKeyId,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    if (sortBy != null) {
+      queryParams.addAll(_queryParams('', 'sort_by', sortBy));
     }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdApiKeysApiKeyIdGet200Response',) as CompaniesCompanyIdApiKeysApiKeyIdGet200Response;
-    
+    if (sortOrder != null) {
+      queryParams.addAll(_queryParams('', 'sort_order', sortOrder));
     }
-    return null;
-  }
-
-  /// Update an existing API key by ID.     Can update metadata like name, expiration, rate limits, etc.     Cannot update the actual key value (for security).
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] companyId (required):
-  ///
-  /// * [String] apiKeyId (required):
-  ///
-  /// * [ApiKeysUpdate] apiKeysUpdate (required):
-  Future<Response> companiesCompanyIdApiKeysApiKeyIdPatchWithHttpInfo(String companyId, String apiKeyId, ApiKeysUpdate apiKeysUpdate,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/companies/{company_id}/api-keys/{api_key_id}'
-      .replaceAll('{company_id}', companyId)
-      .replaceAll('{api_key_id}', apiKeyId);
-
-    // ignore: prefer_final_locals
-    Object? postBody = apiKeysUpdate;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
+    if (search != null) {
+      queryParams.addAll(_queryParams('', 'search', search));
+    }
 
     const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
       path,
-      'PATCH',
+      'POST',
       queryParams,
       postBody,
       headerParams,
@@ -170,17 +83,31 @@ class APIKeysApi {
     );
   }
 
-  /// Update an existing API key by ID.     Can update metadata like name, expiration, rate limits, etc.     Cannot update the actual key value (for security).
+  /// Create single API key.     Returns the actual sk_ key (only time it's exposed) and api_key_id for future operations.
   ///
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
-  /// * [String] apiKeyId (required):
+  /// * [ApiKeysInput] apiKeysInput (required):
   ///
-  /// * [ApiKeysUpdate] apiKeysUpdate (required):
-  Future<CompaniesCompanyIdApiKeysApiKeyIdPatch200Response?> companiesCompanyIdApiKeysApiKeyIdPatch(String companyId, String apiKeyId, ApiKeysUpdate apiKeysUpdate,) async {
-    final response = await companiesCompanyIdApiKeysApiKeyIdPatchWithHttpInfo(companyId, apiKeyId, apiKeysUpdate,);
+  /// * [int] page:
+  ///   Page number for pagination
+  ///
+  /// * [int] limit:
+  ///   Number of items per page
+  ///
+  /// * [String] sortBy:
+  ///   Field to sort by
+  ///
+  /// * [String] sortOrder:
+  ///   Sort order (ascending or descending)
+  ///
+  /// * [String] search:
+  ///   Search term to filter results
+  Future<CreateApiKeys200Response?> createApiKeys(String companyId, ApiKeysInput apiKeysInput, { int? page, int? limit, String? sortBy, String? sortOrder, String? search, }) async {
+    final response = await createApiKeysWithHttpInfo(companyId, apiKeysInput,  page: page, limit: limit, sortBy: sortBy, sortOrder: sortOrder, search: search, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -188,7 +115,7 @@ class APIKeysApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdApiKeysApiKeyIdPatch200Response',) as CompaniesCompanyIdApiKeysApiKeyIdPatch200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CreateApiKeys200Response',) as CreateApiKeys200Response;
     
     }
     return null;
@@ -201,11 +128,13 @@ class APIKeysApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] apiKeyId (required):
+  ///   Unique identifier for the Api Key
   ///
   /// * [ApiKeysInput] apiKeysInput (required):
-  Future<Response> companiesCompanyIdApiKeysApiKeyIdRevokePostWithHttpInfo(String companyId, String apiKeyId, ApiKeysInput apiKeysInput,) async {
+  Future<Response> createApiKeysApiKeysRevokeWithHttpInfo(String companyId, String apiKeyId, ApiKeysInput apiKeysInput,) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/api-keys/{api_key_id}/revoke'
       .replaceAll('{company_id}', companyId)
@@ -237,12 +166,14 @@ class APIKeysApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] apiKeyId (required):
+  ///   Unique identifier for the Api Key
   ///
   /// * [ApiKeysInput] apiKeysInput (required):
-  Future<CompaniesCompanyIdApiKeysPost200Response?> companiesCompanyIdApiKeysApiKeyIdRevokePost(String companyId, String apiKeyId, ApiKeysInput apiKeysInput,) async {
-    final response = await companiesCompanyIdApiKeysApiKeyIdRevokePostWithHttpInfo(companyId, apiKeyId, apiKeysInput,);
+  Future<CreateApiKeys200Response?> createApiKeysApiKeysRevoke(String companyId, String apiKeyId, ApiKeysInput apiKeysInput,) async {
+    final response = await createApiKeysApiKeysRevokeWithHttpInfo(companyId, apiKeyId, apiKeysInput,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -250,7 +181,131 @@ class APIKeysApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdApiKeysPost200Response',) as CompaniesCompanyIdApiKeysPost200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CreateApiKeys200Response',) as CreateApiKeys200Response;
+    
+    }
+    return null;
+  }
+
+  /// Delete (deactivate) single API key by api_key_id.     Uses the api_key_id returned during creation for clean identification.     Fixed to use correct primary key lookup.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] companyId (required):
+  ///   Unique identifier for the Company
+  ///
+  /// * [String] apiKeyId (required):
+  ///   Unique identifier for the Api Key
+  Future<Response> deleteApiKeysWithHttpInfo(String companyId, String apiKeyId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/companies/{company_id}/api-keys/{api_key_id}'
+      .replaceAll('{company_id}', companyId)
+      .replaceAll('{api_key_id}', apiKeyId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Delete (deactivate) single API key by api_key_id.     Uses the api_key_id returned during creation for clean identification.     Fixed to use correct primary key lookup.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] companyId (required):
+  ///   Unique identifier for the Company
+  ///
+  /// * [String] apiKeyId (required):
+  ///   Unique identifier for the Api Key
+  Future<DeleteApiKeys200Response?> deleteApiKeys(String companyId, String apiKeyId,) async {
+    final response = await deleteApiKeysWithHttpInfo(companyId, apiKeyId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DeleteApiKeys200Response',) as DeleteApiKeys200Response;
+    
+    }
+    return null;
+  }
+
+  /// Get single API key by ID.     Returns masked API key for security (sk_****1234).
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] companyId (required):
+  ///   Unique identifier for the Company
+  ///
+  /// * [String] apiKeyId (required):
+  ///   Unique identifier for the Api Key
+  Future<Response> getApiKeysByIdWithHttpInfo(String companyId, String apiKeyId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/companies/{company_id}/api-keys/{api_key_id}'
+      .replaceAll('{company_id}', companyId)
+      .replaceAll('{api_key_id}', apiKeyId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Get single API key by ID.     Returns masked API key for security (sk_****1234).
+  ///
+  /// Parameters:
+  ///
+  /// * [String] companyId (required):
+  ///   Unique identifier for the Company
+  ///
+  /// * [String] apiKeyId (required):
+  ///   Unique identifier for the Api Key
+  Future<GetApiKeysById200Response?> getApiKeysById(String companyId, String apiKeyId,) async {
+    final response = await getApiKeysByIdWithHttpInfo(companyId, apiKeyId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GetApiKeysById200Response',) as GetApiKeysById200Response;
     
     }
     return null;
@@ -263,9 +318,11 @@ class APIKeysApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] apiKeyId (required):
-  Future<Response> companiesCompanyIdApiKeysApiKeyIdStatsGetWithHttpInfo(String companyId, String apiKeyId,) async {
+  ///   Unique identifier for the Api Key
+  Future<Response> getApiKeysByIdApiKeysStatsWithHttpInfo(String companyId, String apiKeyId,) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/api-keys/{api_key_id}/stats'
       .replaceAll('{company_id}', companyId)
@@ -297,10 +354,12 @@ class APIKeysApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] apiKeyId (required):
-  Future<CompaniesCompanyIdApiKeysGet200Response?> companiesCompanyIdApiKeysApiKeyIdStatsGet(String companyId, String apiKeyId,) async {
-    final response = await companiesCompanyIdApiKeysApiKeyIdStatsGetWithHttpInfo(companyId, apiKeyId,);
+  ///   Unique identifier for the Api Key
+  Future<GetApiKeysById200Response?> getApiKeysByIdApiKeysStats(String companyId, String apiKeyId,) async {
+    final response = await getApiKeysByIdApiKeysStatsWithHttpInfo(companyId, apiKeyId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -308,7 +367,7 @@ class APIKeysApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdApiKeysGet200Response',) as CompaniesCompanyIdApiKeysGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GetApiKeysById200Response',) as GetApiKeysById200Response;
     
     }
     return null;
@@ -321,7 +380,23 @@ class APIKeysApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
-  Future<Response> companiesCompanyIdApiKeysGetWithHttpInfo(String companyId,) async {
+  ///   Unique identifier for the Company
+  ///
+  /// * [int] page:
+  ///   Page number for pagination
+  ///
+  /// * [int] limit:
+  ///   Number of items per page
+  ///
+  /// * [String] sortBy:
+  ///   Field to sort by
+  ///
+  /// * [String] sortOrder:
+  ///   Sort order (ascending or descending)
+  ///
+  /// * [String] search:
+  ///   Search term to filter results
+  Future<Response> listApiKeysWithHttpInfo(String companyId, { int? page, int? limit, String? sortBy, String? sortOrder, String? search, }) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/api-keys'
       .replaceAll('{company_id}', companyId);
@@ -332,6 +407,22 @@ class APIKeysApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
+
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+    if (sortBy != null) {
+      queryParams.addAll(_queryParams('', 'sort_by', sortBy));
+    }
+    if (sortOrder != null) {
+      queryParams.addAll(_queryParams('', 'sort_order', sortOrder));
+    }
+    if (search != null) {
+      queryParams.addAll(_queryParams('', 'search', search));
+    }
 
     const contentTypes = <String>[];
 
@@ -352,8 +443,24 @@ class APIKeysApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
-  Future<CompaniesCompanyIdApiKeysGet200Response?> companiesCompanyIdApiKeysGet(String companyId,) async {
-    final response = await companiesCompanyIdApiKeysGetWithHttpInfo(companyId,);
+  ///   Unique identifier for the Company
+  ///
+  /// * [int] page:
+  ///   Page number for pagination
+  ///
+  /// * [int] limit:
+  ///   Number of items per page
+  ///
+  /// * [String] sortBy:
+  ///   Field to sort by
+  ///
+  /// * [String] sortOrder:
+  ///   Sort order (ascending or descending)
+  ///
+  /// * [String] search:
+  ///   Search term to filter results
+  Future<ListApiKeys200Response?> listApiKeys(String companyId, { int? page, int? limit, String? sortBy, String? sortOrder, String? search, }) async {
+    final response = await listApiKeysWithHttpInfo(companyId,  page: page, limit: limit, sortBy: sortBy, sortOrder: sortOrder, search: search, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -361,28 +468,33 @@ class APIKeysApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdApiKeysGet200Response',) as CompaniesCompanyIdApiKeysGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ListApiKeys200Response',) as ListApiKeys200Response;
     
     }
     return null;
   }
 
-  /// Create single API key.     Returns the actual sk_ key (only time it's exposed) and api_key_id for future operations.
+  /// Update an existing API key by ID.     Can update metadata like name, expiration, rate limits, etc.     Cannot update the actual key value (for security).
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
-  /// * [ApiKeysInput] apiKeysInput (required):
-  Future<Response> companiesCompanyIdApiKeysPostWithHttpInfo(String companyId, ApiKeysInput apiKeysInput,) async {
+  /// * [String] apiKeyId (required):
+  ///   Unique identifier for the Api Key
+  ///
+  /// * [ApiKeysUpdate] apiKeysUpdate (required):
+  Future<Response> updateApiKeysWithHttpInfo(String companyId, String apiKeyId, ApiKeysUpdate apiKeysUpdate,) async {
     // ignore: prefer_const_declarations
-    final path = r'/companies/{company_id}/api-keys'
-      .replaceAll('{company_id}', companyId);
+    final path = r'/companies/{company_id}/api-keys/{api_key_id}'
+      .replaceAll('{company_id}', companyId)
+      .replaceAll('{api_key_id}', apiKeyId);
 
     // ignore: prefer_final_locals
-    Object? postBody = apiKeysInput;
+    Object? postBody = apiKeysUpdate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -393,7 +505,7 @@ class APIKeysApi {
 
     return apiClient.invokeAPI(
       path,
-      'POST',
+      'PATCH',
       queryParams,
       postBody,
       headerParams,
@@ -402,15 +514,19 @@ class APIKeysApi {
     );
   }
 
-  /// Create single API key.     Returns the actual sk_ key (only time it's exposed) and api_key_id for future operations.
+  /// Update an existing API key by ID.     Can update metadata like name, expiration, rate limits, etc.     Cannot update the actual key value (for security).
   ///
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
-  /// * [ApiKeysInput] apiKeysInput (required):
-  Future<CompaniesCompanyIdApiKeysPost200Response?> companiesCompanyIdApiKeysPost(String companyId, ApiKeysInput apiKeysInput,) async {
-    final response = await companiesCompanyIdApiKeysPostWithHttpInfo(companyId, apiKeysInput,);
+  /// * [String] apiKeyId (required):
+  ///   Unique identifier for the Api Key
+  ///
+  /// * [ApiKeysUpdate] apiKeysUpdate (required):
+  Future<UpdateApiKeys200Response?> updateApiKeys(String companyId, String apiKeyId, ApiKeysUpdate apiKeysUpdate,) async {
+    final response = await updateApiKeysWithHttpInfo(companyId, apiKeyId, apiKeysUpdate,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -418,7 +534,7 @@ class APIKeysApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdApiKeysPost200Response',) as CompaniesCompanyIdApiKeysPost200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UpdateApiKeys200Response',) as UpdateApiKeys200Response;
     
     }
     return null;

@@ -23,8 +23,11 @@ class CompaniesInput {
     this.acceptedEula,
     this.stripeAccountId,
     this.stripeAccountStatus,
+    this.vendorSharePercent,
+    this.partnershipType,
   });
 
+  /// References industries.industry_id — Available industry categories for asset classification. Based on US NAISC codes.. See GET /industries for valid values. Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -33,6 +36,7 @@ class CompaniesInput {
   ///
   int? industryId;
 
+  /// References countries.country_id — List of countries of the world. See GET /countries for valid values. Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -41,6 +45,7 @@ class CompaniesInput {
   ///
   int? countryId;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -49,6 +54,7 @@ class CompaniesInput {
   ///
   String? companyName;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -57,8 +63,10 @@ class CompaniesInput {
   ///
   String? companyDescription;
 
+  /// Required. Must be unique.
   String companyHandle;
 
+  /// Required. Must be unique.
   String companyDomain;
 
   /// Current balance of credits for this company (buyer)
@@ -70,6 +78,7 @@ class CompaniesInput {
   ///
   int? creditsBalance;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -96,6 +105,18 @@ class CompaniesInput {
   ///
   String? stripeAccountStatus;
 
+  /// Negotiated vendor revenue share (e.g. 0.85 = 85%). NULL = system default 80%.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  double? vendorSharePercent;
+
+  /// Partnership type: SELF_MANAGED, CUSTODIAN, or null
+  CompaniesInputPartnershipTypeEnum? partnershipType;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CompaniesInput &&
     other.industryId == industryId &&
@@ -107,7 +128,9 @@ class CompaniesInput {
     other.creditsBalance == creditsBalance &&
     other.acceptedEula == acceptedEula &&
     other.stripeAccountId == stripeAccountId &&
-    other.stripeAccountStatus == stripeAccountStatus;
+    other.stripeAccountStatus == stripeAccountStatus &&
+    other.vendorSharePercent == vendorSharePercent &&
+    other.partnershipType == partnershipType;
 
   @override
   int get hashCode =>
@@ -121,10 +144,12 @@ class CompaniesInput {
     (creditsBalance == null ? 0 : creditsBalance!.hashCode) +
     (acceptedEula == null ? 0 : acceptedEula!.hashCode) +
     (stripeAccountId == null ? 0 : stripeAccountId!.hashCode) +
-    (stripeAccountStatus == null ? 0 : stripeAccountStatus!.hashCode);
+    (stripeAccountStatus == null ? 0 : stripeAccountStatus!.hashCode) +
+    (vendorSharePercent == null ? 0 : vendorSharePercent!.hashCode) +
+    (partnershipType == null ? 0 : partnershipType!.hashCode);
 
   @override
-  String toString() => 'CompaniesInput[industryId=$industryId, countryId=$countryId, companyName=$companyName, companyDescription=$companyDescription, companyHandle=$companyHandle, companyDomain=$companyDomain, creditsBalance=$creditsBalance, acceptedEula=$acceptedEula, stripeAccountId=$stripeAccountId, stripeAccountStatus=$stripeAccountStatus]';
+  String toString() => 'CompaniesInput[industryId=$industryId, countryId=$countryId, companyName=$companyName, companyDescription=$companyDescription, companyHandle=$companyHandle, companyDomain=$companyDomain, creditsBalance=$creditsBalance, acceptedEula=$acceptedEula, stripeAccountId=$stripeAccountId, stripeAccountStatus=$stripeAccountStatus, vendorSharePercent=$vendorSharePercent, partnershipType=$partnershipType]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -170,6 +195,16 @@ class CompaniesInput {
     } else {
       json[r'stripe_account_status'] = null;
     }
+    if (this.vendorSharePercent != null) {
+      json[r'vendor_share_percent'] = this.vendorSharePercent;
+    } else {
+      json[r'vendor_share_percent'] = null;
+    }
+    if (this.partnershipType != null) {
+      json[r'partnership_type'] = this.partnershipType;
+    } else {
+      json[r'partnership_type'] = null;
+    }
     return json;
   }
 
@@ -184,10 +219,10 @@ class CompaniesInput {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CompaniesInput[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CompaniesInput[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'company_handle'), 'Required key "CompaniesInput[company_handle]" is missing from JSON.');
+        assert(json[r'company_handle'] != null, 'Required key "CompaniesInput[company_handle]" has a null value in JSON.');
+        assert(json.containsKey(r'company_domain'), 'Required key "CompaniesInput[company_domain]" is missing from JSON.');
+        assert(json[r'company_domain'] != null, 'Required key "CompaniesInput[company_domain]" has a null value in JSON.');
         return true;
       }());
 
@@ -202,6 +237,8 @@ class CompaniesInput {
         acceptedEula: mapValueOfType<bool>(json, r'accepted_eula'),
         stripeAccountId: mapValueOfType<String>(json, r'stripe_account_id'),
         stripeAccountStatus: mapValueOfType<String>(json, r'stripe_account_status'),
+        vendorSharePercent: mapValueOfType<double>(json, r'vendor_share_percent'),
+        partnershipType: CompaniesInputPartnershipTypeEnum.fromJson(json[r'partnership_type']),
       );
     }
     return null;
@@ -253,4 +290,78 @@ class CompaniesInput {
     'company_domain',
   };
 }
+
+/// Partnership type: SELF_MANAGED, CUSTODIAN, or null
+class CompaniesInputPartnershipTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const CompaniesInputPartnershipTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const SELF_MANAGED = CompaniesInputPartnershipTypeEnum._(r'SELF_MANAGED');
+  static const CUSTODIAN = CompaniesInputPartnershipTypeEnum._(r'CUSTODIAN');
+
+  /// List of all possible values in this [enum][CompaniesInputPartnershipTypeEnum].
+  static const values = <CompaniesInputPartnershipTypeEnum>[
+    SELF_MANAGED,
+    CUSTODIAN,
+  ];
+
+  static CompaniesInputPartnershipTypeEnum? fromJson(dynamic value) => CompaniesInputPartnershipTypeEnumTypeTransformer().decode(value);
+
+  static List<CompaniesInputPartnershipTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CompaniesInputPartnershipTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = CompaniesInputPartnershipTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [CompaniesInputPartnershipTypeEnum] to String,
+/// and [decode] dynamic data back to [CompaniesInputPartnershipTypeEnum].
+class CompaniesInputPartnershipTypeEnumTypeTransformer {
+  factory CompaniesInputPartnershipTypeEnumTypeTransformer() => _instance ??= const CompaniesInputPartnershipTypeEnumTypeTransformer._();
+
+  const CompaniesInputPartnershipTypeEnumTypeTransformer._();
+
+  String encode(CompaniesInputPartnershipTypeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a CompaniesInputPartnershipTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  CompaniesInputPartnershipTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'SELF_MANAGED': return CompaniesInputPartnershipTypeEnum.SELF_MANAGED;
+        case r'CUSTODIAN': return CompaniesInputPartnershipTypeEnum.CUSTODIAN;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [CompaniesInputPartnershipTypeEnumTypeTransformer] instance.
+  static CompaniesInputPartnershipTypeEnumTypeTransformer? _instance;
+}
+
 

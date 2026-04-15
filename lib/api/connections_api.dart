@@ -16,6 +16,111 @@ class ConnectionsApi {
 
   final ApiClient apiClient;
 
+  /// Create a new connection by ID
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] companyId (required):
+  ///   Unique identifier for the Company
+  ///
+  /// * [ConnectionsInput] connectionsInput (required):
+  ///
+  /// * [int] page:
+  ///   Page number for pagination
+  ///
+  /// * [int] limit:
+  ///   Number of items per page
+  ///
+  /// * [String] sortBy:
+  ///   Field to sort by
+  ///
+  /// * [String] sortOrder:
+  ///   Sort order (ascending or descending)
+  ///
+  /// * [String] search:
+  ///   Search term to filter results
+  Future<Response> createConnectionsWithHttpInfo(String companyId, ConnectionsInput connectionsInput, { int? page, int? limit, String? sortBy, String? sortOrder, String? search, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/companies/{company_id}/connections'
+      .replaceAll('{company_id}', companyId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = connectionsInput;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+    if (sortBy != null) {
+      queryParams.addAll(_queryParams('', 'sort_by', sortBy));
+    }
+    if (sortOrder != null) {
+      queryParams.addAll(_queryParams('', 'sort_order', sortOrder));
+    }
+    if (search != null) {
+      queryParams.addAll(_queryParams('', 'search', search));
+    }
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Create a new connection by ID
+  ///
+  /// Parameters:
+  ///
+  /// * [String] companyId (required):
+  ///   Unique identifier for the Company
+  ///
+  /// * [ConnectionsInput] connectionsInput (required):
+  ///
+  /// * [int] page:
+  ///   Page number for pagination
+  ///
+  /// * [int] limit:
+  ///   Number of items per page
+  ///
+  /// * [String] sortBy:
+  ///   Field to sort by
+  ///
+  /// * [String] sortOrder:
+  ///   Sort order (ascending or descending)
+  ///
+  /// * [String] search:
+  ///   Search term to filter results
+  Future<CreateConnections200Response?> createConnections(String companyId, ConnectionsInput connectionsInput, { int? page, int? limit, String? sortBy, String? sortOrder, String? search, }) async {
+    final response = await createConnectionsWithHttpInfo(companyId, connectionsInput,  page: page, limit: limit, sortBy: sortBy, sortOrder: sortOrder, search: search, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CreateConnections200Response',) as CreateConnections200Response;
+    
+    }
+    return null;
+  }
+
   /// Delete single connection by ID
   ///
   /// Note: This method returns the HTTP [Response].
@@ -23,9 +128,11 @@ class ConnectionsApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] connectionId (required):
-  Future<Response> companiesCompanyIdConnectionsConnectionIdDeleteWithHttpInfo(String companyId, String connectionId,) async {
+  ///   Unique identifier for the Connection
+  Future<Response> deleteConnectionsWithHttpInfo(String companyId, String connectionId,) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/connections/{connection_id}'
       .replaceAll('{company_id}', companyId)
@@ -57,10 +164,12 @@ class ConnectionsApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] connectionId (required):
-  Future<CompaniesCompanyIdConnectionsConnectionIdDelete200Response?> companiesCompanyIdConnectionsConnectionIdDelete(String companyId, String connectionId,) async {
-    final response = await companiesCompanyIdConnectionsConnectionIdDeleteWithHttpInfo(companyId, connectionId,);
+  ///   Unique identifier for the Connection
+  Future<DeleteConnections200Response?> deleteConnections(String companyId, String connectionId,) async {
+    final response = await deleteConnectionsWithHttpInfo(companyId, connectionId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -68,7 +177,7 @@ class ConnectionsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdConnectionsConnectionIdDelete200Response',) as CompaniesCompanyIdConnectionsConnectionIdDelete200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DeleteConnections200Response',) as DeleteConnections200Response;
     
     }
     return null;
@@ -81,9 +190,11 @@ class ConnectionsApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] connectionId (required):
-  Future<Response> companiesCompanyIdConnectionsConnectionIdGetWithHttpInfo(String companyId, String connectionId,) async {
+  ///   Unique identifier for the Connection
+  Future<Response> getConnectionsByIdWithHttpInfo(String companyId, String connectionId,) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/connections/{connection_id}'
       .replaceAll('{company_id}', companyId)
@@ -115,10 +226,12 @@ class ConnectionsApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] connectionId (required):
-  Future<CompaniesCompanyIdConnectionsConnectionIdGet200Response?> companiesCompanyIdConnectionsConnectionIdGet(String companyId, String connectionId,) async {
-    final response = await companiesCompanyIdConnectionsConnectionIdGetWithHttpInfo(companyId, connectionId,);
+  ///   Unique identifier for the Connection
+  Future<GetConnectionsById200Response?> getConnectionsById(String companyId, String connectionId,) async {
+    final response = await getConnectionsByIdWithHttpInfo(companyId, connectionId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -126,127 +239,7 @@ class ConnectionsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdConnectionsConnectionIdGet200Response',) as CompaniesCompanyIdConnectionsConnectionIdGet200Response;
-    
-    }
-    return null;
-  }
-
-  /// Retrieve the information schema for the specified connection
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] companyId (required):
-  ///
-  /// * [String] connectionId (required):
-  Future<Response> companiesCompanyIdConnectionsConnectionIdInfoschemaGetWithHttpInfo(String companyId, String connectionId,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/companies/{company_id}/connections/{connection_id}/infoschema'
-      .replaceAll('{company_id}', companyId)
-      .replaceAll('{connection_id}', connectionId);
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Retrieve the information schema for the specified connection
-  ///
-  /// Parameters:
-  ///
-  /// * [String] companyId (required):
-  ///
-  /// * [String] connectionId (required):
-  Future<CompaniesCompanyIdConnectionsGet200Response?> companiesCompanyIdConnectionsConnectionIdInfoschemaGet(String companyId, String connectionId,) async {
-    final response = await companiesCompanyIdConnectionsConnectionIdInfoschemaGetWithHttpInfo(companyId, connectionId,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdConnectionsGet200Response',) as CompaniesCompanyIdConnectionsGet200Response;
-    
-    }
-    return null;
-  }
-
-  /// Update an existing connection by ID
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] companyId (required):
-  ///
-  /// * [String] connectionId (required):
-  ///
-  /// * [ConnectionsUpdate] connectionsUpdate (required):
-  Future<Response> companiesCompanyIdConnectionsConnectionIdPatchWithHttpInfo(String companyId, String connectionId, ConnectionsUpdate connectionsUpdate,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/companies/{company_id}/connections/{connection_id}'
-      .replaceAll('{company_id}', companyId)
-      .replaceAll('{connection_id}', connectionId);
-
-    // ignore: prefer_final_locals
-    Object? postBody = connectionsUpdate;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'PATCH',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Update an existing connection by ID
-  ///
-  /// Parameters:
-  ///
-  /// * [String] companyId (required):
-  ///
-  /// * [String] connectionId (required):
-  ///
-  /// * [ConnectionsUpdate] connectionsUpdate (required):
-  Future<CompaniesCompanyIdConnectionsConnectionIdPatch200Response?> companiesCompanyIdConnectionsConnectionIdPatch(String companyId, String connectionId, ConnectionsUpdate connectionsUpdate,) async {
-    final response = await companiesCompanyIdConnectionsConnectionIdPatchWithHttpInfo(companyId, connectionId, connectionsUpdate,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdConnectionsConnectionIdPatch200Response',) as CompaniesCompanyIdConnectionsConnectionIdPatch200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GetConnectionsById200Response',) as GetConnectionsById200Response;
     
     }
     return null;
@@ -259,9 +252,11 @@ class ConnectionsApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] connectionId (required):
-  Future<Response> companiesCompanyIdConnectionsConnectionIdTestGetWithHttpInfo(String companyId, String connectionId,) async {
+  ///   Unique identifier for the Connection
+  Future<Response> getConnectionsById2WithHttpInfo(String companyId, String connectionId,) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/connections/{connection_id}/test'
       .replaceAll('{company_id}', companyId)
@@ -293,10 +288,12 @@ class ConnectionsApi {
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
   /// * [String] connectionId (required):
-  Future<CompaniesCompanyIdConnectionsGet200Response?> companiesCompanyIdConnectionsConnectionIdTestGet(String companyId, String connectionId,) async {
-    final response = await companiesCompanyIdConnectionsConnectionIdTestGetWithHttpInfo(companyId, connectionId,);
+  ///   Unique identifier for the Connection
+  Future<GetConnectionsById200Response?> getConnectionsById2(String companyId, String connectionId,) async {
+    final response = await getConnectionsById2WithHttpInfo(companyId, connectionId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -304,23 +301,28 @@ class ConnectionsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdConnectionsGet200Response',) as CompaniesCompanyIdConnectionsGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GetConnectionsById200Response',) as GetConnectionsById200Response;
     
     }
     return null;
   }
 
-  /// Get all connections for a specific company
+  /// Retrieve the information schema for the specified connection
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [String] companyId (required):
-  Future<Response> companiesCompanyIdConnectionsGetWithHttpInfo(String companyId,) async {
+  ///   Unique identifier for the Company
+  ///
+  /// * [String] connectionId (required):
+  ///   Unique identifier for the Connection
+  Future<Response> getConnectionsByIdInfoschemaWithHttpInfo(String companyId, String connectionId,) async {
     // ignore: prefer_const_declarations
-    final path = r'/companies/{company_id}/connections'
-      .replaceAll('{company_id}', companyId);
+    final path = r'/companies/{company_id}/connections/{connection_id}/infoschema'
+      .replaceAll('{company_id}', companyId)
+      .replaceAll('{connection_id}', connectionId);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -343,13 +345,17 @@ class ConnectionsApi {
     );
   }
 
-  /// Get all connections for a specific company
+  /// Retrieve the information schema for the specified connection
   ///
   /// Parameters:
   ///
   /// * [String] companyId (required):
-  Future<CompaniesCompanyIdConnectionsGet200Response?> companiesCompanyIdConnectionsGet(String companyId,) async {
-    final response = await companiesCompanyIdConnectionsGetWithHttpInfo(companyId,);
+  ///   Unique identifier for the Company
+  ///
+  /// * [String] connectionId (required):
+  ///   Unique identifier for the Connection
+  Future<GetConnectionsById200Response?> getConnectionsByIdInfoschema(String companyId, String connectionId,) async {
+    final response = await getConnectionsByIdInfoschemaWithHttpInfo(companyId, connectionId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -357,28 +363,134 @@ class ConnectionsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdConnectionsGet200Response',) as CompaniesCompanyIdConnectionsGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GetConnectionsById200Response',) as GetConnectionsById200Response;
     
     }
     return null;
   }
 
-  /// Create a new connection by ID
+  /// Get all connections for a specific company
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
-  /// * [ConnectionsInput] connectionsInput (required):
-  Future<Response> companiesCompanyIdConnectionsPostWithHttpInfo(String companyId, ConnectionsInput connectionsInput,) async {
+  /// * [int] page:
+  ///   Page number for pagination
+  ///
+  /// * [int] limit:
+  ///   Number of items per page
+  ///
+  /// * [String] sortBy:
+  ///   Field to sort by
+  ///
+  /// * [String] sortOrder:
+  ///   Sort order (ascending or descending)
+  ///
+  /// * [String] search:
+  ///   Search term to filter results
+  Future<Response> listConnectionsWithHttpInfo(String companyId, { int? page, int? limit, String? sortBy, String? sortOrder, String? search, }) async {
     // ignore: prefer_const_declarations
     final path = r'/companies/{company_id}/connections'
       .replaceAll('{company_id}', companyId);
 
     // ignore: prefer_final_locals
-    Object? postBody = connectionsInput;
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+    if (sortBy != null) {
+      queryParams.addAll(_queryParams('', 'sort_by', sortBy));
+    }
+    if (sortOrder != null) {
+      queryParams.addAll(_queryParams('', 'sort_order', sortOrder));
+    }
+    if (search != null) {
+      queryParams.addAll(_queryParams('', 'search', search));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Get all connections for a specific company
+  ///
+  /// Parameters:
+  ///
+  /// * [String] companyId (required):
+  ///   Unique identifier for the Company
+  ///
+  /// * [int] page:
+  ///   Page number for pagination
+  ///
+  /// * [int] limit:
+  ///   Number of items per page
+  ///
+  /// * [String] sortBy:
+  ///   Field to sort by
+  ///
+  /// * [String] sortOrder:
+  ///   Sort order (ascending or descending)
+  ///
+  /// * [String] search:
+  ///   Search term to filter results
+  Future<ListConnections200Response?> listConnections(String companyId, { int? page, int? limit, String? sortBy, String? sortOrder, String? search, }) async {
+    final response = await listConnectionsWithHttpInfo(companyId,  page: page, limit: limit, sortBy: sortBy, sortOrder: sortOrder, search: search, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ListConnections200Response',) as ListConnections200Response;
+    
+    }
+    return null;
+  }
+
+  /// Update an existing connection by ID
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] companyId (required):
+  ///   Unique identifier for the Company
+  ///
+  /// * [String] connectionId (required):
+  ///   Unique identifier for the Connection
+  ///
+  /// * [ConnectionsUpdate] connectionsUpdate (required):
+  Future<Response> updateConnectionsWithHttpInfo(String companyId, String connectionId, ConnectionsUpdate connectionsUpdate,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/companies/{company_id}/connections/{connection_id}'
+      .replaceAll('{company_id}', companyId)
+      .replaceAll('{connection_id}', connectionId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = connectionsUpdate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -389,7 +501,7 @@ class ConnectionsApi {
 
     return apiClient.invokeAPI(
       path,
-      'POST',
+      'PATCH',
       queryParams,
       postBody,
       headerParams,
@@ -398,15 +510,19 @@ class ConnectionsApi {
     );
   }
 
-  /// Create a new connection by ID
+  /// Update an existing connection by ID
   ///
   /// Parameters:
   ///
   /// * [String] companyId (required):
+  ///   Unique identifier for the Company
   ///
-  /// * [ConnectionsInput] connectionsInput (required):
-  Future<CompaniesCompanyIdConnectionsPost200Response?> companiesCompanyIdConnectionsPost(String companyId, ConnectionsInput connectionsInput,) async {
-    final response = await companiesCompanyIdConnectionsPostWithHttpInfo(companyId, connectionsInput,);
+  /// * [String] connectionId (required):
+  ///   Unique identifier for the Connection
+  ///
+  /// * [ConnectionsUpdate] connectionsUpdate (required):
+  Future<UpdateConnections200Response?> updateConnections(String companyId, String connectionId, ConnectionsUpdate connectionsUpdate,) async {
+    final response = await updateConnectionsWithHttpInfo(companyId, connectionId, connectionsUpdate,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -414,7 +530,7 @@ class ConnectionsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CompaniesCompanyIdConnectionsPost200Response',) as CompaniesCompanyIdConnectionsPost200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UpdateConnections200Response',) as UpdateConnections200Response;
     
     }
     return null;

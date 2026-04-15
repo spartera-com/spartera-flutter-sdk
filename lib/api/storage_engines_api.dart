@@ -23,9 +23,11 @@ class StorageEnginesApi {
   /// Parameters:
   ///
   /// * [String] providerId (required):
+  ///   Unique identifier for the Provider
   ///
   /// * [String] engineId (required):
-  Future<Response> cloudProvidersProviderIdStorageEnginesEngineIdGetWithHttpInfo(String providerId, String engineId,) async {
+  ///   Unique identifier for the Engine
+  Future<Response> getStorageEnginesByIdWithHttpInfo(String providerId, String engineId,) async {
     // ignore: prefer_const_declarations
     final path = r'/cloud-providers/{provider_id}/storage-engines/{engine_id}'
       .replaceAll('{provider_id}', providerId)
@@ -57,10 +59,12 @@ class StorageEnginesApi {
   /// Parameters:
   ///
   /// * [String] providerId (required):
+  ///   Unique identifier for the Provider
   ///
   /// * [String] engineId (required):
-  Future<CloudProvidersProviderIdStorageEnginesGet200Response?> cloudProvidersProviderIdStorageEnginesEngineIdGet(String providerId, String engineId,) async {
-    final response = await cloudProvidersProviderIdStorageEnginesEngineIdGetWithHttpInfo(providerId, engineId,);
+  ///   Unique identifier for the Engine
+  Future<GetStorageEnginesById200Response?> getStorageEnginesById(String providerId, String engineId,) async {
+    final response = await getStorageEnginesByIdWithHttpInfo(providerId, engineId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -68,7 +72,7 @@ class StorageEnginesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CloudProvidersProviderIdStorageEnginesGet200Response',) as CloudProvidersProviderIdStorageEnginesGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GetStorageEnginesById200Response',) as GetStorageEnginesById200Response;
     
     }
     return null;
@@ -81,7 +85,23 @@ class StorageEnginesApi {
   /// Parameters:
   ///
   /// * [String] providerId (required):
-  Future<Response> cloudProvidersProviderIdStorageEnginesGetWithHttpInfo(String providerId,) async {
+  ///   Unique identifier for the Provider
+  ///
+  /// * [int] page:
+  ///   Page number for pagination
+  ///
+  /// * [int] limit:
+  ///   Number of items per page
+  ///
+  /// * [String] sortBy:
+  ///   Field to sort by
+  ///
+  /// * [String] sortOrder:
+  ///   Sort order (ascending or descending)
+  ///
+  /// * [String] search:
+  ///   Search term to filter results
+  Future<Response> listStorageEnginesWithHttpInfo(String providerId, { int? page, int? limit, String? sortBy, String? sortOrder, String? search, }) async {
     // ignore: prefer_const_declarations
     final path = r'/cloud-providers/{provider_id}/storage-engines'
       .replaceAll('{provider_id}', providerId);
@@ -92,6 +112,22 @@ class StorageEnginesApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
+
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+    if (sortBy != null) {
+      queryParams.addAll(_queryParams('', 'sort_by', sortBy));
+    }
+    if (sortOrder != null) {
+      queryParams.addAll(_queryParams('', 'sort_order', sortOrder));
+    }
+    if (search != null) {
+      queryParams.addAll(_queryParams('', 'search', search));
+    }
 
     const contentTypes = <String>[];
 
@@ -112,8 +148,24 @@ class StorageEnginesApi {
   /// Parameters:
   ///
   /// * [String] providerId (required):
-  Future<CloudProvidersProviderIdStorageEnginesGet200Response?> cloudProvidersProviderIdStorageEnginesGet(String providerId,) async {
-    final response = await cloudProvidersProviderIdStorageEnginesGetWithHttpInfo(providerId,);
+  ///   Unique identifier for the Provider
+  ///
+  /// * [int] page:
+  ///   Page number for pagination
+  ///
+  /// * [int] limit:
+  ///   Number of items per page
+  ///
+  /// * [String] sortBy:
+  ///   Field to sort by
+  ///
+  /// * [String] sortOrder:
+  ///   Sort order (ascending or descending)
+  ///
+  /// * [String] search:
+  ///   Search term to filter results
+  Future<ListStorageEngines200Response?> listStorageEngines(String providerId, { int? page, int? limit, String? sortBy, String? sortOrder, String? search, }) async {
+    final response = await listStorageEnginesWithHttpInfo(providerId,  page: page, limit: limit, sortBy: sortBy, sortOrder: sortOrder, search: search, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -121,7 +173,7 @@ class StorageEnginesApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CloudProvidersProviderIdStorageEnginesGet200Response',) as CloudProvidersProviderIdStorageEnginesGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ListStorageEngines200Response',) as ListStorageEngines200Response;
     
     }
     return null;

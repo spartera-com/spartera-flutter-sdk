@@ -18,6 +18,7 @@ class CloudProvidersUpdate {
     this.marketingHomepageUrl,
   });
 
+  /// Required.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -26,6 +27,7 @@ class CloudProvidersUpdate {
   ///
   String? name;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -34,6 +36,7 @@ class CloudProvidersUpdate {
   ///
   String? parentCompany;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -89,10 +92,6 @@ class CloudProvidersUpdate {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "CloudProvidersUpdate[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "CloudProvidersUpdate[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 

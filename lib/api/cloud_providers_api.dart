@@ -16,50 +16,6 @@ class CloudProvidersApi {
 
   final ApiClient apiClient;
 
-  /// Get a list of all cloud providers
-  ///
-  /// Note: This method returns the HTTP [Response].
-  Future<Response> cloudProvidersGetWithHttpInfo() async {
-    // ignore: prefer_const_declarations
-    final path = r'/cloud-providers';
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Get a list of all cloud providers
-  Future<CloudProvidersGet200Response?> cloudProvidersGet() async {
-    final response = await cloudProvidersGetWithHttpInfo();
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CloudProvidersGet200Response',) as CloudProvidersGet200Response;
-    
-    }
-    return null;
-  }
-
   /// Get single cloud provider by ID
   ///
   /// Note: This method returns the HTTP [Response].
@@ -67,7 +23,8 @@ class CloudProvidersApi {
   /// Parameters:
   ///
   /// * [String] providerId (required):
-  Future<Response> cloudProvidersProviderIdGetWithHttpInfo(String providerId,) async {
+  ///   Unique identifier for the Provider
+  Future<Response> getCloudProvidersByIdWithHttpInfo(String providerId,) async {
     // ignore: prefer_const_declarations
     final path = r'/cloud-providers/{provider_id}'
       .replaceAll('{provider_id}', providerId);
@@ -98,8 +55,9 @@ class CloudProvidersApi {
   /// Parameters:
   ///
   /// * [String] providerId (required):
-  Future<CloudProvidersProviderIdGet200Response?> cloudProvidersProviderIdGet(String providerId,) async {
-    final response = await cloudProvidersProviderIdGetWithHttpInfo(providerId,);
+  ///   Unique identifier for the Provider
+  Future<GetCloudProvidersById200Response?> getCloudProvidersById(String providerId,) async {
+    final response = await getCloudProvidersByIdWithHttpInfo(providerId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -107,7 +65,101 @@ class CloudProvidersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CloudProvidersProviderIdGet200Response',) as CloudProvidersProviderIdGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GetCloudProvidersById200Response',) as GetCloudProvidersById200Response;
+    
+    }
+    return null;
+  }
+
+  /// Get a list of all cloud providers
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] page:
+  ///   Page number for pagination
+  ///
+  /// * [int] limit:
+  ///   Number of items per page
+  ///
+  /// * [String] sortBy:
+  ///   Field to sort by
+  ///
+  /// * [String] sortOrder:
+  ///   Sort order (ascending or descending)
+  ///
+  /// * [String] search:
+  ///   Search term to filter results
+  Future<Response> listCloudProvidersWithHttpInfo({ int? page, int? limit, String? sortBy, String? sortOrder, String? search, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/cloud-providers';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+    if (sortBy != null) {
+      queryParams.addAll(_queryParams('', 'sort_by', sortBy));
+    }
+    if (sortOrder != null) {
+      queryParams.addAll(_queryParams('', 'sort_order', sortOrder));
+    }
+    if (search != null) {
+      queryParams.addAll(_queryParams('', 'search', search));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Get a list of all cloud providers
+  ///
+  /// Parameters:
+  ///
+  /// * [int] page:
+  ///   Page number for pagination
+  ///
+  /// * [int] limit:
+  ///   Number of items per page
+  ///
+  /// * [String] sortBy:
+  ///   Field to sort by
+  ///
+  /// * [String] sortOrder:
+  ///   Sort order (ascending or descending)
+  ///
+  /// * [String] search:
+  ///   Search term to filter results
+  Future<ListCloudProviders200Response?> listCloudProviders({ int? page, int? limit, String? sortBy, String? sortOrder, String? search, }) async {
+    final response = await listCloudProvidersWithHttpInfo( page: page, limit: limit, sortBy: sortBy, sortOrder: sortOrder, search: search, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ListCloudProviders200Response',) as ListCloudProviders200Response;
     
     }
     return null;

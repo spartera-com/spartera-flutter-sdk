@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:spartera_api_sdk/api.dart';
+import 'package:openapi/api.dart';
 import 'package:test/test.dart';
 
 // tests for ApiKeys
@@ -16,16 +16,19 @@ void main() {
   // final instance = ApiKeys();
 
   group('test ApiKeys', () {
+    // Optional.
     // DateTime dateCreated
     test('to test the property `dateCreated`', () async {
       // TODO
     });
 
+    // Optional.
     // DateTime lastUpdated
     test('to test the property `lastUpdated`', () async {
       // TODO
     });
 
+    // Unique identifier.
     // int apiKeyId
     test('to test the property `apiKeyId`', () async {
       // TODO
@@ -46,6 +49,30 @@ void main() {
     // Role/permission level for this API key
     // int roleId
     test('to test the property `roleId`', () async {
+      // TODO
+    });
+
+    // Type of API key (analytics, mcp, or endpoint)
+    // String keyType
+    test('to test the property `keyType`', () async {
+      // TODO
+    });
+
+    // True if key was auto-generated for MCP deployment
+    // bool isSystemGenerated
+    test('to test the property `isSystemGenerated`', () async {
+      // TODO
+    });
+
+    // MCP deployment this key is tied to (NULL for analytics/endpoint keys)
+    // String mcpDeploymentId
+    test('to test the property `mcpDeploymentId`', () async {
+      // TODO
+    });
+
+    // Endpoint this key is tied to (NULL for analytics/mcp keys)
+    // String endpointId
+    test('to test the property `endpointId`', () async {
       // TODO
     });
 

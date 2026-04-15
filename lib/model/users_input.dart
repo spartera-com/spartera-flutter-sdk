@@ -14,14 +14,27 @@ class UsersInput {
   /// Returns a new [UsersInput] instance.
   UsersInput({
     required this.companyId,
+    this.roleId,
     this.functionId,
     this.status,
     this.emailAddress,
     this.timezone,
+    this.marketingOptOut,
   });
 
+  /// References companies.company_id — A Spartera seller or buyer company account. See GET /companies for valid values. Required.
   String companyId;
 
+  /// User's role for RBAC - single source of truth
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? roleId;
+
+  /// User's job function/title
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -30,9 +43,10 @@ class UsersInput {
   ///
   int? functionId;
 
-  /// Enum type: StatusCodes
+  /// Required. One of: ACTIVE, PENDING, INACTIVE, BANNED.
   UsersInputStatusEnum? status;
 
+  /// Optional. Must be unique.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -41,6 +55,7 @@ class UsersInput {
   ///
   String? emailAddress;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -49,29 +64,47 @@ class UsersInput {
   ///
   String? timezone;
 
+  /// Whether user has opted out of marketing communications. Default false = opted in per ToS.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? marketingOptOut;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UsersInput &&
     other.companyId == companyId &&
+    other.roleId == roleId &&
     other.functionId == functionId &&
     other.status == status &&
     other.emailAddress == emailAddress &&
-    other.timezone == timezone;
+    other.timezone == timezone &&
+    other.marketingOptOut == marketingOptOut;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (companyId.hashCode) +
+    (roleId == null ? 0 : roleId!.hashCode) +
     (functionId == null ? 0 : functionId!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
     (emailAddress == null ? 0 : emailAddress!.hashCode) +
-    (timezone == null ? 0 : timezone!.hashCode);
+    (timezone == null ? 0 : timezone!.hashCode) +
+    (marketingOptOut == null ? 0 : marketingOptOut!.hashCode);
 
   @override
-  String toString() => 'UsersInput[companyId=$companyId, functionId=$functionId, status=$status, emailAddress=$emailAddress, timezone=$timezone]';
+  String toString() => 'UsersInput[companyId=$companyId, roleId=$roleId, functionId=$functionId, status=$status, emailAddress=$emailAddress, timezone=$timezone, marketingOptOut=$marketingOptOut]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'company_id'] = this.companyId;
+    if (this.roleId != null) {
+      json[r'role_id'] = this.roleId;
+    } else {
+      json[r'role_id'] = null;
+    }
     if (this.functionId != null) {
       json[r'function_id'] = this.functionId;
     } else {
@@ -92,6 +125,11 @@ class UsersInput {
     } else {
       json[r'timezone'] = null;
     }
+    if (this.marketingOptOut != null) {
+      json[r'marketing_opt_out'] = this.marketingOptOut;
+    } else {
+      json[r'marketing_opt_out'] = null;
+    }
     return json;
   }
 
@@ -106,19 +144,19 @@ class UsersInput {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "UsersInput[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "UsersInput[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'company_id'), 'Required key "UsersInput[company_id]" is missing from JSON.');
+        assert(json[r'company_id'] != null, 'Required key "UsersInput[company_id]" has a null value in JSON.');
         return true;
       }());
 
       return UsersInput(
         companyId: mapValueOfType<String>(json, r'company_id')!,
+        roleId: mapValueOfType<int>(json, r'role_id'),
         functionId: mapValueOfType<int>(json, r'function_id'),
         status: UsersInputStatusEnum.fromJson(json[r'status']),
         emailAddress: mapValueOfType<String>(json, r'email_address'),
         timezone: mapValueOfType<String>(json, r'timezone'),
+        marketingOptOut: mapValueOfType<bool>(json, r'marketing_opt_out'),
       );
     }
     return null;
@@ -170,7 +208,7 @@ class UsersInput {
   };
 }
 
-/// Enum type: StatusCodes
+/// Required. One of: ACTIVE, PENDING, INACTIVE, BANNED.
 class UsersInputStatusEnum {
   /// Instantiate a new enum with the provided [value].
   const UsersInputStatusEnum._(this.value);

@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:spartera_api_sdk/api.dart';
+import 'package:openapi/api.dart';
 import 'package:test/test.dart';
 
 
@@ -19,15 +19,15 @@ void main() {
   group('tests for JobFunctionsApi', () {
     // Get single job function by ID
     //
-    //Future<JobFunctionsFunctionIdGet200Response> jobFunctionsFunctionIdGet(String functionId) async
-    test('test jobFunctionsFunctionIdGet', () async {
+    //Future<GetJobFunctionsById200Response> getJobFunctionsById(String functionId) async
+    test('test getJobFunctionsById', () async {
       // TODO
     });
 
     // Get a list of all job functions
     //
-    //Future<JobFunctionsGet200Response> jobFunctionsGet() async
-    test('test jobFunctionsGet', () async {
+    //Future<ListJobFunctions200Response> listJobFunctions({ int page, int limit, String sortBy, String sortOrder, String search }) async
+    test('test listJobFunctions', () async {
       // TODO
     });
 

@@ -1,8 +1,8 @@
-# spartera_api_sdk.model.InlineObject2
+# openapi.model.InlineObject2
 
 ## Load the model package
 ```dart
-import 'package:spartera_api_sdk/api.dart';
+import 'package:openapi/api.dart';
 ```
 
 ## Properties

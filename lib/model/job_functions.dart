@@ -19,6 +19,7 @@ class JobFunctions {
     required this.name,
   });
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -27,6 +28,7 @@ class JobFunctions {
   ///
   DateTime? dateCreated;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -35,8 +37,10 @@ class JobFunctions {
   ///
   DateTime? lastUpdated;
 
+  /// Auto-generated unique identifier.
   int functionId;
 
+  /// Required. Must be unique.
   String name;
 
   @override
@@ -85,10 +89,10 @@ class JobFunctions {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "JobFunctions[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "JobFunctions[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'function_id'), 'Required key "JobFunctions[function_id]" is missing from JSON.');
+        assert(json[r'function_id'] != null, 'Required key "JobFunctions[function_id]" has a null value in JSON.');
+        assert(json.containsKey(r'name'), 'Required key "JobFunctions[name]" is missing from JSON.');
+        assert(json[r'name'] != null, 'Required key "JobFunctions[name]" has a null value in JSON.');
         return true;
       }());
 

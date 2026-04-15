@@ -1,46 +1,46 @@
-# spartera_api_sdk.api.AlertsApi
+# openapi.api.AlertsApi
 
 ## Load the API package
 ```dart
-import 'package:spartera_api_sdk/api.dart';
+import 'package:openapi/api.dart';
 ```
 
 All URIs are relative to *https://api.spartera.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**companiesCompanyIdUsersUserIdAlertsAlertIdDelete**](AlertsApi.md#companiescompanyidusersuseridalertsalertiddelete) | **DELETE** /companies/{company_id}/users/{user_id}/alerts/{alert_id} | Delete single alert by ID
-[**companiesCompanyIdUsersUserIdAlertsAlertIdGet**](AlertsApi.md#companiescompanyidusersuseridalertsalertidget) | **GET** /companies/{company_id}/users/{user_id}/alerts/{alert_id} | Get single alert by ID
-[**companiesCompanyIdUsersUserIdAlertsAlertIdPatch**](AlertsApi.md#companiescompanyidusersuseridalertsalertidpatch) | **PATCH** /companies/{company_id}/users/{user_id}/alerts/{alert_id} | Update an existing alert by ID
-[**companiesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet**](AlertsApi.md#companiescompanyidusersuseridalertsassetassetidallget) | **GET** /companies/{company_id}/users/{user_id}/alerts/asset/{asset_id}/all | Get all alerts for a specific asset
-[**companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet**](AlertsApi.md#companiescompanyidusersuseridalertsassetassetidget) | **GET** /companies/{company_id}/users/{user_id}/alerts/asset/{asset_id} | Get all alerts for a specific asset (by user)
-[**companiesCompanyIdUsersUserIdAlertsGet**](AlertsApi.md#companiescompanyidusersuseridalertsget) | **GET** /companies/{company_id}/users/{user_id}/alerts | Get a list of all alerts for a specific user
-[**companiesCompanyIdUsersUserIdAlertsPost**](AlertsApi.md#companiescompanyidusersuseridalertspost) | **POST** /companies/{company_id}/users/{user_id}/alerts | POST /companies/{company_id}/users/{user_id}/alerts
+[**createAlerts**](AlertsApi.md#createalerts) | **POST** /companies/{company_id}/users/{user_id}/alerts | POST /companies/{company_id}/users/{user_id}/alerts
+[**deleteAlerts**](AlertsApi.md#deletealerts) | **DELETE** /companies/{company_id}/users/{user_id}/alerts/{alert_id} | Delete single alert by ID
+[**getAlertsById**](AlertsApi.md#getalertsbyid) | **GET** /companies/{company_id}/users/{user_id}/alerts | Get a list of all alerts for a specific user
+[**getAlertsByIdAssetAll**](AlertsApi.md#getalertsbyidassetall) | **GET** /companies/{company_id}/users/{user_id}/alerts/asset/{asset_id}/all | Get all alerts for a specific asset
+[**getAlertsByIdUsers**](AlertsApi.md#getalertsbyidusers) | **GET** /companies/{company_id}/users/{user_id}/alerts/{alert_id} | Get single alert by ID
+[**getAlertsByIdUsersAsset**](AlertsApi.md#getalertsbyidusersasset) | **GET** /companies/{company_id}/users/{user_id}/alerts/asset/{asset_id} | Get all alerts for a specific asset (by user)
+[**updateAlerts**](AlertsApi.md#updatealerts) | **PATCH** /companies/{company_id}/users/{user_id}/alerts/{alert_id} | Update an existing alert by ID
 
 
-# **companiesCompanyIdUsersUserIdAlertsAlertIdDelete**
-> CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200Response companiesCompanyIdUsersUserIdAlertsAlertIdDelete(companyId, userId, alertId)
+# **createAlerts**
+> CreateAlerts200Response createAlerts(companyId, userId, alertsInput)
 
-Delete single alert by ID
+POST /companies/{company_id}/users/{user_id}/alerts
 
 ### Example
 ```dart
-import 'package:spartera_api_sdk/api.dart';
+import 'package:openapi/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AlertsApi();
-final companyId = companyId_example; // String | 
-final userId = userId_example; // String | 
-final alertId = alertId_example; // String | 
+final companyId = companyId_example; // String | Unique identifier for the Company
+final userId = userId_example; // String | Unique identifier for the User
+final alertsInput = AlertsInput(); // AlertsInput | 
 
 try {
-    final result = api_instance.companiesCompanyIdUsersUserIdAlertsAlertIdDelete(companyId, userId, alertId);
+    final result = api_instance.createAlerts(companyId, userId, alertsInput);
     print(result);
 } catch (e) {
-    print('Exception when calling AlertsApi->companiesCompanyIdUsersUserIdAlertsAlertIdDelete: $e\n');
+    print('Exception when calling AlertsApi->createAlerts: $e\n');
 }
 ```
 
@@ -48,113 +48,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **companyId** | **String**|  | 
- **userId** | **String**|  | 
- **alertId** | **String**|  | 
+ **companyId** | **String**| Unique identifier for the Company | 
+ **userId** | **String**| Unique identifier for the User | 
+ **alertsInput** | [**AlertsInput**](AlertsInput.md)|  | 
 
 ### Return type
 
-[**CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200Response**](CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200Response.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **companiesCompanyIdUsersUserIdAlertsAlertIdGet**
-> CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response companiesCompanyIdUsersUserIdAlertsAlertIdGet(companyId, userId, alertId)
-
-Get single alert by ID
-
-### Example
-```dart
-import 'package:spartera_api_sdk/api.dart';
-// TODO Configure API key authorization: ApiKeyAuth
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
-
-final api_instance = AlertsApi();
-final companyId = companyId_example; // String | 
-final userId = userId_example; // String | 
-final alertId = alertId_example; // String | 
-
-try {
-    final result = api_instance.companiesCompanyIdUsersUserIdAlertsAlertIdGet(companyId, userId, alertId);
-    print(result);
-} catch (e) {
-    print('Exception when calling AlertsApi->companiesCompanyIdUsersUserIdAlertsAlertIdGet: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **String**|  | 
- **userId** | **String**|  | 
- **alertId** | **String**|  | 
-
-### Return type
-
-[**CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response**](CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **companiesCompanyIdUsersUserIdAlertsAlertIdPatch**
-> CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response companiesCompanyIdUsersUserIdAlertsAlertIdPatch(companyId, userId, alertId, alertsUpdate)
-
-Update an existing alert by ID
-
-### Example
-```dart
-import 'package:spartera_api_sdk/api.dart';
-// TODO Configure API key authorization: ApiKeyAuth
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
-
-final api_instance = AlertsApi();
-final companyId = companyId_example; // String | 
-final userId = userId_example; // String | 
-final alertId = alertId_example; // String | 
-final alertsUpdate = AlertsUpdate(); // AlertsUpdate | 
-
-try {
-    final result = api_instance.companiesCompanyIdUsersUserIdAlertsAlertIdPatch(companyId, userId, alertId, alertsUpdate);
-    print(result);
-} catch (e) {
-    print('Exception when calling AlertsApi->companiesCompanyIdUsersUserIdAlertsAlertIdPatch: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **String**|  | 
- **userId** | **String**|  | 
- **alertId** | **String**|  | 
- **alertsUpdate** | [**AlertsUpdate**](AlertsUpdate.md)|  | 
-
-### Return type
-
-[**CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response**](CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response.md)
+[**CreateAlerts200Response**](CreateAlerts200Response.md)
 
 ### Authorization
 
@@ -167,29 +67,29 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **companiesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet**
-> CompaniesCompanyIdUsersUserIdAlertsGet200Response companiesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet(companyId, userId, assetId)
+# **deleteAlerts**
+> DeleteAlerts200Response deleteAlerts(companyId, userId, alertId)
 
-Get all alerts for a specific asset
+Delete single alert by ID
 
 ### Example
 ```dart
-import 'package:spartera_api_sdk/api.dart';
+import 'package:openapi/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AlertsApi();
-final companyId = companyId_example; // String | 
-final userId = userId_example; // String | 
-final assetId = assetId_example; // String | 
+final companyId = companyId_example; // String | Unique identifier for the Company
+final userId = userId_example; // String | Unique identifier for the User
+final alertId = alertId_example; // String | Unique identifier for the Alert
 
 try {
-    final result = api_instance.companiesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet(companyId, userId, assetId);
+    final result = api_instance.deleteAlerts(companyId, userId, alertId);
     print(result);
 } catch (e) {
-    print('Exception when calling AlertsApi->companiesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet: $e\n');
+    print('Exception when calling AlertsApi->deleteAlerts: $e\n');
 }
 ```
 
@@ -197,13 +97,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **companyId** | **String**|  | 
- **userId** | **String**|  | 
- **assetId** | **String**|  | 
+ **companyId** | **String**| Unique identifier for the Company | 
+ **userId** | **String**| Unique identifier for the User | 
+ **alertId** | **String**| Unique identifier for the Alert | 
 
 ### Return type
 
-[**CompaniesCompanyIdUsersUserIdAlertsGet200Response**](CompaniesCompanyIdUsersUserIdAlertsGet200Response.md)
+[**DeleteAlerts200Response**](DeleteAlerts200Response.md)
 
 ### Authorization
 
@@ -216,77 +116,28 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet**
-> CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet(companyId, userId, assetId)
-
-Get all alerts for a specific asset (by user)
-
-### Example
-```dart
-import 'package:spartera_api_sdk/api.dart';
-// TODO Configure API key authorization: ApiKeyAuth
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
-
-final api_instance = AlertsApi();
-final companyId = companyId_example; // String | 
-final userId = userId_example; // String | 
-final assetId = assetId_example; // String | 
-
-try {
-    final result = api_instance.companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet(companyId, userId, assetId);
-    print(result);
-} catch (e) {
-    print('Exception when calling AlertsApi->companiesCompanyIdUsersUserIdAlertsAssetAssetIdGet: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **companyId** | **String**|  | 
- **userId** | **String**|  | 
- **assetId** | **String**|  | 
-
-### Return type
-
-[**CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response**](CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **companiesCompanyIdUsersUserIdAlertsGet**
-> CompaniesCompanyIdUsersUserIdAlertsGet200Response companiesCompanyIdUsersUserIdAlertsGet(companyId, userId)
+# **getAlertsById**
+> GetAlertsById200Response getAlertsById(companyId, userId)
 
 Get a list of all alerts for a specific user
 
 ### Example
 ```dart
-import 'package:spartera_api_sdk/api.dart';
+import 'package:openapi/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AlertsApi();
-final companyId = companyId_example; // String | 
-final userId = userId_example; // String | 
+final companyId = companyId_example; // String | Unique identifier for the Company
+final userId = userId_example; // String | Unique identifier for the User
 
 try {
-    final result = api_instance.companiesCompanyIdUsersUserIdAlertsGet(companyId, userId);
+    final result = api_instance.getAlertsById(companyId, userId);
     print(result);
 } catch (e) {
-    print('Exception when calling AlertsApi->companiesCompanyIdUsersUserIdAlertsGet: $e\n');
+    print('Exception when calling AlertsApi->getAlertsById: $e\n');
 }
 ```
 
@@ -294,12 +145,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **companyId** | **String**|  | 
- **userId** | **String**|  | 
+ **companyId** | **String**| Unique identifier for the Company | 
+ **userId** | **String**| Unique identifier for the User | 
 
 ### Return type
 
-[**CompaniesCompanyIdUsersUserIdAlertsGet200Response**](CompaniesCompanyIdUsersUserIdAlertsGet200Response.md)
+[**GetAlertsById200Response**](GetAlertsById200Response.md)
 
 ### Authorization
 
@@ -312,29 +163,29 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **companiesCompanyIdUsersUserIdAlertsPost**
-> CompaniesCompanyIdUsersUserIdAlertsPost200Response companiesCompanyIdUsersUserIdAlertsPost(companyId, userId, alertsInput)
+# **getAlertsByIdAssetAll**
+> GetAlertsById200Response getAlertsByIdAssetAll(companyId, userId, assetId)
 
-POST /companies/{company_id}/users/{user_id}/alerts
+Get all alerts for a specific asset
 
 ### Example
 ```dart
-import 'package:spartera_api_sdk/api.dart';
+import 'package:openapi/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AlertsApi();
-final companyId = companyId_example; // String | 
-final userId = userId_example; // String | 
-final alertsInput = AlertsInput(); // AlertsInput | 
+final companyId = companyId_example; // String | Unique identifier for the Company
+final userId = userId_example; // String | Unique identifier for the User
+final assetId = assetId_example; // String | Unique identifier for the Asset
 
 try {
-    final result = api_instance.companiesCompanyIdUsersUserIdAlertsPost(companyId, userId, alertsInput);
+    final result = api_instance.getAlertsByIdAssetAll(companyId, userId, assetId);
     print(result);
 } catch (e) {
-    print('Exception when calling AlertsApi->companiesCompanyIdUsersUserIdAlertsPost: $e\n');
+    print('Exception when calling AlertsApi->getAlertsByIdAssetAll: $e\n');
 }
 ```
 
@@ -342,13 +193,162 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **companyId** | **String**|  | 
- **userId** | **String**|  | 
- **alertsInput** | [**AlertsInput**](AlertsInput.md)|  | 
+ **companyId** | **String**| Unique identifier for the Company | 
+ **userId** | **String**| Unique identifier for the User | 
+ **assetId** | **String**| Unique identifier for the Asset | 
 
 ### Return type
 
-[**CompaniesCompanyIdUsersUserIdAlertsPost200Response**](CompaniesCompanyIdUsersUserIdAlertsPost200Response.md)
+[**GetAlertsById200Response**](GetAlertsById200Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getAlertsByIdUsers**
+> GetAlertsById200Response getAlertsByIdUsers(companyId, userId, alertId)
+
+Get single alert by ID
+
+### Example
+```dart
+import 'package:openapi/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api_instance = AlertsApi();
+final companyId = companyId_example; // String | Unique identifier for the Company
+final userId = userId_example; // String | Unique identifier for the User
+final alertId = alertId_example; // String | Unique identifier for the Alert
+
+try {
+    final result = api_instance.getAlertsByIdUsers(companyId, userId, alertId);
+    print(result);
+} catch (e) {
+    print('Exception when calling AlertsApi->getAlertsByIdUsers: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **companyId** | **String**| Unique identifier for the Company | 
+ **userId** | **String**| Unique identifier for the User | 
+ **alertId** | **String**| Unique identifier for the Alert | 
+
+### Return type
+
+[**GetAlertsById200Response**](GetAlertsById200Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getAlertsByIdUsersAsset**
+> GetAlertsById200Response getAlertsByIdUsersAsset(companyId, userId, assetId)
+
+Get all alerts for a specific asset (by user)
+
+### Example
+```dart
+import 'package:openapi/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api_instance = AlertsApi();
+final companyId = companyId_example; // String | Unique identifier for the Company
+final userId = userId_example; // String | Unique identifier for the User
+final assetId = assetId_example; // String | Unique identifier for the Asset
+
+try {
+    final result = api_instance.getAlertsByIdUsersAsset(companyId, userId, assetId);
+    print(result);
+} catch (e) {
+    print('Exception when calling AlertsApi->getAlertsByIdUsersAsset: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **companyId** | **String**| Unique identifier for the Company | 
+ **userId** | **String**| Unique identifier for the User | 
+ **assetId** | **String**| Unique identifier for the Asset | 
+
+### Return type
+
+[**GetAlertsById200Response**](GetAlertsById200Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateAlerts**
+> UpdateAlerts200Response updateAlerts(companyId, userId, alertId, alertsUpdate)
+
+Update an existing alert by ID
+
+### Example
+```dart
+import 'package:openapi/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api_instance = AlertsApi();
+final companyId = companyId_example; // String | Unique identifier for the Company
+final userId = userId_example; // String | Unique identifier for the User
+final alertId = alertId_example; // String | Unique identifier for the Alert
+final alertsUpdate = AlertsUpdate(); // AlertsUpdate | 
+
+try {
+    final result = api_instance.updateAlerts(companyId, userId, alertId, alertsUpdate);
+    print(result);
+} catch (e) {
+    print('Exception when calling AlertsApi->updateAlerts: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **companyId** | **String**| Unique identifier for the Company | 
+ **userId** | **String**| Unique identifier for the User | 
+ **alertId** | **String**| Unique identifier for the Alert | 
+ **alertsUpdate** | [**AlertsUpdate**](AlertsUpdate.md)|  | 
+
+### Return type
+
+[**UpdateAlerts200Response**](UpdateAlerts200Response.md)
 
 ### Authorization
 

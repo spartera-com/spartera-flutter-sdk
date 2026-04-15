@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:spartera_api_sdk/api.dart';
+import 'package:openapi/api.dart';
 import 'package:test/test.dart';
 
 // tests for FavoritesUpdate
@@ -16,16 +16,19 @@ void main() {
   // final instance = FavoritesUpdate();
 
   group('test FavoritesUpdate', () {
+    // References assets.asset_id — A published analytics asset — a calculation or visualization built on a data connection. See GET /assets for valid values. Required.
     // String assetId
     test('to test the property `assetId`', () async {
       // TODO
     });
 
+    // References users.user_id — An individual user account within a company. See GET /users for valid values. Optional.
     // String userId
     test('to test the property `userId`', () async {
       // TODO
     });
 
+    // References companies.company_id — A Spartera seller or buyer company account. See GET /companies for valid values. Required.
     // String companyId
     test('to test the property `companyId`', () async {
       // TODO

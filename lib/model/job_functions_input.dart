@@ -16,6 +16,7 @@ class JobFunctionsInput {
     required this.name,
   });
 
+  /// Required. Must be unique.
   String name;
 
   @override
@@ -47,10 +48,8 @@ class JobFunctionsInput {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "JobFunctionsInput[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "JobFunctionsInput[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'name'), 'Required key "JobFunctionsInput[name]" is missing from JSON.');
+        assert(json[r'name'] != null, 'Required key "JobFunctionsInput[name]" has a null value in JSON.');
         return true;
       }());
 

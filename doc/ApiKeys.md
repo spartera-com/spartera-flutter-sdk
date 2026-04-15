@@ -1,19 +1,23 @@
-# spartera_api_sdk.model.ApiKeys
+# openapi.model.ApiKeys
 
 ## Load the model package
 ```dart
-import 'package:spartera_api_sdk/api.dart';
+import 'package:openapi/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dateCreated** | [**DateTime**](DateTime.md) |  | [optional] 
-**lastUpdated** | [**DateTime**](DateTime.md) |  | [optional] 
-**apiKeyId** | **int** |  | 
+**dateCreated** | [**DateTime**](DateTime.md) | Optional. | [optional] 
+**lastUpdated** | [**DateTime**](DateTime.md) | Optional. | [optional] 
+**apiKeyId** | **int** | Unique identifier. | 
 **userId** | **String** | User who owns this API key | [optional] 
 **companyId** | **String** | Company this API key belongs to | 
 **roleId** | **int** | Role/permission level for this API key | 
+**keyType** | **String** | Type of API key (analytics, mcp, or endpoint) | 
+**isSystemGenerated** | **bool** | True if key was auto-generated for MCP deployment | 
+**mcpDeploymentId** | **String** | MCP deployment this key is tied to (NULL for analytics/endpoint keys) | [optional] 
+**endpointId** | **String** | Endpoint this key is tied to (NULL for analytics/mcp keys) | [optional] 
 **name** | **String** | Human-readable name for this API key | [optional] 
 **expirationDateUtc** | [**DateTime**](DateTime.md) | When this API key expires (NULL = never expires) | [optional] 
 

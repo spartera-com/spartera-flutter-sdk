@@ -1,8 +1,8 @@
-# spartera_api_sdk.model.Error
+# openapi.model.Error
 
 ## Load the model package
 ```dart
-import 'package:spartera_api_sdk/api.dart';
+import 'package:openapi/api.dart';
 ```
 
 ## Properties

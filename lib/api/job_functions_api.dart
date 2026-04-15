@@ -23,7 +23,8 @@ class JobFunctionsApi {
   /// Parameters:
   ///
   /// * [String] functionId (required):
-  Future<Response> jobFunctionsFunctionIdGetWithHttpInfo(String functionId,) async {
+  ///   Unique identifier for the Function
+  Future<Response> getJobFunctionsByIdWithHttpInfo(String functionId,) async {
     // ignore: prefer_const_declarations
     final path = r'/job-functions/{function_id}'
       .replaceAll('{function_id}', functionId);
@@ -54,8 +55,9 @@ class JobFunctionsApi {
   /// Parameters:
   ///
   /// * [String] functionId (required):
-  Future<JobFunctionsFunctionIdGet200Response?> jobFunctionsFunctionIdGet(String functionId,) async {
-    final response = await jobFunctionsFunctionIdGetWithHttpInfo(functionId,);
+  ///   Unique identifier for the Function
+  Future<GetJobFunctionsById200Response?> getJobFunctionsById(String functionId,) async {
+    final response = await getJobFunctionsByIdWithHttpInfo(functionId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -63,7 +65,7 @@ class JobFunctionsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'JobFunctionsFunctionIdGet200Response',) as JobFunctionsFunctionIdGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GetJobFunctionsById200Response',) as GetJobFunctionsById200Response;
     
     }
     return null;
@@ -72,7 +74,24 @@ class JobFunctionsApi {
   /// Get a list of all job functions
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> jobFunctionsGetWithHttpInfo() async {
+  ///
+  /// Parameters:
+  ///
+  /// * [int] page:
+  ///   Page number for pagination
+  ///
+  /// * [int] limit:
+  ///   Number of items per page
+  ///
+  /// * [String] sortBy:
+  ///   Field to sort by
+  ///
+  /// * [String] sortOrder:
+  ///   Sort order (ascending or descending)
+  ///
+  /// * [String] search:
+  ///   Search term to filter results
+  Future<Response> listJobFunctionsWithHttpInfo({ int? page, int? limit, String? sortBy, String? sortOrder, String? search, }) async {
     // ignore: prefer_const_declarations
     final path = r'/job-functions';
 
@@ -82,6 +101,22 @@ class JobFunctionsApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
+
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+    if (sortBy != null) {
+      queryParams.addAll(_queryParams('', 'sort_by', sortBy));
+    }
+    if (sortOrder != null) {
+      queryParams.addAll(_queryParams('', 'sort_order', sortOrder));
+    }
+    if (search != null) {
+      queryParams.addAll(_queryParams('', 'search', search));
+    }
 
     const contentTypes = <String>[];
 
@@ -98,8 +133,25 @@ class JobFunctionsApi {
   }
 
   /// Get a list of all job functions
-  Future<JobFunctionsGet200Response?> jobFunctionsGet() async {
-    final response = await jobFunctionsGetWithHttpInfo();
+  ///
+  /// Parameters:
+  ///
+  /// * [int] page:
+  ///   Page number for pagination
+  ///
+  /// * [int] limit:
+  ///   Number of items per page
+  ///
+  /// * [String] sortBy:
+  ///   Field to sort by
+  ///
+  /// * [String] sortOrder:
+  ///   Sort order (ascending or descending)
+  ///
+  /// * [String] search:
+  ///   Search term to filter results
+  Future<ListJobFunctions200Response?> listJobFunctions({ int? page, int? limit, String? sortBy, String? sortOrder, String? search, }) async {
+    final response = await listJobFunctionsWithHttpInfo( page: page, limit: limit, sortBy: sortBy, sortOrder: sortOrder, search: search, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -107,7 +159,7 @@ class JobFunctionsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'JobFunctionsGet200Response',) as JobFunctionsGet200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ListJobFunctions200Response',) as ListJobFunctions200Response;
     
     }
     return null;

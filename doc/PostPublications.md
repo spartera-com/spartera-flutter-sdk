@@ -1,0 +1,26 @@
+# openapi.model.PostPublications
+
+## Load the model package
+```dart
+import 'package:openapi/api.dart';
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**dateCreated** | [**DateTime**](DateTime.md) | Optional. | [optional] 
+**lastUpdated** | [**DateTime**](DateTime.md) | Optional. | [optional] 
+**publicationId** | **String** | Unique identifier. | [optional] 
+**postId** | **String** | Post that was published | 
+**companyId** | **String** | Company this publication belongs to | 
+**integrationId** | **String** | Integration used for publishing | [optional] 
+**platform** | **String** | Platform identifier (beehiiv, wordpress, etc) | 
+**externalPostId** | **String** | ID of the post on the external platform | [optional] 
+**externalPostUrl** | **String** | URL to view the post on the external platform | [optional] 
+**publishedAt** | [**DateTime**](DateTime.md) | When the post was published to this platform | [optional] 
+**status** | **String** | Status: published, failed, deleted | 
+**errorMessage** | **String** | Error message if publication failed | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

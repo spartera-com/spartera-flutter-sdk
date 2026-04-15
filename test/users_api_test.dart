@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:spartera_api_sdk/api.dart';
+import 'package:openapi/api.dart';
 import 'package:test/test.dart';
 
 
@@ -17,45 +17,59 @@ void main() {
   // final instance = UsersApi();
 
   group('tests for UsersApi', () {
-    // Get a list of all users in a company
+    // Create a new user
     //
-    //Future<CompaniesCompanyIdUsersGet200Response> companiesCompanyIdUsersGet(String companyId) async
-    test('test companiesCompanyIdUsersGet', () async {
+    //Future<CreateUsers200Response> createUsers(String companyId, UsersInput usersInput, { int page, int limit, String sortBy, String sortOrder, String search }) async
+    test('test createUsers', () async {
       // TODO
     });
 
-    // Create a new user
+    // POST /companies/{company_id}/users/google-oauth
     //
-    //Future<CompaniesCompanyIdUsersPost200Response> companiesCompanyIdUsersPost(String companyId, UsersInput usersInput) async
-    test('test companiesCompanyIdUsersPost', () async {
+    //Future<CreateUsers200Response> createUsersGoogleOauth(String companyId, UsersInput usersInput, { int page, int limit, String sortBy, String sortOrder, String search }) async
+    test('test createUsersGoogleOauth', () async {
+      // TODO
+    });
+
+    // Logout current user by revoking their sessions
+    //
+    //Future<CreateUsers200Response> createUsersLogout(String companyId, UsersInput usersInput, { int page, int limit, String sortBy, String sortOrder, String search }) async
+    test('test createUsersLogout', () async {
       // TODO
     });
 
     // Delete single user by ID
     //
-    //Future<CompaniesCompanyIdUsersUserIdDelete200Response> companiesCompanyIdUsersUserIdDelete(String companyId, String userId) async
-    test('test companiesCompanyIdUsersUserIdDelete', () async {
+    //Future<DeleteUsers200Response> deleteUsers(String companyId, String userId) async
+    test('test deleteUsers', () async {
       // TODO
     });
 
     // Get single user by ID
     //
-    //Future<CompaniesCompanyIdUsersUserIdGet200Response> companiesCompanyIdUsersUserIdGet(String companyId, String userId) async
-    test('test companiesCompanyIdUsersUserIdGet', () async {
+    //Future<GetUsersById200Response> getUsersById(String companyId, String userId) async
+    test('test getUsersById', () async {
       // TODO
     });
 
-    // Update an existing user by ID
+    // Get a list of all users in a company
     //
-    //Future<CompaniesCompanyIdUsersUserIdPatch200Response> companiesCompanyIdUsersUserIdPatch(String companyId, String userId, UsersUpdate usersUpdate) async
-    test('test companiesCompanyIdUsersUserIdPatch', () async {
+    //Future<ListUsers200Response> listUsers(String companyId, { int page, int limit, String sortBy, String sortOrder, String search }) async
+    test('test listUsers', () async {
       // TODO
     });
 
     // Get current authenticated user's profile.
     //
-    //Future<CompaniesCompanyIdUsersGet200Response> meGet() async
-    test('test meGet', () async {
+    //Future<ListUsers200Response> listUsersMe({ int page, int limit, String sortBy, String sortOrder, String search }) async
+    test('test listUsersMe', () async {
+      // TODO
+    });
+
+    // Update an existing user by ID
+    //
+    //Future<UpdateUsers200Response> updateUsers(String companyId, String userId, UsersUpdate usersUpdate) async
+    test('test updateUsers', () async {
       // TODO
     });
 

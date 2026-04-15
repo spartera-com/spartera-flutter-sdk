@@ -17,12 +17,15 @@ class Users {
     this.lastUpdated,
     this.userId,
     required this.companyId,
+    required this.roleId,
     this.functionId,
     required this.status,
     this.emailAddress,
     this.timezone,
+    required this.marketingOptOut,
   });
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -31,6 +34,7 @@ class Users {
   ///
   DateTime? dateCreated;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -39,6 +43,7 @@ class Users {
   ///
   DateTime? lastUpdated;
 
+  /// Unique identifier.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -47,8 +52,13 @@ class Users {
   ///
   String? userId;
 
+  /// References companies.company_id — A Spartera seller or buyer company account. See GET /companies for valid values. Required.
   String companyId;
 
+  /// User's role for RBAC - single source of truth
+  int roleId;
+
+  /// User's job function/title
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -57,9 +67,10 @@ class Users {
   ///
   int? functionId;
 
-  /// Enum type: StatusCodes
+  /// Required. One of: ACTIVE, PENDING, INACTIVE, BANNED.
   UsersStatusEnum status;
 
+  /// Optional. Must be unique.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -68,6 +79,7 @@ class Users {
   ///
   String? emailAddress;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -76,16 +88,21 @@ class Users {
   ///
   String? timezone;
 
+  /// Whether user has opted out of marketing communications. Default false = opted in per ToS.
+  bool marketingOptOut;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is Users &&
     other.dateCreated == dateCreated &&
     other.lastUpdated == lastUpdated &&
     other.userId == userId &&
     other.companyId == companyId &&
+    other.roleId == roleId &&
     other.functionId == functionId &&
     other.status == status &&
     other.emailAddress == emailAddress &&
-    other.timezone == timezone;
+    other.timezone == timezone &&
+    other.marketingOptOut == marketingOptOut;
 
   @override
   int get hashCode =>
@@ -94,13 +111,15 @@ class Users {
     (lastUpdated == null ? 0 : lastUpdated!.hashCode) +
     (userId == null ? 0 : userId!.hashCode) +
     (companyId.hashCode) +
+    (roleId.hashCode) +
     (functionId == null ? 0 : functionId!.hashCode) +
     (status.hashCode) +
     (emailAddress == null ? 0 : emailAddress!.hashCode) +
-    (timezone == null ? 0 : timezone!.hashCode);
+    (timezone == null ? 0 : timezone!.hashCode) +
+    (marketingOptOut.hashCode);
 
   @override
-  String toString() => 'Users[dateCreated=$dateCreated, lastUpdated=$lastUpdated, userId=$userId, companyId=$companyId, functionId=$functionId, status=$status, emailAddress=$emailAddress, timezone=$timezone]';
+  String toString() => 'Users[dateCreated=$dateCreated, lastUpdated=$lastUpdated, userId=$userId, companyId=$companyId, roleId=$roleId, functionId=$functionId, status=$status, emailAddress=$emailAddress, timezone=$timezone, marketingOptOut=$marketingOptOut]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -120,6 +139,7 @@ class Users {
       json[r'user_id'] = null;
     }
       json[r'company_id'] = this.companyId;
+      json[r'role_id'] = this.roleId;
     if (this.functionId != null) {
       json[r'function_id'] = this.functionId;
     } else {
@@ -136,6 +156,7 @@ class Users {
     } else {
       json[r'timezone'] = null;
     }
+      json[r'marketing_opt_out'] = this.marketingOptOut;
     return json;
   }
 
@@ -150,10 +171,14 @@ class Users {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "Users[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "Users[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'company_id'), 'Required key "Users[company_id]" is missing from JSON.');
+        assert(json[r'company_id'] != null, 'Required key "Users[company_id]" has a null value in JSON.');
+        assert(json.containsKey(r'role_id'), 'Required key "Users[role_id]" is missing from JSON.');
+        assert(json[r'role_id'] != null, 'Required key "Users[role_id]" has a null value in JSON.');
+        assert(json.containsKey(r'status'), 'Required key "Users[status]" is missing from JSON.');
+        assert(json[r'status'] != null, 'Required key "Users[status]" has a null value in JSON.');
+        assert(json.containsKey(r'marketing_opt_out'), 'Required key "Users[marketing_opt_out]" is missing from JSON.');
+        assert(json[r'marketing_opt_out'] != null, 'Required key "Users[marketing_opt_out]" has a null value in JSON.');
         return true;
       }());
 
@@ -162,10 +187,12 @@ class Users {
         lastUpdated: mapDateTime(json, r'last_updated', r''),
         userId: mapValueOfType<String>(json, r'user_id'),
         companyId: mapValueOfType<String>(json, r'company_id')!,
+        roleId: mapValueOfType<int>(json, r'role_id')!,
         functionId: mapValueOfType<int>(json, r'function_id'),
         status: UsersStatusEnum.fromJson(json[r'status'])!,
         emailAddress: mapValueOfType<String>(json, r'email_address'),
         timezone: mapValueOfType<String>(json, r'timezone'),
+        marketingOptOut: mapValueOfType<bool>(json, r'marketing_opt_out')!,
       );
     }
     return null;
@@ -214,11 +241,13 @@ class Users {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'company_id',
+    'role_id',
     'status',
+    'marketing_opt_out',
   };
 }
 
-/// Enum type: StatusCodes
+/// Required. One of: ACTIVE, PENDING, INACTIVE, BANNED.
 class UsersStatusEnum {
   /// Instantiate a new enum with the provided [value].
   const UsersStatusEnum._(this.value);

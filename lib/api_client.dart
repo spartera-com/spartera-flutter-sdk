@@ -188,8 +188,6 @@ class ApiClient {
           return AlertsInput.fromJson(value);
         case 'AlertsUpdate':
           return AlertsUpdate.fromJson(value);
-        case 'AnalyzeCompanyHandleAssetsAssetSlugGet200Response':
-          return AnalyzeCompanyHandleAssetsAssetSlugGet200Response.fromJson(value);
         case 'ApiKeys':
           return ApiKeys.fromJson(value);
         case 'ApiKeysInput':
@@ -202,6 +200,8 @@ class ApiClient {
           return AssetPriceHistoryInput.fromJson(value);
         case 'AssetPriceHistoryUpdate':
           return AssetPriceHistoryUpdate.fromJson(value);
+        case 'AssetUsecases':
+          return AssetUsecases.fromJson(value);
         case 'Assets':
           return Assets.fromJson(value);
         case 'AssetsInput':
@@ -210,136 +210,12 @@ class ApiClient {
           return AssetsUpdate.fromJson(value);
         case 'CloudProviders':
           return CloudProviders.fromJson(value);
-        case 'CloudProvidersGet200Response':
-          return CloudProvidersGet200Response.fromJson(value);
         case 'CloudProvidersInput':
           return CloudProvidersInput.fromJson(value);
-        case 'CloudProvidersProviderIdGet200Response':
-          return CloudProvidersProviderIdGet200Response.fromJson(value);
-        case 'CloudProvidersProviderIdStorageEnginesGet200Response':
-          return CloudProvidersProviderIdStorageEnginesGet200Response.fromJson(value);
         case 'CloudProvidersUpdate':
           return CloudProvidersUpdate.fromJson(value);
         case 'Companies':
           return Companies.fromJson(value);
-        case 'CompaniesCompanyIdAnalyticsAssetsGet200Response':
-          return CompaniesCompanyIdAnalyticsAssetsGet200Response.fromJson(value);
-        case 'CompaniesCompanyIdApiKeysApiKeyIdDelete200Response':
-          return CompaniesCompanyIdApiKeysApiKeyIdDelete200Response.fromJson(value);
-        case 'CompaniesCompanyIdApiKeysApiKeyIdDelete200ResponseData':
-          return CompaniesCompanyIdApiKeysApiKeyIdDelete200ResponseData.fromJson(value);
-        case 'CompaniesCompanyIdApiKeysApiKeyIdGet200Response':
-          return CompaniesCompanyIdApiKeysApiKeyIdGet200Response.fromJson(value);
-        case 'CompaniesCompanyIdApiKeysApiKeyIdPatch200Response':
-          return CompaniesCompanyIdApiKeysApiKeyIdPatch200Response.fromJson(value);
-        case 'CompaniesCompanyIdApiKeysApiKeyIdPatch200ResponseData':
-          return CompaniesCompanyIdApiKeysApiKeyIdPatch200ResponseData.fromJson(value);
-        case 'CompaniesCompanyIdApiKeysGet200Response':
-          return CompaniesCompanyIdApiKeysGet200Response.fromJson(value);
-        case 'CompaniesCompanyIdApiKeysPost200Response':
-          return CompaniesCompanyIdApiKeysPost200Response.fromJson(value);
-        case 'CompaniesCompanyIdApiKeysPost200ResponseData':
-          return CompaniesCompanyIdApiKeysPost200ResponseData.fromJson(value);
-        case 'CompaniesCompanyIdAssetsAssetIdDelete200Response':
-          return CompaniesCompanyIdAssetsAssetIdDelete200Response.fromJson(value);
-        case 'CompaniesCompanyIdAssetsAssetIdDelete200ResponseData':
-          return CompaniesCompanyIdAssetsAssetIdDelete200ResponseData.fromJson(value);
-        case 'CompaniesCompanyIdAssetsAssetIdPatch200Response':
-          return CompaniesCompanyIdAssetsAssetIdPatch200Response.fromJson(value);
-        case 'CompaniesCompanyIdAssetsAssetIdPatch200ResponseData':
-          return CompaniesCompanyIdAssetsAssetIdPatch200ResponseData.fromJson(value);
-        case 'CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete200Response':
-          return CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete200Response.fromJson(value);
-        case 'CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete200ResponseData':
-          return CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete200ResponseData.fromJson(value);
-        case 'CompaniesCompanyIdAssetsAssetIdPricesAphIdGet200Response':
-          return CompaniesCompanyIdAssetsAssetIdPricesAphIdGet200Response.fromJson(value);
-        case 'CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch200Response':
-          return CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch200Response.fromJson(value);
-        case 'CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch200ResponseData':
-          return CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch200ResponseData.fromJson(value);
-        case 'CompaniesCompanyIdAssetsAssetIdPricesGet200Response':
-          return CompaniesCompanyIdAssetsAssetIdPricesGet200Response.fromJson(value);
-        case 'CompaniesCompanyIdAssetsAssetIdPricesPost200Response':
-          return CompaniesCompanyIdAssetsAssetIdPricesPost200Response.fromJson(value);
-        case 'CompaniesCompanyIdAssetsAssetIdPricesPost200ResponseData':
-          return CompaniesCompanyIdAssetsAssetIdPricesPost200ResponseData.fromJson(value);
-        case 'CompaniesCompanyIdAssetsGet200Response':
-          return CompaniesCompanyIdAssetsGet200Response.fromJson(value);
-        case 'CompaniesCompanyIdAssetsPost200Response':
-          return CompaniesCompanyIdAssetsPost200Response.fromJson(value);
-        case 'CompaniesCompanyIdAssetsPost200ResponseData':
-          return CompaniesCompanyIdAssetsPost200ResponseData.fromJson(value);
-        case 'CompaniesCompanyIdConnectionsConnectionIdDelete200Response':
-          return CompaniesCompanyIdConnectionsConnectionIdDelete200Response.fromJson(value);
-        case 'CompaniesCompanyIdConnectionsConnectionIdDelete200ResponseData':
-          return CompaniesCompanyIdConnectionsConnectionIdDelete200ResponseData.fromJson(value);
-        case 'CompaniesCompanyIdConnectionsConnectionIdGet200Response':
-          return CompaniesCompanyIdConnectionsConnectionIdGet200Response.fromJson(value);
-        case 'CompaniesCompanyIdConnectionsConnectionIdPatch200Response':
-          return CompaniesCompanyIdConnectionsConnectionIdPatch200Response.fromJson(value);
-        case 'CompaniesCompanyIdConnectionsConnectionIdPatch200ResponseData':
-          return CompaniesCompanyIdConnectionsConnectionIdPatch200ResponseData.fromJson(value);
-        case 'CompaniesCompanyIdConnectionsGet200Response':
-          return CompaniesCompanyIdConnectionsGet200Response.fromJson(value);
-        case 'CompaniesCompanyIdConnectionsPost200Response':
-          return CompaniesCompanyIdConnectionsPost200Response.fromJson(value);
-        case 'CompaniesCompanyIdConnectionsPost200ResponseData':
-          return CompaniesCompanyIdConnectionsPost200ResponseData.fromJson(value);
-        case 'CompaniesCompanyIdGet200Response':
-          return CompaniesCompanyIdGet200Response.fromJson(value);
-        case 'CompaniesCompanyIdPatch200Response':
-          return CompaniesCompanyIdPatch200Response.fromJson(value);
-        case 'CompaniesCompanyIdPatch200ResponseData':
-          return CompaniesCompanyIdPatch200ResponseData.fromJson(value);
-        case 'CompaniesCompanyIdUsersGet200Response':
-          return CompaniesCompanyIdUsersGet200Response.fromJson(value);
-        case 'CompaniesCompanyIdUsersPost200Response':
-          return CompaniesCompanyIdUsersPost200Response.fromJson(value);
-        case 'CompaniesCompanyIdUsersPost200ResponseData':
-          return CompaniesCompanyIdUsersPost200ResponseData.fromJson(value);
-        case 'CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200Response':
-          return CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200Response.fromJson(value);
-        case 'CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200ResponseData':
-          return CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200ResponseData.fromJson(value);
-        case 'CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response':
-          return CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response.fromJson(value);
-        case 'CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200ResponseData':
-          return CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200ResponseData.fromJson(value);
-        case 'CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response':
-          return CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response.fromJson(value);
-        case 'CompaniesCompanyIdUsersUserIdAlertsGet200Response':
-          return CompaniesCompanyIdUsersUserIdAlertsGet200Response.fromJson(value);
-        case 'CompaniesCompanyIdUsersUserIdAlertsPost200Response':
-          return CompaniesCompanyIdUsersUserIdAlertsPost200Response.fromJson(value);
-        case 'CompaniesCompanyIdUsersUserIdAlertsPost200ResponseData':
-          return CompaniesCompanyIdUsersUserIdAlertsPost200ResponseData.fromJson(value);
-        case 'CompaniesCompanyIdUsersUserIdDelete200Response':
-          return CompaniesCompanyIdUsersUserIdDelete200Response.fromJson(value);
-        case 'CompaniesCompanyIdUsersUserIdDelete200ResponseData':
-          return CompaniesCompanyIdUsersUserIdDelete200ResponseData.fromJson(value);
-        case 'CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response':
-          return CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response.fromJson(value);
-        case 'CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete200Response':
-          return CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete200Response.fromJson(value);
-        case 'CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete200ResponseData':
-          return CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete200ResponseData.fromJson(value);
-        case 'CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch200Response':
-          return CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch200Response.fromJson(value);
-        case 'CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch200ResponseData':
-          return CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch200ResponseData.fromJson(value);
-        case 'CompaniesCompanyIdUsersUserIdFavoritesGet200Response':
-          return CompaniesCompanyIdUsersUserIdFavoritesGet200Response.fromJson(value);
-        case 'CompaniesCompanyIdUsersUserIdFavoritesPost200Response':
-          return CompaniesCompanyIdUsersUserIdFavoritesPost200Response.fromJson(value);
-        case 'CompaniesCompanyIdUsersUserIdFavoritesPost200ResponseData':
-          return CompaniesCompanyIdUsersUserIdFavoritesPost200ResponseData.fromJson(value);
-        case 'CompaniesCompanyIdUsersUserIdGet200Response':
-          return CompaniesCompanyIdUsersUserIdGet200Response.fromJson(value);
-        case 'CompaniesCompanyIdUsersUserIdPatch200Response':
-          return CompaniesCompanyIdUsersUserIdPatch200Response.fromJson(value);
-        case 'CompaniesCompanyIdUsersUserIdPatch200ResponseData':
-          return CompaniesCompanyIdUsersUserIdPatch200ResponseData.fromJson(value);
         case 'CompaniesInput':
           return CompaniesInput.fromJson(value);
         case 'CompaniesUpdate':
@@ -350,6 +226,92 @@ class ApiClient {
           return ConnectionsInput.fromJson(value);
         case 'ConnectionsUpdate':
           return ConnectionsUpdate.fromJson(value);
+        case 'CreateAlerts200Response':
+          return CreateAlerts200Response.fromJson(value);
+        case 'CreateAlerts200ResponseData':
+          return CreateAlerts200ResponseData.fromJson(value);
+        case 'CreateApiKeys200Response':
+          return CreateApiKeys200Response.fromJson(value);
+        case 'CreateApiKeys200ResponseData':
+          return CreateApiKeys200ResponseData.fromJson(value);
+        case 'CreateAssetPriceHistory200Response':
+          return CreateAssetPriceHistory200Response.fromJson(value);
+        case 'CreateAssetPriceHistory200ResponseData':
+          return CreateAssetPriceHistory200ResponseData.fromJson(value);
+        case 'CreateAssetsAnalyze200Response':
+          return CreateAssetsAnalyze200Response.fromJson(value);
+        case 'CreateAssetsAnalyze200ResponseData':
+          return CreateAssetsAnalyze200ResponseData.fromJson(value);
+        case 'CreateConnections200Response':
+          return CreateConnections200Response.fromJson(value);
+        case 'CreateConnections200ResponseData':
+          return CreateConnections200ResponseData.fromJson(value);
+        case 'CreateEndpoints200Response':
+          return CreateEndpoints200Response.fromJson(value);
+        case 'CreateEndpoints200ResponseData':
+          return CreateEndpoints200ResponseData.fromJson(value);
+        case 'CreateFavorites200Response':
+          return CreateFavorites200Response.fromJson(value);
+        case 'CreateFavorites200ResponseData':
+          return CreateFavorites200ResponseData.fromJson(value);
+        case 'CreatePostgenIntegrations200Response':
+          return CreatePostgenIntegrations200Response.fromJson(value);
+        case 'CreatePostgenIntegrations200ResponseData':
+          return CreatePostgenIntegrations200ResponseData.fromJson(value);
+        case 'CreatePosts200Response':
+          return CreatePosts200Response.fromJson(value);
+        case 'CreatePosts200ResponseData':
+          return CreatePosts200ResponseData.fromJson(value);
+        case 'CreateUsers200Response':
+          return CreateUsers200Response.fromJson(value);
+        case 'CreateUsers200ResponseData':
+          return CreateUsers200ResponseData.fromJson(value);
+        case 'DeleteAlerts200Response':
+          return DeleteAlerts200Response.fromJson(value);
+        case 'DeleteAlerts200ResponseData':
+          return DeleteAlerts200ResponseData.fromJson(value);
+        case 'DeleteApiKeys200Response':
+          return DeleteApiKeys200Response.fromJson(value);
+        case 'DeleteApiKeys200ResponseData':
+          return DeleteApiKeys200ResponseData.fromJson(value);
+        case 'DeleteAssetPriceHistory200Response':
+          return DeleteAssetPriceHistory200Response.fromJson(value);
+        case 'DeleteAssetPriceHistory200ResponseData':
+          return DeleteAssetPriceHistory200ResponseData.fromJson(value);
+        case 'DeleteAssets200Response':
+          return DeleteAssets200Response.fromJson(value);
+        case 'DeleteAssets200ResponseData':
+          return DeleteAssets200ResponseData.fromJson(value);
+        case 'DeleteConnections200Response':
+          return DeleteConnections200Response.fromJson(value);
+        case 'DeleteConnections200ResponseData':
+          return DeleteConnections200ResponseData.fromJson(value);
+        case 'DeleteEndpoints200Response':
+          return DeleteEndpoints200Response.fromJson(value);
+        case 'DeleteEndpoints200ResponseData':
+          return DeleteEndpoints200ResponseData.fromJson(value);
+        case 'DeleteFavorites200Response':
+          return DeleteFavorites200Response.fromJson(value);
+        case 'DeleteFavorites200ResponseData':
+          return DeleteFavorites200ResponseData.fromJson(value);
+        case 'DeletePostgenIntegrations200Response':
+          return DeletePostgenIntegrations200Response.fromJson(value);
+        case 'DeletePostgenIntegrations200ResponseData':
+          return DeletePostgenIntegrations200ResponseData.fromJson(value);
+        case 'DeletePosts200Response':
+          return DeletePosts200Response.fromJson(value);
+        case 'DeletePosts200ResponseData':
+          return DeletePosts200ResponseData.fromJson(value);
+        case 'DeleteUsers200Response':
+          return DeleteUsers200Response.fromJson(value);
+        case 'DeleteUsers200ResponseData':
+          return DeleteUsers200ResponseData.fromJson(value);
+        case 'Endpoints':
+          return Endpoints.fromJson(value);
+        case 'EndpointsInput':
+          return EndpointsInput.fromJson(value);
+        case 'EndpointsUpdate':
+          return EndpointsUpdate.fromJson(value);
         case 'Error':
           return Error.fromJson(value);
         case 'Favorites':
@@ -358,6 +320,40 @@ class ApiClient {
           return FavoritesInput.fromJson(value);
         case 'FavoritesUpdate':
           return FavoritesUpdate.fromJson(value);
+        case 'GetAlertsById200Response':
+          return GetAlertsById200Response.fromJson(value);
+        case 'GetApiKeysById200Response':
+          return GetApiKeysById200Response.fromJson(value);
+        case 'GetAssetPriceHistoryById200Response':
+          return GetAssetPriceHistoryById200Response.fromJson(value);
+        case 'GetAssetUsecasesById200Response':
+          return GetAssetUsecasesById200Response.fromJson(value);
+        case 'GetAssetsByIdAnalyze200Response':
+          return GetAssetsByIdAnalyze200Response.fromJson(value);
+        case 'GetCloudProvidersById200Response':
+          return GetCloudProvidersById200Response.fromJson(value);
+        case 'GetCompaniesById200Response':
+          return GetCompaniesById200Response.fromJson(value);
+        case 'GetConnectionsById200Response':
+          return GetConnectionsById200Response.fromJson(value);
+        case 'GetEndpointsByIdConnectionsDescribe200Response':
+          return GetEndpointsByIdConnectionsDescribe200Response.fromJson(value);
+        case 'GetFavoritesById200Response':
+          return GetFavoritesById200Response.fromJson(value);
+        case 'GetIndustriesById200Response':
+          return GetIndustriesById200Response.fromJson(value);
+        case 'GetJobFunctionsById200Response':
+          return GetJobFunctionsById200Response.fromJson(value);
+        case 'GetPostgenIntegrationsById200Response':
+          return GetPostgenIntegrationsById200Response.fromJson(value);
+        case 'GetPostsById200Response':
+          return GetPostsById200Response.fromJson(value);
+        case 'GetStorageEnginesById200Response':
+          return GetStorageEnginesById200Response.fromJson(value);
+        case 'GetUsersById200Response':
+          return GetUsersById200Response.fromJson(value);
+        case 'Industries':
+          return Industries.fromJson(value);
         case 'InlineObject':
           return InlineObject.fromJson(value);
         case 'InlineObject1':
@@ -366,16 +362,110 @@ class ApiClient {
           return InlineObject2.fromJson(value);
         case 'InlineObject3':
           return InlineObject3.fromJson(value);
+        case 'InlineObject4':
+          return InlineObject4.fromJson(value);
+        case 'InlineObject5':
+          return InlineObject5.fromJson(value);
+        case 'InlineObject6':
+          return InlineObject6.fromJson(value);
+        case 'InlineObject7':
+          return InlineObject7.fromJson(value);
         case 'JobFunctions':
           return JobFunctions.fromJson(value);
-        case 'JobFunctionsFunctionIdGet200Response':
-          return JobFunctionsFunctionIdGet200Response.fromJson(value);
-        case 'JobFunctionsGet200Response':
-          return JobFunctionsGet200Response.fromJson(value);
         case 'JobFunctionsInput':
           return JobFunctionsInput.fromJson(value);
         case 'JobFunctionsUpdate':
           return JobFunctionsUpdate.fromJson(value);
+        case 'ListApiKeys200Response':
+          return ListApiKeys200Response.fromJson(value);
+        case 'ListAssetUsecases200Response':
+          return ListAssetUsecases200Response.fromJson(value);
+        case 'ListAssets200Response':
+          return ListAssets200Response.fromJson(value);
+        case 'ListCloudProviders200Response':
+          return ListCloudProviders200Response.fromJson(value);
+        case 'ListCompaniesAnalyticsAssets200Response':
+          return ListCompaniesAnalyticsAssets200Response.fromJson(value);
+        case 'ListConnections200Response':
+          return ListConnections200Response.fromJson(value);
+        case 'ListEndpoints200Response':
+          return ListEndpoints200Response.fromJson(value);
+        case 'ListIndustries200Response':
+          return ListIndustries200Response.fromJson(value);
+        case 'ListJobFunctions200Response':
+          return ListJobFunctions200Response.fromJson(value);
+        case 'ListPostgenIntegrations200Response':
+          return ListPostgenIntegrations200Response.fromJson(value);
+        case 'ListPosts200Response':
+          return ListPosts200Response.fromJson(value);
+        case 'ListStorageEngines200Response':
+          return ListStorageEngines200Response.fromJson(value);
+        case 'ListUsers200Response':
+          return ListUsers200Response.fromJson(value);
+        case 'PostPublications':
+          return PostPublications.fromJson(value);
+        case 'PostPublicationsInput':
+          return PostPublicationsInput.fromJson(value);
+        case 'PostPublicationsUpdate':
+          return PostPublicationsUpdate.fromJson(value);
+        case 'PostgenIntegrations':
+          return PostgenIntegrations.fromJson(value);
+        case 'PostgenIntegrationsInput':
+          return PostgenIntegrationsInput.fromJson(value);
+        case 'PostgenIntegrationsUpdate':
+          return PostgenIntegrationsUpdate.fromJson(value);
+        case 'Posts':
+          return Posts.fromJson(value);
+        case 'PostsInput':
+          return PostsInput.fromJson(value);
+        case 'PostsUpdate':
+          return PostsUpdate.fromJson(value);
+        case 'StorageEngines':
+          return StorageEngines.fromJson(value);
+        case 'UpdateAlerts200Response':
+          return UpdateAlerts200Response.fromJson(value);
+        case 'UpdateAlerts200ResponseData':
+          return UpdateAlerts200ResponseData.fromJson(value);
+        case 'UpdateApiKeys200Response':
+          return UpdateApiKeys200Response.fromJson(value);
+        case 'UpdateApiKeys200ResponseData':
+          return UpdateApiKeys200ResponseData.fromJson(value);
+        case 'UpdateAssetPriceHistory200Response':
+          return UpdateAssetPriceHistory200Response.fromJson(value);
+        case 'UpdateAssetPriceHistory200ResponseData':
+          return UpdateAssetPriceHistory200ResponseData.fromJson(value);
+        case 'UpdateAssets200Response':
+          return UpdateAssets200Response.fromJson(value);
+        case 'UpdateAssets200ResponseData':
+          return UpdateAssets200ResponseData.fromJson(value);
+        case 'UpdateCompanies200Response':
+          return UpdateCompanies200Response.fromJson(value);
+        case 'UpdateCompanies200ResponseData':
+          return UpdateCompanies200ResponseData.fromJson(value);
+        case 'UpdateConnections200Response':
+          return UpdateConnections200Response.fromJson(value);
+        case 'UpdateConnections200ResponseData':
+          return UpdateConnections200ResponseData.fromJson(value);
+        case 'UpdateEndpoints200Response':
+          return UpdateEndpoints200Response.fromJson(value);
+        case 'UpdateEndpoints200ResponseData':
+          return UpdateEndpoints200ResponseData.fromJson(value);
+        case 'UpdateFavorites200Response':
+          return UpdateFavorites200Response.fromJson(value);
+        case 'UpdateFavorites200ResponseData':
+          return UpdateFavorites200ResponseData.fromJson(value);
+        case 'UpdatePostgenIntegrations200Response':
+          return UpdatePostgenIntegrations200Response.fromJson(value);
+        case 'UpdatePostgenIntegrations200ResponseData':
+          return UpdatePostgenIntegrations200ResponseData.fromJson(value);
+        case 'UpdatePosts200Response':
+          return UpdatePosts200Response.fromJson(value);
+        case 'UpdatePosts200ResponseData':
+          return UpdatePosts200ResponseData.fromJson(value);
+        case 'UpdateUsers200Response':
+          return UpdateUsers200Response.fromJson(value);
+        case 'UpdateUsers200ResponseData':
+          return UpdateUsers200ResponseData.fromJson(value);
         case 'Users':
           return Users.fromJson(value);
         case 'UsersInput':

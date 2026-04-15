@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:spartera_api_sdk/api.dart';
+import 'package:openapi/api.dart';
 import 'package:test/test.dart';
 
 // tests for AssetPriceHistoryInput
@@ -16,17 +16,25 @@ void main() {
   // final instance = AssetPriceHistoryInput();
 
   group('test AssetPriceHistoryInput', () {
+    // FK to assets. NULL when this record belongs to an endpoint.
     // String assetId
     test('to test the property `assetId`', () async {
       // TODO
     });
 
+    // FK to endpoints. NULL when this record belongs to an asset.
+    // String endpointId
+    test('to test the property `endpointId`', () async {
+      // TODO
+    });
+
+    // Optional.
     // double priceUsd
     test('to test the property `priceUsd`', () async {
       // TODO
     });
 
-    // When did the price end (Datetime)
+    // SCD Type 2 — when this price record was superseded
     // DateTime dateEnded
     test('to test the property `dateEnded`', () async {
       // TODO

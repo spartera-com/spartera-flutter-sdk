@@ -23,6 +23,7 @@ class ConnectionsInput {
     this.verifiedUsageAbility,
   });
 
+  /// References users.user_id — An individual user account within a company. See GET /users for valid values. Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -31,13 +32,16 @@ class ConnectionsInput {
   ///
   String? userId;
 
+  /// References storage_engines.engine_id — Fact table of all the different storage engines we support. See GET /storage_engines for valid values. Required.
   int engineId;
 
+  /// References companies.company_id — A Spartera seller or buyer company account. See GET /companies for valid values. Required.
   String companyId;
 
-  /// Enum type: CredentialType
+  /// Optional. One of: SERVICE_ACCOUNT, USERNAME_PASSWORD, API_KEY, SERVICE_IDENTITY, ACCESS_KEY, … (8 total).
   ConnectionsInputCredentialTypeEnum? credentialType;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -46,6 +50,7 @@ class ConnectionsInput {
   ///
   String? name;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -54,6 +59,7 @@ class ConnectionsInput {
   ///
   String? description;
 
+  /// Domain of the external API provider (e.g., 'api.weather.com')
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -62,6 +68,7 @@ class ConnectionsInput {
   ///
   String? providerDomain;
 
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -144,10 +151,10 @@ class ConnectionsInput {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ConnectionsInput[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ConnectionsInput[$key]" has a null value in JSON.');
-        });
+        assert(json.containsKey(r'engine_id'), 'Required key "ConnectionsInput[engine_id]" is missing from JSON.');
+        assert(json[r'engine_id'] != null, 'Required key "ConnectionsInput[engine_id]" has a null value in JSON.');
+        assert(json.containsKey(r'company_id'), 'Required key "ConnectionsInput[company_id]" is missing from JSON.');
+        assert(json[r'company_id'] != null, 'Required key "ConnectionsInput[company_id]" has a null value in JSON.');
         return true;
       }());
 
@@ -212,7 +219,7 @@ class ConnectionsInput {
   };
 }
 
-/// Enum type: CredentialType
+/// Optional. One of: SERVICE_ACCOUNT, USERNAME_PASSWORD, API_KEY, SERVICE_IDENTITY, ACCESS_KEY, … (8 total).
 class ConnectionsInputCredentialTypeEnum {
   /// Instantiate a new enum with the provided [value].
   const ConnectionsInputCredentialTypeEnum._(this.value);

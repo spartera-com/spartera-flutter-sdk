@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:spartera_api_sdk/api.dart';
+import 'package:openapi/api.dart';
 import 'package:test/test.dart';
 
 
@@ -17,87 +17,115 @@ void main() {
   // final instance = AssetsApi();
 
   group('tests for AssetsApi', () {
-    // Process (analyze) an asset.
+    // Create a new asset
     //
-    //Future<AnalyzeCompanyHandleAssetsAssetSlugGet200Response> analyzeCompanyHandleAssetsAssetSlugGet(String assetSlug, String companyHandle) async
-    test('test analyzeCompanyHandleAssetsAssetSlugGet', () async {
+    //Future<CreateAssetsAnalyze200Response> createAssets(String companyId, AssetsInput assetsInput, { int page, int limit, String sortBy, String sortOrder, String search }) async
+    test('test createAssets', () async {
+      // TODO
+    });
+
+    // Process (analyze) an asset with dynamic rate limiting applied via decorator.
+    //
+    //Future<CreateAssetsAnalyze200Response> createAssetsAnalyze(String assetSlug, String companyHandle, AssetsInput assetsInput) async
+    test('test createAssetsAnalyze', () async {
+      // TODO
+    });
+
+    // Scan a column in the asset's table to retrieve distinct values      Request Body:         column (str): Column name to scan         limit (int, optional): Maximum distinct values to return (default 1000, max 5000)      Returns:         Flask Response with scan results
+    //
+    //Future<CreateAssetsAnalyze200Response> createAssetsScanColumn(String companyId, String assetId, AssetsInput assetsInput) async
+    test('test createAssetsScanColumn', () async {
+      // TODO
+    });
+
+    // POST /companies/{company_id}/assets/{asset_id}/test
+    //
+    //Future<CreateAssetsAnalyze200Response> createAssetsTest(String companyId, String assetId, AssetsInput assetsInput) async
+    test('test createAssetsTest', () async {
       // TODO
     });
 
     // Delete single asset by ID
     //
-    //Future<CompaniesCompanyIdAssetsAssetIdDelete200Response> companiesCompanyIdAssetsAssetIdDelete(String companyId, String assetId) async
-    test('test companiesCompanyIdAssetsAssetIdDelete', () async {
+    //Future<DeleteAssets200Response> deleteAssets(String companyId, String assetId) async
+    test('test deleteAssets', () async {
       // TODO
     });
 
     // Get single asset by ID
     //
-    //Future<AnalyzeCompanyHandleAssetsAssetSlugGet200Response> companiesCompanyIdAssetsAssetIdGet(String companyId, String assetId) async
-    test('test companiesCompanyIdAssetsAssetIdGet', () async {
-      // TODO
-    });
-
-    // Get the information schema for a specific asset's table
-    //
-    //Future<CompaniesCompanyIdAssetsGet200Response> companiesCompanyIdAssetsAssetIdInfoschemaGet(String companyId, String assetId) async
-    test('test companiesCompanyIdAssetsAssetIdInfoschemaGet', () async {
-      // TODO
-    });
-
-    // Retrieve and save an asset's information schema
-    //
-    //Future<CompaniesCompanyIdAssetsGet200Response> companiesCompanyIdAssetsAssetIdInfoschemaSaveGet(String companyId, String assetId) async
-    test('test companiesCompanyIdAssetsAssetIdInfoschemaSaveGet', () async {
-      // TODO
-    });
-
-    // Update an existing asset by ID
-    //
-    //Future<CompaniesCompanyIdAssetsAssetIdPatch200Response> companiesCompanyIdAssetsAssetIdPatch(String companyId, String assetId, AssetsUpdate assetsUpdate) async
-    test('test companiesCompanyIdAssetsAssetIdPatch', () async {
-      // TODO
-    });
-
-    // Get AI-predicted pricing for a specific asset
-    //
-    //Future<CompaniesCompanyIdAssetsGet200Response> companiesCompanyIdAssetsAssetIdPredictedPriceGet(String companyId, String assetId) async
-    test('test companiesCompanyIdAssetsAssetIdPredictedPriceGet', () async {
+    //Future<GetAssetsByIdAnalyze200Response> getAssetsById(String companyId, String assetId) async
+    test('test getAssetsById', () async {
       // TODO
     });
 
     // Get statistics for a specific asset (public endpoint)
     //
-    //Future<CompaniesCompanyIdAssetsGet200Response> companiesCompanyIdAssetsAssetIdStatisticsGet(String companyId, String assetId) async
-    test('test companiesCompanyIdAssetsAssetIdStatisticsGet', () async {
+    //Future<GetAssetsByIdAnalyze200Response> getAssetsById2(String companyId, String assetId) async
+    test('test getAssetsById2', () async {
       // TODO
     });
 
-    // Test out an Asset (on a subset of data)
+    // Process (analyze) an asset with dynamic rate limiting applied via decorator.
     //
-    //Future<CompaniesCompanyIdAssetsGet200Response> companiesCompanyIdAssetsAssetIdTestGet(String companyId, String assetId) async
-    test('test companiesCompanyIdAssetsAssetIdTestGet', () async {
+    //Future<GetAssetsByIdAnalyze200Response> getAssetsByIdAnalyze(String assetSlug, String companyHandle) async
+    test('test getAssetsByIdAnalyze', () async {
       // TODO
     });
 
-    // Get all assets for a specific company
+    // Get the information schema for a specific asset's table
     //
-    //Future<CompaniesCompanyIdAssetsGet200Response> companiesCompanyIdAssetsGet(String companyId) async
-    test('test companiesCompanyIdAssetsGet', () async {
+    //Future<GetAssetsByIdAnalyze200Response> getAssetsByIdInfoschema(String companyId, String assetId) async
+    test('test getAssetsByIdInfoschema', () async {
       // TODO
     });
 
-    // Create a new asset
+    // Retrieve and save an asset's information schema
     //
-    //Future<CompaniesCompanyIdAssetsPost200Response> companiesCompanyIdAssetsPost(String companyId, AssetsInput assetsInput) async
-    test('test companiesCompanyIdAssetsPost', () async {
+    //Future<GetAssetsByIdAnalyze200Response> getAssetsByIdInfoschemaSave(String companyId, String assetId) async
+    test('test getAssetsByIdInfoschemaSave', () async {
+      // TODO
+    });
+
+    // Get AI-predicted pricing for a specific asset
+    //
+    //Future<GetAssetsByIdAnalyze200Response> getAssetsByIdPredictedPrice(String companyId, String assetId) async
+    test('test getAssetsByIdPredictedPrice', () async {
       // TODO
     });
 
     // Get statistics for all assets the user has access to
     //
-    //Future<CompaniesCompanyIdAssetsGet200Response> companiesCompanyIdAssetsStatisticsGet(String companyId) async
-    test('test companiesCompanyIdAssetsStatisticsGet', () async {
+    //Future<GetAssetsByIdAnalyze200Response> getAssetsByIdStatistics(String companyId) async
+    test('test getAssetsByIdStatistics', () async {
+      // TODO
+    });
+
+    // GET /companies/{company_id}/assets/{asset_id}/test
+    //
+    //Future<GetAssetsByIdAnalyze200Response> getAssetsByIdTest(String companyId, String assetId) async
+    test('test getAssetsByIdTest', () async {
+      // TODO
+    });
+
+    // Get all assets for a specific company
+    //
+    //Future<ListAssets200Response> listAssets(String companyId, { int page, int limit, String sortBy, String sortOrder, String search }) async
+    test('test listAssets', () async {
+      // TODO
+    });
+
+    // Search and filter assets with advanced options      Query Parameters:         q: Search query string         category: Filter by category         sport: Filter by sport tag         sort_by: Sort field (name|recent|popular|trending)         limit: Number of results (default 20, max 100)         offset: Offset for pagination         include_recommended: Include recommendations (true/false)         include_schema: Include asset_schema in response (true/false, default false)
+    //
+    //Future<ListAssets200Response> listAssetsSearch(String companyId, { int page, int limit, String sortBy, String sortOrder, String search }) async
+    test('test listAssetsSearch', () async {
+      // TODO
+    });
+
+    // Update an existing asset by ID
+    //
+    //Future<UpdateAssets200Response> updateAssets(String companyId, String assetId, AssetsUpdate assetsUpdate) async
+    test('test updateAssets', () async {
       // TODO
     });
 

@@ -2,10 +2,10 @@
 # AUTO-GENERATED FILE, DO NOT MODIFY!
 #
 
-name: 'spartera_api_sdk'
-version: '1.0.77'
-description: "Official Flutter/Dart SDK for the Spartera API platform"
-homepage: "https://github.com/spartera-com/spartera-flutter-sdk"
+name: 'openapi'
+version: '1.0.0'
+description: 'OpenAPI API client'
+homepage: 'homepage'
 environment:
   sdk: '>=2.12.0 <4.0.0'
 dependencies:

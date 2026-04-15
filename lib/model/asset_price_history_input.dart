@@ -13,13 +13,31 @@ part of openapi.api;
 class AssetPriceHistoryInput {
   /// Returns a new [AssetPriceHistoryInput] instance.
   AssetPriceHistoryInput({
-    required this.assetId,
+    this.assetId,
+    this.endpointId,
     this.priceUsd,
     this.dateEnded,
   });
 
-  String assetId;
+  /// FK to assets. NULL when this record belongs to an endpoint.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? assetId;
 
+  /// FK to endpoints. NULL when this record belongs to an asset.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? endpointId;
+
+  /// Optional.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -28,7 +46,7 @@ class AssetPriceHistoryInput {
   ///
   double? priceUsd;
 
-  /// When did the price end (Datetime)
+  /// SCD Type 2 — when this price record was superseded
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -40,22 +58,33 @@ class AssetPriceHistoryInput {
   @override
   bool operator ==(Object other) => identical(this, other) || other is AssetPriceHistoryInput &&
     other.assetId == assetId &&
+    other.endpointId == endpointId &&
     other.priceUsd == priceUsd &&
     other.dateEnded == dateEnded;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (assetId.hashCode) +
+    (assetId == null ? 0 : assetId!.hashCode) +
+    (endpointId == null ? 0 : endpointId!.hashCode) +
     (priceUsd == null ? 0 : priceUsd!.hashCode) +
     (dateEnded == null ? 0 : dateEnded!.hashCode);
 
   @override
-  String toString() => 'AssetPriceHistoryInput[assetId=$assetId, priceUsd=$priceUsd, dateEnded=$dateEnded]';
+  String toString() => 'AssetPriceHistoryInput[assetId=$assetId, endpointId=$endpointId, priceUsd=$priceUsd, dateEnded=$dateEnded]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.assetId != null) {
       json[r'asset_id'] = this.assetId;
+    } else {
+      json[r'asset_id'] = null;
+    }
+    if (this.endpointId != null) {
+      json[r'endpoint_id'] = this.endpointId;
+    } else {
+      json[r'endpoint_id'] = null;
+    }
     if (this.priceUsd != null) {
       json[r'price_usd'] = this.priceUsd;
     } else {
@@ -80,15 +109,12 @@ class AssetPriceHistoryInput {
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
       assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "AssetPriceHistoryInput[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "AssetPriceHistoryInput[$key]" has a null value in JSON.');
-        });
         return true;
       }());
 
       return AssetPriceHistoryInput(
-        assetId: mapValueOfType<String>(json, r'asset_id')!,
+        assetId: mapValueOfType<String>(json, r'asset_id'),
+        endpointId: mapValueOfType<String>(json, r'endpoint_id'),
         priceUsd: mapValueOfType<double>(json, r'price_usd'),
         dateEnded: mapDateTime(json, r'date_ended', r''),
       );
@@ -138,7 +164,6 @@ class AssetPriceHistoryInput {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'asset_id',
   };
 }
 

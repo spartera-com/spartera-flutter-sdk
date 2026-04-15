@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:spartera_api_sdk/api.dart';
+import 'package:openapi/api.dart';
 import 'package:test/test.dart';
 
 // tests for Companies
@@ -16,46 +16,55 @@ void main() {
   // final instance = Companies();
 
   group('test Companies', () {
+    // Optional.
     // DateTime dateCreated
     test('to test the property `dateCreated`', () async {
       // TODO
     });
 
+    // Optional.
     // DateTime lastUpdated
     test('to test the property `lastUpdated`', () async {
       // TODO
     });
 
+    // Unique identifier.
     // String companyId
     test('to test the property `companyId`', () async {
       // TODO
     });
 
+    // References industries.industry_id — Available industry categories for asset classification. Based on US NAISC codes.. See GET /industries for valid values. Optional.
     // int industryId
     test('to test the property `industryId`', () async {
       // TODO
     });
 
+    // References countries.country_id — List of countries of the world. See GET /countries for valid values. Optional.
     // int countryId
     test('to test the property `countryId`', () async {
       // TODO
     });
 
+    // Optional.
     // String companyName
     test('to test the property `companyName`', () async {
       // TODO
     });
 
+    // Optional.
     // String companyDescription
     test('to test the property `companyDescription`', () async {
       // TODO
     });
 
+    // Required. Must be unique.
     // String companyHandle
     test('to test the property `companyHandle`', () async {
       // TODO
     });
 
+    // Required. Must be unique.
     // String companyDomain
     test('to test the property `companyDomain`', () async {
       // TODO
@@ -67,6 +76,7 @@ void main() {
       // TODO
     });
 
+    // Optional.
     // bool acceptedEula
     test('to test the property `acceptedEula`', () async {
       // TODO
@@ -81,6 +91,18 @@ void main() {
     // Status of the Stripe account (verified, pending, etc.)
     // String stripeAccountStatus
     test('to test the property `stripeAccountStatus`', () async {
+      // TODO
+    });
+
+    // Negotiated vendor revenue share (e.g. 0.85 = 85%). NULL = system default 80%.
+    // double vendorSharePercent
+    test('to test the property `vendorSharePercent`', () async {
+      // TODO
+    });
+
+    // Partnership type: SELF_MANAGED, CUSTODIAN, or null
+    // String partnershipType
+    test('to test the property `partnershipType`', () async {
       // TODO
     });
 

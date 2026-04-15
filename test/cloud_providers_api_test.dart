@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:spartera_api_sdk/api.dart';
+import 'package:openapi/api.dart';
 import 'package:test/test.dart';
 
 
@@ -17,17 +17,17 @@ void main() {
   // final instance = CloudProvidersApi();
 
   group('tests for CloudProvidersApi', () {
-    // Get a list of all cloud providers
+    // Get single cloud provider by ID
     //
-    //Future<CloudProvidersGet200Response> cloudProvidersGet() async
-    test('test cloudProvidersGet', () async {
+    //Future<GetCloudProvidersById200Response> getCloudProvidersById(String providerId) async
+    test('test getCloudProvidersById', () async {
       // TODO
     });
 
-    // Get single cloud provider by ID
+    // Get a list of all cloud providers
     //
-    //Future<CloudProvidersProviderIdGet200Response> cloudProvidersProviderIdGet(String providerId) async
-    test('test cloudProvidersProviderIdGet', () async {
+    //Future<ListCloudProviders200Response> listCloudProviders({ int page, int limit, String sortBy, String sortOrder, String search }) async
+    test('test listCloudProviders', () async {
       // TODO
     });
 

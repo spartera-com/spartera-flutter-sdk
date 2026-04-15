@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:spartera_api_sdk/api.dart';
+import 'package:openapi/api.dart';
 import 'package:test/test.dart';
 
 
@@ -19,15 +19,15 @@ void main() {
   group('tests for StorageEnginesApi', () {
     // Get single storage engine by ID
     //
-    //Future<CloudProvidersProviderIdStorageEnginesGet200Response> cloudProvidersProviderIdStorageEnginesEngineIdGet(String providerId, String engineId) async
-    test('test cloudProvidersProviderIdStorageEnginesEngineIdGet', () async {
+    //Future<GetStorageEnginesById200Response> getStorageEnginesById(String providerId, String engineId) async
+    test('test getStorageEnginesById', () async {
       // TODO
     });
 
     // Get a list of all storage engines
     //
-    //Future<CloudProvidersProviderIdStorageEnginesGet200Response> cloudProvidersProviderIdStorageEnginesGet(String providerId) async
-    test('test cloudProvidersProviderIdStorageEnginesGet', () async {
+    //Future<ListStorageEngines200Response> listStorageEngines(String providerId, { int page, int limit, String sortBy, String sortOrder, String search }) async
+    test('test listStorageEngines', () async {
       // TODO
     });
 
