@@ -34,7 +34,7 @@ void main() {
       // TODO
     });
 
-    // Optional. One of: SERVICE_ACCOUNT, USERNAME_PASSWORD, API_KEY, SERVICE_IDENTITY, ACCESS_KEY, … (8 total).
+    // Optional. One of: SERVICE_ACCOUNT, USERNAME_PASSWORD, API_KEY, SERVICE_IDENTITY, ACCESS_KEY, … (10 total).
     // String credentialType
     test('to test the property `credentialType`', () async {
       // TODO

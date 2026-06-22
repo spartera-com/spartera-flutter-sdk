@@ -37,6 +37,7 @@ class Assets {
     this.assetSchema,
     this.visibility,
     this.tags,
+    this.topQuestions,
     this.shortCode,
     this.restrictedDomains,
     this.sqlLogic,
@@ -44,6 +45,7 @@ class Assets {
     this.sourceTableName,
     required this.sellInMarketplace,
     required this.requireCustomization,
+    this.vizSpec,
     this.vizChartLibrary,
     this.vizChartType,
     this.vizDepVarColName,
@@ -67,10 +69,10 @@ class Assets {
     this.nextRun,
     this.dataTimePeriodStart,
     this.dataTimePeriodEnd,
+    this.dateCollectionStart,
     this.geographicCoverageType,
     this.geographicCoverageDetails,
     this.dataSourceRefreshFrequency,
-    this.dataSourceLastRefreshed,
     this.rateLimitNumber,
     this.rateLimitPeriod,
     this.rateLimitGranularity,
@@ -256,6 +258,15 @@ class Assets {
   ///
   String? tags;
 
+  /// Top 3 questions this asset can help answer, in English. Stored as JSON array of strings (1-3 items, 15-200 chars each). Required for marketplace assets.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? topQuestions;
+
   /// Short code for tera.ac URL shortener (e.g., 'f78zq1')
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -306,6 +317,15 @@ class Assets {
 
   /// Whether this asset requires customization before use
   bool requireCustomization;
+
+  /// Plotly figure JSON describing the visualization. Authored via the visual editor or via API. When populated, takes precedence over the legacy viz_* fields. Shape follows Plotly's figure schema: {data: [{type: '...', xsrc: '...', ...}], layout: {...}}. Column references use *src keys (xsrc, ysrc, labelssrc, etc.) and are hydrated with actual data at render time.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  Object? vizSpec;
 
   /// Optional. One of: PLOTLY, MATPLOTLIB, SEABORN.
   AssetsVizChartLibraryEnum? vizChartLibrary;
@@ -466,6 +486,15 @@ class Assets {
   ///
   DateTime? dataTimePeriodEnd;
 
+  /// When the seller began actively collecting this data. Distinct from data_time_period_start, which describes when the records themselves begin. Backfilled historical data will have date_collection_start > data_time_period_start.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? dateCollectionStart;
+
   /// Type of geographic coverage
   AssetsGeographicCoverageTypeEnum? geographicCoverageType;
 
@@ -480,15 +509,6 @@ class Assets {
 
   /// How often the source data is refreshed
   AssetsDataSourceRefreshFrequencyEnum? dataSourceRefreshFrequency;
-
-  /// When the source data was last refreshed
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? dataSourceLastRefreshed;
 
   /// Number of requests allowed per period (e.g., 100)
   ///
@@ -531,6 +551,7 @@ class Assets {
     other.assetSchema == assetSchema &&
     other.visibility == visibility &&
     other.tags == tags &&
+    other.topQuestions == topQuestions &&
     other.shortCode == shortCode &&
     other.restrictedDomains == restrictedDomains &&
     other.sqlLogic == sqlLogic &&
@@ -538,6 +559,7 @@ class Assets {
     other.sourceTableName == sourceTableName &&
     other.sellInMarketplace == sellInMarketplace &&
     other.requireCustomization == requireCustomization &&
+    other.vizSpec == vizSpec &&
     other.vizChartLibrary == vizChartLibrary &&
     other.vizChartType == vizChartType &&
     other.vizDepVarColName == vizDepVarColName &&
@@ -561,10 +583,10 @@ class Assets {
     other.nextRun == nextRun &&
     other.dataTimePeriodStart == dataTimePeriodStart &&
     other.dataTimePeriodEnd == dataTimePeriodEnd &&
+    other.dateCollectionStart == dateCollectionStart &&
     other.geographicCoverageType == geographicCoverageType &&
     other.geographicCoverageDetails == geographicCoverageDetails &&
     other.dataSourceRefreshFrequency == dataSourceRefreshFrequency &&
-    other.dataSourceLastRefreshed == dataSourceLastRefreshed &&
     other.rateLimitNumber == rateLimitNumber &&
     other.rateLimitPeriod == rateLimitPeriod &&
     other.rateLimitGranularity == rateLimitGranularity;
@@ -596,6 +618,7 @@ class Assets {
     (assetSchema == null ? 0 : assetSchema!.hashCode) +
     (visibility == null ? 0 : visibility!.hashCode) +
     (tags == null ? 0 : tags!.hashCode) +
+    (topQuestions == null ? 0 : topQuestions!.hashCode) +
     (shortCode == null ? 0 : shortCode!.hashCode) +
     (restrictedDomains == null ? 0 : restrictedDomains!.hashCode) +
     (sqlLogic == null ? 0 : sqlLogic!.hashCode) +
@@ -603,6 +626,7 @@ class Assets {
     (sourceTableName == null ? 0 : sourceTableName!.hashCode) +
     (sellInMarketplace.hashCode) +
     (requireCustomization.hashCode) +
+    (vizSpec == null ? 0 : vizSpec!.hashCode) +
     (vizChartLibrary == null ? 0 : vizChartLibrary!.hashCode) +
     (vizChartType == null ? 0 : vizChartType!.hashCode) +
     (vizDepVarColName == null ? 0 : vizDepVarColName!.hashCode) +
@@ -626,16 +650,16 @@ class Assets {
     (nextRun == null ? 0 : nextRun!.hashCode) +
     (dataTimePeriodStart == null ? 0 : dataTimePeriodStart!.hashCode) +
     (dataTimePeriodEnd == null ? 0 : dataTimePeriodEnd!.hashCode) +
+    (dateCollectionStart == null ? 0 : dateCollectionStart!.hashCode) +
     (geographicCoverageType == null ? 0 : geographicCoverageType!.hashCode) +
     (geographicCoverageDetails == null ? 0 : geographicCoverageDetails!.hashCode) +
     (dataSourceRefreshFrequency == null ? 0 : dataSourceRefreshFrequency!.hashCode) +
-    (dataSourceLastRefreshed == null ? 0 : dataSourceLastRefreshed!.hashCode) +
     (rateLimitNumber == null ? 0 : rateLimitNumber!.hashCode) +
     (rateLimitPeriod == null ? 0 : rateLimitPeriod!.hashCode) +
     (rateLimitGranularity == null ? 0 : rateLimitGranularity!.hashCode);
 
   @override
-  String toString() => 'Assets[dateCreated=$dateCreated, lastUpdated=$lastUpdated, assetId=$assetId, userId=$userId, companyId=$companyId, connectionId=$connectionId, llmConnectionId=$llmConnectionId, snippetId=$snippetId, industryId=$industryId, aiJobId=$aiJobId, aucId=$aucId, functionId=$functionId, approvalStatus=$approvalStatus, approvedByUserId=$approvedByUserId, approvedAt=$approvedAt, name=$name, slug=$slug, description=$description, detailedDescription=$detailedDescription, source_=$source_, assetType=$assetType, assetSchema=$assetSchema, visibility=$visibility, tags=$tags, shortCode=$shortCode, restrictedDomains=$restrictedDomains, sqlLogic=$sqlLogic, sourceSchemaName=$sourceSchemaName, sourceTableName=$sourceTableName, sellInMarketplace=$sellInMarketplace, requireCustomization=$requireCustomization, vizChartLibrary=$vizChartLibrary, vizChartType=$vizChartType, vizDepVarColName=$vizDepVarColName, vizIndepVarColName=$vizIndepVarColName, vizSizeColName=$vizSizeColName, vizColorColName=$vizColorColName, vizDataAggregation=$vizDataAggregation, vizSortDirection=$vizSortDirection, vizDataLimit=$vizDataLimit, vizColorScheme=$vizColorScheme, vizShowLegend=$vizShowLegend, vizShowGrid=$vizShowGrid, vizShowTrendline=$vizShowTrendline, vizLineSmoothing=$vizLineSmoothing, vizBarStacked=$vizBarStacked, vizFilterDirection=$vizFilterDirection, allowParams=$allowParams, acceptTerms=$acceptTerms, cached=$cached, schedule=$schedule, nextRun=$nextRun, dataTimePeriodStart=$dataTimePeriodStart, dataTimePeriodEnd=$dataTimePeriodEnd, geographicCoverageType=$geographicCoverageType, geographicCoverageDetails=$geographicCoverageDetails, dataSourceRefreshFrequency=$dataSourceRefreshFrequency, dataSourceLastRefreshed=$dataSourceLastRefreshed, rateLimitNumber=$rateLimitNumber, rateLimitPeriod=$rateLimitPeriod, rateLimitGranularity=$rateLimitGranularity]';
+  String toString() => 'Assets[dateCreated=$dateCreated, lastUpdated=$lastUpdated, assetId=$assetId, userId=$userId, companyId=$companyId, connectionId=$connectionId, llmConnectionId=$llmConnectionId, snippetId=$snippetId, industryId=$industryId, aiJobId=$aiJobId, aucId=$aucId, functionId=$functionId, approvalStatus=$approvalStatus, approvedByUserId=$approvedByUserId, approvedAt=$approvedAt, name=$name, slug=$slug, description=$description, detailedDescription=$detailedDescription, source_=$source_, assetType=$assetType, assetSchema=$assetSchema, visibility=$visibility, tags=$tags, topQuestions=$topQuestions, shortCode=$shortCode, restrictedDomains=$restrictedDomains, sqlLogic=$sqlLogic, sourceSchemaName=$sourceSchemaName, sourceTableName=$sourceTableName, sellInMarketplace=$sellInMarketplace, requireCustomization=$requireCustomization, vizSpec=$vizSpec, vizChartLibrary=$vizChartLibrary, vizChartType=$vizChartType, vizDepVarColName=$vizDepVarColName, vizIndepVarColName=$vizIndepVarColName, vizSizeColName=$vizSizeColName, vizColorColName=$vizColorColName, vizDataAggregation=$vizDataAggregation, vizSortDirection=$vizSortDirection, vizDataLimit=$vizDataLimit, vizColorScheme=$vizColorScheme, vizShowLegend=$vizShowLegend, vizShowGrid=$vizShowGrid, vizShowTrendline=$vizShowTrendline, vizLineSmoothing=$vizLineSmoothing, vizBarStacked=$vizBarStacked, vizFilterDirection=$vizFilterDirection, allowParams=$allowParams, acceptTerms=$acceptTerms, cached=$cached, schedule=$schedule, nextRun=$nextRun, dataTimePeriodStart=$dataTimePeriodStart, dataTimePeriodEnd=$dataTimePeriodEnd, dateCollectionStart=$dateCollectionStart, geographicCoverageType=$geographicCoverageType, geographicCoverageDetails=$geographicCoverageDetails, dataSourceRefreshFrequency=$dataSourceRefreshFrequency, rateLimitNumber=$rateLimitNumber, rateLimitPeriod=$rateLimitPeriod, rateLimitGranularity=$rateLimitGranularity]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -747,6 +771,11 @@ class Assets {
     } else {
       json[r'tags'] = null;
     }
+    if (this.topQuestions != null) {
+      json[r'top_questions'] = this.topQuestions;
+    } else {
+      json[r'top_questions'] = null;
+    }
     if (this.shortCode != null) {
       json[r'short_code'] = this.shortCode;
     } else {
@@ -774,6 +803,11 @@ class Assets {
     }
       json[r'sell_in_marketplace'] = this.sellInMarketplace;
       json[r'require_customization'] = this.requireCustomization;
+    if (this.vizSpec != null) {
+      json[r'viz_spec'] = this.vizSpec;
+    } else {
+      json[r'viz_spec'] = null;
+    }
     if (this.vizChartLibrary != null) {
       json[r'viz_chart_library'] = this.vizChartLibrary;
     } else {
@@ -881,6 +915,11 @@ class Assets {
     } else {
       json[r'data_time_period_end'] = null;
     }
+    if (this.dateCollectionStart != null) {
+      json[r'date_collection_start'] = this.dateCollectionStart!.toUtc().toIso8601String();
+    } else {
+      json[r'date_collection_start'] = null;
+    }
     if (this.geographicCoverageType != null) {
       json[r'geographic_coverage_type'] = this.geographicCoverageType;
     } else {
@@ -895,11 +934,6 @@ class Assets {
       json[r'data_source_refresh_frequency'] = this.dataSourceRefreshFrequency;
     } else {
       json[r'data_source_refresh_frequency'] = null;
-    }
-    if (this.dataSourceLastRefreshed != null) {
-      json[r'data_source_last_refreshed'] = this.dataSourceLastRefreshed!.toUtc().toIso8601String();
-    } else {
-      json[r'data_source_last_refreshed'] = null;
     }
     if (this.rateLimitNumber != null) {
       json[r'rate_limit_number'] = this.rateLimitNumber;
@@ -972,6 +1006,7 @@ class Assets {
         assetSchema: mapValueOfType<Object>(json, r'asset_schema'),
         visibility: AssetsVisibilityEnum.fromJson(json[r'visibility']),
         tags: mapValueOfType<String>(json, r'tags'),
+        topQuestions: mapValueOfType<String>(json, r'top_questions'),
         shortCode: mapValueOfType<String>(json, r'short_code'),
         restrictedDomains: mapValueOfType<String>(json, r'restricted_domains'),
         sqlLogic: mapValueOfType<String>(json, r'sql_logic'),
@@ -979,6 +1014,7 @@ class Assets {
         sourceTableName: mapValueOfType<String>(json, r'source_table_name'),
         sellInMarketplace: mapValueOfType<bool>(json, r'sell_in_marketplace')!,
         requireCustomization: mapValueOfType<bool>(json, r'require_customization')!,
+        vizSpec: mapValueOfType<Object>(json, r'viz_spec'),
         vizChartLibrary: AssetsVizChartLibraryEnum.fromJson(json[r'viz_chart_library']),
         vizChartType: AssetsVizChartTypeEnum.fromJson(json[r'viz_chart_type']),
         vizDepVarColName: mapValueOfType<String>(json, r'viz_dep_var_col_name'),
@@ -1002,10 +1038,10 @@ class Assets {
         nextRun: mapDateTime(json, r'next_run', r''),
         dataTimePeriodStart: mapDateTime(json, r'data_time_period_start', r''),
         dataTimePeriodEnd: mapDateTime(json, r'data_time_period_end', r''),
+        dateCollectionStart: mapDateTime(json, r'date_collection_start', r''),
         geographicCoverageType: AssetsGeographicCoverageTypeEnum.fromJson(json[r'geographic_coverage_type']),
         geographicCoverageDetails: mapValueOfType<String>(json, r'geographic_coverage_details'),
         dataSourceRefreshFrequency: AssetsDataSourceRefreshFrequencyEnum.fromJson(json[r'data_source_refresh_frequency']),
-        dataSourceLastRefreshed: mapDateTime(json, r'data_source_last_refreshed', r''),
         rateLimitNumber: mapValueOfType<int>(json, r'rate_limit_number'),
         rateLimitPeriod: AssetsRateLimitPeriodEnum.fromJson(json[r'rate_limit_period']),
         rateLimitGranularity: AssetsRateLimitGranularityEnum.fromJson(json[r'rate_limit_granularity']),
@@ -1974,28 +2010,28 @@ class AssetsDataSourceRefreshFrequencyEnum {
 
   String toJson() => value;
 
-  static const REAL_TIME = AssetsDataSourceRefreshFrequencyEnum._(r'REAL_TIME');
-  static const HOURLY = AssetsDataSourceRefreshFrequencyEnum._(r'HOURLY');
-  static const DAILY = AssetsDataSourceRefreshFrequencyEnum._(r'DAILY');
-  static const WEEKLY = AssetsDataSourceRefreshFrequencyEnum._(r'WEEKLY');
-  static const MONTHLY = AssetsDataSourceRefreshFrequencyEnum._(r'MONTHLY');
-  static const QUARTERLY = AssetsDataSourceRefreshFrequencyEnum._(r'QUARTERLY');
-  static const ANNUAL = AssetsDataSourceRefreshFrequencyEnum._(r'ANNUAL');
-  static const ONE_TIME = AssetsDataSourceRefreshFrequencyEnum._(r'ONE_TIME');
-  static const CUSTOM = AssetsDataSourceRefreshFrequencyEnum._(r'CUSTOM');
+  static const EVERY_SECOND = AssetsDataSourceRefreshFrequencyEnum._(r'EVERY_SECOND');
+  static const EVERY_MINUTE = AssetsDataSourceRefreshFrequencyEnum._(r'EVERY_MINUTE');
+  static const EVERY_HOUR = AssetsDataSourceRefreshFrequencyEnum._(r'EVERY_HOUR');
+  static const EVERY_DAY = AssetsDataSourceRefreshFrequencyEnum._(r'EVERY_DAY');
+  static const EVERY_WEEK = AssetsDataSourceRefreshFrequencyEnum._(r'EVERY_WEEK');
+  static const EVERY_MONTH = AssetsDataSourceRefreshFrequencyEnum._(r'EVERY_MONTH');
+  static const EVERY_QUARTER = AssetsDataSourceRefreshFrequencyEnum._(r'EVERY_QUARTER');
+  static const EVERY_YEAR = AssetsDataSourceRefreshFrequencyEnum._(r'EVERY_YEAR');
+  static const NEVER = AssetsDataSourceRefreshFrequencyEnum._(r'NEVER');
   static const UNKNOWN = AssetsDataSourceRefreshFrequencyEnum._(r'UNKNOWN');
 
   /// List of all possible values in this [enum][AssetsDataSourceRefreshFrequencyEnum].
   static const values = <AssetsDataSourceRefreshFrequencyEnum>[
-    REAL_TIME,
-    HOURLY,
-    DAILY,
-    WEEKLY,
-    MONTHLY,
-    QUARTERLY,
-    ANNUAL,
-    ONE_TIME,
-    CUSTOM,
+    EVERY_SECOND,
+    EVERY_MINUTE,
+    EVERY_HOUR,
+    EVERY_DAY,
+    EVERY_WEEK,
+    EVERY_MONTH,
+    EVERY_QUARTER,
+    EVERY_YEAR,
+    NEVER,
     UNKNOWN,
   ];
 
@@ -2035,15 +2071,15 @@ class AssetsDataSourceRefreshFrequencyEnumTypeTransformer {
   AssetsDataSourceRefreshFrequencyEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'REAL_TIME': return AssetsDataSourceRefreshFrequencyEnum.REAL_TIME;
-        case r'HOURLY': return AssetsDataSourceRefreshFrequencyEnum.HOURLY;
-        case r'DAILY': return AssetsDataSourceRefreshFrequencyEnum.DAILY;
-        case r'WEEKLY': return AssetsDataSourceRefreshFrequencyEnum.WEEKLY;
-        case r'MONTHLY': return AssetsDataSourceRefreshFrequencyEnum.MONTHLY;
-        case r'QUARTERLY': return AssetsDataSourceRefreshFrequencyEnum.QUARTERLY;
-        case r'ANNUAL': return AssetsDataSourceRefreshFrequencyEnum.ANNUAL;
-        case r'ONE_TIME': return AssetsDataSourceRefreshFrequencyEnum.ONE_TIME;
-        case r'CUSTOM': return AssetsDataSourceRefreshFrequencyEnum.CUSTOM;
+        case r'EVERY_SECOND': return AssetsDataSourceRefreshFrequencyEnum.EVERY_SECOND;
+        case r'EVERY_MINUTE': return AssetsDataSourceRefreshFrequencyEnum.EVERY_MINUTE;
+        case r'EVERY_HOUR': return AssetsDataSourceRefreshFrequencyEnum.EVERY_HOUR;
+        case r'EVERY_DAY': return AssetsDataSourceRefreshFrequencyEnum.EVERY_DAY;
+        case r'EVERY_WEEK': return AssetsDataSourceRefreshFrequencyEnum.EVERY_WEEK;
+        case r'EVERY_MONTH': return AssetsDataSourceRefreshFrequencyEnum.EVERY_MONTH;
+        case r'EVERY_QUARTER': return AssetsDataSourceRefreshFrequencyEnum.EVERY_QUARTER;
+        case r'EVERY_YEAR': return AssetsDataSourceRefreshFrequencyEnum.EVERY_YEAR;
+        case r'NEVER': return AssetsDataSourceRefreshFrequencyEnum.NEVER;
         case r'UNKNOWN': return AssetsDataSourceRefreshFrequencyEnum.UNKNOWN;
         default:
           if (!allowNull) {

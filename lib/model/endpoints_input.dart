@@ -24,24 +24,32 @@ class EndpointsInput {
     this.approvedByUserId,
     this.approvedAt,
     this.sellInMarketplace,
-    this.priceCredits,
     required this.name,
     this.slug,
     this.description,
+    this.detailedDescription,
+    this.topQuestions,
     this.sourceSchemaName,
     this.sourceTableName,
     this.customerName,
-    this.priceUsd,
     this.endpointSchema,
-    this.rateLimitRequests,
+    this.rateLimitNumber,
     this.rateLimitPeriod,
     this.rateLimitGranularity,
     this.accessMethod,
     this.accessWhitelist,
     this.status,
+    this.dataTimePeriodStart,
+    this.dataTimePeriodEnd,
+    this.dateCollectionStart,
+    this.geographicCoverageType,
+    this.geographicCoverageDetails,
+    this.dataSourceRefreshFrequency,
     this.tags,
     this.lastAccessed,
     this.maxRecordsPerRequest,
+    this.exportEnabled,
+    this.maxRecordsPerExport,
     this.sampleResponse,
     this.active,
   });
@@ -127,15 +135,6 @@ class EndpointsInput {
   ///
   bool? sellInMarketplace;
 
-  /// Credits deducted from the buyer's pool per successful (200 OK) request. Same credit pool as assets. price_usd kept for billing records / dashboards.
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? priceCredits;
-
   /// Human-readable name for the endpoint
   String name;
 
@@ -157,6 +156,24 @@ class EndpointsInput {
   ///
   String? description;
 
+  /// Long-form HTML description for product pages and SEO
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? detailedDescription;
+
+  /// Top 3 questions this endpoint can help answer, in English. Stored as JSON array of strings (1-3 items, 15-200 chars each). Strongly encouraged for marketplace endpoints but not required — nudge via UI completeness score, not hard validation.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? topQuestions;
+
   /// Schema/database name where the table resides
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -175,7 +192,7 @@ class EndpointsInput {
   ///
   String? sourceTableName;
 
-  /// Named customer for B2B deals (marketplace uses price_credits instead)
+  /// Named customer for B2B deals (pricing handled via asset_price_history)
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -183,15 +200,6 @@ class EndpointsInput {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? customerName;
-
-  /// USD reference price for billing records and seller dashboards
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  double? priceUsd;
 
   /// Column configurations including aggregations, filters, and visibility. Format: {columns: [{name, type, aggregation, filter, is_hidden, alias, ...}]}. This is the source of truth — SQL is generated at runtime from this configuration.
   ///
@@ -209,7 +217,7 @@ class EndpointsInput {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? rateLimitRequests;
+  int? rateLimitNumber;
 
   /// Time period for rate limiting (HOUR, DAY, MONTH)
   EndpointsInputRateLimitPeriodEnum? rateLimitPeriod;
@@ -231,6 +239,48 @@ class EndpointsInput {
 
   /// Current status of the endpoint (ACTIVE, INACTIVE, DEPRECATED)
   EndpointsInputStatusEnum? status;
+
+  /// Start date of the data time period covered
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? dataTimePeriodStart;
+
+  /// End date of the data time period covered
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? dataTimePeriodEnd;
+
+  /// When the seller began actively collecting this data. Distinct from data_time_period_start, which describes when the records themselves begin. Backfilled historical data will have date_collection_start > data_time_period_start.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? dateCollectionStart;
+
+  /// Type of geographic coverage
+  EndpointsInputGeographicCoverageTypeEnum? geographicCoverageType;
+
+  /// Specific regions/countries covered (e.g., 'United States, Canada, Mexico')
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? geographicCoverageDetails;
+
+  /// How often the source data is refreshed
+  EndpointsInputDataSourceRefreshFrequencyEnum? dataSourceRefreshFrequency;
 
   /// Comma-separated tags for organizing endpoints
   ///
@@ -258,6 +308,24 @@ class EndpointsInput {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? maxRecordsPerRequest;
+
+  /// Whether this endpoint supports bulk export to GCS. When True, buyers can request delivery=gcs with format=csv|parquet. Independent of max_records_per_request, which only governs inline JSON.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? exportEnabled;
+
+  /// Hard ceiling on rows returned per GCS export. Separate from max_records_per_request so sellers can offer larger downloads via file delivery without expanding inline JSON responses.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? maxRecordsPerExport;
 
   /// Last successful {spartera, request, response} envelope. Saved on each successful marketplace run. Displayed as preview on product page load.
   ///
@@ -290,24 +358,32 @@ class EndpointsInput {
     other.approvedByUserId == approvedByUserId &&
     other.approvedAt == approvedAt &&
     other.sellInMarketplace == sellInMarketplace &&
-    other.priceCredits == priceCredits &&
     other.name == name &&
     other.slug == slug &&
     other.description == description &&
+    other.detailedDescription == detailedDescription &&
+    other.topQuestions == topQuestions &&
     other.sourceSchemaName == sourceSchemaName &&
     other.sourceTableName == sourceTableName &&
     other.customerName == customerName &&
-    other.priceUsd == priceUsd &&
     other.endpointSchema == endpointSchema &&
-    other.rateLimitRequests == rateLimitRequests &&
+    other.rateLimitNumber == rateLimitNumber &&
     other.rateLimitPeriod == rateLimitPeriod &&
     other.rateLimitGranularity == rateLimitGranularity &&
     other.accessMethod == accessMethod &&
     other.accessWhitelist == accessWhitelist &&
     other.status == status &&
+    other.dataTimePeriodStart == dataTimePeriodStart &&
+    other.dataTimePeriodEnd == dataTimePeriodEnd &&
+    other.dateCollectionStart == dateCollectionStart &&
+    other.geographicCoverageType == geographicCoverageType &&
+    other.geographicCoverageDetails == geographicCoverageDetails &&
+    other.dataSourceRefreshFrequency == dataSourceRefreshFrequency &&
     other.tags == tags &&
     other.lastAccessed == lastAccessed &&
     other.maxRecordsPerRequest == maxRecordsPerRequest &&
+    other.exportEnabled == exportEnabled &&
+    other.maxRecordsPerExport == maxRecordsPerExport &&
     other.sampleResponse == sampleResponse &&
     other.active == active;
 
@@ -325,29 +401,37 @@ class EndpointsInput {
     (approvedByUserId == null ? 0 : approvedByUserId!.hashCode) +
     (approvedAt == null ? 0 : approvedAt!.hashCode) +
     (sellInMarketplace == null ? 0 : sellInMarketplace!.hashCode) +
-    (priceCredits == null ? 0 : priceCredits!.hashCode) +
     (name.hashCode) +
     (slug == null ? 0 : slug!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
+    (detailedDescription == null ? 0 : detailedDescription!.hashCode) +
+    (topQuestions == null ? 0 : topQuestions!.hashCode) +
     (sourceSchemaName == null ? 0 : sourceSchemaName!.hashCode) +
     (sourceTableName == null ? 0 : sourceTableName!.hashCode) +
     (customerName == null ? 0 : customerName!.hashCode) +
-    (priceUsd == null ? 0 : priceUsd!.hashCode) +
     (endpointSchema == null ? 0 : endpointSchema!.hashCode) +
-    (rateLimitRequests == null ? 0 : rateLimitRequests!.hashCode) +
+    (rateLimitNumber == null ? 0 : rateLimitNumber!.hashCode) +
     (rateLimitPeriod == null ? 0 : rateLimitPeriod!.hashCode) +
     (rateLimitGranularity == null ? 0 : rateLimitGranularity!.hashCode) +
     (accessMethod == null ? 0 : accessMethod!.hashCode) +
     (accessWhitelist == null ? 0 : accessWhitelist!.hashCode) +
     (status == null ? 0 : status!.hashCode) +
+    (dataTimePeriodStart == null ? 0 : dataTimePeriodStart!.hashCode) +
+    (dataTimePeriodEnd == null ? 0 : dataTimePeriodEnd!.hashCode) +
+    (dateCollectionStart == null ? 0 : dateCollectionStart!.hashCode) +
+    (geographicCoverageType == null ? 0 : geographicCoverageType!.hashCode) +
+    (geographicCoverageDetails == null ? 0 : geographicCoverageDetails!.hashCode) +
+    (dataSourceRefreshFrequency == null ? 0 : dataSourceRefreshFrequency!.hashCode) +
     (tags == null ? 0 : tags!.hashCode) +
     (lastAccessed == null ? 0 : lastAccessed!.hashCode) +
     (maxRecordsPerRequest == null ? 0 : maxRecordsPerRequest!.hashCode) +
+    (exportEnabled == null ? 0 : exportEnabled!.hashCode) +
+    (maxRecordsPerExport == null ? 0 : maxRecordsPerExport!.hashCode) +
     (sampleResponse == null ? 0 : sampleResponse!.hashCode) +
     (active == null ? 0 : active!.hashCode);
 
   @override
-  String toString() => 'EndpointsInput[dateCreated=$dateCreated, lastUpdated=$lastUpdated, userId=$userId, companyId=$companyId, connectionId=$connectionId, industryId=$industryId, aucId=$aucId, approvalStatus=$approvalStatus, approvedByUserId=$approvedByUserId, approvedAt=$approvedAt, sellInMarketplace=$sellInMarketplace, priceCredits=$priceCredits, name=$name, slug=$slug, description=$description, sourceSchemaName=$sourceSchemaName, sourceTableName=$sourceTableName, customerName=$customerName, priceUsd=$priceUsd, endpointSchema=$endpointSchema, rateLimitRequests=$rateLimitRequests, rateLimitPeriod=$rateLimitPeriod, rateLimitGranularity=$rateLimitGranularity, accessMethod=$accessMethod, accessWhitelist=$accessWhitelist, status=$status, tags=$tags, lastAccessed=$lastAccessed, maxRecordsPerRequest=$maxRecordsPerRequest, sampleResponse=$sampleResponse, active=$active]';
+  String toString() => 'EndpointsInput[dateCreated=$dateCreated, lastUpdated=$lastUpdated, userId=$userId, companyId=$companyId, connectionId=$connectionId, industryId=$industryId, aucId=$aucId, approvalStatus=$approvalStatus, approvedByUserId=$approvedByUserId, approvedAt=$approvedAt, sellInMarketplace=$sellInMarketplace, name=$name, slug=$slug, description=$description, detailedDescription=$detailedDescription, topQuestions=$topQuestions, sourceSchemaName=$sourceSchemaName, sourceTableName=$sourceTableName, customerName=$customerName, endpointSchema=$endpointSchema, rateLimitNumber=$rateLimitNumber, rateLimitPeriod=$rateLimitPeriod, rateLimitGranularity=$rateLimitGranularity, accessMethod=$accessMethod, accessWhitelist=$accessWhitelist, status=$status, dataTimePeriodStart=$dataTimePeriodStart, dataTimePeriodEnd=$dataTimePeriodEnd, dateCollectionStart=$dateCollectionStart, geographicCoverageType=$geographicCoverageType, geographicCoverageDetails=$geographicCoverageDetails, dataSourceRefreshFrequency=$dataSourceRefreshFrequency, tags=$tags, lastAccessed=$lastAccessed, maxRecordsPerRequest=$maxRecordsPerRequest, exportEnabled=$exportEnabled, maxRecordsPerExport=$maxRecordsPerExport, sampleResponse=$sampleResponse, active=$active]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -398,11 +482,6 @@ class EndpointsInput {
     } else {
       json[r'sell_in_marketplace'] = null;
     }
-    if (this.priceCredits != null) {
-      json[r'price_credits'] = this.priceCredits;
-    } else {
-      json[r'price_credits'] = null;
-    }
       json[r'name'] = this.name;
     if (this.slug != null) {
       json[r'slug'] = this.slug;
@@ -413,6 +492,16 @@ class EndpointsInput {
       json[r'description'] = this.description;
     } else {
       json[r'description'] = null;
+    }
+    if (this.detailedDescription != null) {
+      json[r'detailed_description'] = this.detailedDescription;
+    } else {
+      json[r'detailed_description'] = null;
+    }
+    if (this.topQuestions != null) {
+      json[r'top_questions'] = this.topQuestions;
+    } else {
+      json[r'top_questions'] = null;
     }
     if (this.sourceSchemaName != null) {
       json[r'source_schema_name'] = this.sourceSchemaName;
@@ -429,20 +518,15 @@ class EndpointsInput {
     } else {
       json[r'customer_name'] = null;
     }
-    if (this.priceUsd != null) {
-      json[r'price_usd'] = this.priceUsd;
-    } else {
-      json[r'price_usd'] = null;
-    }
     if (this.endpointSchema != null) {
       json[r'endpoint_schema'] = this.endpointSchema;
     } else {
       json[r'endpoint_schema'] = null;
     }
-    if (this.rateLimitRequests != null) {
-      json[r'rate_limit_requests'] = this.rateLimitRequests;
+    if (this.rateLimitNumber != null) {
+      json[r'rate_limit_number'] = this.rateLimitNumber;
     } else {
-      json[r'rate_limit_requests'] = null;
+      json[r'rate_limit_number'] = null;
     }
     if (this.rateLimitPeriod != null) {
       json[r'rate_limit_period'] = this.rateLimitPeriod;
@@ -469,6 +553,36 @@ class EndpointsInput {
     } else {
       json[r'status'] = null;
     }
+    if (this.dataTimePeriodStart != null) {
+      json[r'data_time_period_start'] = this.dataTimePeriodStart!.toUtc().toIso8601String();
+    } else {
+      json[r'data_time_period_start'] = null;
+    }
+    if (this.dataTimePeriodEnd != null) {
+      json[r'data_time_period_end'] = this.dataTimePeriodEnd!.toUtc().toIso8601String();
+    } else {
+      json[r'data_time_period_end'] = null;
+    }
+    if (this.dateCollectionStart != null) {
+      json[r'date_collection_start'] = this.dateCollectionStart!.toUtc().toIso8601String();
+    } else {
+      json[r'date_collection_start'] = null;
+    }
+    if (this.geographicCoverageType != null) {
+      json[r'geographic_coverage_type'] = this.geographicCoverageType;
+    } else {
+      json[r'geographic_coverage_type'] = null;
+    }
+    if (this.geographicCoverageDetails != null) {
+      json[r'geographic_coverage_details'] = this.geographicCoverageDetails;
+    } else {
+      json[r'geographic_coverage_details'] = null;
+    }
+    if (this.dataSourceRefreshFrequency != null) {
+      json[r'data_source_refresh_frequency'] = this.dataSourceRefreshFrequency;
+    } else {
+      json[r'data_source_refresh_frequency'] = null;
+    }
     if (this.tags != null) {
       json[r'tags'] = this.tags;
     } else {
@@ -483,6 +597,16 @@ class EndpointsInput {
       json[r'max_records_per_request'] = this.maxRecordsPerRequest;
     } else {
       json[r'max_records_per_request'] = null;
+    }
+    if (this.exportEnabled != null) {
+      json[r'export_enabled'] = this.exportEnabled;
+    } else {
+      json[r'export_enabled'] = null;
+    }
+    if (this.maxRecordsPerExport != null) {
+      json[r'max_records_per_export'] = this.maxRecordsPerExport;
+    } else {
+      json[r'max_records_per_export'] = null;
     }
     if (this.sampleResponse != null) {
       json[r'sample_response'] = this.sampleResponse;
@@ -529,24 +653,32 @@ class EndpointsInput {
         approvedByUserId: mapValueOfType<String>(json, r'approved_by_user_id'),
         approvedAt: mapDateTime(json, r'approved_at', r''),
         sellInMarketplace: mapValueOfType<bool>(json, r'sell_in_marketplace'),
-        priceCredits: mapValueOfType<int>(json, r'price_credits'),
         name: mapValueOfType<String>(json, r'name')!,
         slug: mapValueOfType<String>(json, r'slug'),
         description: mapValueOfType<String>(json, r'description'),
+        detailedDescription: mapValueOfType<String>(json, r'detailed_description'),
+        topQuestions: mapValueOfType<String>(json, r'top_questions'),
         sourceSchemaName: mapValueOfType<String>(json, r'source_schema_name'),
         sourceTableName: mapValueOfType<String>(json, r'source_table_name'),
         customerName: mapValueOfType<String>(json, r'customer_name'),
-        priceUsd: mapValueOfType<double>(json, r'price_usd'),
         endpointSchema: mapValueOfType<Object>(json, r'endpoint_schema'),
-        rateLimitRequests: mapValueOfType<int>(json, r'rate_limit_requests'),
+        rateLimitNumber: mapValueOfType<int>(json, r'rate_limit_number'),
         rateLimitPeriod: EndpointsInputRateLimitPeriodEnum.fromJson(json[r'rate_limit_period']),
         rateLimitGranularity: EndpointsInputRateLimitGranularityEnum.fromJson(json[r'rate_limit_granularity']),
         accessMethod: EndpointsInputAccessMethodEnum.fromJson(json[r'access_method']),
         accessWhitelist: mapValueOfType<Object>(json, r'access_whitelist'),
         status: EndpointsInputStatusEnum.fromJson(json[r'status']),
+        dataTimePeriodStart: mapDateTime(json, r'data_time_period_start', r''),
+        dataTimePeriodEnd: mapDateTime(json, r'data_time_period_end', r''),
+        dateCollectionStart: mapDateTime(json, r'date_collection_start', r''),
+        geographicCoverageType: EndpointsInputGeographicCoverageTypeEnum.fromJson(json[r'geographic_coverage_type']),
+        geographicCoverageDetails: mapValueOfType<String>(json, r'geographic_coverage_details'),
+        dataSourceRefreshFrequency: EndpointsInputDataSourceRefreshFrequencyEnum.fromJson(json[r'data_source_refresh_frequency']),
         tags: mapValueOfType<String>(json, r'tags'),
         lastAccessed: mapDateTime(json, r'last_accessed', r''),
         maxRecordsPerRequest: mapValueOfType<int>(json, r'max_records_per_request'),
+        exportEnabled: mapValueOfType<bool>(json, r'export_enabled'),
+        maxRecordsPerExport: mapValueOfType<int>(json, r'max_records_per_export'),
         sampleResponse: mapValueOfType<Object>(json, r'sample_response'),
         active: mapValueOfType<bool>(json, r'active'),
       );
@@ -999,6 +1131,196 @@ class EndpointsInputStatusEnumTypeTransformer {
 
   /// Singleton [EndpointsInputStatusEnumTypeTransformer] instance.
   static EndpointsInputStatusEnumTypeTransformer? _instance;
+}
+
+
+/// Type of geographic coverage
+class EndpointsInputGeographicCoverageTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const EndpointsInputGeographicCoverageTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const GLOBAL = EndpointsInputGeographicCoverageTypeEnum._(r'GLOBAL');
+  static const CONTINENTAL = EndpointsInputGeographicCoverageTypeEnum._(r'CONTINENTAL');
+  static const REGIONAL = EndpointsInputGeographicCoverageTypeEnum._(r'REGIONAL');
+  static const NATIONAL = EndpointsInputGeographicCoverageTypeEnum._(r'NATIONAL');
+  static const STATE = EndpointsInputGeographicCoverageTypeEnum._(r'STATE');
+  static const LOCAL = EndpointsInputGeographicCoverageTypeEnum._(r'LOCAL');
+  static const CUSTOM = EndpointsInputGeographicCoverageTypeEnum._(r'CUSTOM');
+  static const UNKNOWN = EndpointsInputGeographicCoverageTypeEnum._(r'UNKNOWN');
+
+  /// List of all possible values in this [enum][EndpointsInputGeographicCoverageTypeEnum].
+  static const values = <EndpointsInputGeographicCoverageTypeEnum>[
+    GLOBAL,
+    CONTINENTAL,
+    REGIONAL,
+    NATIONAL,
+    STATE,
+    LOCAL,
+    CUSTOM,
+    UNKNOWN,
+  ];
+
+  static EndpointsInputGeographicCoverageTypeEnum? fromJson(dynamic value) => EndpointsInputGeographicCoverageTypeEnumTypeTransformer().decode(value);
+
+  static List<EndpointsInputGeographicCoverageTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <EndpointsInputGeographicCoverageTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = EndpointsInputGeographicCoverageTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [EndpointsInputGeographicCoverageTypeEnum] to String,
+/// and [decode] dynamic data back to [EndpointsInputGeographicCoverageTypeEnum].
+class EndpointsInputGeographicCoverageTypeEnumTypeTransformer {
+  factory EndpointsInputGeographicCoverageTypeEnumTypeTransformer() => _instance ??= const EndpointsInputGeographicCoverageTypeEnumTypeTransformer._();
+
+  const EndpointsInputGeographicCoverageTypeEnumTypeTransformer._();
+
+  String encode(EndpointsInputGeographicCoverageTypeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a EndpointsInputGeographicCoverageTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  EndpointsInputGeographicCoverageTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'GLOBAL': return EndpointsInputGeographicCoverageTypeEnum.GLOBAL;
+        case r'CONTINENTAL': return EndpointsInputGeographicCoverageTypeEnum.CONTINENTAL;
+        case r'REGIONAL': return EndpointsInputGeographicCoverageTypeEnum.REGIONAL;
+        case r'NATIONAL': return EndpointsInputGeographicCoverageTypeEnum.NATIONAL;
+        case r'STATE': return EndpointsInputGeographicCoverageTypeEnum.STATE;
+        case r'LOCAL': return EndpointsInputGeographicCoverageTypeEnum.LOCAL;
+        case r'CUSTOM': return EndpointsInputGeographicCoverageTypeEnum.CUSTOM;
+        case r'UNKNOWN': return EndpointsInputGeographicCoverageTypeEnum.UNKNOWN;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [EndpointsInputGeographicCoverageTypeEnumTypeTransformer] instance.
+  static EndpointsInputGeographicCoverageTypeEnumTypeTransformer? _instance;
+}
+
+
+/// How often the source data is refreshed
+class EndpointsInputDataSourceRefreshFrequencyEnum {
+  /// Instantiate a new enum with the provided [value].
+  const EndpointsInputDataSourceRefreshFrequencyEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const EVERY_SECOND = EndpointsInputDataSourceRefreshFrequencyEnum._(r'EVERY_SECOND');
+  static const EVERY_MINUTE = EndpointsInputDataSourceRefreshFrequencyEnum._(r'EVERY_MINUTE');
+  static const EVERY_HOUR = EndpointsInputDataSourceRefreshFrequencyEnum._(r'EVERY_HOUR');
+  static const EVERY_DAY = EndpointsInputDataSourceRefreshFrequencyEnum._(r'EVERY_DAY');
+  static const EVERY_WEEK = EndpointsInputDataSourceRefreshFrequencyEnum._(r'EVERY_WEEK');
+  static const EVERY_MONTH = EndpointsInputDataSourceRefreshFrequencyEnum._(r'EVERY_MONTH');
+  static const EVERY_QUARTER = EndpointsInputDataSourceRefreshFrequencyEnum._(r'EVERY_QUARTER');
+  static const EVERY_YEAR = EndpointsInputDataSourceRefreshFrequencyEnum._(r'EVERY_YEAR');
+  static const NEVER = EndpointsInputDataSourceRefreshFrequencyEnum._(r'NEVER');
+  static const UNKNOWN = EndpointsInputDataSourceRefreshFrequencyEnum._(r'UNKNOWN');
+
+  /// List of all possible values in this [enum][EndpointsInputDataSourceRefreshFrequencyEnum].
+  static const values = <EndpointsInputDataSourceRefreshFrequencyEnum>[
+    EVERY_SECOND,
+    EVERY_MINUTE,
+    EVERY_HOUR,
+    EVERY_DAY,
+    EVERY_WEEK,
+    EVERY_MONTH,
+    EVERY_QUARTER,
+    EVERY_YEAR,
+    NEVER,
+    UNKNOWN,
+  ];
+
+  static EndpointsInputDataSourceRefreshFrequencyEnum? fromJson(dynamic value) => EndpointsInputDataSourceRefreshFrequencyEnumTypeTransformer().decode(value);
+
+  static List<EndpointsInputDataSourceRefreshFrequencyEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <EndpointsInputDataSourceRefreshFrequencyEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = EndpointsInputDataSourceRefreshFrequencyEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [EndpointsInputDataSourceRefreshFrequencyEnum] to String,
+/// and [decode] dynamic data back to [EndpointsInputDataSourceRefreshFrequencyEnum].
+class EndpointsInputDataSourceRefreshFrequencyEnumTypeTransformer {
+  factory EndpointsInputDataSourceRefreshFrequencyEnumTypeTransformer() => _instance ??= const EndpointsInputDataSourceRefreshFrequencyEnumTypeTransformer._();
+
+  const EndpointsInputDataSourceRefreshFrequencyEnumTypeTransformer._();
+
+  String encode(EndpointsInputDataSourceRefreshFrequencyEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a EndpointsInputDataSourceRefreshFrequencyEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  EndpointsInputDataSourceRefreshFrequencyEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'EVERY_SECOND': return EndpointsInputDataSourceRefreshFrequencyEnum.EVERY_SECOND;
+        case r'EVERY_MINUTE': return EndpointsInputDataSourceRefreshFrequencyEnum.EVERY_MINUTE;
+        case r'EVERY_HOUR': return EndpointsInputDataSourceRefreshFrequencyEnum.EVERY_HOUR;
+        case r'EVERY_DAY': return EndpointsInputDataSourceRefreshFrequencyEnum.EVERY_DAY;
+        case r'EVERY_WEEK': return EndpointsInputDataSourceRefreshFrequencyEnum.EVERY_WEEK;
+        case r'EVERY_MONTH': return EndpointsInputDataSourceRefreshFrequencyEnum.EVERY_MONTH;
+        case r'EVERY_QUARTER': return EndpointsInputDataSourceRefreshFrequencyEnum.EVERY_QUARTER;
+        case r'EVERY_YEAR': return EndpointsInputDataSourceRefreshFrequencyEnum.EVERY_YEAR;
+        case r'NEVER': return EndpointsInputDataSourceRefreshFrequencyEnum.NEVER;
+        case r'UNKNOWN': return EndpointsInputDataSourceRefreshFrequencyEnum.UNKNOWN;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [EndpointsInputDataSourceRefreshFrequencyEnumTypeTransformer] instance.
+  static EndpointsInputDataSourceRefreshFrequencyEnumTypeTransformer? _instance;
 }
 
 

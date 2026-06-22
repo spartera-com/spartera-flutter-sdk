@@ -160,6 +160,12 @@ void main() {
       // TODO
     });
 
+    // Top 3 questions this asset can help answer, in English. Stored as JSON array of strings (1-3 items, 15-200 chars each). Required for marketplace assets.
+    // String topQuestions
+    test('to test the property `topQuestions`', () async {
+      // TODO
+    });
+
     // Short code for tera.ac URL shortener (e.g., 'f78zq1')
     // String shortCode
     test('to test the property `shortCode`', () async {
@@ -199,6 +205,12 @@ void main() {
     // Whether this asset requires customization before use
     // bool requireCustomization
     test('to test the property `requireCustomization`', () async {
+      // TODO
+    });
+
+    // Plotly figure JSON describing the visualization. Authored via the visual editor or via API. When populated, takes precedence over the legacy viz_* fields. Shape follows Plotly's figure schema: {data: [{type: '...', xsrc: '...', ...}], layout: {...}}. Column references use *src keys (xsrc, ysrc, labelssrc, etc.) and are hydrated with actual data at render time.
+    // Object vizSpec
+    test('to test the property `vizSpec`', () async {
       // TODO
     });
 
@@ -340,6 +352,12 @@ void main() {
       // TODO
     });
 
+    // When the seller began actively collecting this data. Distinct from data_time_period_start, which describes when the records themselves begin. Backfilled historical data will have date_collection_start > data_time_period_start.
+    // DateTime dateCollectionStart
+    test('to test the property `dateCollectionStart`', () async {
+      // TODO
+    });
+
     // Type of geographic coverage
     // String geographicCoverageType
     test('to test the property `geographicCoverageType`', () async {
@@ -355,12 +373,6 @@ void main() {
     // How often the source data is refreshed
     // String dataSourceRefreshFrequency
     test('to test the property `dataSourceRefreshFrequency`', () async {
-      // TODO
-    });
-
-    // When the source data was last refreshed
-    // DateTime dataSourceLastRefreshed
-    test('to test the property `dataSourceLastRefreshed`', () async {
       // TODO
     });
 

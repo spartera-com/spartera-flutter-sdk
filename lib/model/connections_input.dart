@@ -38,7 +38,7 @@ class ConnectionsInput {
   /// References companies.company_id — A Spartera seller or buyer company account. See GET /companies for valid values. Required.
   String companyId;
 
-  /// Optional. One of: SERVICE_ACCOUNT, USERNAME_PASSWORD, API_KEY, SERVICE_IDENTITY, ACCESS_KEY, … (8 total).
+  /// Optional. One of: SERVICE_ACCOUNT, USERNAME_PASSWORD, API_KEY, SERVICE_IDENTITY, ACCESS_KEY, … (10 total).
   ConnectionsInputCredentialTypeEnum? credentialType;
 
   /// Optional.
@@ -219,7 +219,7 @@ class ConnectionsInput {
   };
 }
 
-/// Optional. One of: SERVICE_ACCOUNT, USERNAME_PASSWORD, API_KEY, SERVICE_IDENTITY, ACCESS_KEY, … (8 total).
+/// Optional. One of: SERVICE_ACCOUNT, USERNAME_PASSWORD, API_KEY, SERVICE_IDENTITY, ACCESS_KEY, … (10 total).
 class ConnectionsInputCredentialTypeEnum {
   /// Instantiate a new enum with the provided [value].
   const ConnectionsInputCredentialTypeEnum._(this.value);
@@ -240,6 +240,8 @@ class ConnectionsInputCredentialTypeEnum {
   static const NONE = ConnectionsInputCredentialTypeEnum._(r'NONE');
   static const OAUTH = ConnectionsInputCredentialTypeEnum._(r'OAUTH');
   static const JSON = ConnectionsInputCredentialTypeEnum._(r'JSON');
+  static const KEY_PAIR = ConnectionsInputCredentialTypeEnum._(r'KEY_PAIR');
+  static const CLIENT_SECRET = ConnectionsInputCredentialTypeEnum._(r'CLIENT_SECRET');
 
   /// List of all possible values in this [enum][ConnectionsInputCredentialTypeEnum].
   static const values = <ConnectionsInputCredentialTypeEnum>[
@@ -251,6 +253,8 @@ class ConnectionsInputCredentialTypeEnum {
     NONE,
     OAUTH,
     JSON,
+    KEY_PAIR,
+    CLIENT_SECRET,
   ];
 
   static ConnectionsInputCredentialTypeEnum? fromJson(dynamic value) => ConnectionsInputCredentialTypeEnumTypeTransformer().decode(value);
@@ -297,6 +301,8 @@ class ConnectionsInputCredentialTypeEnumTypeTransformer {
         case r'NONE': return ConnectionsInputCredentialTypeEnum.NONE;
         case r'OAUTH': return ConnectionsInputCredentialTypeEnum.OAUTH;
         case r'JSON': return ConnectionsInputCredentialTypeEnum.JSON;
+        case r'KEY_PAIR': return ConnectionsInputCredentialTypeEnum.KEY_PAIR;
+        case r'CLIENT_SECRET': return ConnectionsInputCredentialTypeEnum.CLIENT_SECRET;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

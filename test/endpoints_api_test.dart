@@ -31,6 +31,13 @@ void main() {
       // TODO
     });
 
+    // POST /companies/{company_id}/endpoints/{endpoint_id}/scan_column
+    //
+    //Future<CreateEndpoints200Response> createEndpointsScanColumn(String companyId, String endpointId, EndpointsInput endpointsInput) async
+    test('test createEndpointsScanColumn', () async {
+      // TODO
+    });
+
     // Delete single endpoint by ID
     //
     //Future<DeleteEndpoints200Response> deleteEndpoints(String companyId, String endpointId) async
@@ -77,6 +84,13 @@ void main() {
     //
     //Future<GetEndpointsByIdConnectionsDescribe200Response> getEndpointsByIdKeys(String companyId, String endpointId) async
     test('test getEndpointsByIdKeys', () async {
+      // TODO
+    });
+
+    // GET /companies/{company_id}/endpoints/{endpoint_id}/recommendations
+    //
+    //Future<GetEndpointsByIdConnectionsDescribe200Response> getEndpointsByIdRecommendations(String companyId, String endpointId) async
+    test('test getEndpointsByIdRecommendations', () async {
       // TODO
     });
 

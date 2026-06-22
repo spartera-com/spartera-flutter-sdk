@@ -50,7 +50,7 @@ class ConnectionsUpdate {
   ///
   String? companyId;
 
-  /// Optional. One of: SERVICE_ACCOUNT, USERNAME_PASSWORD, API_KEY, SERVICE_IDENTITY, ACCESS_KEY, … (8 total).
+  /// Optional. One of: SERVICE_ACCOUNT, USERNAME_PASSWORD, API_KEY, SERVICE_IDENTITY, ACCESS_KEY, … (10 total).
   ConnectionsUpdateCredentialTypeEnum? credentialType;
 
   /// Optional.
@@ -233,7 +233,7 @@ class ConnectionsUpdate {
   };
 }
 
-/// Optional. One of: SERVICE_ACCOUNT, USERNAME_PASSWORD, API_KEY, SERVICE_IDENTITY, ACCESS_KEY, … (8 total).
+/// Optional. One of: SERVICE_ACCOUNT, USERNAME_PASSWORD, API_KEY, SERVICE_IDENTITY, ACCESS_KEY, … (10 total).
 class ConnectionsUpdateCredentialTypeEnum {
   /// Instantiate a new enum with the provided [value].
   const ConnectionsUpdateCredentialTypeEnum._(this.value);
@@ -254,6 +254,8 @@ class ConnectionsUpdateCredentialTypeEnum {
   static const NONE = ConnectionsUpdateCredentialTypeEnum._(r'NONE');
   static const OAUTH = ConnectionsUpdateCredentialTypeEnum._(r'OAUTH');
   static const JSON = ConnectionsUpdateCredentialTypeEnum._(r'JSON');
+  static const KEY_PAIR = ConnectionsUpdateCredentialTypeEnum._(r'KEY_PAIR');
+  static const CLIENT_SECRET = ConnectionsUpdateCredentialTypeEnum._(r'CLIENT_SECRET');
 
   /// List of all possible values in this [enum][ConnectionsUpdateCredentialTypeEnum].
   static const values = <ConnectionsUpdateCredentialTypeEnum>[
@@ -265,6 +267,8 @@ class ConnectionsUpdateCredentialTypeEnum {
     NONE,
     OAUTH,
     JSON,
+    KEY_PAIR,
+    CLIENT_SECRET,
   ];
 
   static ConnectionsUpdateCredentialTypeEnum? fromJson(dynamic value) => ConnectionsUpdateCredentialTypeEnumTypeTransformer().decode(value);
@@ -311,6 +315,8 @@ class ConnectionsUpdateCredentialTypeEnumTypeTransformer {
         case r'NONE': return ConnectionsUpdateCredentialTypeEnum.NONE;
         case r'OAUTH': return ConnectionsUpdateCredentialTypeEnum.OAUTH;
         case r'JSON': return ConnectionsUpdateCredentialTypeEnum.JSON;
+        case r'KEY_PAIR': return ConnectionsUpdateCredentialTypeEnum.KEY_PAIR;
+        case r'CLIENT_SECRET': return ConnectionsUpdateCredentialTypeEnum.CLIENT_SECRET;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

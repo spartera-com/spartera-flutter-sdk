@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**getConnectionsById**](ConnectionsApi.md#getconnectionsbyid) | **GET** /companies/{company_id}/connections/{connection_id} | Get single connection by ID
 [**getConnectionsById2**](ConnectionsApi.md#getconnectionsbyid2) | **GET** /companies/{company_id}/connections/{connection_id}/test | Test the specified connection
 [**getConnectionsByIdInfoschema**](ConnectionsApi.md#getconnectionsbyidinfoschema) | **GET** /companies/{company_id}/connections/{connection_id}/infoschema | Retrieve the information schema for the specified connection
+[**getConnectionsByIdSampleData**](ConnectionsApi.md#getconnectionsbyidsampledata) | **GET** /companies/{company_id}/connections/{connection_id}/sample-data | Get a randomized sample of rows from a table on this connection.     Used by the visualization editor to give sellers data to author against.      Query Parameters:         schema_name (required): Schema/dataset name         table_name  (required): Table name         limit       (optional): Max rows to return (default 1000, max 10000)      Returns columnar data — {column_name: [values]} — ready for Plotly's     dataSources prop. The actual chart at render time will pull fresh data     via the asset's saved SQL; this is only for authoring preview.
 [**listConnections**](ConnectionsApi.md#listconnections) | **GET** /companies/{company_id}/connections | Get all connections for a specific company
 [**updateConnections**](ConnectionsApi.md#updateconnections) | **PATCH** /companies/{company_id}/connections/{connection_id} | Update an existing connection by ID
 
@@ -238,6 +239,53 @@ try {
     print(result);
 } catch (e) {
     print('Exception when calling ConnectionsApi->getConnectionsByIdInfoschema: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **companyId** | **String**| Unique identifier for the Company | 
+ **connectionId** | **String**| Unique identifier for the Connection | 
+
+### Return type
+
+[**GetConnectionsById200Response**](GetConnectionsById200Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getConnectionsByIdSampleData**
+> GetConnectionsById200Response getConnectionsByIdSampleData(companyId, connectionId)
+
+Get a randomized sample of rows from a table on this connection.     Used by the visualization editor to give sellers data to author against.      Query Parameters:         schema_name (required): Schema/dataset name         table_name  (required): Table name         limit       (optional): Max rows to return (default 1000, max 10000)      Returns columnar data — {column_name: [values]} — ready for Plotly's     dataSources prop. The actual chart at render time will pull fresh data     via the asset's saved SQL; this is only for authoring preview.
+
+### Example
+```dart
+import 'package:spartera_api_sdk/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api_instance = ConnectionsApi();
+final companyId = companyId_example; // String | Unique identifier for the Company
+final connectionId = connectionId_example; // String | Unique identifier for the Connection
+
+try {
+    final result = api_instance.getConnectionsByIdSampleData(companyId, connectionId);
+    print(result);
+} catch (e) {
+    print('Exception when calling ConnectionsApi->getConnectionsByIdSampleData: $e\n');
 }
 ```
 

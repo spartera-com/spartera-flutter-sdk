@@ -187,6 +187,72 @@ class EndpointsApi {
     return null;
   }
 
+  /// POST /companies/{company_id}/endpoints/{endpoint_id}/scan_column
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] companyId (required):
+  ///   Unique identifier for the Company
+  ///
+  /// * [String] endpointId (required):
+  ///   Unique identifier for the Endpoint
+  ///
+  /// * [EndpointsInput] endpointsInput (required):
+  Future<Response> createEndpointsScanColumnWithHttpInfo(String companyId, String endpointId, EndpointsInput endpointsInput,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/companies/{company_id}/endpoints/{endpoint_id}/scan_column'
+      .replaceAll('{company_id}', companyId)
+      .replaceAll('{endpoint_id}', endpointId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = endpointsInput;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// POST /companies/{company_id}/endpoints/{endpoint_id}/scan_column
+  ///
+  /// Parameters:
+  ///
+  /// * [String] companyId (required):
+  ///   Unique identifier for the Company
+  ///
+  /// * [String] endpointId (required):
+  ///   Unique identifier for the Endpoint
+  ///
+  /// * [EndpointsInput] endpointsInput (required):
+  Future<CreateEndpoints200Response?> createEndpointsScanColumn(String companyId, String endpointId, EndpointsInput endpointsInput,) async {
+    final response = await createEndpointsScanColumnWithHttpInfo(companyId, endpointId, endpointsInput,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CreateEndpoints200Response',) as CreateEndpoints200Response;
+    
+    }
+    return null;
+  }
+
   /// Delete single endpoint by ID
   ///
   /// Note: This method returns the HTTP [Response].
@@ -615,6 +681,68 @@ class EndpointsApi {
   ///   Unique identifier for the Endpoint
   Future<GetEndpointsByIdConnectionsDescribe200Response?> getEndpointsByIdKeys(String companyId, String endpointId,) async {
     final response = await getEndpointsByIdKeysWithHttpInfo(companyId, endpointId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GetEndpointsByIdConnectionsDescribe200Response',) as GetEndpointsByIdConnectionsDescribe200Response;
+    
+    }
+    return null;
+  }
+
+  /// GET /companies/{company_id}/endpoints/{endpoint_id}/recommendations
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] companyId (required):
+  ///   Unique identifier for the Company
+  ///
+  /// * [String] endpointId (required):
+  ///   Unique identifier for the Endpoint
+  Future<Response> getEndpointsByIdRecommendationsWithHttpInfo(String companyId, String endpointId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/companies/{company_id}/endpoints/{endpoint_id}/recommendations'
+      .replaceAll('{company_id}', companyId)
+      .replaceAll('{endpoint_id}', endpointId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// GET /companies/{company_id}/endpoints/{endpoint_id}/recommendations
+  ///
+  /// Parameters:
+  ///
+  /// * [String] companyId (required):
+  ///   Unique identifier for the Company
+  ///
+  /// * [String] endpointId (required):
+  ///   Unique identifier for the Endpoint
+  Future<GetEndpointsByIdConnectionsDescribe200Response?> getEndpointsByIdRecommendations(String companyId, String endpointId,) async {
+    final response = await getEndpointsByIdRecommendationsWithHttpInfo(companyId, endpointId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

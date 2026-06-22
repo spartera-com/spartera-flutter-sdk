@@ -369,6 +369,68 @@ class ConnectionsApi {
     return null;
   }
 
+  /// Get a randomized sample of rows from a table on this connection.     Used by the visualization editor to give sellers data to author against.      Query Parameters:         schema_name (required): Schema/dataset name         table_name  (required): Table name         limit       (optional): Max rows to return (default 1000, max 10000)      Returns columnar data — {column_name: [values]} — ready for Plotly's     dataSources prop. The actual chart at render time will pull fresh data     via the asset's saved SQL; this is only for authoring preview.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] companyId (required):
+  ///   Unique identifier for the Company
+  ///
+  /// * [String] connectionId (required):
+  ///   Unique identifier for the Connection
+  Future<Response> getConnectionsByIdSampleDataWithHttpInfo(String companyId, String connectionId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/companies/{company_id}/connections/{connection_id}/sample-data'
+      .replaceAll('{company_id}', companyId)
+      .replaceAll('{connection_id}', connectionId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Get a randomized sample of rows from a table on this connection.     Used by the visualization editor to give sellers data to author against.      Query Parameters:         schema_name (required): Schema/dataset name         table_name  (required): Table name         limit       (optional): Max rows to return (default 1000, max 10000)      Returns columnar data — {column_name: [values]} — ready for Plotly's     dataSources prop. The actual chart at render time will pull fresh data     via the asset's saved SQL; this is only for authoring preview.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] companyId (required):
+  ///   Unique identifier for the Company
+  ///
+  /// * [String] connectionId (required):
+  ///   Unique identifier for the Connection
+  Future<GetConnectionsById200Response?> getConnectionsByIdSampleData(String companyId, String connectionId,) async {
+    final response = await getConnectionsByIdSampleDataWithHttpInfo(companyId, connectionId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GetConnectionsById200Response',) as GetConnectionsById200Response;
+    
+    }
+    return null;
+  }
+
   /// Get all connections for a specific company
   ///
   /// Note: This method returns the HTTP [Response].

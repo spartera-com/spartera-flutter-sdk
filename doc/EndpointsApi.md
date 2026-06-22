@@ -11,6 +11,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createEndpoints**](EndpointsApi.md#createendpoints) | **POST** /companies/{company_id}/endpoints | Create a new endpoint
 [**createEndpointsKeys**](EndpointsApi.md#createendpointskeys) | **POST** /companies/{company_id}/endpoints/{endpoint_id}/keys | POST /companies/{company_id}/endpoints/{endpoint_id}/keys
+[**createEndpointsScanColumn**](EndpointsApi.md#createendpointsscancolumn) | **POST** /companies/{company_id}/endpoints/{endpoint_id}/scan_column | POST /companies/{company_id}/endpoints/{endpoint_id}/scan_column
 [**deleteEndpoints**](EndpointsApi.md#deleteendpoints) | **DELETE** /companies/{company_id}/endpoints/{endpoint_id} | Delete single endpoint by ID
 [**deleteEndpointsKeys**](EndpointsApi.md#deleteendpointskeys) | **DELETE** /companies/{company_id}/endpoints/{endpoint_id}/keys/{api_key_id} | DELETE /companies/{company_id}/endpoints/{endpoint_id}/keys/{api_key_id}
 [**getEndpointsById**](EndpointsApi.md#getendpointsbyid) | **GET** /companies/{company_id}/endpoints/{endpoint_id} | Get single endpoint by ID
@@ -18,6 +19,7 @@ Method | HTTP request | Description
 [**getEndpointsByIdConnectionsDescribe**](EndpointsApi.md#getendpointsbyidconnectionsdescribe) | **GET** /companies/{company_id}/endpoints/../connections/{connection_id}/describe | Get schema information for a connection      Query parameters:         include_fields: Whether to include field information (default: true)         schemas: Optional comma-separated schemas to include         tables: Optional comma-separated tables to include
 [**getEndpointsByIdExecute**](EndpointsApi.md#getendpointsbyidexecute) | **GET** /companies/{company_id}/endpoints/{endpoint_id}/execute | Execute an endpoint with pagination support.      Customer-facing route that returns paginated data.     Query params: ?start=0&limit=100
 [**getEndpointsByIdKeys**](EndpointsApi.md#getendpointsbyidkeys) | **GET** /companies/{company_id}/endpoints/{endpoint_id}/keys | GET /companies/{company_id}/endpoints/{endpoint_id}/keys
+[**getEndpointsByIdRecommendations**](EndpointsApi.md#getendpointsbyidrecommendations) | **GET** /companies/{company_id}/endpoints/{endpoint_id}/recommendations | GET /companies/{company_id}/endpoints/{endpoint_id}/recommendations
 [**getEndpointsByIdStats**](EndpointsApi.md#getendpointsbyidstats) | **GET** /companies/{company_id}/endpoints/{endpoint_id}/stats | Get usage statistics for an endpoint      Query parameters:         days: Number of days to analyze (default: 30)
 [**getEndpointsByIdTest**](EndpointsApi.md#getendpointsbyidtest) | **GET** /companies/{company_id}/endpoints/{endpoint_id}/test | Test an endpoint with sample data      Request body (optional):         limit: Number of sample rows to return (default: 10)
 [**getEndpointsByIdUrl**](EndpointsApi.md#getendpointsbyidurl) | **GET** /companies/{company_id}/endpoints/{endpoint_id}/url | GET /companies/{company_id}/endpoints/{endpoint_id}/url
@@ -105,6 +107,55 @@ try {
     print(result);
 } catch (e) {
     print('Exception when calling EndpointsApi->createEndpointsKeys: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **companyId** | **String**| Unique identifier for the Company | 
+ **endpointId** | **String**| Unique identifier for the Endpoint | 
+ **endpointsInput** | [**EndpointsInput**](EndpointsInput.md)|  | 
+
+### Return type
+
+[**CreateEndpoints200Response**](CreateEndpoints200Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createEndpointsScanColumn**
+> CreateEndpoints200Response createEndpointsScanColumn(companyId, endpointId, endpointsInput)
+
+POST /companies/{company_id}/endpoints/{endpoint_id}/scan_column
+
+### Example
+```dart
+import 'package:spartera_api_sdk/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api_instance = EndpointsApi();
+final companyId = companyId_example; // String | Unique identifier for the Company
+final endpointId = endpointId_example; // String | Unique identifier for the Endpoint
+final endpointsInput = EndpointsInput(); // EndpointsInput | 
+
+try {
+    final result = api_instance.createEndpointsScanColumn(companyId, endpointId, endpointsInput);
+    print(result);
+} catch (e) {
+    print('Exception when calling EndpointsApi->createEndpointsScanColumn: $e\n');
 }
 ```
 
@@ -437,6 +488,53 @@ try {
     print(result);
 } catch (e) {
     print('Exception when calling EndpointsApi->getEndpointsByIdKeys: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **companyId** | **String**| Unique identifier for the Company | 
+ **endpointId** | **String**| Unique identifier for the Endpoint | 
+
+### Return type
+
+[**GetEndpointsByIdConnectionsDescribe200Response**](GetEndpointsByIdConnectionsDescribe200Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getEndpointsByIdRecommendations**
+> GetEndpointsByIdConnectionsDescribe200Response getEndpointsByIdRecommendations(companyId, endpointId)
+
+GET /companies/{company_id}/endpoints/{endpoint_id}/recommendations
+
+### Example
+```dart
+import 'package:spartera_api_sdk/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+
+final api_instance = EndpointsApi();
+final companyId = companyId_example; // String | Unique identifier for the Company
+final endpointId = endpointId_example; // String | Unique identifier for the Endpoint
+
+try {
+    final result = api_instance.getEndpointsByIdRecommendations(companyId, endpointId);
+    print(result);
+} catch (e) {
+    print('Exception when calling EndpointsApi->getEndpointsByIdRecommendations: $e\n');
 }
 ```
 

@@ -30,6 +30,7 @@ class AssetsInput {
     this.assetType,
     this.assetSchema,
     this.tags,
+    this.topQuestions,
     this.shortCode,
     this.restrictedDomains,
     this.sqlLogic,
@@ -37,6 +38,7 @@ class AssetsInput {
     this.sourceTableName,
     this.sellInMarketplace,
     this.requireCustomization,
+    this.vizSpec,
     this.vizChartLibrary,
     this.vizChartType,
     this.vizDepVarColName,
@@ -60,10 +62,10 @@ class AssetsInput {
     this.nextRun,
     this.dataTimePeriodStart,
     this.dataTimePeriodEnd,
+    this.dateCollectionStart,
     this.geographicCoverageType,
     this.geographicCoverageDetails,
     this.dataSourceRefreshFrequency,
-    this.dataSourceLastRefreshed,
     this.rateLimitNumber,
     this.rateLimitPeriod,
     this.rateLimitGranularity,
@@ -192,6 +194,15 @@ class AssetsInput {
   ///
   String? tags;
 
+  /// Top 3 questions this asset can help answer, in English. Stored as JSON array of strings (1-3 items, 15-200 chars each). Required for marketplace assets.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? topQuestions;
+
   /// Short code for tera.ac URL shortener (e.g., 'f78zq1')
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -254,6 +265,15 @@ class AssetsInput {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? requireCustomization;
+
+  /// Plotly figure JSON describing the visualization. Authored via the visual editor or via API. When populated, takes precedence over the legacy viz_* fields. Shape follows Plotly's figure schema: {data: [{type: '...', xsrc: '...', ...}], layout: {...}}. Column references use *src keys (xsrc, ysrc, labelssrc, etc.) and are hydrated with actual data at render time.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  Object? vizSpec;
 
   /// Optional. One of: PLOTLY, MATPLOTLIB, SEABORN.
   AssetsInputVizChartLibraryEnum? vizChartLibrary;
@@ -426,6 +446,15 @@ class AssetsInput {
   ///
   DateTime? dataTimePeriodEnd;
 
+  /// When the seller began actively collecting this data. Distinct from data_time_period_start, which describes when the records themselves begin. Backfilled historical data will have date_collection_start > data_time_period_start.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? dateCollectionStart;
+
   /// Type of geographic coverage
   AssetsInputGeographicCoverageTypeEnum? geographicCoverageType;
 
@@ -440,15 +469,6 @@ class AssetsInput {
 
   /// How often the source data is refreshed
   AssetsInputDataSourceRefreshFrequencyEnum? dataSourceRefreshFrequency;
-
-  /// When the source data was last refreshed
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  DateTime? dataSourceLastRefreshed;
 
   /// Number of requests allowed per period (e.g., 100)
   ///
@@ -484,6 +504,7 @@ class AssetsInput {
     other.assetType == assetType &&
     other.assetSchema == assetSchema &&
     other.tags == tags &&
+    other.topQuestions == topQuestions &&
     other.shortCode == shortCode &&
     other.restrictedDomains == restrictedDomains &&
     other.sqlLogic == sqlLogic &&
@@ -491,6 +512,7 @@ class AssetsInput {
     other.sourceTableName == sourceTableName &&
     other.sellInMarketplace == sellInMarketplace &&
     other.requireCustomization == requireCustomization &&
+    other.vizSpec == vizSpec &&
     other.vizChartLibrary == vizChartLibrary &&
     other.vizChartType == vizChartType &&
     other.vizDepVarColName == vizDepVarColName &&
@@ -514,10 +536,10 @@ class AssetsInput {
     other.nextRun == nextRun &&
     other.dataTimePeriodStart == dataTimePeriodStart &&
     other.dataTimePeriodEnd == dataTimePeriodEnd &&
+    other.dateCollectionStart == dateCollectionStart &&
     other.geographicCoverageType == geographicCoverageType &&
     other.geographicCoverageDetails == geographicCoverageDetails &&
     other.dataSourceRefreshFrequency == dataSourceRefreshFrequency &&
-    other.dataSourceLastRefreshed == dataSourceLastRefreshed &&
     other.rateLimitNumber == rateLimitNumber &&
     other.rateLimitPeriod == rateLimitPeriod &&
     other.rateLimitGranularity == rateLimitGranularity;
@@ -542,6 +564,7 @@ class AssetsInput {
     (assetType == null ? 0 : assetType!.hashCode) +
     (assetSchema == null ? 0 : assetSchema!.hashCode) +
     (tags == null ? 0 : tags!.hashCode) +
+    (topQuestions == null ? 0 : topQuestions!.hashCode) +
     (shortCode == null ? 0 : shortCode!.hashCode) +
     (restrictedDomains == null ? 0 : restrictedDomains!.hashCode) +
     (sqlLogic == null ? 0 : sqlLogic!.hashCode) +
@@ -549,6 +572,7 @@ class AssetsInput {
     (sourceTableName == null ? 0 : sourceTableName!.hashCode) +
     (sellInMarketplace == null ? 0 : sellInMarketplace!.hashCode) +
     (requireCustomization == null ? 0 : requireCustomization!.hashCode) +
+    (vizSpec == null ? 0 : vizSpec!.hashCode) +
     (vizChartLibrary == null ? 0 : vizChartLibrary!.hashCode) +
     (vizChartType == null ? 0 : vizChartType!.hashCode) +
     (vizDepVarColName == null ? 0 : vizDepVarColName!.hashCode) +
@@ -572,16 +596,16 @@ class AssetsInput {
     (nextRun == null ? 0 : nextRun!.hashCode) +
     (dataTimePeriodStart == null ? 0 : dataTimePeriodStart!.hashCode) +
     (dataTimePeriodEnd == null ? 0 : dataTimePeriodEnd!.hashCode) +
+    (dateCollectionStart == null ? 0 : dateCollectionStart!.hashCode) +
     (geographicCoverageType == null ? 0 : geographicCoverageType!.hashCode) +
     (geographicCoverageDetails == null ? 0 : geographicCoverageDetails!.hashCode) +
     (dataSourceRefreshFrequency == null ? 0 : dataSourceRefreshFrequency!.hashCode) +
-    (dataSourceLastRefreshed == null ? 0 : dataSourceLastRefreshed!.hashCode) +
     (rateLimitNumber == null ? 0 : rateLimitNumber!.hashCode) +
     (rateLimitPeriod == null ? 0 : rateLimitPeriod!.hashCode) +
     (rateLimitGranularity == null ? 0 : rateLimitGranularity!.hashCode);
 
   @override
-  String toString() => 'AssetsInput[userId=$userId, companyId=$companyId, connectionId=$connectionId, industryId=$industryId, aucId=$aucId, functionId=$functionId, approvalStatus=$approvalStatus, approvedByUserId=$approvedByUserId, approvedAt=$approvedAt, name=$name, slug=$slug, description=$description, detailedDescription=$detailedDescription, source_=$source_, assetType=$assetType, assetSchema=$assetSchema, tags=$tags, shortCode=$shortCode, restrictedDomains=$restrictedDomains, sqlLogic=$sqlLogic, sourceSchemaName=$sourceSchemaName, sourceTableName=$sourceTableName, sellInMarketplace=$sellInMarketplace, requireCustomization=$requireCustomization, vizChartLibrary=$vizChartLibrary, vizChartType=$vizChartType, vizDepVarColName=$vizDepVarColName, vizIndepVarColName=$vizIndepVarColName, vizSizeColName=$vizSizeColName, vizColorColName=$vizColorColName, vizDataAggregation=$vizDataAggregation, vizSortDirection=$vizSortDirection, vizDataLimit=$vizDataLimit, vizColorScheme=$vizColorScheme, vizShowLegend=$vizShowLegend, vizShowGrid=$vizShowGrid, vizShowTrendline=$vizShowTrendline, vizLineSmoothing=$vizLineSmoothing, vizBarStacked=$vizBarStacked, vizFilterDirection=$vizFilterDirection, allowParams=$allowParams, acceptTerms=$acceptTerms, cached=$cached, schedule=$schedule, nextRun=$nextRun, dataTimePeriodStart=$dataTimePeriodStart, dataTimePeriodEnd=$dataTimePeriodEnd, geographicCoverageType=$geographicCoverageType, geographicCoverageDetails=$geographicCoverageDetails, dataSourceRefreshFrequency=$dataSourceRefreshFrequency, dataSourceLastRefreshed=$dataSourceLastRefreshed, rateLimitNumber=$rateLimitNumber, rateLimitPeriod=$rateLimitPeriod, rateLimitGranularity=$rateLimitGranularity]';
+  String toString() => 'AssetsInput[userId=$userId, companyId=$companyId, connectionId=$connectionId, industryId=$industryId, aucId=$aucId, functionId=$functionId, approvalStatus=$approvalStatus, approvedByUserId=$approvedByUserId, approvedAt=$approvedAt, name=$name, slug=$slug, description=$description, detailedDescription=$detailedDescription, source_=$source_, assetType=$assetType, assetSchema=$assetSchema, tags=$tags, topQuestions=$topQuestions, shortCode=$shortCode, restrictedDomains=$restrictedDomains, sqlLogic=$sqlLogic, sourceSchemaName=$sourceSchemaName, sourceTableName=$sourceTableName, sellInMarketplace=$sellInMarketplace, requireCustomization=$requireCustomization, vizSpec=$vizSpec, vizChartLibrary=$vizChartLibrary, vizChartType=$vizChartType, vizDepVarColName=$vizDepVarColName, vizIndepVarColName=$vizIndepVarColName, vizSizeColName=$vizSizeColName, vizColorColName=$vizColorColName, vizDataAggregation=$vizDataAggregation, vizSortDirection=$vizSortDirection, vizDataLimit=$vizDataLimit, vizColorScheme=$vizColorScheme, vizShowLegend=$vizShowLegend, vizShowGrid=$vizShowGrid, vizShowTrendline=$vizShowTrendline, vizLineSmoothing=$vizLineSmoothing, vizBarStacked=$vizBarStacked, vizFilterDirection=$vizFilterDirection, allowParams=$allowParams, acceptTerms=$acceptTerms, cached=$cached, schedule=$schedule, nextRun=$nextRun, dataTimePeriodStart=$dataTimePeriodStart, dataTimePeriodEnd=$dataTimePeriodEnd, dateCollectionStart=$dateCollectionStart, geographicCoverageType=$geographicCoverageType, geographicCoverageDetails=$geographicCoverageDetails, dataSourceRefreshFrequency=$dataSourceRefreshFrequency, rateLimitNumber=$rateLimitNumber, rateLimitPeriod=$rateLimitPeriod, rateLimitGranularity=$rateLimitGranularity]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -658,6 +682,11 @@ class AssetsInput {
     } else {
       json[r'tags'] = null;
     }
+    if (this.topQuestions != null) {
+      json[r'top_questions'] = this.topQuestions;
+    } else {
+      json[r'top_questions'] = null;
+    }
     if (this.shortCode != null) {
       json[r'short_code'] = this.shortCode;
     } else {
@@ -692,6 +721,11 @@ class AssetsInput {
       json[r'require_customization'] = this.requireCustomization;
     } else {
       json[r'require_customization'] = null;
+    }
+    if (this.vizSpec != null) {
+      json[r'viz_spec'] = this.vizSpec;
+    } else {
+      json[r'viz_spec'] = null;
     }
     if (this.vizChartLibrary != null) {
       json[r'viz_chart_library'] = this.vizChartLibrary;
@@ -808,6 +842,11 @@ class AssetsInput {
     } else {
       json[r'data_time_period_end'] = null;
     }
+    if (this.dateCollectionStart != null) {
+      json[r'date_collection_start'] = this.dateCollectionStart!.toUtc().toIso8601String();
+    } else {
+      json[r'date_collection_start'] = null;
+    }
     if (this.geographicCoverageType != null) {
       json[r'geographic_coverage_type'] = this.geographicCoverageType;
     } else {
@@ -822,11 +861,6 @@ class AssetsInput {
       json[r'data_source_refresh_frequency'] = this.dataSourceRefreshFrequency;
     } else {
       json[r'data_source_refresh_frequency'] = null;
-    }
-    if (this.dataSourceLastRefreshed != null) {
-      json[r'data_source_last_refreshed'] = this.dataSourceLastRefreshed!.toUtc().toIso8601String();
-    } else {
-      json[r'data_source_last_refreshed'] = null;
     }
     if (this.rateLimitNumber != null) {
       json[r'rate_limit_number'] = this.rateLimitNumber;
@@ -884,6 +918,7 @@ class AssetsInput {
         assetType: AssetsInputAssetTypeEnum.fromJson(json[r'asset_type']),
         assetSchema: mapValueOfType<Object>(json, r'asset_schema'),
         tags: mapValueOfType<String>(json, r'tags'),
+        topQuestions: mapValueOfType<String>(json, r'top_questions'),
         shortCode: mapValueOfType<String>(json, r'short_code'),
         restrictedDomains: mapValueOfType<String>(json, r'restricted_domains'),
         sqlLogic: mapValueOfType<String>(json, r'sql_logic'),
@@ -891,6 +926,7 @@ class AssetsInput {
         sourceTableName: mapValueOfType<String>(json, r'source_table_name'),
         sellInMarketplace: mapValueOfType<bool>(json, r'sell_in_marketplace'),
         requireCustomization: mapValueOfType<bool>(json, r'require_customization'),
+        vizSpec: mapValueOfType<Object>(json, r'viz_spec'),
         vizChartLibrary: AssetsInputVizChartLibraryEnum.fromJson(json[r'viz_chart_library']),
         vizChartType: AssetsInputVizChartTypeEnum.fromJson(json[r'viz_chart_type']),
         vizDepVarColName: mapValueOfType<String>(json, r'viz_dep_var_col_name'),
@@ -914,10 +950,10 @@ class AssetsInput {
         nextRun: mapDateTime(json, r'next_run', r''),
         dataTimePeriodStart: mapDateTime(json, r'data_time_period_start', r''),
         dataTimePeriodEnd: mapDateTime(json, r'data_time_period_end', r''),
+        dateCollectionStart: mapDateTime(json, r'date_collection_start', r''),
         geographicCoverageType: AssetsInputGeographicCoverageTypeEnum.fromJson(json[r'geographic_coverage_type']),
         geographicCoverageDetails: mapValueOfType<String>(json, r'geographic_coverage_details'),
         dataSourceRefreshFrequency: AssetsInputDataSourceRefreshFrequencyEnum.fromJson(json[r'data_source_refresh_frequency']),
-        dataSourceLastRefreshed: mapDateTime(json, r'data_source_last_refreshed', r''),
         rateLimitNumber: mapValueOfType<int>(json, r'rate_limit_number'),
         rateLimitPeriod: AssetsInputRateLimitPeriodEnum.fromJson(json[r'rate_limit_period']),
         rateLimitGranularity: AssetsInputRateLimitGranularityEnum.fromJson(json[r'rate_limit_granularity']),
@@ -1808,28 +1844,28 @@ class AssetsInputDataSourceRefreshFrequencyEnum {
 
   String toJson() => value;
 
-  static const REAL_TIME = AssetsInputDataSourceRefreshFrequencyEnum._(r'REAL_TIME');
-  static const HOURLY = AssetsInputDataSourceRefreshFrequencyEnum._(r'HOURLY');
-  static const DAILY = AssetsInputDataSourceRefreshFrequencyEnum._(r'DAILY');
-  static const WEEKLY = AssetsInputDataSourceRefreshFrequencyEnum._(r'WEEKLY');
-  static const MONTHLY = AssetsInputDataSourceRefreshFrequencyEnum._(r'MONTHLY');
-  static const QUARTERLY = AssetsInputDataSourceRefreshFrequencyEnum._(r'QUARTERLY');
-  static const ANNUAL = AssetsInputDataSourceRefreshFrequencyEnum._(r'ANNUAL');
-  static const ONE_TIME = AssetsInputDataSourceRefreshFrequencyEnum._(r'ONE_TIME');
-  static const CUSTOM = AssetsInputDataSourceRefreshFrequencyEnum._(r'CUSTOM');
+  static const EVERY_SECOND = AssetsInputDataSourceRefreshFrequencyEnum._(r'EVERY_SECOND');
+  static const EVERY_MINUTE = AssetsInputDataSourceRefreshFrequencyEnum._(r'EVERY_MINUTE');
+  static const EVERY_HOUR = AssetsInputDataSourceRefreshFrequencyEnum._(r'EVERY_HOUR');
+  static const EVERY_DAY = AssetsInputDataSourceRefreshFrequencyEnum._(r'EVERY_DAY');
+  static const EVERY_WEEK = AssetsInputDataSourceRefreshFrequencyEnum._(r'EVERY_WEEK');
+  static const EVERY_MONTH = AssetsInputDataSourceRefreshFrequencyEnum._(r'EVERY_MONTH');
+  static const EVERY_QUARTER = AssetsInputDataSourceRefreshFrequencyEnum._(r'EVERY_QUARTER');
+  static const EVERY_YEAR = AssetsInputDataSourceRefreshFrequencyEnum._(r'EVERY_YEAR');
+  static const NEVER = AssetsInputDataSourceRefreshFrequencyEnum._(r'NEVER');
   static const UNKNOWN = AssetsInputDataSourceRefreshFrequencyEnum._(r'UNKNOWN');
 
   /// List of all possible values in this [enum][AssetsInputDataSourceRefreshFrequencyEnum].
   static const values = <AssetsInputDataSourceRefreshFrequencyEnum>[
-    REAL_TIME,
-    HOURLY,
-    DAILY,
-    WEEKLY,
-    MONTHLY,
-    QUARTERLY,
-    ANNUAL,
-    ONE_TIME,
-    CUSTOM,
+    EVERY_SECOND,
+    EVERY_MINUTE,
+    EVERY_HOUR,
+    EVERY_DAY,
+    EVERY_WEEK,
+    EVERY_MONTH,
+    EVERY_QUARTER,
+    EVERY_YEAR,
+    NEVER,
     UNKNOWN,
   ];
 
@@ -1869,15 +1905,15 @@ class AssetsInputDataSourceRefreshFrequencyEnumTypeTransformer {
   AssetsInputDataSourceRefreshFrequencyEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'REAL_TIME': return AssetsInputDataSourceRefreshFrequencyEnum.REAL_TIME;
-        case r'HOURLY': return AssetsInputDataSourceRefreshFrequencyEnum.HOURLY;
-        case r'DAILY': return AssetsInputDataSourceRefreshFrequencyEnum.DAILY;
-        case r'WEEKLY': return AssetsInputDataSourceRefreshFrequencyEnum.WEEKLY;
-        case r'MONTHLY': return AssetsInputDataSourceRefreshFrequencyEnum.MONTHLY;
-        case r'QUARTERLY': return AssetsInputDataSourceRefreshFrequencyEnum.QUARTERLY;
-        case r'ANNUAL': return AssetsInputDataSourceRefreshFrequencyEnum.ANNUAL;
-        case r'ONE_TIME': return AssetsInputDataSourceRefreshFrequencyEnum.ONE_TIME;
-        case r'CUSTOM': return AssetsInputDataSourceRefreshFrequencyEnum.CUSTOM;
+        case r'EVERY_SECOND': return AssetsInputDataSourceRefreshFrequencyEnum.EVERY_SECOND;
+        case r'EVERY_MINUTE': return AssetsInputDataSourceRefreshFrequencyEnum.EVERY_MINUTE;
+        case r'EVERY_HOUR': return AssetsInputDataSourceRefreshFrequencyEnum.EVERY_HOUR;
+        case r'EVERY_DAY': return AssetsInputDataSourceRefreshFrequencyEnum.EVERY_DAY;
+        case r'EVERY_WEEK': return AssetsInputDataSourceRefreshFrequencyEnum.EVERY_WEEK;
+        case r'EVERY_MONTH': return AssetsInputDataSourceRefreshFrequencyEnum.EVERY_MONTH;
+        case r'EVERY_QUARTER': return AssetsInputDataSourceRefreshFrequencyEnum.EVERY_QUARTER;
+        case r'EVERY_YEAR': return AssetsInputDataSourceRefreshFrequencyEnum.EVERY_YEAR;
+        case r'NEVER': return AssetsInputDataSourceRefreshFrequencyEnum.NEVER;
         case r'UNKNOWN': return AssetsInputDataSourceRefreshFrequencyEnum.UNKNOWN;
         default:
           if (!allowNull) {

@@ -52,6 +52,13 @@ void main() {
       // TODO
     });
 
+    // Get a randomized sample of rows from a table on this connection.     Used by the visualization editor to give sellers data to author against.      Query Parameters:         schema_name (required): Schema/dataset name         table_name  (required): Table name         limit       (optional): Max rows to return (default 1000, max 10000)      Returns columnar data — {column_name: [values]} — ready for Plotly's     dataSources prop. The actual chart at render time will pull fresh data     via the asset's saved SQL; this is only for authoring preview.
+    //
+    //Future<GetConnectionsById200Response> getConnectionsByIdSampleData(String companyId, String connectionId) async
+    test('test getConnectionsByIdSampleData', () async {
+      // TODO
+    });
+
     // Get all connections for a specific company
     //
     //Future<ListConnections200Response> listConnections(String companyId, { int page, int limit, String sortBy, String sortOrder, String search }) async

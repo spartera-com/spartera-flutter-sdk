@@ -88,12 +88,6 @@ void main() {
       // TODO
     });
 
-    // Credits deducted from the buyer's pool per successful (200 OK) request. Same credit pool as assets. price_usd kept for billing records / dashboards.
-    // int priceCredits
-    test('to test the property `priceCredits`', () async {
-      // TODO
-    });
-
     // Human-readable name for the endpoint
     // String name
     test('to test the property `name`', () async {
@@ -112,6 +106,18 @@ void main() {
       // TODO
     });
 
+    // Long-form HTML description for product pages and SEO
+    // String detailedDescription
+    test('to test the property `detailedDescription`', () async {
+      // TODO
+    });
+
+    // Top 3 questions this endpoint can help answer, in English. Stored as JSON array of strings (1-3 items, 15-200 chars each). Strongly encouraged for marketplace endpoints but not required — nudge via UI completeness score, not hard validation.
+    // String topQuestions
+    test('to test the property `topQuestions`', () async {
+      // TODO
+    });
+
     // Schema/database name where the table resides
     // String sourceSchemaName
     test('to test the property `sourceSchemaName`', () async {
@@ -124,15 +130,9 @@ void main() {
       // TODO
     });
 
-    // Named customer for B2B deals (marketplace uses price_credits instead)
+    // Named customer for B2B deals (pricing handled via asset_price_history)
     // String customerName
     test('to test the property `customerName`', () async {
-      // TODO
-    });
-
-    // USD reference price for billing records and seller dashboards
-    // double priceUsd
-    test('to test the property `priceUsd`', () async {
       // TODO
     });
 
@@ -143,8 +143,8 @@ void main() {
     });
 
     // Number of requests allowed per rate_limit_period
-    // int rateLimitRequests
-    test('to test the property `rateLimitRequests`', () async {
+    // int rateLimitNumber
+    test('to test the property `rateLimitNumber`', () async {
       // TODO
     });
 
@@ -178,6 +178,42 @@ void main() {
       // TODO
     });
 
+    // Start date of the data time period covered
+    // DateTime dataTimePeriodStart
+    test('to test the property `dataTimePeriodStart`', () async {
+      // TODO
+    });
+
+    // End date of the data time period covered
+    // DateTime dataTimePeriodEnd
+    test('to test the property `dataTimePeriodEnd`', () async {
+      // TODO
+    });
+
+    // When the seller began actively collecting this data. Distinct from data_time_period_start, which describes when the records themselves begin. Backfilled historical data will have date_collection_start > data_time_period_start.
+    // DateTime dateCollectionStart
+    test('to test the property `dateCollectionStart`', () async {
+      // TODO
+    });
+
+    // Type of geographic coverage
+    // String geographicCoverageType
+    test('to test the property `geographicCoverageType`', () async {
+      // TODO
+    });
+
+    // Specific regions/countries covered (e.g., 'United States, Canada, Mexico')
+    // String geographicCoverageDetails
+    test('to test the property `geographicCoverageDetails`', () async {
+      // TODO
+    });
+
+    // How often the source data is refreshed
+    // String dataSourceRefreshFrequency
+    test('to test the property `dataSourceRefreshFrequency`', () async {
+      // TODO
+    });
+
     // Comma-separated tags for organizing endpoints
     // String tags
     test('to test the property `tags`', () async {
@@ -193,6 +229,18 @@ void main() {
     // Seller-enforced row cap per request. Buyers cannot exceed this. Default 1000.
     // int maxRecordsPerRequest
     test('to test the property `maxRecordsPerRequest`', () async {
+      // TODO
+    });
+
+    // Whether this endpoint supports bulk export to GCS. When True, buyers can request delivery=gcs with format=csv|parquet. Independent of max_records_per_request, which only governs inline JSON.
+    // bool exportEnabled
+    test('to test the property `exportEnabled`', () async {
+      // TODO
+    });
+
+    // Hard ceiling on rows returned per GCS export. Separate from max_records_per_request so sellers can offer larger downloads via file delivery without expanding inline JSON responses.
+    // int maxRecordsPerExport
+    test('to test the property `maxRecordsPerExport`', () async {
       // TODO
     });
 
