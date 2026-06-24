@@ -26,7 +26,7 @@ void main() {
 
     // Process (analyze) an asset with dynamic rate limiting applied via decorator.
     //
-    //Future<CreateAssetsAnalyze200Response> createAssetsAnalyze(String assetSlug, String companyHandle, AssetsInput assetsInput) async
+    //Future<CreateAssetsAnalyze200Response> createAssetsAnalyze(String companyHandle, String assetSlug, AssetsInput assetsInput) async
     test('test createAssetsAnalyze', () async {
       // TODO
     });
@@ -68,7 +68,7 @@ void main() {
 
     // Process (analyze) an asset with dynamic rate limiting applied via decorator.
     //
-    //Future<GetAssetsByIdAnalyze200Response> getAssetsByIdAnalyze(String assetSlug, String companyHandle) async
+    //Future<GetAssetsByIdAnalyze200Response> getAssetsByIdAnalyze(String companyHandle, String assetSlug) async
     test('test getAssetsByIdAnalyze', () async {
       // TODO
     });

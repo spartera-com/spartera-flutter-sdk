@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createAssetsAnalyze**
-> CreateAssetsAnalyze200Response createAssetsAnalyze(assetSlug, companyHandle, assetsInput)
+> CreateAssetsAnalyze200Response createAssetsAnalyze(companyHandle, assetSlug, assetsInput)
 
 Process (analyze) an asset with dynamic rate limiting applied via decorator.
 
@@ -98,12 +98,12 @@ import 'package:spartera_api_sdk/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AssetsApi();
-final assetSlug = assetSlug_example; // String | URL-friendly slug for the Asset
 final companyHandle = companyHandle_example; // String | Human-readable handle for the Company
+final assetSlug = assetSlug_example; // String | URL-friendly slug for the Asset
 final assetsInput = AssetsInput(); // AssetsInput | 
 
 try {
-    final result = api_instance.createAssetsAnalyze(assetSlug, companyHandle, assetsInput);
+    final result = api_instance.createAssetsAnalyze(companyHandle, assetSlug, assetsInput);
     print(result);
 } catch (e) {
     print('Exception when calling AssetsApi->createAssetsAnalyze: $e\n');
@@ -114,8 +114,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **assetSlug** | **String**| URL-friendly slug for the Asset | 
  **companyHandle** | **String**| Human-readable handle for the Company | 
+ **assetSlug** | **String**| URL-friendly slug for the Asset | 
  **assetsInput** | [**AssetsInput**](AssetsInput.md)|  | 
 
 ### Return type
@@ -373,7 +373,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAssetsByIdAnalyze**
-> GetAssetsByIdAnalyze200Response getAssetsByIdAnalyze(assetSlug, companyHandle)
+> GetAssetsByIdAnalyze200Response getAssetsByIdAnalyze(companyHandle, assetSlug)
 
 Process (analyze) an asset with dynamic rate limiting applied via decorator.
 
@@ -386,11 +386,11 @@ import 'package:spartera_api_sdk/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = AssetsApi();
-final assetSlug = assetSlug_example; // String | URL-friendly slug for the Asset
 final companyHandle = companyHandle_example; // String | Human-readable handle for the Company
+final assetSlug = assetSlug_example; // String | URL-friendly slug for the Asset
 
 try {
-    final result = api_instance.getAssetsByIdAnalyze(assetSlug, companyHandle);
+    final result = api_instance.getAssetsByIdAnalyze(companyHandle, assetSlug);
     print(result);
 } catch (e) {
     print('Exception when calling AssetsApi->getAssetsByIdAnalyze: $e\n');
@@ -401,8 +401,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **assetSlug** | **String**| URL-friendly slug for the Asset | 
  **companyHandle** | **String**| Human-readable handle for the Company | 
+ **assetSlug** | **String**| URL-friendly slug for the Asset | 
 
 ### Return type
 

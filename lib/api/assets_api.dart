@@ -127,18 +127,18 @@ class AssetsApi {
   ///
   /// Parameters:
   ///
-  /// * [String] assetSlug (required):
-  ///   URL-friendly slug for the Asset
-  ///
   /// * [String] companyHandle (required):
   ///   Human-readable handle for the Company
   ///
+  /// * [String] assetSlug (required):
+  ///   URL-friendly slug for the Asset
+  ///
   /// * [AssetsInput] assetsInput (required):
-  Future<Response> createAssetsAnalyzeWithHttpInfo(String assetSlug, String companyHandle, AssetsInput assetsInput,) async {
+  Future<Response> createAssetsAnalyzeWithHttpInfo(String companyHandle, String assetSlug, AssetsInput assetsInput,) async {
     // ignore: prefer_const_declarations
     final path = r'/analyze/{company_handle}/assets/{asset_slug}'
-      .replaceAll('{asset_slug}', assetSlug)
-      .replaceAll('{company_handle}', companyHandle);
+      .replaceAll('{company_handle}', companyHandle)
+      .replaceAll('{asset_slug}', assetSlug);
 
     // ignore: prefer_final_locals
     Object? postBody = assetsInput;
@@ -165,15 +165,15 @@ class AssetsApi {
   ///
   /// Parameters:
   ///
-  /// * [String] assetSlug (required):
-  ///   URL-friendly slug for the Asset
-  ///
   /// * [String] companyHandle (required):
   ///   Human-readable handle for the Company
   ///
+  /// * [String] assetSlug (required):
+  ///   URL-friendly slug for the Asset
+  ///
   /// * [AssetsInput] assetsInput (required):
-  Future<CreateAssetsAnalyze200Response?> createAssetsAnalyze(String assetSlug, String companyHandle, AssetsInput assetsInput,) async {
-    final response = await createAssetsAnalyzeWithHttpInfo(assetSlug, companyHandle, assetsInput,);
+  Future<CreateAssetsAnalyze200Response?> createAssetsAnalyze(String companyHandle, String assetSlug, AssetsInput assetsInput,) async {
+    final response = await createAssetsAnalyzeWithHttpInfo(companyHandle, assetSlug, assetsInput,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -511,16 +511,16 @@ class AssetsApi {
   ///
   /// Parameters:
   ///
-  /// * [String] assetSlug (required):
-  ///   URL-friendly slug for the Asset
-  ///
   /// * [String] companyHandle (required):
   ///   Human-readable handle for the Company
-  Future<Response> getAssetsByIdAnalyzeWithHttpInfo(String assetSlug, String companyHandle,) async {
+  ///
+  /// * [String] assetSlug (required):
+  ///   URL-friendly slug for the Asset
+  Future<Response> getAssetsByIdAnalyzeWithHttpInfo(String companyHandle, String assetSlug,) async {
     // ignore: prefer_const_declarations
     final path = r'/analyze/{company_handle}/assets/{asset_slug}'
-      .replaceAll('{asset_slug}', assetSlug)
-      .replaceAll('{company_handle}', companyHandle);
+      .replaceAll('{company_handle}', companyHandle)
+      .replaceAll('{asset_slug}', assetSlug);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -547,13 +547,13 @@ class AssetsApi {
   ///
   /// Parameters:
   ///
-  /// * [String] assetSlug (required):
-  ///   URL-friendly slug for the Asset
-  ///
   /// * [String] companyHandle (required):
   ///   Human-readable handle for the Company
-  Future<GetAssetsByIdAnalyze200Response?> getAssetsByIdAnalyze(String assetSlug, String companyHandle,) async {
-    final response = await getAssetsByIdAnalyzeWithHttpInfo(assetSlug, companyHandle,);
+  ///
+  /// * [String] assetSlug (required):
+  ///   URL-friendly slug for the Asset
+  Future<GetAssetsByIdAnalyze200Response?> getAssetsByIdAnalyze(String companyHandle, String assetSlug,) async {
+    final response = await getAssetsByIdAnalyzeWithHttpInfo(companyHandle, assetSlug,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
