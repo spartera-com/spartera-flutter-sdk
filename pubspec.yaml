@@ -3,7 +3,7 @@
 #
 
 name: 'spartera_api_sdk'
-version: '0.4.1'
+version: '0.4.2'
 description: 'OpenAPI API client'
 homepage: 'https://github.com/spartera-com/spartera-flutter-sdk'
 environment:
