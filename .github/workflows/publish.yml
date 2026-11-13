@@ -3,12 +3,13 @@
 # Publishes to pub.dev when a version tag (v1.0.84) is pushed to THIS repo.
 # The tag is pushed by spartera-com/backend's SDK Release workflow.
 #
-# pub.dev only accepts automated publishing from a tag push in the repository
-# configured on the package's Admin page, with a tag that matches the version
-# being published. One-time setup on pub.dev -> spartera_api_sdk -> Admin ->
-# Automated publishing:
+# pub.dev -> spartera_api_sdk -> Admin -> Automated publishing must have:
 #   Repository:   spartera-com/spartera-flutter-sdk
 #   Tag pattern:  v{{version}}
+#
+# --force publishes despite validation warnings (unawaited futures in the
+# generated api_client.dart, no version constraint on intl). Those warnings
+# don't block pub.dev; they only lower the package's pub points.
 name: Publish to pub.dev
 
 on:
@@ -18,6 +19,28 @@ on:
 
 jobs:
   publish:
+    runs-on: ubuntu-24.04
     permissions:
+      contents: read
       id-token: write
-    uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+
+      - name: Check the tag matches pubspec.yaml
+        run: |
+          TAG="${GITHUB_REF_NAME#v}"
+          PUBSPEC="$(grep -E '^version:' pubspec.yaml | awk '{print $2}')"
+          if [ "$TAG" != "$PUBSPEC" ]; then
+            echo "::error::Tag v$TAG doesn't match pubspec.yaml version $PUBSPEC"
+            exit 1
+          fi
+
+      - name: Install dependencies
+        run: dart pub get
+
+      - name: Publish
+        run: dart pub publish --force
